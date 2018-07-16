@@ -158,6 +158,7 @@ public class LoginBean extends LogXY{
 						itemSon.setLotteryid(temp.getLotteryid());
 						sonList.add(itemSon);
 						favoriteLottIdList.add(temp.getLotteryid().toString());
+						InitData.clearLoginTimes(CommonMethod.getIpAddress());
 					}
 				}
 				

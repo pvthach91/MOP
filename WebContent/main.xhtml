@@ -1,374 +1,404 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" lang="en">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich" lang="en">
 <head>
-<meta charset="utf-8" />
-<title>合一彩票官方网站</title>
-<link type="text/css" rel="stylesheet" href="css/base.css?v=20180622" />
-<link rel="stylesheet" type="text/css" href="css/index.css?v=20180622"/>
-<link rel="stylesheet" href="layer/skin/layer.css" media="screen" type="text/css" />
-<link rel="stylesheet" href="css/hrphone.css" media="screen" type="text/css" />
-<script src="/js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
-<script src="/js/lib/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="/js/layer/layer.js"></script>
-<!-- <script src="/js/base.js" type="text/javascript" charset="utf-8"></script> -->
-<script src="/js/main.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="/js/getUrl.js"></script>
-<script type="text/javascript">
+    <meta charset="utf-8"/>
+    <title>合一彩票官方网站</title>
+    <link type="text/css" rel="stylesheet" href="css/base.css?v=20180622"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=20180622"/>
+    <link rel="stylesheet" href="layer/skin/layer.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="css/hrphone.css" media="screen" type="text/css"/>
+    <script src="/js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/lib/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/layer/layer.js"></script>
+    <!-- <script src="/js/base.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="/js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/getUrl.js"></script>
+    <script type="text/javascript">
 
-function advCheck(){
-	var s = document.getElementById("topForm:userstatus").value;
-	if(console){
-		console.log(s);
-	}
-	if(s!=""){
-		layer.open({
-		    type: 2,
-		    title: '系统公告',
-		    shadeClose: true,
-		    shade: 0.6,
-		    area: ['700px', '500px'],
-		    content: '/page/IndexMsgDefSub.shtml' //iframe的url
+        function advCheck() {
+            var s = document.getElementById("topForm:userstatus").value;
+            if (console) {
+                console.log(s);
+            }
+            if (s != "") {
+                layer.open({
+                    type: 2,
+                    title: '系统公告',
+                    shadeClose: true,
+                    shade: 0.6,
+                    area: ['700px', '500px'],
+                    content: '/page/IndexMsgDefSub.shtml' //iframe的url
 // 		    content: '/page/IndexMsgSub.shtml' //iframe的url
-		});
-	}
-}
-function showMsg() {
-	layer.open({
-	    type: 2,
-	    title: '平台公告',
-	    shadeClose: true,
-	    closeBtn: 1,
-	    shade: 0.1,
-	    area: ['800px', '60%'],
-	    content: '/page/IndexMsgSub.shtml' //iframe的url
-	});
-}
+                });
+            }
+        }
 
-function  removeItem(obj,lotteryid){
-	$.ajax({
-		url:'/LotteryService.aspx?flag=UDellFavorite',
-		dataType:'json',
-		type:'POST',
-		data:{flag:'UDellFavorite',lotteryid : lotteryid},
-		success:function(data){
-    		var stats = data[0].code;
-    		if(stats == 'success'){
-   				alert("该游戏已取消收藏.");
-    			$(obj).parent().remove();
-   			}else{
-        		var ms = data[1].ms;
-        		alert(ms);
-   			}
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			   alert('数据提交失败，请刷新页面重试');
-		}
-	});
-}
+        function showMsg() {
+            layer.open({
+                type: 2,
+                title: '平台公告',
+                shadeClose: true,
+                closeBtn: 1,
+                shade: 0.1,
+                area: ['800px', '60%'],
+                content: '/page/IndexMsgSub.shtml' //iframe的url
+            });
+        }
 
-</script>
+        function removeItem(obj, lotteryid) {
+            $.ajax({
+                url: '/LotteryService.aspx?flag=UDellFavorite',
+                dataType: 'json',
+                type: 'POST',
+                data: {flag: 'UDellFavorite', lotteryid: lotteryid},
+                success: function (data) {
+                    var stats = data[0].code;
+                    if (stats == 'success') {
+                        alert("该游戏已取消收藏.");
+                        $(obj).parent().remove();
+                    } else {
+                        var ms = data[1].ms;
+                        alert(ms);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert('数据提交失败，请刷新页面重试');
+                }
+            });
+        }
+
+    </script>
 </head>
 
-<body  onload="advCheck()">
-<ui:include src="/util.xhtml" />
-	<f:view>
-		<h:form id="topForm">
-<!--bar start-->
-   <div id="bar">
-       <div class="bar">
-           <div class="bar_l">
-           	   <div class="bar_1_r">
-               	<a href="http://speed.heyi66.com/speed.html" title="点击进入访问网络测试" target="_blank"><img src="images/public/pic_bar.png" style="float:left;margin-top:7px;margin-right:5px;"/>网站测速</a>
-               	<a href="#" class=" online-customer" onclick="openChat()">在线客服</a>
-               </div>
-           </div>
-
-           <div class="bar_r">
-               <i>|</i>
-               <div href="#" class="Account_management"><a href="/page/Export.shtml" style="cursor:pointer;">账户管理</a> <span></span>
-               	<div class="Account_management_sub">
-               		<div class="AM_sub_top">
-               			<dl>
-               				<dt>账户</dt>
-               				<dd><a href="/page/PersonBank1.shtml">银行卡</a><i>|</i><a href="/page/PersonPwd.shtml">资料修改</a><i>|</i><a href="/page/PriceList.shtml">奖金详情</a></dd>
-               			</dl>
-               			<dl>
-               				<dt style="background-position: 0 -32px;">代理</dt>
-               				<dd><a href="/page/AgentReg.shtml">会员注册</a><i>|</i><a href="/page/AgentUser.shtml">下级会员</a><i>|</i><a href="/page/AgentAutoReg.shtml">注册推广</a><i>|</i><a href="/page/AgentPE.shtml">配额管理</a><i>|</i><a href="/page/AgentBalance.shtml">团队余额</a></dd>
-               			</dl>
-               			<dl>
-               				<dt style="background-position: 0 -76px;">资金</dt>
-               				<dd><a href="/page/ReportZb.shtml">帐变记录</a><i>|</i><a href="/page/BonusReport.shtml">赠送红利</a><i>|</i><a href="/page/ReportWL.shtml">统计报表</a><i>|</i><a href="/page/ReportTD.shtml">团队总览</a><i>|</i><a href="/page/ReportDay.shtml">每日下级报表</a></dd>
-               			</dl>
-               			<dl>
-               				<dt style="background-position: 0 -118px;">消息</dt>
-               				<dd><a href="/page/PersonMsg.shtml">站内信</a><i>|</i><a href="/page/Index.shtml">平台公告</a><i>|</i><a href="/page/Export.shtml">操作日志</a></dd>
-               			</dl>
-               			<dl>
-               				<dt style="background-position: 0 -160px;">游戏</dt>
-               				<dd><a href="/page/BetRecord.shtml">游戏记录</a><i>|</i><a href="/page/BetRecord.shtml">追号记录</a></dd>
-               			</dl>
-               		</div>
-               		<div class="AM_sub_foot">
-	               		<h4>快速通道</h4>
-	               		<a href="/page/DWDeposit.shtml"><img src="images/public/pci_AMico02_r1_c1.png"/>充值</a>
-	               		<a href="/page/DWWithDrawl.shtml"><img src="images/public/pci_AMico02_r1_c3.png"/>提现</a>
-	               		<a href="/page/AgentReg.shtml"><img src="images/public/pci_AMico02_r1_c5.png"/>开设账号</a>
-	               		<a href="/page/AgentAutoReg.shtml"><img src="images/public/pci_AMico02_r1_c5.png"/>新增链接</a>
-	               		<a href="/page/PersonBank1.shtml"><img src="images/public/pci_AMico02_r1_c5.png"/>添加银行卡</a>
-	               	</div>
-               	</div>
-
-
-               </div><i>|</i>
-                <a4j:commandLink title="安全退出系统" onclick="if(!confirm('请确认：是否退出系统?'))return false;" styleClass="exit" oncomplete="exitLogin();" value="退出" action="#{LoginBean.loginout}"/><i  style = " margin-right:-10px;">|</i>
-           </div>
-       		<div class="bar_m">
-
-
-
-
-               <a href="/page/DWWithDrawl.shtml" class="withdraw_cash">提现</a>
-               <a href="/page/DWDeposit.shtml" class="recharge">充值</a>
-               <i style = "float:right; margin-right:5px;">|</i>
-               <div style="float:right;">
-	           		 <span class="amorpm">您好，</span><span class="username">#{LoginBean.user.nickname}</span> <i>|</i>
-	               	余额<span class="balance" id="ebalance">￥<h:outputText value="#{LoginBean.user.balance}" style="font-size:12px;" converter="DoubleConverter"/></span>
-	               <a href="javascript:void(0)" onclick="loadbalance();" class="refresh" ><img src="images/public/pic_bar_r2_c7.png" alt="" title="刷新余额" class="transition" /></a>
-           		</div>
-           		 <div class = "gamebox"><div class="game"><c style="cursor:pointer;">游戏大厅 <span></span></c>
-                    <div class="sub">
-                        <div class="history">
-                        <ui:include src="/gameHall.xhtml" />
-                        </div>
-                        <ui:include src="/item.xhtml" />
-                       </div>
+<body onload="advCheck()">
+<ui:include src="/util.xhtml"/>
+<f:view>
+    <h:form id="topForm">
+        <!--bar start-->
+        <div id="bar">
+            <div class="bar">
+                <div class="bar_l">
+                    <div class="bar_1_r">
+                        <a href="http://speed.heyi66.com/speed.html" title="点击进入访问网络测试" target="_blank"><img
+                                src="images/public/pic_bar.png" style="float:left;margin-top:7px;margin-right:5px;"/>网站测速</a>
+                        <a href="#" class=" online-customer" onclick="openChat()">在线客服</a>
                     </div>
-               </div>
-           </div>
-       </div>
-   </div>
-<!--bar end -->
-<!--header start-->
-<div id="header">
-	<div class="header">
-		<h1><a href="#"><img src="images/index/logo.png"/></a></h1>
-		<div class="header_r">
-			<ul class="header_r_r">
-				<li>
-					<a href="/page/BetRecord.shtml">游戏记录</a>
-				</li>
-				<li>
-					<a href="/page/ReportZb.shtml">资金报表</a>
-				</li>
-				<li>
-					<a href="/page/AgentReg.shtml">代理管理</a>
-				</li>
-				<li>
-					<a href="/page/Index.shtml">平台公告</a>
-				</li>
-				<li>
-					<a href="/page/DiscoutIndex.shtml" >优惠活动</a>
-				</li>
-			</ul>
-			<div class="equipment">
-				<a href="#" class="hkd">手机端</a>
-				<a href="javascript:void(0)" class="hkd pc" >客户端</a>
-				<div class="equipment_sub">
-					 <div class="equipment_sub_l">
-					 	<p>Android版<br />
-					 	<span>扫描二维码下载</span></p>
-					 	<img src="images/index/head_barcode_r1_c1.png"/>
-					 </div>
-					 <div class="equipment_sub_l">
-					 	<p>iPhone版<br />
-					 	<span>扫描二维码下载</span></p>
-					 	<img src="images/index/head_barcode_r1_c7.png"/>
-					 </div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--header end -->
-<!--banner start-->
-<div id="banner">
-	<div class="banner">
-		<div class="bd">
-			<ul>
-				<!--<li style="background: url(images/index/banner6.jpg) no-repeat center top;"></li>-->
-				<li style="background: url(images/index/banner3.jpg) no-repeat center top;"></li>
-				<li id="banner02_id" ></li>
-				<li id="banner03_id" ></li>
-				<li id="banner04_id" ></li>
-				<!--<li id="banner05_id" ></li>-->
-			</ul>
-		</div>
-		<div class="hd">
-				<ul>
-				<li></li>
-				<li></li>
-				<!--<li></li>-->
-				<li></li>
-				<li></li>
-				</ul>
-		</div>
-		<a class="prev" href="javascript:void(0)"></a>
-			<a class="next" href="javascript:void(0)"></a>
-	</div>
-</div>
-<!--banner end-->
+                </div>
 
-<!--content start-->
-<div id="content">
-	<div class="content">
-		<div class="con_top">
-			<div class="con_top_l">
-				<img src="images/index/content_ico01_r1_c1.png"/>
-				<img src="images/index/content_ico01_r1_c5.png"/>
-				<img src="images/index/content_ico01_r2_c1.png"/>
-				<img src="images/index/content_ico01_r2_c5.png"/>
-			</div>
-			<div class="con_top_r">
-				<div class="text_in">
-					<h3>最新公告 <a href="/page/Index.shtml">更多>></a></h3>
-					<div class="text_link">
-						<h:inputHidden value="#{SysMsgBean.showitem.title}"
-								id="userstatus" />
-							<ul class="notice_ul01">
-								<a4j:repeat value="#{SysMsgBean.indexList}" var="list"
-									id="datalist" rowKeyVar="keys">
-									<li class="">
+                <div class="bar_r">
+                    <i>|</i>
+                    <div href="#" class="Account_management"><a href="/page/Export.shtml"
+                                                                style="cursor:pointer;">账户管理</a> <span></span>
+                        <div class="Account_management_sub">
+                            <div class="AM_sub_top">
+                                <dl>
+                                    <dt>账户</dt>
+                                    <dd><a href="/page/PersonBank1.shtml">银行卡</a><i>|</i><a
+                                            href="/page/PersonPwd.shtml">资料修改</a><i>|</i><a
+                                            href="/page/PriceList.shtml">奖金详情</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt style="background-position: 0 -32px;">代理</dt>
+                                    <dd><a href="/page/AgentReg.shtml">会员注册</a><i>|</i><a
+                                            href="/page/AgentUser.shtml">下级会员</a><i>|</i><a
+                                            href="/page/AgentAutoReg.shtml">注册推广</a><i>|</i><a
+                                            href="/page/AgentPE.shtml">配额管理</a><i>|</i><a
+                                            href="/page/AgentBalance.shtml">团队余额</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt style="background-position: 0 -76px;">资金</dt>
+                                    <dd><a href="/page/ReportZb.shtml">帐变记录</a><i>|</i><a
+                                            href="/page/BonusReport.shtml">赠送红利</a><i>|</i><a
+                                            href="/page/ReportWL.shtml">统计报表</a><i>|</i><a
+                                            href="/page/ReportTD.shtml">团队总览</a><i>|</i><a
+                                            href="/page/ReportDay.shtml">每日下级报表</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt style="background-position: 0 -118px;">消息</dt>
+                                    <dd><a href="/page/PersonMsg.shtml">站内信</a><i>|</i><a
+                                            href="/page/Index.shtml">平台公告</a><i>|</i><a
+                                            href="/page/Export.shtml">操作日志</a></dd>
+                                </dl>
+                                <dl>
+                                    <dt style="background-position: 0 -160px;">游戏</dt>
+                                    <dd><a href="/page/BetRecord.shtml">游戏记录</a><i>|</i><a
+                                            href="/page/BetRecord.shtml">追号记录</a></dd>
+                                </dl>
+                            </div>
+                            <div class="AM_sub_foot">
+                                <h4>快速通道</h4>
+                                <a href="/page/DWDeposit.shtml"><img src="images/public/pci_AMico02_r1_c1.png"/>充值</a>
+                                <a href="/page/DWWithDrawl.shtml"><img src="images/public/pci_AMico02_r1_c3.png"/>提现</a>
+                                <a href="/page/AgentReg.shtml"><img src="images/public/pci_AMico02_r1_c5.png"/>开设账号</a>
+                                <a href="/page/AgentAutoReg.shtml"><img src="images/public/pci_AMico02_r1_c5.png"/>新增链接</a>
+                                <a href="/page/PersonBank1.shtml"><img src="images/public/pci_AMico02_r1_c5.png"/>添加银行卡</a>
+                            </div>
+                        </div>
 
-										<div>
-											<div class="">
-											<h:panelGroup rendered="#{list.param1 == 0?'true':'false'}">
-												<h:panelGroup rendered="#{list.title.length() &lt; 20?'true':'false'}">
-														<a4j:commandLink title="#{list.title}" action="#{SysMsgBean.showmsg}"
-														oncomplete="showMsg();"
-														value="[优惠] #{list.title}">
-														<f:param name="id" value="#{list.id}"></f:param>
-													</a4j:commandLink>
-													<span class="span_r">#{list.savetime.substring(0,10)}</span>
-												</h:panelGroup>
-												<h:panelGroup rendered="#{list.title.length() &gt; 20?'true':'false'}">
-													<a4j:commandLink title="#{list.title}" action="#{SysMsgBean.showmsg}"
-														oncomplete="showMsg();"
-														value="[优惠] #{list.title.substring(0,20)}... ">
-														<f:param name="id" value="#{list.id}"></f:param>
 
-													</a4j:commandLink>
-													<span class="span_r">#{list.savetime.substring(0,10)}</span>
-												</h:panelGroup>
-											</h:panelGroup>
+                    </div>
+                    <i>|</i>
+                    <a4j:commandLink title="安全退出系统" onclick="if(!confirm('请确认：是否退出系统?'))return false;" styleClass="exit"
+                                     oncomplete="exitLogin();" value="退出" action="#{LoginBean.loginout}"/><i
+                        style=" margin-right:-10px;">|</i>
+                </div>
+                <div class="bar_m">
 
-											<h:panelGroup rendered="#{list.param1 == 1?'true':'false'}">
-												<h:panelGroup rendered="#{list.title.length() &lt; 20?'true':'false'}">
-														<a4j:commandLink title="#{list.title}" action="#{SysMsgBean.showmsg}"
-														oncomplete="showMsg();"
-														value="[公告] #{list.title}">
-														<f:param name="id" value="#{list.id}"></f:param>
-													</a4j:commandLink>
-													<span class="span_r">#{list.savetime.substring(0,10)}</span>
-												</h:panelGroup>
-												<h:panelGroup rendered="#{list.title.length() &gt; 20?'true':'false'}">
-													<a4j:commandLink title="#{list.title}" action="#{SysMsgBean.showmsg}"
-														oncomplete="showMsg();"
-														value="[公告] #{list.title.substring(0,20)}... ">
-														<f:param name="id" value="#{list.id}"></f:param>
 
-													</a4j:commandLink>
-													<span class="span_r">#{list.savetime.substring(0,10)}</span>
-												</h:panelGroup>
-											</h:panelGroup>
+                    <a href="/page/DWWithDrawl.shtml" class="withdraw_cash">提现</a>
+                    <a href="/page/DWDeposit.shtml" class="recharge">充值</a>
+                    <i style="float:right; margin-right:5px;">|</i>
+                    <div style="float:right;">
+                        <span class="amorpm">您好，</span><span class="username">#{LoginBean.user.nickname}</span> <i>|</i>
+                        余额<span class="balance" id="ebalance">￥<h:outputText value="#{LoginBean.user.balance}"
+                                                                             style="font-size:12px;"
+                                                                             converter="DoubleConverter"/></span>
+                        <a href="javascript:void(0)" onclick="loadbalance();" class="refresh"><img
+                                src="images/public/pic_bar_r2_c7.png" alt="" title="刷新余额" class="transition"/></a>
+                    </div>
+                    <div class="gamebox">
+                        <div class="game">
+                            <c style="cursor:pointer;">游戏大厅 <span></span></c>
+                            <div class="sub">
+                                <!--<div class="history">-->
+                                    <!--<ui:include src="/gameHall.xhtml"/>-->
+                                <!--</div>-->
+                                <ui:include src="/item.xhtml"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--bar end -->
+        <!--header start-->
+        <div id="header">
+            <div class="header">
+                <h1><a href="#"><img src="images/index/logo.png"/></a></h1>
+                <div class="header_r">
+                    <ul class="header_r_r">
+                        <li>
+                            <a href="/page/BetRecord.shtml">游戏记录</a>
+                        </li>
+                        <li>
+                            <a href="/page/ReportZb.shtml">资金报表</a>
+                        </li>
+                        <li>
+                            <a href="/page/AgentReg.shtml">代理管理</a>
+                        </li>
+                        <li>
+                            <a href="/page/Index.shtml">平台公告</a>
+                        </li>
+                        <li>
+                            <a href="/page/DiscoutIndex.shtml">优惠活动</a>
+                        </li>
+                    </ul>
+                    <div class="equipment">
+                        <a href="#" class="hkd">手机端</a>
+                        <a href="javascript:void(0)" class="hkd pc">客户端</a>
+                        <div class="equipment_sub">
+                            <div class="equipment_sub_l">
+                                <p>Android版<br/>
+                                    <span>扫描二维码下载</span></p>
+                                <img src="images/index/head_barcode_r1_c1.png"/>
+                            </div>
+                            <div class="equipment_sub_l">
+                                <p>iPhone版<br/>
+                                    <span>扫描二维码下载</span></p>
+                                <img src="images/index/head_barcode_r1_c7.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header end -->
+        <!--banner start-->
+        <div id="banner">
+            <div class="banner">
+                <div class="bd">
+                    <ul>
+                        <!--<li style="background: url(images/index/banner6.jpg) no-repeat center top;"></li>-->
+                        <li style="background: url(images/index/banner3.jpg) no-repeat center top;"></li>
+                        <li id="banner02_id"></li>
+                        <li id="banner03_id"></li>
+                        <li id="banner04_id"></li>
+                        <!--<li id="banner05_id" ></li>-->
+                    </ul>
+                </div>
+                <div class="hd">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <!--<li></li>-->
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+            </div>
+        </div>
+        <!--banner end-->
 
-											</div>
-										</div>
-									</li>
-								</a4j:repeat>
-							</ul>
-					</div>
-			</div>
-		</div>
-	</div>
+        <!--content start-->
+        <div id="content">
+            <div class="content">
+                <div class="con_top">
+                    <div class="con_top_l">
+                        <img src="images/index/content_ico01_r1_c1.png"/>
+                        <img src="images/index/content_ico01_r1_c5.png"/>
+                        <img src="images/index/content_ico01_r2_c1.png"/>
+                        <img src="images/index/content_ico01_r2_c5.png"/>
+                    </div>
+                    <div class="con_top_r">
+                        <div class="text_in">
+                            <h3>最新公告 <a href="/page/Index.shtml">更多>></a></h3>
+                            <div class="text_link">
+                                <h:inputHidden value="#{SysMsgBean.showitem.title}"
+                                               id="userstatus"/>
+                                <ul class="notice_ul01">
+                                    <a4j:repeat value="#{SysMsgBean.indexList}" var="list"
+                                                id="datalist" rowKeyVar="keys">
+                                        <li class="">
 
-	</div>
-	<div class="con_foot">
-			<dl>
-				<dt>
-					关于我们<br />
-					<span>About us</span>
-				</dt>
-				<dd>
-					<a href="#">平台介绍</a>
-					<a href="#">隐私保护</a>
-					<a href="#">联系我们</a>
-				</dd>
-			</dl>
-			<dl>
-				<dt>
-					使用帮助<br />
-					<span>Guide</span>
-				</dt>
-				<dd>
-					<a href="#">如何存款</a>
-					<a href="#">如何提款</a>
-					<a href="#">代理政策</a>
-				</dd>
-			</dl>
-			<dl>
-				<dt>
-					推荐浏览器<br />
-					<span>Recommend</span>
-				</dt>
-				<dd class="browser">
-					<a href="#" class="ie">IE</a>
-					<a href="#" class="chrome">Chrome</a>
-					<a href="#" class="firefox">Firefox</a>
-				</dd>
-			</dl>
-			<dl>
-				<dt>
-					官方微信号<br />
-					<span>Wechat</span>
-				</dt>
-				<dd>
-					<img src="images/index/content_icon06_r2_c1.png"/>
-				</dd>
-			</dl>
-			<dl style = "position:relative;" class = 'phoneapp'>
-				<dt>
-					手机APP下载<br />
-					<span>Mobile</span>
-				</dt>
-				<dd class="hkd" style="cursor: pointer;">
-				<a>
-					<img src="images/index/content_icon06_r1_c6.png" />
-				</a>
-				</dd>
-			</dl>
-		</div>
-	<!---footer start-->
-	<div id="foot_id"></div>
+                                            <div>
+                                                <div class="">
+                                                    <h:panelGroup rendered="#{list.param1 == 0?'true':'false'}">
+                                                        <h:panelGroup
+                                                                rendered="#{list.title.length() &lt; 20?'true':'false'}">
+                                                            <a4j:commandLink title="#{list.title}"
+                                                                             action="#{SysMsgBean.showmsg}"
+                                                                             oncomplete="showMsg();"
+                                                                             value="[优惠] #{list.title}">
+                                                                <f:param name="id" value="#{list.id}"></f:param>
+                                                            </a4j:commandLink>
+                                                            <span class="span_r">#{list.savetime.substring(0,10)}</span>
+                                                        </h:panelGroup>
+                                                        <h:panelGroup
+                                                                rendered="#{list.title.length() &gt; 20?'true':'false'}">
+                                                            <a4j:commandLink title="#{list.title}"
+                                                                             action="#{SysMsgBean.showmsg}"
+                                                                             oncomplete="showMsg();"
+                                                                             value="[优惠] #{list.title.substring(0,20)}... ">
+                                                                <f:param name="id" value="#{list.id}"></f:param>
 
-<!---footer end-->
-</div>
-			<a4j:region>
-				<a4j:jsFunction name="SysOp" action="#{LoginBean.Online}">
-				</a4j:jsFunction>
-				<a4j:jsFunction name="LoadMsg" action="#{LoginBean.Online}" reRender="emsgs">
-				</a4j:jsFunction>
-				<a4j:jsFunction name="noticeClick" action="#{SysMsgBean.showmsg}" oncomplete="showMsgs();">
-					<f:param name="id"></f:param>
-				</a4j:jsFunction>
-			</a4j:region>
-		</h:form>
-	</f:view>
+                                                            </a4j:commandLink>
+                                                            <span class="span_r">#{list.savetime.substring(0,10)}</span>
+                                                        </h:panelGroup>
+                                                    </h:panelGroup>
+
+                                                    <h:panelGroup rendered="#{list.param1 == 1?'true':'false'}">
+                                                        <h:panelGroup
+                                                                rendered="#{list.title.length() &lt; 20?'true':'false'}">
+                                                            <a4j:commandLink title="#{list.title}"
+                                                                             action="#{SysMsgBean.showmsg}"
+                                                                             oncomplete="showMsg();"
+                                                                             value="[公告] #{list.title}">
+                                                                <f:param name="id" value="#{list.id}"></f:param>
+                                                            </a4j:commandLink>
+                                                            <span class="span_r">#{list.savetime.substring(0,10)}</span>
+                                                        </h:panelGroup>
+                                                        <h:panelGroup
+                                                                rendered="#{list.title.length() &gt; 20?'true':'false'}">
+                                                            <a4j:commandLink title="#{list.title}"
+                                                                             action="#{SysMsgBean.showmsg}"
+                                                                             oncomplete="showMsg();"
+                                                                             value="[公告] #{list.title.substring(0,20)}... ">
+                                                                <f:param name="id" value="#{list.id}"></f:param>
+
+                                                            </a4j:commandLink>
+                                                            <span class="span_r">#{list.savetime.substring(0,10)}</span>
+                                                        </h:panelGroup>
+                                                    </h:panelGroup>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </a4j:repeat>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="con_foot">
+                <dl>
+                    <dt>
+                        关于我们<br/>
+                        <span>About us</span>
+                    </dt>
+                    <dd>
+                        <a href="#">平台介绍</a>
+                        <a href="#">隐私保护</a>
+                        <a href="#">联系我们</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        使用帮助<br/>
+                        <span>Guide</span>
+                    </dt>
+                    <dd>
+                        <a href="#">如何存款</a>
+                        <a href="#">如何提款</a>
+                        <a href="#">代理政策</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        推荐浏览器<br/>
+                        <span>Recommend</span>
+                    </dt>
+                    <dd class="browser">
+                        <a href="#" class="ie">IE</a>
+                        <a href="#" class="chrome">Chrome</a>
+                        <a href="#" class="firefox">Firefox</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        官方微信号<br/>
+                        <span>Wechat</span>
+                    </dt>
+                    <dd>
+                        <img src="images/index/content_icon06_r2_c1.png"/>
+                    </dd>
+                </dl>
+                <dl style="position:relative;" class='phoneapp'>
+                    <dt>
+                        手机APP下载<br/>
+                        <span>Mobile</span>
+                    </dt>
+                    <dd class="hkd" style="cursor: pointer;">
+                        <a>
+                            <img src="images/index/content_icon06_r1_c6.png"/>
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+            <!---footer start-->
+            <div id="foot_id"></div>
+
+            <!---footer end-->
+        </div>
+        <a4j:region>
+            <a4j:jsFunction name="SysOp" action="#{LoginBean.Online}">
+            </a4j:jsFunction>
+            <a4j:jsFunction name="LoadMsg" action="#{LoginBean.Online}" reRender="emsgs">
+            </a4j:jsFunction>
+            <a4j:jsFunction name="noticeClick" action="#{SysMsgBean.showmsg}" oncomplete="showMsgs();">
+                <f:param name="id"></f:param>
+            </a4j:jsFunction>
+        </a4j:region>
+    </h:form>
+</f:view>
 <!--content end-->
 
 
@@ -377,67 +407,68 @@ function  removeItem(obj,lotteryid){
 <script src="/js/index.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
-//banner图设置过6秒加载
-window.setTimeout( function(){
-	$("#banner02_id").css("background","url(images/index/banner.jpg) no-repeat center top");
-	$("#banner03_id").css("background","url(images/index/banner4.jpg) no-repeat center top");
-	$("#banner04_id").css("background","url(images/index/banner5.jpg) no-repeat center top");
-	// $("#banner05_id").css("background","url(images/index/banner3.jpg) no-repeat center top");
-	jQuery(".banner").slide({mainCell:".bd ul",autoPlay:true,effect:"leftLoop",interTime:3000});
-}, 3000 );
+    //banner图设置过6秒加载
+    window.setTimeout(function () {
+        $("#banner02_id").css("background", "url(images/index/banner.jpg) no-repeat center top");
+        $("#banner03_id").css("background", "url(images/index/banner4.jpg) no-repeat center top");
+        $("#banner04_id").css("background", "url(images/index/banner5.jpg) no-repeat center top");
+        // $("#banner05_id").css("background","url(images/index/banner3.jpg) no-repeat center top");
+        jQuery(".banner").slide({mainCell: ".bd ul", autoPlay: true, effect: "leftLoop", interTime: 3000});
+    }, 3000);
 
- $(document).ready(function(){
-	//加载foot
-	window.setTimeout(function(){
-		$("#foot_id").html('<ui:include src="/foot.xhtml"/>');
-	}, 2000);
-});
+    $(document).ready(function () {
+        //加载foot
+        window.setTimeout(function () {
+            $("#foot_id").html('<ui:include src="/foot.xhtml"/>');
+        }, 2000);
+    });
 </script>
 <div id="down-panel" style="display: none">
-	<div class="close"></div>
-	<div class="title">客户端下载</div>
-	<table>
-		<tr class="title">
-			<td>iPhone版</td>
-			<td>Android版</td>
-			<td>Wap版</td>
-			<td class="pc">网址下载器</td>
-		</tr>
-		<tr>
-			<td>扫描二维码下载</td>
-			<td>扫描二维码下载</td>
-			<td>扫描二维码下载</td>
-			<td>点击开始下载</td>
-		</tr>
-		<tr class="erwei">
-			<td><img src="/images/ios-down.png" /></td>
-			<td><img src="/images/android-down.png" /></td>
-			<td><img src="/images/web-down.png" /></td>
-			<td><img src="/images/pc-down.png" />
-				<div class="pc-down-btn" onclick="getPcUrl()">网址下载器</div></td>
-		</tr>
-	</table>
+    <div class="close"></div>
+    <div class="title">客户端下载</div>
+    <table>
+        <tr class="title">
+            <td>iPhone版</td>
+            <td>Android版</td>
+            <td>Wap版</td>
+            <td class="pc">网址下载器</td>
+        </tr>
+        <tr>
+            <td>扫描二维码下载</td>
+            <td>扫描二维码下载</td>
+            <td>扫描二维码下载</td>
+            <td>点击开始下载</td>
+        </tr>
+        <tr class="erwei">
+            <td><img src="/images/ios-down.png"/></td>
+            <td><img src="/images/android-down.png"/></td>
+            <td><img src="/images/web-down.png"/></td>
+            <td><img src="/images/pc-down.png"/>
+                <div class="pc-down-btn" onclick="getPcUrl()">网址下载器</div>
+            </td>
+        </tr>
+    </table>
 </div>
 <script>
-$(function(){
+    $(function () {
 
-	$(".hkd").click(function(){
-		var layerBoxId = layer.open({
-		    type: 1,
-		    title: false,
-		    closeBtn: 0,
-		    closeBtn: false,
-		    area: '755px',
-			content: $('#down-panel')
-		});
+        $(".hkd").click(function () {
+            var layerBoxId = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                closeBtn: false,
+                area: '755px',
+                content: $('#down-panel')
+            });
 
-		$("#down-panel .close").click(function(){
-			layer.close(layerBoxId);
-		});
-	});
+            $("#down-panel .close").click(function () {
+                layer.close(layerBoxId);
+            });
+        });
 
 
-	});
+    });
 
-	</script>
+</script>
 </html>
