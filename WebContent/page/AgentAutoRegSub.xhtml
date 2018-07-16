@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>自动注册推广网址【新建】</title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/AgentReg.css"/>
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.submitBtn:hover {
+   background-image: url(../images/public/btn_bgx.png);
+   color: #F2E3AF;
+}
+
+.submitBtn {
+    display: inline-block;
+    border: none;
+    width: 100px;
+    height: 38px;
+    line-height: 13px;
+    background: url(../images/public/btn_bg.png) no-repeat left 2px;
+    margin-left:20px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-right: 50px;
+}
+</style>
+
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功:操作完成!");
+			parent.reloads();
+		}
+	}
+	function closewin(){
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="GameRecordForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<table style="height: 125px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td>
+					
+					<table style="padding-left:15px;width:100%;line-height:45px;">
+						<tr>
+							<td width="120px" align="right">模式：</td>
+							<td>
+								<font color="blue"><b>1800</b></font>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">时时彩返点：</td>
+							<td>
+								<h:selectOneMenu  style="width:80px" value="#{AgentAutoRegBean.regitem.pointssc}">
+									<f:selectItems value="#{AgentAutoRegBean.pointssc}"></f:selectItems>
+								</h:selectOneMenu>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">11选5返点：</td>
+							<td>
+								<h:selectOneMenu  style="width:80px" value="#{AgentAutoRegBean.regitem.point115}">
+									<f:selectItems value="#{AgentAutoRegBean.point115}"></f:selectItems>
+								</h:selectOneMenu>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">低频彩返点：</td>
+							<td>
+								<h:selectOneMenu  style="width:80px" value="#{AgentAutoRegBean.regitem.pointdp}">
+									<f:selectItems value="#{AgentAutoRegBean.pointdp}"></f:selectItems>
+								</h:selectOneMenu>
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" height="45px" align="center">
+								<a4j:commandButton value="保 存" status="normalStatus"
+										styleClass="submitBtn" action="#{AgentAutoRegBean.save}" data="#{AgentAutoRegBean.msg}"
+										oncomplete="savefinish(data)" />
+								<rich:spacer width="10"/>
+<!-- 								<a4j:commandButton value="关 闭" onclick="closewin();return false;" styleClass="submitBtn"/> -->
+							</td>
+						</tr>
+					</table>
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

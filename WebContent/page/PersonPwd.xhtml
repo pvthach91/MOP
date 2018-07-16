@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>资料修改</title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/PersonBank.css"/>
+<script src="../js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：修改完成，请牢记您的新密码。");
+			return;
+		}
+	}
+	function nickFinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：昵称修改完成。");
+			return;
+		}
+	}
+</script>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	
+	<f:view>
+		<h:form id="WLReportForm">
+			<div id="content">
+	
+				<div class="content">
+					<div class="tab_box">
+						<h2>我的账户</h2>
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/PersonMsg.shtml"  style="font-size:14px;">站内信</a>
+							</li>
+							<li>
+								<a href="/page/PersonBank1.shtml" style="font-size:14px;">我的银行卡</a>
+							</li>
+							<li class="on">
+								<a href="/page/PersonPwd.shtml" style="font-size:14px;">资料修改</a>
+							</li>
+							<li>
+								<a href="/page/PriceList.shtml" style="font-size:14px;">奖金详情</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab_in tab_inx">
+						<div class="one">
+							<div>
+								<h4><span>修改登录密码</span></h4>
+							</div>
+					
+								<a4j:region>
+									<h:panelGroup id="pgData">
+									<table class="table tabone ui-table" width="100%" >
+										<tbody>
+											<tr>
+												<td width="30%" class="text-right">旧登陆密码</td>
+												<td>
+													<h:inputSecret type="password" value="#{PersonPwdBean.oldpwd}" size="20" maxlength="20" style="font-size:16px"></h:inputSecret>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right">新登陆密码</td>
+												<td>
+													<h:inputSecret type="password" value="#{PersonPwdBean.newpwd}" size="20" maxlength="20" style="font-size:16px"></h:inputSecret>
+													<span class="ml10">（不能和资金密码一样）</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right">确认新登陆密码</td>
+												<td>
+													<h:inputSecret type="password" value="#{PersonPwdBean.newpwd2}" size="20" maxlength="20" styleClass="ui-input" style="font-size:16px"></h:inputSecret>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" class="text-center btn ">
+													<a4j:commandButton value="修 改" status="normalStatus"
+											styleClass="submitBtn ml370" action="#{PersonPwdBean.loginPWD}"
+											reRender="pgData" data="#{PersonPwdBean.msg}"
+											oncomplete="savefinish(data)" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</h:panelGroup>
+								</a4j:region>
+						</div>
+						<!---->
+						<div>
+							<div>
+								<h4><span>修改资金密码</span></h4>
+							</div>
+						
+							<div class="ui-table-area mt10">
+								<a4j:region>
+								<h:panelGroup  id="pgData2">
+								<table class="table tabone ui-table" width="100%" >
+									<tbody>
+										<tr>
+											<td width="30%" class="text-right">旧资金密码</td>
+											<td>
+												<h:inputSecret type="password" value="#{PersonPwdBean.oldcheckpwd}" size="20" maxlength="20" style="font-size:16px"></h:inputSecret>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">新资金密码</td>
+											<td>
+												<h:inputSecret type="password" value="#{PersonPwdBean.newcheckpwd}" size="20" maxlength="20" styleClass="ui-input" style="font-size:16px"></h:inputSecret>
+												<span class="ml10">（不能和登陆密码一样）</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">确认资金密码</td>
+											<td>
+												<h:inputSecret type="password" value="#{PersonPwdBean.newcheckpwd2}" size="20" maxlength="20" style="font-size:16px"></h:inputSecret>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="text-center btn ">
+												<a4j:commandButton value="修 改" status="normalStatus"
+										styleClass="submitBtn ml370" action="#{PersonPwdBean.checkPWD}"
+										reRender="pgData2" data="#{PersonPwdBean.msg}"
+										oncomplete="savefinish(data)" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</h:panelGroup>
+							</a4j:region>
+							</div>
+						</div>
+						<!---->
+						<div class="layour-area mt10">
+							<div>
+								<h4><span>修改账号昵称</span></h4>
+							</div>
+							
+							<div class="ui-table-area mt10">
+								<a4j:region>
+								<h:panelGroup  id="pgData3">
+								<table class="table tabone ui-table" width="100%">
+									<tbody>
+										<tr>
+											<td width="30%" class="text-right"> 昵称 </td>
+											<td>
+												<h:inputText type="text" value="#{LoginBean.user.nickname}" size="20" maxlength="20" style="font-size:16px"></h:inputText>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="text-center btn ">
+												<a4j:commandButton value="修 改" status="normalStatus"
+										styleClass="submitBtn ml370" action="#{LoginBean.changeNickName}" data="#{LoginBean.msg}"
+										oncomplete="nickFinish(data)" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</h:panelGroup>
+							</a4j:region>
+							</div>
+						</div>
+						<!---->
+					</div>
+				
+				</div>
+			</div>
+			<!-- <ui:include src="/submitStatus.xhtml" /> -->
+		</h:form>
+	</f:view>
+	<ui:include src="/foot.xhtml" />
+</body>
+</html>

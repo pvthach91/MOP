@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>提现查询</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/PersonBank.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<link rel="stylesheet" type="text/css" href="/css/AgentReg.css" />
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../js/zDrag.js"></script>
+<script type="text/javascript" src="../js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+</script>
+</head>
+<body>
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+		<div id="content">
+		<div class="content">
+				<h2>充值</h2>
+				<div class="tab_box">
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/DWDeposit.shtml">充值</a>
+							</li>
+							<li>
+								<a href="/page/DWDepositRecord.shtml">充值记录</a>
+							</li>
+							<li>
+								<a href="/page/DWWithDrawl.shtml">提现</a>
+							</li>
+							<li class="on">
+								<a href="/page/DWWithDrawlRecord.shtml">提现记录</a>
+							</li>
+						</ul>
+				</div>
+				
+				<div class="tab_in">
+					<div id="game_top" class="game_top">
+						<div class="game_top_in">
+							<label>时间范围：</label>
+										<h:inputText size="22" value="#{WithdrawalSearchBean.stime}"
+										id="startTime" styleClass="time" style="padding-left:4px;"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){$dp.$('GameRecordForm:endTime').focus();}})" />
+										<span>至</span>
+										<h:inputText size="22" value="#{WithdrawalSearchBean.etime}"
+										style="padding-left:4px;" id="endTime" styleClass="time"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'GameRecordForm:startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+						</div>	
+						<div class="game_top_in">
+							<label>提现编号：</label>
+							<h:inputText value="#{WithdrawalSearchBean.id}" styleClass="num" size="20"/>
+							<a4j:commandButton value="查询"
+											styleClass="submitBtn" action="#{WithdrawalSearchBean.btnSearch}"
+											data="#{WithdrawalSearchBean.msg}"
+											oncomplete="searchfinish(data)" />
+						</div>
+					</div>
+					<!---->
+					<div class="ui-table-area mt20">
+						<h:panelGroup id="pgData">
+						<div class="game_mod">
+						<table class="tabbox" border="0" cellspacing="1" cellpadding="0" width="100%" bgcolor="#e9d0cf">
+							<thead>
+								<tr bgcolor="#ffe7e5">
+									<th>序号</th>
+									<th>编号</th>
+									<th>金额</th>
+									<th>时间</th>
+									<th>状态</th>
+									<th>备注</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<a4j:repeat value="#{WithdrawalSearchBean.reslist}" var="list"
+									id="dblist" rowKeyVar="keys">
+									<tr>
+										<td align="center">#{keys+1}</td>
+										<td align="center">#{list.id}</td>
+										<td align="center">
+											#{list.amount}
+										</td>
+										<td>#{list.applytime}</td>
+										<td align="center">
+											<h:outputText value="已提交" rendered="#{list.status==0?'true':'false'}" style="color:#666666;"/>
+											<h:outputText value="待核实" rendered="#{list.status==1?'true':'false'}" style="color:#666666;"/>
+											<h:outputText value="待审核" rendered="#{list.status==2?'true':'false'}" style="color:red;"/>
+											<h:outputText value="成功" rendered="#{list.status==4?'true':'false'}" style="color:blue"/>
+											<h:outputText value="失败" rendered="#{list.status==5?'true':'false'}" style="color:red"/>
+										</td>
+										<td>#{list.remark}</td>
+										<td>
+											<!--<a href="javascript:void(0)">催出款</a>-->
+											<h:outputLink rendered="#{list.status==4?'false':'true'}" value="javascript:void(0)">催出款</h:outputLink>
+										</td>
+									</tr>
+								</a4j:repeat>
+							</tbody>
+						</table>
+						<br />
+						<div class="ui-page">
+									<a4j:region>
+									<ul class="page-list f-right mr10 mt10">
+										<li>
+											<a4j:commandLink  action="#{WithdrawalSearchBean.firstPage}" data="#{WithdrawalSearchBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+										</li>
+										<li>
+											<a4j:commandLink action="#{WithdrawalSearchBean.proPage}" data="#{WithdrawalSearchBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+										</li>
+										<li>
+											<input value="#{WithdrawalSearchBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+											<h:outputText value=" / #{DepositSearchBean.totalpage}"/>
+										</li>
+										<li>
+											<a4j:commandLink data="#{WithdrawalSearchBean.msg}" oncomplete="searchfinish(data);"
+											title="下一页" value="下一页" action="#{WithdrawalSearchBean.nextPage}" />
+										</li>
+										<li>
+											<a4j:commandLink  data="#{WithdrawalSearchBean.msg}" oncomplete="searchfinish(data);"
+											title="尾页" value="尾页" action="#{WithdrawalSearchBean.lastPage}" />
+										</li>
+										<li>
+											总记录数：#{WithdrawalSearchBean.totalrecord}条
+										</li>
+									</ul>
+									</a4j:region>
+						</div>
+						</div>
+						</h:panelGroup>
+					</div>
+			</div>
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+	<ui:include src="/foot.xhtml" />
+</body>
+</html>

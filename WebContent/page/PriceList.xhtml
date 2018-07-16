@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title> 奖金明细 </title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/PersonBank.css"/>
+<script src="../js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function showTable(sid){
+		for(i=1;i&lt;=5;i++){
+			document.getElementById("table"+i).style.display="none";
+			document.getElementById('einput'+i).className="but_Gray";
+		}
+		document.getElementById("table"+sid).style.display="block";
+		document.getElementById('einput'+sid).className="but_Red";
+	}
+</script>
+<style>
+	.tab-content{
+		display: none;
+	}
+
+	.content-list .current{
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	
+	<f:view>
+		<h:form id="WLReportForm">
+			<div id="content">
+	
+				<div class="content">
+					<div class="tab_box">
+						<h2>我的账户</h2>
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/PersonMsg.shtml"  style="font-size:14px;">站内信</a>
+							</li>
+							<li>
+								<a href="/page/PersonBank1.shtml" style="font-size:14px;">我的银行卡</a>
+							</li>
+							<li>
+								<a href="/page/PersonPwd.shtml" style="font-size:14px;">资料修改</a>
+							</li>
+							<li class="on">
+								<a href="/page/PriceList.shtml" style="font-size:14px;">奖金详情</a>
+							</li>
+						</ul>
+					<!-- </div> -->
+					<div class="xq">
+						<div class="layour-area">
+							<div class="ui-ssl">
+								<a href="#" class="ui-button ui-button-selected inline w100 ml10 on">时时彩</a>
+								<a href="#" class="ui-button inline w100 ml10 v-am">时时乐</a>
+								<a href="#" class="ui-button inline w100 ml10 v-am">11选5</a>
+								<a href="#" class="ui-button inline w100 ml10 v-am">福彩3D</a>
+								<a href="#" class="ui-button inline w100 ml10 v-am">排列3/5</a>
+							</div>
+							<div class="line"></div>
+							<div class="content-list">
+								<div class="current tab-content">
+									<p class="fs-14 mt20 pl5">奖金限额：时时彩单期最高中奖 <font color="#eb2100"><b>300,000</b></font> 元</p>
+									<div class="ui-table-area mt20">
+										<table class="table text-center ui-table" width="100%" bgcolor="#e9d0cf" border="0" cellpadding="0" cellspacing="1">
+											<thead>
+												<tr bgcolor="#ffe7e5">
+													<th>彩种</th>
+													<th>玩法组</th>
+													<th>奖级</th>
+													<th>奖金</th>
+													<th>状态</th>
+												</tr>
+											</thead>
+											<tbody>
+												<a4j:repeat value="#{PriceBean.ssclist}" var="list1"
+												id="dblist1" rowKeyVar="keys">
+				                                    <tr bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'};">
+				                                        <td align="center">
+				                                        	时时彩
+				                                        </td>
+				                                        <td align="center">
+				                                        	#{list1.methodname}
+				                                        </td>
+				                                        <td align="center">
+				                                        	<a4j:repeat value="#{list1.namelist}" var="listf1">
+				                                        		#{listf1}
+				                                        		<br/>
+				                                        	</a4j:repeat>
+				                                        </td>
+				                                        <td align="center">
+				                                        	<a4j:repeat value="#{list1.prizefdlist}" var="listb2">
+				                                        		#{listb2}
+				                                        		<br/>
+				                                        	</a4j:repeat>
+				                                        </td>
+				                                        <td align="center">使用中</td>
+				                                    </tr>
+			                                    </a4j:repeat>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!---->
+								<div class="tab-content">
+									<p class="fs-14 mt20 pl5">奖金限额：时时乐每期最高中奖：<font color="#eb2100"><b>#{PriceBean.maxgp}</b></font>元</p>
+									<div class="ui-table-area mt20">
+										<table class="table text-center ui-table" width="100%" bgcolor="#e9d0cf" border="0" cellpadding="0" cellspacing="1">
+											<thead>
+												<tr bgcolor="#ffe7e5">
+													<th>彩种</th>
+													<th>玩法组</th>
+													<th>奖级</th>
+													<th>奖金</th>
+													<th>状态</th>
+												</tr>
+											</thead>
+											<tbody>
+												<a4j:repeat value="#{PriceBean.ssllist}" var="list1"
+												id="dblist2" rowKeyVar="keys">
+				                                    <tr bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+				                                        <td align="center">
+				                                        	时时乐
+				                                        </td>
+				                                        <td align="center">
+				                                        	#{list1.methodname}
+				                                        </td>
+				                                        <td align="center">
+				                                        	<a4j:repeat value="#{list1.namelist}" var="listf1">
+				                                        		#{listf1}
+				                                        		<br/>
+				                                        	</a4j:repeat>
+				                                        </td>
+				                                        <td align="center">
+				                                        	<a4j:repeat value="#{list1.prizefdlist}" var="listb2">
+				                                        		#{listb2}
+				                                        		<br/>
+				                                        	</a4j:repeat>
+				                                        </td>
+				                                        <td align="center">使用中</td>
+				                                    </tr>
+			                                    </a4j:repeat>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!---->
+								<div class="tab-content">
+									<p class="fs-14 mt20 pl5">奖金限额：十一选五单期最高中奖：<font color="#eb2100"><b>#{PriceBean.maxgp}</b></font>元</p>
+									<div class="ui-table-area mt20">
+										<table class="table text-center ui-table" width="100%" bgcolor="#e9d0cf" border="0" cellpadding="0" cellspacing="1">
+											<thead>
+												<tr bgcolor="#ffe7e5">
+													<th>彩种</th>
+													<th>玩法组</th>
+													<th>奖级</th>
+													<th>奖金</th>
+													<th>状态</th>
+												</tr>
+											</thead>
+											<tbody>
+												 <a4j:repeat value="#{PriceBean.sywlist}" var="list1" rowKeyVar="keys">
+				                                    <tr  bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+				                                        <td align="center">
+				                                        	十一选五
+				                                        </td>
+				                                        <td align="center">
+				                                        	#{list1.methodname}
+				                                        </td>
+				                                        <td align="center">
+				                                        	<a4j:repeat value="#{list1.namelist}" var="listf1">
+				                                        		#{listf1}
+				                                        		<br/>
+				                                        	</a4j:repeat>
+				                                        </td>
+				                                        <td align="center">
+				                                        	<a4j:repeat value="#{list1.prizefdlist}" var="listb2">
+				                                        		#{listb2}
+				                                        		<br/>
+				                                        	</a4j:repeat>
+				                                        </td>
+				                                        <td align="center">使用中</td>
+				                                    </tr>
+			                                    </a4j:repeat>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!---->
+								<div class="tab-content">
+									<p class="fs-14 mt20 pl5">奖金限额：福彩3D每期最高中奖：<font color="#eb2100"><b>#{PriceBean.maxdp}</b></font>元</p>
+									<div class="ui-table-area mt20">
+										<table class="table text-center ui-table" bgcolor="#e9d0cf" width="100%" border="0" cellpadding="0" cellspacing="1">
+											<thead>
+												<tr bgcolor="#ffe7e5">
+													<th>彩种</th>
+													<th>玩法组</th>
+													<th>奖级</th>
+													<th>奖金</th>
+													<th>状态</th>
+												</tr>
+											</thead>
+											<tbody>
+												<a4j:repeat value="#{PriceBean.fclist}" var="list1" rowKeyVar="keys">
+	                                    <tr bgcolor="#ffffff" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+	                                        <td align="center">
+	                                        	福彩3D
+	                                        </td>
+	                                        <td align="center">
+	                                        	#{list1.methodname}
+	                                        </td>
+	                                        <td align="center">
+	                                        	<a4j:repeat value="#{list1.namelist}" var="listf1">
+	                                        		#{listf1}
+	                                        		<br/>
+	                                        	</a4j:repeat>
+	                                        </td>
+	                                        <td align="center">
+	                                        	<a4j:repeat value="#{list1.prizefdlist}" var="listb2">
+	                                        		#{listb2}
+	                                        		<br/>
+	                                        	</a4j:repeat>
+	                                        </td>
+	                                        <td align="center">使用中</td>
+	                                    </tr>
+                                    </a4j:repeat>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!---->
+								<div class="tab-content">
+									<p class="fs-14 mt20 pl5">奖金限额：排列三五每期最高中奖：<font color="#eb2100"><b>#{PriceBean.maxdp}</b></font>元</p>
+									<div class="ui-table-area mt20">
+										<table class="table text-center ui-table" width="100%" bgcolor="#e9d0cf" border="0" cellpadding="0" cellspacing="1">
+											<thead>
+												<tr bgcolor="#ffe7e5">
+													<th>彩种</th>
+													<th>玩法组</th>
+													<th>奖级</th>
+													<th>奖金</th>
+													<th>状态</th>
+												</tr>
+											</thead>
+											<tbody>
+											<a4j:repeat value="#{PriceBean.p35list}" var="list1" rowKeyVar="keys">
+		                                    <tr bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+		                                        <td align="center">
+		                                        	排列三五
+		                                        </td>
+		                                        <td align="center">
+		                                        	#{list1.methodname}
+		                                        </td>
+		                                        <td align="center">
+		                                        	<a4j:repeat value="#{list1.namelist}" var="listf1">
+		                                        		#{listf1}
+		                                        		<br/>
+		                                        	</a4j:repeat>
+		                                        </td>
+		                                        <td align="center">
+		                                        	<a4j:repeat value="#{list1.prizefdlist}" var="listb2">
+		                                        		#{listb2}
+		                                        		<br/>
+		                                        	</a4j:repeat>
+		                                        </td>
+		                                        <td align="center">使用中</td>
+		                                    </tr>
+	                                    </a4j:repeat>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								</div>
+								<!---->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+	<br />
+			<ui:include src="/foot.xhtml" />
+</body>
+<script type="text/javascript">
+	var jQuery = window.parent.jQuery;
+	var ifrm = jQuery('html');
+  	
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		$body = jQuery(ifrm).find('body'),
+    		height = 0;	
+    	
+    	
+
+    	$body.find('.ui-ssl>a').click(function(){
+    		var index = $body.find('.ui-ssl>a').index(jQuery(this)),
+    			contentDom = $body.find('.content-list .tab-content');
+
+    		contentDom.hide();
+    		$body.find('.ui-ssl>a').removeClass('ui-button-selected');
+    		jQuery(this).addClass('ui-button-selected');
+    		contentDom.eq(index).show();
+    	});
+    });
+</script>
+</html>

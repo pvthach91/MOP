@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>配额管理</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/PersonBank.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<link rel="stylesheet" type="text/css" href="/css/AgentReg.css" />
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+	
+	function xjpe(lname) {
+		layer.open({
+		    type: 2,
+		    title: '配额查看',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['800px', '450px'],
+		    content: "/page/AgentPESub.shtml?lname="+lname  //iframe的url
+		}); 
+	}
+	
+	
+	function report15day(lname){
+		layer.open({
+		    type: 2,
+		    title: '最近15天发展情况',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['800px', '85%'],
+		    content: "/page/AgentReport15Day.shtml?lname="+lname  //iframe的url
+		}); 
+	}
+	
+	function reloads(){
+		window.location.reload();
+	}
+	
+	function pageKeyDown(num){
+		if(num.length>0){
+			if(event.keyCode==13) {
+				pageKeyDownOPT(num);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+		<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+			<!--content-->
+			<div id="content">
+			<div class="content">
+						<h2>代理管理</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/AgentReg.shtml"  style="font-size:14px;">会员注册</a>
+							</li>
+							<li>
+								<a href="/page/AgentUser.shtml"  style="font-size:14px;">下级会员</a>
+							</li>
+							<li>
+								<a href="/page/AgentAutoReg.shtml"  style="font-size:14px;">注册推广</a>
+							</li>
+							<li class="on">
+								<a href="/page/AgentPE.shtml"  style="font-size:14px;">配额管理</a>
+							</li>
+							<li>
+								<a href="/page/AgentBalance.shtml" style="font-size:14px;">团队余额</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab_in">
+						<div class="game_top" style = "height:auto; padding-bottom:20px;">
+							<table width="100%;"  border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td style="width:49%">
+											<table border="0" cellspacing="1" width="512" cellpadding="0"  bgcolor="#ffc6c1" style="width:100%; margin: 10px;">
+												<tr bgcolor="#ffffff"><td colspan="4" style="font-size:14px;text-align:center;"><b>团队配额分配情况</b></td></tr>
+												<tr bgcolor="#ffffff"><th>级别</th><th>总配额数</th><th>已经使用</th><th>未使用</th></tr>
+												<a4j:repeat value="#{AgentPEBean.teamlist}" var="list" rowKeyVar="keys">
+												<tr bgcolor="#ffffff">
+													<td>#{list.levels}</td>
+													<td>#{list.num+list.num2}</td>
+													<td>#{list.num}</td>
+													<td>#{list.num2}</td>
+												</tr>
+												</a4j:repeat>
+											</table>
+										</td>
+										<td style="width:2%"></td>
+										<td style="width:49%">
+											<table border="0" cellspacing="1" width="512" cellpadding="0"  bgcolor="#ffc6c1"  style=" margin: 10px;">
+												<tr bgcolor="#ffffff"><td colspan="3" style="font-size:14px;text-align:center;"><b>个人配额分配情况</b></td></tr>
+												<tr bgcolor="#ffffff"><th>级别</th><th>已经使用</th><th>未使用</th></tr>
+												<a4j:repeat value="#{AgentPEBean.personlist}" var="list" rowKeyVar="keys">
+												<tr bgcolor="#ffffff">
+													<td>#{list.levels}</td>
+													<td>#{list.num}</td>
+													<td>#{list.num2}</td>
+												</tr>
+												</a4j:repeat>
+											</table>
+										</td>
+									</tr>
+							</table>
+							<br/>
+						
+							<div class="game_top_in">
+								<label>用户名：</label>
+								<h:inputText value="#{AgentPEBean.lname}" styleClass="kind" size="10"/>
+								<label>返点：</label>
+								<h:selectOneMenu styleClass="kind" value="#{AgentPEBean.fdvalue}">
+									<f:selectItems value="#{AgentPEBean.fdlist}"></f:selectItems>
+								</h:selectOneMenu>
+								<label>范围：</label>
+								<h:selectOneMenu styleClass="kind" value="#{AgentPEBean.areavalue}">
+									<f:selectItem itemValue="0" itemLabel="全部会员"></f:selectItem>
+									<f:selectItem itemValue="1" itemLabel="直属下级"></f:selectItem>
+								</h:selectOneMenu>
+								
+								<a4j:commandButton value="查询" styleClass="submitBtn" action="#{AgentPEBean.bntsearch}"
+								data="#{AgentPEBean.msg}" oncomplete="searchfinish(data)" />
+							</div>
+						</div>
+						
+						
+							
+							<div class="game_mod">
+								<h:panelGroup id="pgData">
+								<table border="0" cellspacing="1" class="tabbox" width="1024" cellpadding="0" bgcolor="#e9d0cf" >
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											<th>会员名</th>
+											<th>返点</th>
+											<th>剩余配额数</th>
+											<th>查看</th>
+										</tr>
+									</thead>
+									<tbody>
+										<a4j:repeat value="#{AgentPEBean.reslist}" var="list" rowKeyVar="keys">
+											<tr  bgcolor="#FFFFFF" style="height:30px;background:#{keys%2==1?'#f0f4f2':'#FFFFFF'};">
+												<td align="left">#{list.loginname}</td>
+												<td>
+													<h:outputText value="#{list.levels}"/>
+												</td>
+												<td>
+													<h:outputText value="#{list.num}"/>
+												</td>
+												<td width="30%">
+													<font color="#1c2ca0">
+														<img src="/images/diven/small/zoom.png" title="查看该会员配额情况" style="cursor:pointer;" onclick="xjpe('#{list.loginname}');"/>
+														<rich:spacer width="15"></rich:spacer>
+														<img src="/images/diven/small/group.png" title="最近15天发展情况" style="cursor:pointer;" onclick="report15day('#{list.loginname}');"/>
+													</font>
+												</td>
+											</tr>
+										</a4j:repeat>
+									</tbody>
+								</table>
+<!-- 								<div class="fy"> -->
+<!-- 									<a href="#" style="font-size: 24px; line-height: 18px;;">‹</a> -->
+<!-- 											<a href="#">1</a> -->
+<!-- 											<a href="#">2</a> -->
+<!-- 											<a href="#">3</a> -->
+<!-- 											<span>...</span> -->
+<!-- 											<a href="#">20</a> -->
+<!-- 											<a href="#" style="font-size: 24px; line-height: 18px;">›</a> -->
+<!-- 											<input type="text" name="" id="" value="1" />   -->
+<!-- 											<span> / 19 </span> --> 
+<!-- 											<sapn class="count">总记录数： 140条 </sapn> -->
+									
+<!-- 								</div> -->
+ 								</h:panelGroup>
+							</div>
+							<div>
+							<a4j:region>
+										<ul class="page-list">
+											<li>
+												<a4j:commandLink  action="#{AgentPEBean.firstPage}" data="#{AgentPEBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+											</li>
+											<li>
+												<a4j:commandLink status="normalStatus" action="#{AgentPEBean.proPage}" data="#{AgentPEBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+											</li>
+											<li>
+												<input value="#{AgentPEBean.curpage}" onkeydown="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+												<h:outputText value=" / #{AgentPEBean.totalpage}"/>
+											</li>
+											<li>
+												<a4j:commandLink status="normalStatus" data="#{AgentPEBean.msg}" oncomplete="searchfinish(data);"
+												title="下一页" value="下一页" action="#{AgentPEBean.nextPage}" />
+											</li>
+											<li>
+												<a4j:commandLink  data="#{AgentPEBean.msg}" oncomplete="searchfinish(data);"
+												title="尾页" value="尾页" action="#{AgentPEBean.lastPage}" />
+											</li>
+											<li>
+												总记录数：#{AgentPEBean.totalrecord}条
+											</li>
+										</ul>
+							</a4j:region>
+							</div>
+					
+					</div>
+				</div>
+			</div> 
+			<a4j:region>
+				<a4j:jsFunction name="pageKeyDownOPT" status="normalStatus" action="#{AgentPEBean.inputPage}" data="#{AgentPEBean.msg}" oncomplete="searchfinish(data)">
+					<f:param name="num"/>
+				</a4j:jsFunction>
+			</a4j:region>
+		</h:form>
+	</f:view>
+	
+<div id="footer">
+    <div class="footer">
+         <div class="footer_l">
+            <h3>银行支持 <span>About us</span></h3>
+             <a href="#"><img src="../images/public/pic_foot01_r2_c2.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r5_c6.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r3_c12.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r1_c20.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r16_c1.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r17_c5.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r15_c14.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r14_c19.png" alt=""/></a>
+         </div>
+        <div class="footer_l footer_r">
+            <h3>银行支持 <span>About us</span></h3>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c27.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c29.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r6_c38.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c26.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r13_c32.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r16_c39.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c41.png" alt=""/></a>
+        </div>
+        <div class="clear"></div>
+        <p class="accredit">我们是由菲律宾政府 NORTH CAGAYAN 和 CEZA 所授权 并拥有合法博彩牌照，并接受其机构监管，严格按照上述机构颁发的规则进行运营。</p>
+        <p>Copyright © 2015 DaTanglottery, Inc. All Rights Reserved.</p>
+    </div>
+</div>
+	
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,112 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--------------------首页面开始------------------*/
+.wt76{ width: 76px;}
+.fl{ float: left;}
+/*---content---*/
+#content{ background: url(../images/public/bg_img.jpg) no-repeat top  center; min-height: 1295px; }
+.content{ width: 1100px; margin: 0 auto; overflow: hidden; padding-top: 135px;}
+.content h2{ font-size: 36px; height: 78px; line-height: 78px; border-bottom: 6px solid #d30313; color: #2F2F2F;}
+.tab_box{ margin-top: 20px;}
+.tab_box .tab_nav{ height: 40px;}
+.tab_box .tab_nav li{ width: 138px; height: 40px; cursor: pointer; float: left; margin-right: 2px; text-align: center; color: #FFFFFF; line-height: 40px; border-top-left-radius: 5px; border-top-right-radius: 5px; background: url(../images/AgentReg/bg.png); cursor: pointer;}
+.tab_box .tab_nav li:hover,.tab_box .tab_nav li.on{background: #FFFFFF; color: #DD2F2D;}
+.tab_in{ background: #FFFFFF;}
+
+.tab_in .massage{ width: 1024px; margin: 43px 38px 0 38px;}
+.tab_in .massage h5{ height: 30px; border-bottom: 2px solid #dc2f2d;}
+.tab_in .massage h5 span{ display: inline-block; cursor: pointer; width: 120px; border-top-left-radius: 5px; border-top-right-radius: 5px; height: 30px; line-height: 30px; text-align: center; background: #FFE7E5; font-size: 14px; color: #DD2F2D; font-weight: normal;}
+.tab_in .massage h5 span.on{ background: #DD2F2D; color: #FFFFFF;}
+.massage table td,.massage table th{ height: 26px;}
+.massage table{ width:1024px; margin-top: 24px;}
+.massage table th{ font-size: 14px; color: #DD2F2D;}
+
+/*--银行卡--*/
+.info{ margin: 40px 0 0 250px; line-height: 26px; overflow: hidden;}
+.infoIn{float: left;}
+.infoIn strong{ font-size: 14px; color: #DD2F2D;}
+
+.line{ height: 1px; border-bottom: 2px solid #dc2f2d; clear: both;}
+/**/
+
+.bankCar{ width: 1024px; margin: 0 38px 0 38px;  overflow: hidden; display: none;}
+
+.mt60{margin-top: 60px;}
+.mt25{margin-top: 25px;}
+.mb35{margin-bottom: 35px;}
+
+
+.bankCar table td,.massage table th{ height: 26px;}
+.bankCar table .even{ background: #ededed;}
+.bankCar table{ width:1024px; margin-top: 24px;}
+.bankCar table th{ font-size: 14px; color: #DD2F2D;}
+
+.btn{ margin: 36px 0 0 350px;}
+.btn a:link,.btn a:visited{ display: inline-block; width: 127px; height: 40px; line-height: 32px; background: url(../images/public/btn_bg.png) no-repeat; text-align: center; color:#FFFFFF; font-size: 14px; float: left; margin-right: 50px;}
+.btn a:hover{ background-image: url(../images/public/btn_bgx.png); color: #F2E3AF;}
+
+.btnx{margin-left: 243px;}
+
+.change{ display: none;}
+.change .one{ margin: 47px 0 0 200px; width: 700px;}
+.change .one h4{ height: 24px; border-bottom: 2px solid #dd2f2d;  font-weight: 500;}
+.tab_in .one h4 span{ display: inline-block; height: 24px; line-height: 24px; width: 140px; border-top-left-radius: 3px; border-top-right-radius: 3px; text-align: center; background:#dd2f2d ; color:#FFFFFF;}
+
+.change form{ overflow: hidden;}
+.from_group{height: 40px; margin-bottom: 5px; line-height: 40px; color: #535553; padding-left: 105px;}
+.from_group label{ width: 102px; text-align: right; display: inline-block;}
+.from_group  input{ border: 1px solid #545554; height:24px; width: 183px;margin-left: 10px;}
+.mt20{margin-top: 20px;}
+.mt30{margin-top: 30px;}
+.from_group .msg{ display: inline-block; margin-left: 15px;}
+.Game_Time li{ height: 33px;  border-bottom: 1px  dashed #cdc49d; padding-top: 10px;}
+.text-right {
+    text-align: right;
+}
+.w200 {
+    width: 200px !important;
+}
+.ml50 {
+    margin-left: 50px !important;
+}
+.inline {
+    display: inline-block;
+}
+
+.ml30 {
+    margin-left: 30px !important;
+}
+
+.mtml{ margin: 10px 0 0 450px;}
+
+.recharge{ height: 144px; margin-top: 57px; background: #FFE7E5; overflow: hidden;}
+.recharge p{ text-align: center; font-size: 14px; color: #DD2F2D; margin-top: 35px; line-height: 25px ;}
+.recharge p span{ color: #494749;}
+
+
+
+/*--分页--*/
+.fy { width: 400px; height: 28px; line-height: 28px; float: right; color: #211F1F;}
+.fy a:link,.fy a:visited{ color:  #211F1F;}
+.fy *{ float: left; margin: 0 5px;}
+.fy input{ width: 32px; height: 18px; border: 1px  solid #211f20; text-align: center;margin-top: 5px; line-height: 18px; }
+.fy .count{ margin-left: 25px; }
+
+/*充值*/
+.bankBox{ width: 885px; height: 580px;  margin: 0 auto; overflow: hidden;}
+.bankBoktop{ width:587px; height: 98px; border: 1px solid #cccccc; margin: 32px 0 0 150px;}
+.ico{ float: left; margin: 35px 0 0 43px;}
+.bankBoxtop{ overflow: hidden;}
+.bankBoktop_r{ float: left; margin: 15px 0 0 95px; line-height: 24px;}
+.bankBoktopb{ margin:37px 0 0 150px; line-height: 35px;}
+.bankBoxbotm{ border-top: 1px dashed #ddd3cd; margin-top: 20px; font-size: 14px;}
+.tablist{ float: left; margin: 20px 0 0 140px;}
+.bankBoxbotm .row{ min-height: 46px; line-height: 30px;}
+.bankBoxbotm .row font{ color: #DD2F2D;}
+.bankBoxbotm .row label{ display:inline-block; width: 100px; text-align: right; font-size: 14px;}
+.bankBoxbotm .row input{ margin-left: 10px; height: 28px; width: 135px; border: 1px solid #cccccc;}
+.bankBoxbotm .row select{ margin-left: 10px; height: 28px; width: 135px; border: 1px solid #cccccc;}
+.bankBoxbotm .row textarea{ width: 540px; height: 63px; border: 1px solid  #cccccc; margin-left: 10px;}
+.tablist a{ margin: 25px 0 0 250px;}
+

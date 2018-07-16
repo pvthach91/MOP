@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+	<title>快三骰宝</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<link rel="stylesheet" type="text/css" href="images/dice/game-base.css" />
+	<link rel="stylesheet" type="text/css" href="images/jquery.modal.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+	<style>
+		body,button,iput,textarea{font-family:"Microsoft YaHei" ! important;}
+		.item-info-tip .text {
+		  position: absolute;
+		  background: rgba(0, 0, 0, 0.6);
+		  background/*\**/:url(black-50.png)\9;
+		  padding: 10px;
+		  left: -10000px;
+		  top: 100%;
+		  width: 220px;
+		  text-align: left;
+		  border-radius: 5px;
+		  font-size: 12px;
+		  color: #79ff92;
+		  opacity: 0,
+		  transition: opacity .5s;
+		}
+	</style>
+</head>
+<body style="margin-top:50px;">
+<ui:include src="/bar.xhtml" />
+<div class="game-table">
+	<div class="game-table-bg">
+		<div class="desktop" id="J-table-desktop">
+			<div id="J-lottery-stage" class="lottery-stage">
+				<div class="classes">
+					<i class="dice dice-1"></i>
+					<i class="dice dice-2"></i>
+					<i class="dice dice-3"></i>
+				</div>
+			</div>
+
+		    <div class="item-info-tip item-info-tip-0">
+		    	<div class="text">
+		    		<font color="#e0ea74">【大】：</font>开奖号码三个号和值为11-17即中奖。<br/><font color="#e0ea74">【实例】：</font>投注「大」，开奖结果为256，和值即为13（大），即为中奖（不包含豹子号）
+				</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-1">
+		    	<div class="text"><font color="#e0ea74">【单】：</font>开奖号码三个号和值为奇数即中奖。<br/><font color="#e0ea74">【实例】：</font>投注「单」，开奖结果为335，和值即为11（奇数），即为中奖（不包含豹子号）
+		    	</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-2">
+		    	<div class="text">
+		    		<font color="#e0ea74">【对子】：</font>从11～66中至少选择一对号码，开奖号码出现所选号码即中奖，顺序不限。<br/><font color="#e0ea74">【实例】：</font>投注11，开奖号码为112、121、211(顺序不限)，即为中奖（包含豹子号）
+		    	</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-5">
+		    	<div class="text">
+		    		<font color="#e0ea74">【豹子】：</font>对相同的三个号码111、222、333、444、555、666中的任意一个进行投注，所选号码开出即中奖。<br/><font color="#e0ea74">【实例】：</font>：投注111，开奖号码为111，即为中奖。
+				</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-11">
+		    	<div class="text">
+		    	<font color="#e0ea74">【豹子号通选】：</font>对所有相同的三个号码（111、222、333、444、555、666）进行投注，任意号码开出即中奖。<br/><font color="#e0ea74">【实例】：</font>投注111，开奖号码为111，即为中奖</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-17">
+		    	<div class="text"><font color="#e0ea74">【和值】：</font>至少选择1个和值（3个号码之和）进行投注，所选和值与开奖的3个号码的和值相同即中奖。<br/><font color="#e0ea74">【实例】：</font>投注5，开奖号码为是113，和值为5，即为中奖（包含豹子号）
+		    	</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-31">
+		    	<div class="text"><font color="#e0ea74">【二不同号】：</font>从15种组合中至少选择一组号码，开奖号码内包含任意一组即中奖。<br/><font color="#e0ea74">【实例】：</font>选择12，开奖号码为124(顺序不限)，即为中奖
+		    	</div>
+		    </div>
+		    <div class="item-info-tip item-info-tip-46">
+		    	<div class="text"><font color="#e0ea74">【猜一个号】：</font>从1-6中至少选择1个号码，所选号码在开奖号码中出现1次，即中赔率为单骰的奖金；所选号码在开奖号码中出现2次，即中赔率为双骰的奖金；所选号码在开奖号码中出现3次，即中赔率为全骰的奖金。
+		    	<br/><font color="#e0ea74">【实例】：</font>选择投注号码1，开奖号码123即中单骰奖金，开奖号码112即中双骰奖金，开奖号码111即中全骰奖金
+		    	</div>
+		    </div>
+
+		</div>
+	</div>
+</div>
+
+
+
+<div id="J-panel-game-side" class="game-side">
+	<div class="inner">
+		<div class="chips-cont clearfix">
+			
+			<button id="J-button-clear" class="btn btn-disabled" disabled="disabled">清空</button>
+			<button id="J-button-goback" class="btn btn-disabled" disabled="disabled">撤销</button>
+			&nbsp;&nbsp;
+			<span id="J-chipgroup-cont">
+			</span>
+			&nbsp;&nbsp;
+			<span class="statics">
+				<span id="J-num-money" class="num">0.00</span> 元
+			</span>
+			&nbsp;&nbsp;
+			<button id="J-button-submit" class="btn btn-primary" style="padding-left:30px;padding-right:30px;"> 确认下注 </button>
+			&nbsp;&nbsp;
+			<button id="J-button-rebet" class="btn btn-disabled" disabled="disabled">追注</button>
+			<button id="J-button-bet-many" class="btn btn-disabled" disabled="disabled">连投</button>
+			&nbsp;&nbsp;
+			<span class="money">
+				余额：
+				<span id="J-user-balance" class="num">#{LoginBean.ubalance}</span>
+				<span id="J-money-tip" class="money-tip">+ 120.00</span>
+			</span>
+			
+		</div>
+
+
+
+
+	</div>
+	<div class="history">
+		<div class="his-inner">
+			<ul class="list clearfix" id="J-history">
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<!-- 连投提示 -->
+<div id="J-bet-many-tip" class="bet-many-tip">
+	自动连续投注中...
+	剩余<span id="J-bet-many-tip-times" class="num">0</span>次
+	&nbsp;
+	<button id="J-bet-many-tip-stop" class="btn" style="padding-left:30px;padding-right:30px;">终 止</button>
+</div>
+
+<!--
+modal
+--> 
+<div id="J-tpl-modal-bet-many" style="display:none;">
+	<div class="inner">
+		<div class="title">设置连投次数</div>
+		<div>
+			<input id="J-num-bet-many-num" class="input-times" type="text" value="5" maxlength="3" />
+		</div>
+		<div id="J-bet-many-iswinstop-cont" class="row-winstop">
+			中奖即停
+			<label for="J-game-win-stop-n"><input id="J-game-win-stop-n" name="game-win-stop" type="radio" value="0" checked="checked" /> 否</label>
+			<label for="J-game-win-stop-y"><input id="J-game-win-stop-y" name="game-win-stop" type="radio" value="1" /> 是</label>
+		</div>
+		<div class="buttons">
+			<a href="#" id="J-button-comfirm-bet-many" class="btn btn-primary" style="padding-left:20px;padding-right:20px;" rel="modal:close">确定投注</a>
+			<a href="#" class="btn" rel="modal:close">取消</a>
+		</div>
+	</div>
+</div>
+
+<div id="J-tpl-modal-first-tip" style="display:none;">
+	<div class="text" style="font-family:'微软雅黑'">
+		<p class="row">1. 点击鼠标 <span class="hl">【左键】</span> 进行筹码下注</p>
+		<p class="row">2. 点击鼠标 <span class="hl">【右键】</span> 进行筹码删除</p>
+		<p class="row">3. 出现豹子号，【大小单双】均不中奖</p>
+		<p class="row">4. 连投模式中，不能取消正在摇骰的局</p>
+		<p class="row">
+			5. 投注限额规则，请查看 <a target="_blank" class="link" href="/new_help/new_help_kstb.html">骰宝游戏说明 &gt;&gt;</a>
+		</p>
+		<p class="row" style="text-align:center;">
+			<a href="#" class="btn" style="padding-left:40px;padding-right:40px;color:#ffffff;" rel="modal:close">知道了</a>
+		</p>
+	</div>
+</div>
+
+<div id="J-tpl-modal-max-tip" style="display:none;">
+	<div class="text">
+		<p class="row">金额超限，该玩法最大可投注金额 <span id="J-tip-text-max-money-tip" class="hl" style="font-size:20px;">0.00</span></p>
+		<p class="row" style="text-align:center;">
+			<a href="#" class="btn" style="padding-left:40px;padding-right:40px;color:#ffffff;" rel="modal:close">知道了</a>
+		</p>
+	</div>
+</div>
+
+<script type="text/javascript">
+var global_game_config = {
+  gameid: #{K33Bean.lotteryid},
+  beturl: 'GameService.aspx',
+  chips: #{K33Bean.chips},
+  methods:
+	  #{K33Bean.methodstr},
+  history:#{K33Bean.history},
+  poscfg:[{
+	  'name': 'da',
+	  'left': 38,
+	  'top': 0,
+	  'width': 184,
+	  'height': 98
+	}, {
+	  'name': 'xiao',
+	  'left': 742,
+	  'top': 0,
+	  'width': 184,
+	  'height': 97
+	}, {
+	  'name': 'dan',
+	  'left': 32,
+	  'top': 100,
+	  'width': 184,
+	  'height': 48
+	}, {
+	  'name': 'shuang',
+	  'left': 752,
+	  'top': 100,
+	  'width': 184,
+	  'height': 47
+	}, {
+	  'name': 'duizi_66',
+	  'left': 225,
+	  'top': 25,
+	  'width': 86,
+	  'height': 36
+	}, {
+	  'name': 'duizi_55',
+	  'left': 222,
+	  'top': 65,
+	  'width': 87,
+	  'height': 37
+	}, {
+	  'name': 'duizi_44',
+	  'left': 219,
+	  'top': 105,
+	  'width': 88,
+	  'height': 38
+	}, {
+	  'name': 'duizi_33',
+	  'left': 652,
+	  'top': 25,
+	  'width': 86,
+	  'height': 36
+	}, {
+	  'name': 'duizi_22',
+	  'left': 654,
+	  'top': 64,
+	  'width': 87,
+	  'height': 37
+	}, {
+	  'name': 'duizi_11',
+	  'left': 656,
+	  'top': 105,
+	  'width': 88,
+	  'height': 37
+	}, {
+	  'name': 'baozi_666',
+	  'left': 323,
+	  'top': 17,
+	  'width': 53,
+	  'height': 47
+	}, {
+	  'name': 'baozi_555',
+	  'left': 376,
+	  'top': 17,
+	  'width': 53,
+	  'height': 47
+	}, {
+	  'name': 'baozi_444',
+	  'left': 429,
+	  'top': 17,
+	  'width': 53,
+	  'height': 47
+	}, {
+	  'name': 'baozi_333',
+	  'left': 482,
+	  'top': 17,
+	  'width': 53,
+	  'height': 47
+	}, {
+	  'name': 'baozi_222',
+	  'left': 535,
+	  'top': 17,
+	  'width': 53,
+	  'height': 47
+	}, {
+	  'name': 'baozi_111',
+	  'left': 588,
+	  'top': 17,
+	  'width': 53,
+	  'height': 47
+	}, {
+	  'name': 'baozi_nnn',
+	  'left': 314,
+	  'top': 73,
+	  'width': 336,
+	  'height': 74
+	}, {
+	  'name': 'hezhi_17',
+	  'left': 22,
+	  'top': 151,
+	  'width': 70,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_16',
+	  'left': 88,
+	  'top': 151,
+	  'width': 68,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_15',
+	  'left': 153,
+	  'top': 151,
+	  'width': 68,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_14',
+	  'left': 219,
+	  'top': 151,
+	  'width': 66,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_13',
+	  'left': 285,
+	  'top': 151,
+	  'width': 66,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_12',
+	  'left': 351,
+	  'top': 151,
+	  'width': 64,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_11',
+	  'left': 416,
+	  'top': 151,
+	  'width': 64,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_10',
+	  'left': 482,
+	  'top': 151,
+	  'width': 64,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_9',
+	  'left': 548,
+	  'top': 151,
+	  'width': 64,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_8',
+	  'left': 611,
+	  'top': 151,
+	  'width': 66,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_7',
+	  'left': 677,
+	  'top': 151,
+	  'width': 66,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_6',
+	  'left': 741,
+	  'top': 151,
+	  'width': 68,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_5',
+	  'left': 806,
+	  'top': 151,
+	  'width': 68,
+	  'height': 78
+	}, {
+	  'name': 'hezhi_4',
+	  'left': 870,
+	  'top': 151,
+	  'width': 70,
+	  'height': 78
+	}, {
+	  'name': 'erma_56',
+	  'left': 59,
+	  'top': 238,
+	  'width': 64,
+	  'height': 92
+	}, {
+	  'name': 'erma_46',
+	  'left': 119,
+	  'top': 238,
+	  'width': 64,
+	  'height': 92
+	}, {
+	  'name': 'erma_45',
+	  'left': 179,
+	  'top': 238,
+	  'width': 62,
+	  'height': 92
+	}, {
+	  'name': 'erma_36',
+	  'left': 238,
+	  'top': 238,
+	  'width': 62,
+	  'height': 92
+	}, {
+	  'name': 'erma_35',
+	  'left': 298,
+	  'top': 238,
+	  'width': 60,
+	  'height': 92
+	}, {
+	  'name': 'erma_34',
+	  'left': 358,
+	  'top': 238,
+	  'width': 60,
+	  'height': 92
+	}, {
+	  'name': 'erma_26',
+	  'left': 417,
+	  'top': 238,
+	  'width': 58,
+	  'height': 92
+	}, {
+	  'name': 'erma_25',
+	  'left': 477,
+	  'top': 238,
+	  'width': 58,
+	  'height': 92
+	}, {
+	  'name': 'erma_24',
+	  'left': 536,
+	  'top': 238,
+	  'width': 58,
+	  'height': 92
+	}, {
+	  'name': 'erma_23',
+	  'left': 595,
+	  'top': 238,
+	  'width': 58,
+	  'height': 92
+	}, {
+	  'name': 'erma_16',
+	  'left': 653,
+	  'top': 238,
+	  'width': 60,
+	  'height': 92
+	}, {
+	  'name': 'erma_15',
+	  'left': 711,
+	  'top': 238,
+	  'width': 62,
+	  'height': 92
+	}, {
+	  'name': 'erma_14',
+	  'left': 770,
+	  'top': 238,
+	  'width': 63,
+	  'height': 92
+	}, {
+	  'name': 'erma_13',
+	  'left': 829,
+	  'top': 238,
+	  'width': 63,
+	  'height': 92
+	}, {
+	  'name': 'erma_12',
+	  'left': 887,
+	  'top': 238,
+	  'width': 66,
+	  'height': 92
+	}, {
+	  'name': 'yima_6',
+	  'left': 128,
+	  'top': 346,
+	  'width': 96,
+	  'height': 62
+	}, {
+	  'name': 'yima_5',
+	  'left': 266,
+	  'top': 346,
+	  'width': 96,
+	  'height': 62
+	}, {
+	  'name': 'yima_4',
+	  'left': 407,
+	  'top': 346,
+	  'width': 94,
+	  'height': 62
+	}, {
+	  'name': 'yima_3',
+	  'left': 546,
+	  'top': 346,
+	  'width': 94,
+	  'height': 62
+	}, {
+	  'name': 'yima_2',
+	  'left': 684,
+	  'top': 346,
+	  'width': 96,
+	  'height': 62
+	}, {
+	  'name': 'yima_1',
+	  'left': 822,
+	  'top': 346,
+	  'width': 98,
+	  'height': 62
+	}]
+
+};
+window.parent.autoHeight(720);
+</script>
+<script type="text/javascript" src="buildjs/game-dice-all.js"></script>
+
+</body>
+</html>

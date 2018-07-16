@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户访问--分析页面</title>
+    <script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+    var flag = false;
+	function open01(){
+// 		alert("========");
+		flag = true;
+		$.ajax({
+			type : "POST",
+			url : "/LotteryService.aspx",
+			data : "flag=openOrCloseLog&openOrCloseFlag=open",
+			success : function(data) {
+				if(data!=null&&data!=''){
+					alert(data);
+				}else{
+					alert("开启成功")
+				}
+			}
+		});
+	}
+	function close01(){
+		flag = false;
+		$.ajax({
+			type : "POST",
+			url : "/LotteryService.aspx",
+			data : "flag=openOrCloseLog&openOrCloseFlag=close",
+			success : function(data) {
+				if(data!=null&&data!=''){
+					alert(data);
+				}else{
+					alert("关闭成功")
+				}
+			}
+		});
+	}
+	function getLog(){
+		if(!flag){
+			return;
+		}
+		$.ajax({
+			type : "POST",
+			url : "/LotteryService.aspx",
+			data : "flag=getLogInfo",
+			success : function(data) {
+				if(data!=null&&data!='null'&&data.length>0){
+					var jsonObj = eval('(' + data + ')');
+					var ip_times = jsonObj.ip_times;
+					var totalTimes = jsonObj.totalTimes;
+					var time = jsonObj.time;
+					$('#context').append('<H3>['+time+']===========['+totalTimes+']</H3>');
+					for(key in ip_times){
+						$('#context').append('<p>['+key+']:['+ip_times[key]+']</p>');
+					}
+				}
+			}
+		});
+	}
+	$(document).ready(function(){
+		window.setInterval("getLog();",10*60*1000);
+	});
+</script>
+</head>
+<body>
+	<div>
+		<input type="button" id="openbutton" name="openbutton" onclick="open01()" value="开启日志"/>
+		<input type="button" id="closebutton" name="closebutton" onclick="close01()" value="关闭日志"/>
+	</div>
+	<div id="context">
+		
+	</div>
+</body>
+</html>

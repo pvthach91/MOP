@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+	<title>#{LoginBean.webname}娱乐 - 官方网站</title>
+	<link href="/css/login.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		function over_text(obj)	{
+			document.getElementById(obj).style.border="1px solid #ffff00";
+		}
+		function loginRes(data){
+			if (data) {
+				alert(data);
+			}else{
+				alert("成功：恭喜您注册成功。");
+				window.top.location.href="/login.shtml";
+			}
+		}
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			if (event.keyCode == 13) {
+				userLogin();
+			}
+		}
+	</script>
+</head>
+<body>
+<f:view>
+	<h:form id="loginForm">
+	<div id="divmain">
+	<div class="whritediv">
+	
+	<div class="contentdiv">
+		<div id="bg_login">
+			注&nbsp;册
+		</div>
+		<a4j:region>
+		<table border="0" style="margin-left:298px;font-size:14px;margin-top:5px;line-height:30px;font-family:'微软雅黑',tahoma;">
+			<tr>
+				<td colspan="2">
+					<h:selectOneRadio styleClass="select_Game" value="#{RegBean.type}">
+						<f:selectItem itemValue="0" itemLabel="代理用户"></f:selectItem>
+						<f:selectItem itemValue="1" itemLabel="会员用户"></f:selectItem>
+					</h:selectOneRadio>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">登录名：</td>
+				<td><h:inputText class="username_input_reg" value="#{RegBean.loginname}"></h:inputText></td>
+			</tr>
+			<tr>
+				<td align="right">密 码：</td>
+				<td><h:inputSecret class="username_input_reg" value="#{RegBean.pwd}"></h:inputSecret></td>
+			</tr>
+			
+			<tr>
+				<td align="right">昵称：</td>
+				<td><h:inputText class="username_input_reg" value="#{RegBean.nickname}"></h:inputText></td>
+			</tr>
+			
+		</table>
+		
+		<div id="bg_but2">
+			<a4j:jsFunction name="userLogin" status="normalStatus" data="#{RegBean.msg}" oncomplete="loginRes(data);" action="#{RegBean.reg}">
+			</a4j:jsFunction>
+			<input class="bg_but" type="button" onclick="userLogin();" value="注 册"/>
+		</div>
+		</a4j:region>
+		<div id="bg_bg_but_lcon">
+			
+			<a href="https://www.google.com/intl/zh-CN/chrome/browser/?hl=zh-CN" target="_blank" title="推荐下载【Chrome】浏览器" style="float:left">
+				<div class="bg_but_lcon1"></div>
+			</a>
+			<a href="http://firefox.com.cn/" target="_blank" title="推荐下载【Chrome】浏览器" style="float:left">
+				<div class="bg_but_lcon2"></div>
+			</a>
+			
+			<a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank" title="推荐下载【Chrome】浏览器" style="float:left">
+				<div class="bg_but_lcon3"></div>
+			</a>
+		</div>
+		<div id="bg_news">
+			2014&nbsp;
+			#{LoginBean.webname}娱乐
+			&nbsp;
+			All&nbsp;
+			Rights&nbsp;
+			Reserved.
+		</div>
+	</div>
+	</div>
+	</div>
+	<ui:include src="/submitStatus.xhtml" />
+</h:form>
+</f:view>
+</body>
+</html>

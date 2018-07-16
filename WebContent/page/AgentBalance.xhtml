@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>团队余额</title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/PersonBank.css" />
+<link rel="stylesheet" type="text/css" href="../css/game.css"/>
+<link rel="stylesheet" type="text/css" href="../css/AgentReg.css" />
+<script src="../js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/zDrag.js"></script>
+<script type="text/javascript" src="../js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}
+	}
+</script>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+			<!--content-->
+			<div id="content">
+			<div class="content">
+						<h2>代理管理</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li>
+							<a href="/page/AgentReg.shtml" style="font-size:14px;">会员注册</a>
+							</li>
+							<li>
+								<a href="/page/AgentUser.shtml" style="font-size:14px;">下级会员</a>
+							</li>
+							<li>
+								<a href="/page/AgentAutoReg.shtml" style="font-size:14px;">注册推广</a>
+							</li>
+							<li>
+								<a href="/page/AgentPE.shtml" style="font-size:14px;">配额管理</a>
+							</li>
+							<li class="on">
+								<a href="/page/AgentBalance.shtml" style="font-size:14px;">团队余额</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab_in tab_inx">
+						<h4><span>团队相关信息</span></h4>
+						<div class="four">
+							<div class="ui-form-area mt30">
+								<div class="mt30">
+									<span class="">会员登录名：</span>
+									<span class="inline ml20 text-right color-red">#{LoginBean.user.loginname}</span>
+								</div>
+								<div class="mt30">
+									<span class="">昵称：</span>
+									<span class="inline ml20 text-right">#{LoginBean.user.nickname}</span>
+								</div>
+								<div class="mt30">
+									<span class="">当前团队余额：</span>
+									<span class="inline ml20 text-right color-red">
+										<h:outputText value="#{AgentBalanceBean.tbalance}" converter="DoubleConverter"/>
+									</span> RMB
+								</div>
+								<div class="ui-line mt20"></div>
+							</div>
+						</div>
+						<!---->
+					</div>
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+	
+<div id="footer">
+    <div class="footer">
+         <div class="footer_l">
+            <h3>银行支持 <span>About us</span></h3>
+             <a href="#"><img src="../images/public/pic_foot01_r2_c2.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r5_c6.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r3_c12.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r1_c20.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r16_c1.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r17_c5.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r15_c14.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r14_c19.png" alt=""/></a>
+         </div>
+        <div class="footer_l footer_r">
+            <h3>银行支持 <span>About us</span></h3>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c27.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c29.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r6_c38.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c26.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r13_c32.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r16_c39.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c41.png" alt=""/></a>
+        </div>
+        <div class="clear"></div>
+        <p class="accredit">我们是由菲律宾政府 NORTH CAGAYAN 和 CEZA 所授权 并拥有合法博彩牌照，并接受其机构监管，严格按照上述机构颁发的规则进行运营。</p>
+        <p>Copyright © 2015 DaTanglottery, Inc. All Rights Reserved.</p>
+    </div>
+</div>
+
+
+</body>
+
+</html>

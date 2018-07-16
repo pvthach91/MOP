@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/joinus.css" />
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function showMsg(){
+		parent.NewWin("/images/setting.png","","/page/IndexMsgSub.shtml",700,500);
+		/**
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 700;
+		diag.Height = 500;
+		diag.Title = "";
+		diag.URL = "/page/IndexMsgSub.shtml";
+		diag.show();
+		*/
+	}
+	function reloads(){
+		window.location.reload();
+	}
+	function advCheck(){
+		var s = document.getElementById("IndexForm:userstatus").value;
+		if(s!=""){
+			TopImageSign = '/images/setting.png';
+			var diag = new Dialog();
+			diag.Width = 700;
+			diag.Height = 500;
+			diag.Title = "";
+			diag.URL = "/page/IndexMsgDefSub.shtml";
+			diag.show();
+		}
+	}
+</script>
+<title>系统公告</title>
+</head>
+<body style="padding:0 0 0 0">
+	<f:view>
+		<h:form id="IndexForm">
+			<div class="banner"></div>
+			<div class="content layout mb50">
+				<form action="#">
+					<div class="contact-form mt30 pb50">
+						<h4 class="mt50">请您填写以下信息，我们将在两日内与您联系</h4>
+						<div class="titles mt30">
+							QQ / OICQ:
+						</div>
+						<input type="text" class="info input" />
+						<div class="titles">
+							GT / SKYPE:
+						</div>
+						<input type="text" class="info input" />
+						<div class="titles">
+							现代理平台情况:
+						</div>
+						<textarea class="info-text"></textarea>
+						<div>
+							<input type="submit" class="sub mt30" value="提 交" />
+						</div>
+					</div>
+				</form>
+			</div> 
+		</h:form>
+	</f:view>
+</body>
+<script type="text/javascript">
+	var jQuery = window.parent.jQuery;
+	var ifrm = jQuery("#mainiframe")[0].contentWindow.document; 
+  	
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		$body = jQuery(ifrm).find('body'),
+    		height = 0;	
+    	
+    	setInterval(function(){
+    		height=jQuery(ifrm).find('body').outerHeight();
+    		if(height != heightHistory){
+    			if(!parentWindow.autoHeight){
+    				return;
+    			}
+    			parentWindow.autoHeight(height);		
+    		}
+    		heightHistory = height;
+    	},1000);
+    	
+    	jQuery(ifrm).find('.data-url').click(function(){
+    		jQuery("#mainiframe").attr('src', jQuery(this).attr('data-url'));
+    	});
+    });
+</script>
+</html>

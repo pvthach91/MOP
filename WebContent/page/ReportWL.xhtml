@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>统计报表</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+	function showReport(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		window.location.reload();
+	}
+	function opentrees(obj,rid){
+		if(obj.src.indexOf("plus3.gif")>=0){
+			//alert("open");
+			obj.src="/images/diven/xytree/minus3.gif";
+			document.getElementById(rid).style.display="";
+		}else{
+			//alert("close");
+			obj.src="/images/diven/xytree/plus3.gif";
+			document.getElementById(rid).style.display="none";
+		}
+	}
+</script>
+<style>
+	.tdrightbg{text-align:right;background:#efe1c3;font-size:12px;color:#555555;}
+	.tdleftbg{padding-left:8px;background:#f8f4ec;font-size:12px;color:#000000;}
+</style>
+</head>
+<body>
+<!--头部-->
+<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="WLReportForm">
+			<!--content-->
+			<div id="content">
+				<div class="content">
+					<h2>统计报表</h2>
+						<div class="tab_box">
+							<ul class="tab_nav">
+								<li>
+									<a href="/page/ReportZb.shtml" style="font-size:14px;">账变记录</a>
+								</li>
+								<li >
+									<a href="/page/BonusReport.shtml" style="font-size:14px;">赠送红利</a>
+								</li>
+								<li  class="on">
+									<a href="/page/ReportWL.shtml" style="font-size:14px;">统计报表</a>
+								</li>
+								<li>
+									<a href="/page/ReportTD.shtml" style="font-size:14px;">团队总览</a>
+								</li>
+								<li>
+									<a href="/page/ReportDay.shtml" style="font-size:14px;">每日下级报表</a>
+								</li>
+							</ul>
+						</div>
+					
+					<div class="tab_in">
+						<div class="game_top">
+							<a4j:region>
+							<div class="game_top_in">
+								<label>日期:</label>
+								<h:inputText size="15" value="#{ReportWinLossBean.stime}"
+									id="startTime" styleClass="time" 
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd',onpicked:function(){$dp.$('WLReportForm:endTime').focus();}})" /> 00:00:00
+								<label>至:</label>
+								<h:inputText size="15" value="#{ReportWinLossBean.etime}" id="endTime" styleClass="time"
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'WLReportForm:startTime\')}',dateFmt:'yyyy-MM-dd'})" />
+									23:59:59
+							</div>	
+							<div class="game_top_in">
+								<label>排序:</label>
+								<h:selectOneMenu styleClass="kind" value="#{ReportWinLossBean.order}" style="width:150px">
+									<f:selectItem itemValue="0" itemLabel="投注量从大到小"></f:selectItem>
+									<f:selectItem itemValue="1" itemLabel="返点从大到小"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="中奖从大到小"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="活动从大到小"></f:selectItem>
+									<f:selectItem itemValue="4" itemLabel="充值从大到小"></f:selectItem>
+									<f:selectItem itemValue="5" itemLabel="提现从大到小"></f:selectItem>
+								</h:selectOneMenu>
+								<label>用户名:</label>
+								<h:inputText size="15" styleClass="num" value="#{ReportWinLossBean.loginname}"/>
+								
+								<a4j:commandButton value="查询" status="normalStatus"
+									styleClass="submitBtn" action="#{ReportWinLossBean.bntSearch}"
+									data="#{ReportWinLossBean.msg}"
+									oncomplete="searchfinish(data)">
+									<f:param name="ln" value="#{LoginBean.user.loginname}"/>
+								</a4j:commandButton>
+							</div>
+							</a4j:region>
+						</div>
+							<h:panelGroup id="pgData">
+							<div class="game_mod">
+								<table class="tabbox" border="0" cellspacing="1" width="1024" cellpadding="0" bgcolor="#e9d0cf">
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											<th>会员</th>
+											<th>充值</th>
+											<th>提现</th>
+											<th>投注</th>
+											<th>返点</th>
+											<th>中奖</th>
+											<th>活动</th>
+											<th>盈利</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr bgcolor="#fafafa">
+											<td align="center">
+													#{ReportWinLossBean.ruitem.loginname}
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.dp}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.wd}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.tz}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.fd}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.win}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.bonus}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.ruitem.saletz}" style="color:#{ReportWinLossBean.ruitem.saletz>=0?'blue':'red'}" converter="DoubleConverter"/>
+											</td>
+									</tr>
+									<a4j:repeat value="#{ReportWinLossBean.reportmain}" var="list" rowKeyVar="keys">
+										<tr  bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+											<td align="center">
+												<a4j:commandLink status="normalStatus" title="点击查看【#{list.loginname}】团队明细" value="#{list.loginname}" ajaxSingle="true" action="#{ReportWinLossBean.searchNew}" data="#{ReportWinLossBean.msg}" oncomplete="showReport(data)">
+													<f:param name="ln" value="#{list.loginname}"/>
+												</a4j:commandLink>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.dp}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.wd}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.tz}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.fd}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.win}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.bonus}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+												<h:outputText value="#{list.saletz}" style="color:#{list.saletz>=0?'#444444':'red'}" converter="DoubleConverter"/>
+											</td>
+											<td align="center">
+												<img src="/images/diven/xytree/plus3.gif" onclick="opentrees(this,'tr#{keys}')" style="cursor:pointer;" title="点击展开明细"/>
+											</td>
+										</tr>
+										<tr style="display:none;" id="tr#{keys}">
+										<td colspan="9">
+											<table style="font-size:13px;width:100%;" class="tableclass">
+												<tr>
+													<td class="tdrightbg" style="text-align:center;background:#dbc596;color:#483f05;font-size:14px;" colspan="10">
+														彩票类(销售/中奖)
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														秒秒彩 ：
+													</td>
+													<td class="tdleftbg" >
+														<div title="差值：#{list.mmc-list.mmcwin}" style="color:#{list.mmc &gt;= list.mmcwin?'red':'blue'};display:#{list.mmc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.mmc}"/> / <h:outputText converter="DoubleConverter" value="#{list.mmcwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														分分彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div title="差值：#{list.ffc-list.ffcwin}" style="color:#{list.ffc &gt;= list.ffcwin?'red':'blue'};display:#{list.ffc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.ffc}"/> / <h:outputText converter="DoubleConverter" value="#{list.ffcwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														两分彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div title="差值：#{list.lfc-list.lfcin}" style="color:#{list.lfc &gt;= list.lfcin?'red':'blue'};display:#{list.lfc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.lfc}"/> / <h:outputText converter="DoubleConverter" value="#{list.lfcin}"/>
+														</div>
+													</td>
+													
+												</tr>
+												
+												<tr>
+													<td class="tdrightbg">
+														重庆时时彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div title="差值：#{list.cqssc-list.cqsscwin}" style="color:#{list.cqssc &gt;= list.cqsscwin?'red':'blue'};display:#{list.cqssc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.cqssc}"/> / <h:outputText converter="DoubleConverter" value="#{list.cqsscwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														新疆时时彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.xjssc &gt;= list.xjsscwin?'red':'blue'};display:#{list.xjssc==0?'none':'block'};">
+															<h:outputText converter="DoubleConverter" value="#{list.xjssc}"/> / <h:outputText converter="DoubleConverter" value="#{list.xjsscwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														天津时时彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.tjssc &gt;= list.tjsscwin?'red':'blue'};display:#{list.tjssc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.tjssc}"/> / <h:outputText converter="DoubleConverter" value="#{list.tjsscwin}"/>
+														</div>
+													</td>
+													
+												</tr>
+												
+												<tr>
+													<td class="tdrightbg">
+														分分十一选五 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.d115 &gt;= list.d115win?'red':'blue'};display:#{list.d115==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.d115}"/> / <h:outputText converter="DoubleConverter" value="#{list.d115win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														山东十一选五 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.sd115 &gt;= list.sd115win?'red':'blue'};display:#{list.sd115==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.sd115}"/> / <h:outputText converter="DoubleConverter" value="#{list.sd115win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														江西十一选五 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.jx115 &gt;= list.jx115win?'red':'blue'};display:#{list.jx115==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.jx115}"/> / <h:outputText converter="DoubleConverter" value="#{list.jx115win}"/>
+														</div>
+													</td>
+													
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														广东十一选五 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.gd115 &gt;= list.gd115win?'red':'blue'};display:#{list.gd115==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.gd115}"/> / 
+															<h:outputText converter="DoubleConverter" value="#{list.gd115win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														分分3D ：
+													</td>
+													<td class="tdleftbg">
+														<div title="差值：#{list.s3d-list.s3dwin}" style="color:#{list.s3d &gt;= list.s3dwin?'red':'blue'};display:#{list.s3d==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.s3d}"/> / 
+															<h:outputText converter="DoubleConverter" value="#{list.s3dwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														福彩3D ：
+													</td>
+													<td class="tdleftbg">
+														<div title="差值：#{list.g3d-list.g3dwin}" style="color:#{list.g3d &gt;= list.g3dwin?'red':'blue'};display:#{list.g3d==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.g3d}"/> 
+															/ 
+															<h:outputText converter="DoubleConverter" value="#{list.g3dwin}"/>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														排列三五 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.p35 &gt;= list.p35win?'red':'blue'};display:#{list.p35==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.p35}"/> / <h:outputText converter="DoubleConverter" value="#{list.p35win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														分分pk10 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.pk10 &gt;= list.pk10win?'red':'blue'};display:#{list.pk10==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.pk10}"/> / <h:outputText converter="DoubleConverter" value="#{list.pk10win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														北京pk10 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.gcpk10 &gt;= list.gcpk10win?'red':'blue'};display:#{list.gcpk10==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.gcpk10}"/> / <h:outputText converter="DoubleConverter" value="#{list.gcpk10win}"/>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														菲律宾1.5分彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.hgyfb &gt;= list.hgyfbwin?'red':'blue'};display:#{list.hgyfb==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.hgyfb}"/> / <h:outputText converter="DoubleConverter" value="#{list.hgyfbwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														北京快乐8 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.kl8 &gt;= list.kl8win?'red':'blue'};display:#{list.kl8==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.kl8}"/> / <h:outputText converter="DoubleConverter" value="#{list.kl8win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														六合彩（官方） ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.lhc &gt;= list.lhcwin?'red':'blue'};display:#{list.lhc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.lhc}"/> / <h:outputText converter="DoubleConverter" value="#{list.lhcwin}"/>
+														</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td class="tdrightbg">
+														六合彩（分分） ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.sclhc &gt;= list.sclhcwin?'red':'blue'};display:#{list.sclhc==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.sclhc}"/> / <h:outputText converter="DoubleConverter" value="#{list.sclhcwin}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														腾讯分分彩 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.param4 &gt;= list.param5?'red':'blue'};display:#{list.param4==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.param4}"/> / <h:outputText converter="DoubleConverter" value="#{list.param5}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														江苏十一选五 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.js11x5 &gt;= list.js11x5win?'red':'blue'};display:#{list.js11x5==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.js11x5}"/> / <h:outputText converter="DoubleConverter" value="#{list.js11x5win}"/>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														新加坡45秒 ：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.jzkc &gt;= list.jzkcwin?'red':'blue'};display:#{list.hgyfb==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.jzkc}"/> / <h:outputText converter="DoubleConverter" value="#{list.jzkcwin}"/>
+														</div>
+													</td>
+
+													<td class="tdrightbg">
+														彩票类总返点：
+													</td>
+													<td class="tdleftbg">
+														<h:outputText converter="DoubleConverter" value="#{list.param1}"/>
+													</td>
+													<td class="tdrightbg">
+														彩票总投注：
+													</td>
+													<td class="tdleftbg">
+														￥
+														<h:outputText converter="DoubleConverter" value="#{list.mmc+list.ffc+list.lfc+list.cqssc+list.xjssc+
+														list.tjssc+list.d115+list.sd115+list.param4+list.js11x5+list.jx115+list.gd115+list.s3d+list.g3d+list.p35+list.pk10+list.gcpk10+list.hgyfb+list.kl8+list.lhc+list.sclhc+list.jzkc}"/>
+													</td>
+													<!--<td class="tdrightbg">-->
+													<!--</td>-->
+													<!--<td class="tdleftbg">-->
+													<!--</td>-->
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														彩票净盈利：
+													</td>
+													<td class="tdleftbg" colspan="5">
+														￥
+														<h:outputText converter="DoubleConverter" value="#{list.pk10win+list.gcpk10win+list.hgyfbwin+list.kl8win+list.lhcwin+list.sclhcwin+list.mmcwin+list.ffcwin+list.lfcin+list.cqsscwin +list.xjsscwin +list.tjsscwin+
+														list.d115win+list.sd115win+list.param5+list.js11x5win+list.jx115win+list.param1 + list.gd115win+ list.s3dwin+list.g3dwin+list.p35win+list.jzkcwin-
+														(list.mmc+list.ffc+list.lfc+list.cqssc + list.xjssc+
+														list.tjssc+list.d115+list.sd115+list.param4+list.js11x5+list.jx115+list.gd115+list.s3d+list.g3d+list.p35+list.pk10+list.gcpk10+list.hgyfb+list.jzkc+list.kl8+list.lhc+list.sclhc)}" />
+														（净盈利=中奖+返点-投注）注意：活动未参与计算
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg" style="text-align:center;background:#dbc596;color:#483f05;font-size:14px;" colspan="10">
+														游戏类(销售/中奖)
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														快三骰宝：
+													</td>
+													<td class="tdleftbg">
+														<div title="差值：#{list.k3-list.k3win}" style="color:#{list.k3 &gt;= list.k3win?'red':'blue'};display:#{list.k3==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.k3}"/> 
+															/ 
+															<h:outputText converter="DoubleConverter" value="#{list.k3win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														港式五张：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.g5 &gt;= list.g5win?'red':'blue'};display:#{list.g5==0?'none':'block'}">
+														<h:outputText converter="DoubleConverter" value="#{list.g5}"/> 
+														/ 
+														<h:outputText converter="DoubleConverter" value="#{list.g5win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														炸金花：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.zjh &gt;= list.zjhwin?'red':'blue'};display:#{list.zjh==0?'none':'block'}">
+														<h:outputText converter="DoubleConverter" value="#{list.zjh}"/> 
+														/ 
+														<h:outputText converter="DoubleConverter" value="#{list.zjhwin}"/>
+														</div>
+													</td>
+													
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														分分快三：
+													</td>
+													<td class="tdleftbg">
+														<div style="color:#{list.ffk3 &gt;= list.ffk3win?'red':'blue'};display:#{list.ffk3==0?'none':'block'}">
+															<h:outputText converter="DoubleConverter" value="#{list.ffk3}"/> 
+															/ 
+															<h:outputText converter="DoubleConverter" value="#{list.ffk3win}"/>
+														</div>
+													</td>
+													<td class="tdrightbg">
+														游戏总返点：
+													</td>
+													<td class="tdleftbg">
+														<h:outputText converter="DoubleConverter" value="#{list.param2}"/> 
+													</td>
+													<td class="tdrightbg">
+														游戏总投注：
+													</td>
+													<td class="tdleftbg">
+														￥
+														<h:outputText converter="DoubleConverter" value="#{list.k3+list.g5+list.zjh+list.hk6+list.ffk3}"/>
+													</td>
+												</tr>
+												<tr>
+													<td class="tdrightbg">
+														游戏类净盈利：
+													</td>
+													<td class="tdleftbg" colspan="5">
+														￥
+														<h:outputText converter="DoubleConverter" value="#{list.ffk3win+list.k3win+list.g5win+list.zjhwin+list.hk6win+list.param2-
+														(list.k3+list.g5+list.zjh+list.hk6+list.ffk3)}"/>
+														（净盈利=中奖+返点-投注）注意：活动未参与计算
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									</a4j:repeat>
+									<tr style="background:#f5f5f5">
+											<td align="center">
+													#{ReportWinLossBean.totallist.loginname}
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.dp}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.wd}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.tz}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.fd}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.win}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.bonus}" converter="DoubleConverter"/>
+											</td>
+											<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{ReportWinLossBean.totallist.saletz}" converter="DoubleConverter" style="color:#{ReportWinLossBean.totallist.saletz>=0?'blue':'red'}"/>
+											</td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							</h:panelGroup>
+							<!---->
+						</div>
+					</div>
+				</div>
+		</h:form>
+	</f:view>
+	
+	
+	
+<div id="footer">
+    <div class="footer">
+         <div class="footer_l">
+            <h3>银行支持 <span>About us</span></h3>
+             <a href="#"><img src="../images/public/pic_foot01_r2_c2.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r5_c6.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r3_c12.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r1_c20.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r16_c1.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r17_c5.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r15_c14.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r14_c19.png" alt=""/></a>
+         </div>
+        <div class="footer_l footer_r">
+            <h3>银行支持 <span>About us</span></h3>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c27.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c29.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r6_c38.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c26.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r13_c32.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r16_c39.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c41.png" alt=""/></a>
+        </div>
+        <div class="clear"></div>
+        <p class="accredit">我们是由菲律宾政府 NORTH CAGAYAN 和 CEZA 所授权 并拥有合法博彩牌照，并接受其机构监管，严格按照上述机构颁发的规则进行运营。</p>
+        <p>Copyright © 2015 DaTanglottery, Inc. All Rights Reserved.</p>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

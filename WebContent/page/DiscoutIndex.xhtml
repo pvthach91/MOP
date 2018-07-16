@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>优惠活动</title>
+
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/css/PersonBank.css" /> -->
+<!-- <link type="text/css" rel="stylesheet" href="/css/notice.css" /> -->
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" type="text/css"/> -->
+<style>
+	.tab_in .tab_box_content_ul{list-style: none;margin-top:210px}
+	.tab_in .tab_box_content_ul li{float:left;width: 387px; height: 300px; margin-left:40px;}
+	.tab_in .tab_box_content_ul li img{cursor: pointer;width:360px; height:240px}
+	.tab_in .tab_box_content_ul .last{margin-left:40px;}
+	.tab_in .tab_box_content_ul li .title{display:block;width: 356px;margin-top:10px;min-height:26px;padding:0px;text-align:center;font-family:微软雅黑;font-size:18px;color:#000;}
+	.tab_in .tab_box_content_ul li p{width: 356px;font-size:14px;color:gray;text-align:center;}
+</style>
+<script>
+$(function() {
+	$('#checkin1').click(function() {
+		layer.open({
+		    type: 2,
+		    title: '每天签到有惊喜！',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '600px'],
+		    content: '/page/checkin-detail.html' //iframe的url
+		}); 
+	});
+});
+$(function() {
+	$('#checkin2').click(function() {
+		layer.open({
+		    type: 2,
+		    title: '签到七天乐！',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '600px'],
+		    content: '/page/checkin-detail2.html' //iframe的url
+		}); 
+	});
+});
+$(function() {
+	$('#checkin3').click(function() {
+		layer.open({
+		    type: 2,
+		    title: '新注册用户首次充值大礼包！',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '600px'],
+		    content: '/page/checkin-detail3.html' //iframe的url
+		}); 
+	});
+});
+$(function() {
+	$('#checkin4').click(function() {
+		layer.open({
+		    type: 2,
+		    title: '红包大放送！',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '545px'],
+		    content: '/page/checkin-detail4.html' //iframe的url
+		    
+		}); 
+	});
+});
+$(function() {
+	$('#checkin5').click(function() {
+		layer.open({
+		    type: 2,
+		    title: '投注天梯大礼包！',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '600px'],
+		    content: '/page/checkin-detail5.html' //iframe的url
+		}); 
+	});
+});
+$(function() {
+	$('#checkin6').click(function() {
+		layer.open({
+		    type: 2,
+		    title: '英雄回归，大礼包！',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '600px'],
+		    content: '/page/checkin-detail6.html' //iframe的url
+		}); 
+	});
+});
+
+</script>
+</head>
+
+
+
+<body style="">
+<ui:include src="/bar.xhtml" />
+
+			<!--content-->
+			<div id="content" style="background: url(../images/public/bg_img.jpg) no-repeat top center;">
+				<div class="content" style="width:1100px; margin: 0 auto; overflow: hidden;    padding-left: 220px;">
+					
+					<div class="tab_in" >
+						<ul class="tab_box_content_ul">
+							<li class="last" id="checkin1">
+								<img style="cursor: default;" src="../images/discount/discout1.jpg"/>
+								<h3 class="title">《每天签到有惊喜》</h3>
+							</li>
+							<li class="last" id="checkin2">
+								<img style="cursor: default;" src="../images/discount/discout2.jpg"/>
+								<h3 class="title">《签到七天乐》</h3>
+							</li>
+							<li class="last" id="checkin3">
+								<img style="cursor: default;" src="../images/discount/discout3.jpg"/>
+								<h3 class="title">《新注册用户首次充值大礼包》</h3>
+							</li>
+							<li class="last" id="checkin4">
+								<img style="cursor: default;" src="../images/discount/discout4.jpg"/>
+								<h3 class="title">《红包大放送》</h3>
+							</li>
+							<li class="last" id="checkin5">
+								<img style="cursor: default;" src="../images/discount/discout5.jpg"/>
+								<h3 class="title">《投注天梯大礼包》</h3>
+							</li>
+							<li class="last" id="checkin6">
+								<img style="cursor: default;" src="../images/discount/discout6.jpg"/>
+								<h3 class="title">《英雄回归，大礼包》</h3>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+	
+<ui:include src="/foot.xhtml" />
+</body>
+<SCRIPT type="text/javascript">
+function showMsgOpt(fun){
+// 	 var fun = 'showMsgOpt'+index;
+	 fun();
+}
+</SCRIPT>
+</html>

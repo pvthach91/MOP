@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>充值</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/PersonBank.css" />
+<link href="/css/bankRecharge.css" type="text/css" rel="stylesheet"/>
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/zDrag.js"></script>
+<script type="text/javascript" src="../js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){ 
+		if(data){
+			alert(data);
+		}
+	}
+	
+	function setTab(name,cursel,n){ 
+		for(i=1;i&lt;=n;i++){ 
+			var menu=document.getElementById(name+i); 
+			var con=document.getElementById("con_"+name+"_"+i); 
+			menu.className=i==cursel?"cur":"nocur"; 
+			con.style.display=i==cursel?"block":"none"; 
+		} 
+	}
+
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功，等待客服审核。");
+			window.location.reload();
+		}
+	}
+	/////////////////////////////////////////HCPay
+	function submitHCPayForm(){
+		var x = document.getElementById("hcamt").value;
+		if(isNaN(x)){
+			alert("失败：金额输入有误，请重新输入。");
+			return false;
+		}
+		if(x&lt;100){
+			alert("失败：最小充值金额为100元。");
+			return false;
+		}
+		if(x&gt;50000){
+			alert("失败：最大充值金额为 50000 元。");
+			return false;
+		}
+		return true;
+	}
+	function hbankchange(tvalue,sid){
+		for(i=1;i&lt;8;i++){
+			document.getElementById("htd"+i).style.backgroundColor ="#f0f6fe";
+			document.getElementById("hcr"+i).checked=false;
+		}
+		document.getElementById("htd"+sid).style.backgroundColor ="#e3d5b0";
+		document.getElementById("hcr"+sid).checked=true;
+		document.getElementById("hcbankcode").value=tvalue;
+	}
+	/////////////////////////////////////////Yeepay
+	function submitYeepayForm(){
+		var x = document.getElementById("amt").value;
+		if(isNaN(x)){
+			alert("失败：金额输入有误，请重新输入。");
+			return false;
+		}
+		if(x&lt;100){
+			alert("失败：最小充值金额为100元。");
+			return false;
+		}
+		if(x&gt;50000){
+			alert("失败：最大充值金额为 50000 元。");
+			return false;
+		}
+		return true;
+	}
+	function ybankchange(tvalue,sid){
+		for(i=1;i&lt;8;i++){
+			document.getElementById("ytd"+i).style.backgroundColor ="#f0f6fe";
+			document.getElementById("yer"+i).checked=false;
+		}
+		document.getElementById("ytd"+sid).style.backgroundColor ="#e3d5b0";
+		document.getElementById("yer"+sid).checked=true;
+		document.getElementById("yebankcode").value=tvalue;
+	}
+	////////////////////////////////////////
+	function bankchange(tvalue,sid){
+		for(i=1;i&lt;8;i++){
+			document.getElementById("td"+i).style.backgroundColor ="#f0f6fe";
+			document.getElementById("er"+i).checked=false;
+		}
+		document.getElementById("td"+sid).style.backgroundColor ="#e3d5b0";
+		document.getElementById("er"+sid).checked=true;
+		document.getElementById("ebankcode").value=tvalue;
+	}
+	function submitIPSForm(){
+		var x = document.getElementById("eamount").value;
+		if(isNaN(x)){
+			alert("失败：金额输入有误，请重新输入。");
+			return false;
+		}
+		if(x&lt;100){
+			alert("失败：最小充值金额为100元。");
+			return false;
+		}
+		if(x&gt;50000){
+			alert("失败：最大充值金额为 50000 元。");
+			return false;
+		}
+		return true;
+	}
+</script>
+<style>
+	.table{
+
+	}
+
+	.table tr:hover{
+		background: transparent;
+	}
+
+	.table-border td,
+	.table-border th{
+		border-color: #ddd;
+	}
+
+	.table-noborder td,
+	.table-noborder th{
+		border: none;
+	}
+/* 	.cur{ */
+/* 		background: #FFFFFF; color: #DD2F2D; */
+		
+/* 	} */
+	.sub-tabs a{display: inline-block; width: 120px; color:#C21716;border-top-left-radius: 5px; border-top-right-radius: 5px;}
+	.sub-tabs a.cur{ background: #C21716; color: #FFFFFF;}
+	.sub-tabs a.nocur{color: #dd2f2d;}
+	
+</style>
+</head>
+<body>
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<div id="content">
+			<div class="content">
+					<h2>充值</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li class="on">
+								<a href="/page/DWDeposit.shtml" class="data-url">充值</a>
+							</li>
+							<li>
+								<a href="/page/DWDepositRecord.shtml" class="data-url">充值记录</a>
+							</li>
+							<li>
+								<a href="/page/DWWithDrawl.shtml" class="data-url">提现</a>
+							</li>
+							<li>
+								<a href="/page/DWWithDrawlRecord.shtml" class="data-url">提现记录</a>
+							</li>
+						</ul>
+					</div>
+				<h:inputHidden value="#{DepositBean.ipsparam}" id="ipsparam"/>
+				<div class="tab_in">
+				<div class="massage deposit-page">
+					<h5 class="sub-tabs">
+						<a4j:repeat value="#{DepositBean.bankcardPaylist}" var="list" rowKeyVar="keys">
+							<span><a href="javascript:void(0);" id="one#{keys+1}" onclick="setTab('one',#{keys+1},#{DepositBean.nums})" class="#{keys==0?'cur':'nocur'}">#{list.iconlable}</a></span>
+						</a4j:repeat>
+<!-- 						<span class="on">在线充值【荐】</span> -->
+<!-- 						<span>在线充值</span> -->
+<!-- 						<span>在线支付</span> -->
+<!-- 						<span>工商银行</span> -->
+					</h5>
+					<a4j:repeat value="#{DepositBean.bankcardPaylist}" var="list" rowKeyVar="keys" id="spg">
+						<div id="con_one_#{keys+1}" class="clearfix pay-list #{keys==0?'hover':''}" style="display:#{keys==0?'block':'none'}">
+							<a4j:repeat value="#{list.adminBankCardItemList}" var="listc" rowKeyVar="keys" id="spg">
+								<form action="#{listc.address}" name="ipsform" target="_brank" id="ipsform" method="post">
+									<input type="hidden" value="#{LoginBean.user.loginname}" id="lname" name="lname"></input>
+									<table cellspacing="0" cellpadding="0" class="table table-info text-center recharge">
+										<tr>
+											<td colspan="2" align="center" class="pay-detail">
+												<span>#{listc.remark}</span>
+												<br/>
+												<span>平均到账时间：<font style="font-size:14px"><b>#{listc.bankcard}</b></font>。</span>
+												<br/>
+												<input type="submit" value="#{listc.tab}" class="submitBtn" name="submit"/>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</a4j:repeat>
+						</div>
+					</a4j:repeat>
+				</div>
+			</div>
+			</div>
+		</div> 
+		<a4j:region>
+			<a4j:jsFunction name="sendToSave" action="#{DepositBean.IPSDeposit2}" data="#{DepositBean.msg}" oncomplete="openIps(data)">
+				<f:param name="amount"/>
+				<f:param name="bankcode"/>
+			</a4j:jsFunction>
+		</a4j:region>
+	</f:view>
+</body>
+<script type="text/javascript">
+	var jQuery = window.parent.jQuery;
+	var ifrm = jQuery('html');
+  	
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		$body = jQuery(ifrm).find('body'),
+    		height = 0;	
+    	
+    	setInterval(function(){
+    		height=jQuery(ifrm).find('body').outerHeight();
+    		if(height != heightHistory){
+    			if(!parentWindow.autoHeight){
+    				return;
+    			}
+    			parentWindow.autoHeight(height);		
+    		}
+    		heightHistory = height;
+    	},1000);
+    	
+    	jQuery(ifrm).find('.data-url').click(function(){
+    		jQuery("#mainiframe").attr('src', jQuery(this).attr('data-url'));
+    	});
+
+    	jQuery(ifrm).find('.bank-list-area li').click(function(){
+  			var bankSave = $body.find('#current-bank-id');
+  				value = jQuery(this).attr('data-id');
+  			$body.find('.bank-list-area li').removeClass('current');
+  			jQuery(this).addClass('current');
+  			bankSave.val(value);
+	  	});
+
+    	$body.find('#bank-info-sub').click(function(){
+    		var form = jQuery(this).parents('form').eq(0),
+    			amount = Number($body.find('#transfer-amount').val()),
+    			formData = '';
+    		//金额限制
+    		if(amount){
+				formData = form.serialize();
+				jQuery.ajax({
+					url: '#',
+					type: 'POST',
+					data: formData,
+					dateType: 'json',
+					success: function(){
+						form[0].reset();
+					}
+				});
+    		}else{
+    			alert('请正确填写金额');
+    			return;
+    		}
+    	});
+
+    	$body.find('#transfer-amount').bind('input propertychange', function(){
+    		jQuery(this).val(jQuery(this).val().replace(/\D/g, ''));
+    	});
+    });
+
+
+</script>
+</html>

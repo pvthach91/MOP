@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>团队余额</title>
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("操作成功!");
+			//closewin();
+			//ownerDialog.test();
+			parent.reloads();
+		}
+	}
+	
+	function closewin() {
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="GameRecordForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<table style="height: 125px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td>
+					
+					<table style="padding-left:15px;width:100%;line-height:40px">
+						<tr>
+							<td width="120px" align="right">会员登录名：</td>
+							<td>
+								<font color="blue"><b>#{AgentUserSearchBean.optuser.loginname}</b></font>
+							</td>
+						</tr>
+						<tr>
+							<td width="50px" align="right">昵称：</td>
+							<td>
+								#{AgentUserSearchBean.optuser.nickname}
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right">当前团队余额：</td>
+							<td>
+								<font color="#8e2020"><b>#{AgentUserSearchBean.tbalance} RMB</b></font>
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" height="35px" align="center">
+								<a4j:commandButton value="关 闭" onclick="closewin();return false;" styleClass="submitBtn"/>
+							</td>
+						</tr>
+					</table>
+					
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<title>密码修改</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />  
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />  
+<meta name="format-detection" content="email=no" />
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/bootstrap-theme.css" />
+<link rel="stylesheet" href="/css/model/user.css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+<script language="javascript" type="text/javascript" src="/js/fastclick.js"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="/js/google_analy.js"></script>
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：修改完成，请牢记您的新密码。");
+			return;
+		}
+	}
+	function nickFinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：昵称修改完成。");
+			return;
+		}
+	}
+</script>
+<style type="text/css">
+	.go-back {
+		text-indent: -9em;
+		vertical-align: middle;
+		content: '';
+		height: 15px;
+		width: 15px;
+		display: block;
+		border: 5px solid #fff;
+		border-right-width: 0;
+		border-bottom-width: 0;
+		transform: rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		position: absolute;
+		top: 13px;
+		left: 15px;
+		}
+</style>
+</head>
+<body>
+	<f:view>
+		<h:form id="WLReportForm">
+			<div class="fillet" style="margin-top:-5px;">
+			
+			<nav class="col-xs-12 title"><a id="J-goback" href="/page/UserCenter.shtml" class="go-back">返回</a>我的消息</nav>
+			<div class="fillet container contents" style="padding-top:60px;">
+				<div class="RoundedCorner j panel panel-default">
+						<div class="air" style="display:none">&nbsp;</div>
+						<div id="Game_Time">
+							<a4j:region>
+								<h:panelGroup id="pgData3">
+								<table cellpadding="8" class="table table-bordered">
+									<tr style="height:30px;">
+										<div class="btn-group col-xs-12" style="padding-left:15px;padding-right:15px">
+										<a href="/page/PersonPwd.shtml"><label class="btn btn-default col-xs-4">修改登录密码</label></a>
+										<a href="/page/PersonAmountPwd.shtml"><label class="btn btn-default col-xs-4">修改资金密码</label></a>
+										<a href="/page/PersonChangeName.shtml"><label class="btn btn-default active col-xs-4">修改昵称</label></a>
+									</div>
+									</tr>
+									<tr>
+										<td>昵称：</td>
+									</tr>
+									<tr>
+										<td>
+											<h:inputText value="#{LoginBean.user.nickname}" size="20" maxlength="20" styleClass="input_Game" style="font-size:14px">
+											</h:inputText>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											<a4j:commandButton value="修 改" status="normalStatus"
+											styleClass="btn btn-warning" action="#{LoginBean.changeNickName}" data="#{LoginBean.msg}" oncomplete="nickFinish(data)" />
+										</td>
+									</tr>
+								</table>
+								</h:panelGroup>
+							</a4j:region>
+						</div>
+					</div>
+					<b class="rbottom"><b class="r4"></b><b class="r3"></b><b
+						class="r2"></b><b class="r1"></b></b>
+				</div>
+			</div>
+			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+			  <ul class="nav navbar-nav col-xs-12">
+		        <li class="active col-xs-4"><a href="/page/UserCenter.shtml"><i class="fa fa-user mr5"></i>用户中心</a></li>
+		        <li class="col-xs-4"><a href="/main.shtml"><i class="fa fa-gamepad mr5"></i>购彩大厅</a></li>
+		        <li class="col-xs-4"><a href="/page/AgentManage.shtml"><i class="fa fa-volume-up mr5"></i>代理管理</a></li>
+		      </ul>
+			</nav>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

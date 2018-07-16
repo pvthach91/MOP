@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>奖金明细</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function showTable(sid,urls){
+		for(i=1;i&lt;=5;i++){
+			//document.getElementById("table"+i).style.display="none";
+			document.getElementById('einput'+i).className="but_Gray";
+		}
+		//document.getElementById("table"+sid).style.display="block";
+		document.getElementById('einput'+sid).className="but_Red";
+		document.getElementById('helpiframe').src=urls;
+	}
+</script>
+</head>
+<body>
+			<div class="fillet">
+				<div class="RoundedCorner j">
+					<b class="rtop"><b class="r1"></b><b class="r2"></b><b
+						class="r3"></b><b class="r4"></b></b>
+					<div class="fillet">
+						<div id="Funds_funds">
+							<div class="but_Star_Signs"></div>
+							<span style="font-size:13px;"><b>帮助中心：</b></span>
+							<input type="button" value="时时彩" id="einput1" onclick="showTable(1,'/helpCenter/page/ssc.htm');return false;" class="but_Red"/>
+							<rich:spacer width="5"/>
+							<input type="button" value="时时乐" id="einput2" onclick="showTable(2,'/helpCenter/page/ssl.htm');return false;" class="but_Gray"/>
+							<rich:spacer width="5"/>
+							<input type="button" value="11选5" id="einput3" onclick="showTable(3,'/helpCenter/page/115.htm');return false;" class="but_Gray"/>
+							<rich:spacer width="5"/>
+							<input type="button" value="福彩3D" id="einput4" onclick="showTable(4,'/helpCenter/page/fc3D.htm');return false;" class="but_Gray"/>
+							<rich:spacer width="5"/>
+							<input type="button" value="排列三五" id="einput5" onclick="showTable(5,'/helpCenter/page/pl35.htm');return false;" class="but_Gray"/>
+						</div>
+						<div class="air">&nbsp;</div>
+						<div>
+							<div>
+							 <div id="table1">
+							 	<iframe id="helpiframe" src="/helpCenter/page/ssc.htm" frameborder="0" scrolling="auto" height="530px" style="width:758px;"></iframe>
+                             </div>
+                             <div id="table2" style="display:none;">
+                             </div>
+                             <div id="table3" style="display:none;">
+                             </div>
+                             <div id="table4" style="display:none;">
+                             </div>
+                             <div id="table5" style="display:none;">
+                             </div>
+                           </div>
+						</div>
+					</div>
+					<b class="rbottom"><b class="r4"></b><b class="r3"></b><b
+						class="r2"></b><b class="r1"></b></b>
+				</div>
+			</div>
+</body>
+</html>

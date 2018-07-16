@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>合一彩票 - 注册</title>
+	<link type="text/css" rel="stylesheet" href="/css/base.css" />
+	<link type="text/css" rel="stylesheet" href="css/login.css" />
+	<link rel="stylesheet" type="text/css" href="/css/register.css" />
+	<link rel="stylesheet" href="layer/skin/layer.css" media="screen" type="text/css" />
+	<link rel="stylesheet" href="css/hrphone.css" media="screen" type="text/css" />
+	<script type="text/javascript">
+		function loginRes(data){
+			if (data) {
+				alert(data);
+			}else{
+				alert("成功：恭喜您注册成功。");
+				window.top.location.href="/login.shtml";
+			}
+		}
+		document.onkeydown = keyDown;
+		function keyDown(event){
+			if(event.keyCode == 13){
+				reg();
+			}
+		}
+		function reg(){
+			var s = window.location.href;
+			var fs = s.split("id=");
+			var xnf = "";
+			if(fs.length==2){
+				xnf = fs[1];
+			}
+			var u = document.getElementById("lname").value;
+			var p1 = document.getElementById("epwd").value;
+			var p2 = document.getElementById("checkpwd").value;
+			var nick = document.getElementById("enickname").value;
+			var e = document.getElementById("email").value;
+			regopt(u,p1,p2,nick,e,xnf);
+		}
+	</script>
+</head>
+<body>
+<f:view>
+	<h:form id="regForm">
+	<!--login开始-->
+    <div id="register">
+    	<div class="login_in">
+            <div class="contact">
+						<a class="qq" href="#"></a>
+						<a class="cs" href="http://speed.heyi66.com/speed.html"  target="_blank"></a>
+						<a class="phone" href="javascript:void(0);" onclick="openChat()"/>
+			</div>
+            <div class="logo register_logo">
+            	<a href="#"></a>
+            </div>
+            <div class="login_con register_con">
+            	<div class="number">
+                	<span></span>
+                    <input type="text" class="number_in" id="lname" placeholder="不少于5个字符"/>
+                </div>
+            	<div class="password">
+                	<span></span>
+                    <input type="password"  class="password_in" id="epwd" placeholder="不能与资金密码相同"/>
+                </div>
+            	<div class="password fund_password">
+                	<span></span>
+                    <input type="password"  class="password_in" id="checkpwd" placeholder="不能与登陆密码相同"/>
+                </div>
+            	<div class="password nickname">
+                	<span></span>
+                    <input type="text"  class="password_in" id="enickname" placeholder="官方认证"/>
+                </div>
+            	<div class="password e-mail">
+                	<span></span>
+                    <input type="text"  class="password_in" id="email" placeholder="用于找回您的密码"/>
+                </div>
+            	<div class="button register_btn">
+                	<input type="button" class="btn" onclick="reg();" value="" />
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<!--login结束-->
+
+	<a4j:region>
+		<a4j:jsFunction name="regopt" data="#{RegBean.msg}" oncomplete="loginRes(data);" action="#{RegBean.regNew}">
+			<f:param name="lname"/>
+			<f:param name="pwd"/>
+			<f:param name="checkpwd"/>
+			<f:param name="nickname"/>
+			<f:param name="email"/>
+			<f:param name="id"/>
+		</a4j:jsFunction>
+	</a4j:region>
+</h:form>
+</f:view>
+<ui:include src="/foot.xhtml" />
+</body>
+<div id="down-panel" style="display: none">
+	<div class="close"></div>
+	<div class="title">客户端下载</div>
+	<table>
+		<tr class="title">
+			<td style="font-size:30px;">iPhone版</td>
+			<td style="font-size:30px;">Android版</td>
+			<td style="font-size:30px;">Wap版</td>
+			<td class="pc" style="font-size:30px;">网址下载器</td>
+		</tr>
+		<tr>
+			<td style="font-size:14px; color:#282b2d !important;">扫描二维码下载</td>
+			<td style="font-size:14px; color:#282b2d !important;">扫描二维码下载</td>
+			<td style="font-size:14px; color:#282b2d !important;">扫描二维码下载</td>
+			<td style="font-size:14px; color:#282b2d !important;">点击开始下载</td>
+		</tr>
+		<tr class="erwei">
+			<td><img src="/images/ios-down.png" /></td>
+			<td><img src="/images/android-down.png" /></td>
+			<td><img src="/images/web-down.png" /></td>
+			<td style="vertical-align: top;"><img src="/images/pc-down.png" />
+				<div class="pc-down-btn" onclick="getPcUrl()">网址下载器</div></td>
+		</tr>
+	</table>
+</div>
+	<script type="text/javascript" src="/js/jquery-1.9.1.js" charset="utf-8"></script>
+	<script>jQuery.noConflict();</script>
+<script src="/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/getUrl.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	jQuery(function ($) {
+	$(function(){
+			
+		$('.qq').click(function(){
+			var layerBoxId = layer.open({
+			    type: 1,
+			    title: false,
+			    closeBtn: 0,
+			    closeBtn: false,
+			    area: '755px',
+				content: $('#down-panel')
+			});
+			
+			$("#down-panel .close").click(function(){
+				layer.close(layerBoxId);
+			});
+		});
+		
+		
+		});
+	});
+	</script>
+</html>

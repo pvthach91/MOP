@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>充值</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />  
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no" />  
+<meta name="format-detection" content="email=no" /> 
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/bootstrap-theme.css" />
+<link rel="stylesheet" href="/css/model/user.css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+<script language="javascript" type="text/javascript" src="/js/fastclick.js"></script>
+<script language="javascript" type="text/javascript" src="/js/jquery-1.8.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/usercommon.js"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/qrcode.js"></script>
+<script type="text/javascript" src="/js/CommonPerson.js"></script>
+<script language="javascript" src="/js/google_analy.js"></script>
+<style type="text/css">
+	.go-back {
+		text-indent: -9em;
+		vertical-align: middle;
+		content: '';
+		height: 15px;
+		width: 15px;
+		display: block;
+		border: 5px solid #fff;
+		border-right-width: 0;
+		border-bottom-width: 0;
+		transform: rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		position: absolute;
+		top: 13px;
+		left: 15px;
+	}
+	.table_left{
+		text-align:right;
+		width:50%;
+		padding:10px;
+		font-size: 18px;
+		color:#64afa4;
+	}
+	/*--弹窗样式--*/
+        #gray{width:100%;height:100%;background:rgba(0,0,0,0.3);position:fixed;top:0px;display:none;z-index:99;}
+        .popup{
+            width:80%;
+            height:auto;
+            background-color:#fff;
+            position:absolute;
+            z-index:100;
+            border:1px solid #ebeaea;
+            left:400px;
+            top:96px;
+            display:none;
+        }
+        .popup .top_nav{
+            width:100%;
+            height:46px;
+            background-image: url(/images/popup_top_bj.jpg);
+            border-bottom:1px solid #ebeaea;
+            position:relative;
+            cursor:move;
+        }
+        .popup .top_nav a.guanbi { background:url(/images/popup_guanbi.png) repeat 0px 0px; width:35px; height: 35px; display: block; position:absolute;top:8px;right:10px;cursor:pointer;}
+        .popup .top_nav a.guanbi span { display: none;}
+        .popup .top_nav a.guanbi:hover { background: url(/images/popup_guanbi.png) repeat 0px -35px; }
+        .popup .min{width:100%;height:auto;padding:10px;}
+        .msg { font-family: "Microsoft YaHei", serif; font-size: 10px }
+        
+        /* loading 遮罩 */
+        /*全屏背景遮罩层*/
+.loadingPage_bg1 {
+	background:none repeat scroll 0 0 #000;
+	height:100%;
+	left:0; /*:rgba(0,0,0,0.5);*/
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	width:100%;
+	position:absolute;
+	top:0px;
+	z-index:110;
+}
+
+#loadingPage {
+	display:block;
+	font-weight:bold;
+	font-size:12px;
+	color:#595959;
+	height:36px;
+	left:50%;
+	line-height:15px;
+	margin-left:-74px;
+	margin-top:-14px;
+	padding:10px 10px 10px 50px;
+	position:absolute;
+	text-align:left;
+	top:50%;
+	width:148px;
+	z-index:111;
+	background:url(/images/loading.gif) no-repeat scroll 12px center #FFFFFF;
+	border:2px solid #86A5AD;
+}
+</style>
+<script type="text/javascript">
+	//微信支付
+	$(function(){
+	    $('#send1').click(function(){
+	    	if (checkSum(this)){	  
+		    	CommonPerson.Base.LoadingPic.FullScreenShow();
+	    		var lname=$("#lname").val();
+	    		var amt=$("#eamount").val();
+	    		window.location.href="http://dt.lylsjq.com.cn/kd-wechat?pid=kd-wechat&amp;accid=0&amp;lname="+lname+"&amp;eamount="+amt;
+	    	}
+	    });
+	    
+	    $('#send2').click(function(){
+	    	if (checkSum(this)){	  
+		    	CommonPerson.Base.LoadingPic.FullScreenShow();
+	    		var lname=$("#lname").val();
+	    		var amt=$("#eamount").val();
+	    		$.post("http://dt.zymye.cn/mzfwechat",{pid:"zf-wechat",accid:0,lname:lname,eamount:amt},function(data,status){
+	    			CommonPerson.Base.LoadingPic.FullScreenHide();
+	    			popupQRCode(data);
+	    		});
+	    	}		        
+	    });
+	    
+	  //点击关闭按钮
+	    $("a.guanbi").click(function(){
+	        $("#gray").hide();
+	        $("#popup").hide();//查找ID为popup的DIV hide()隐藏
+	    });
+	    //窗口水平居中
+	    $(window).resize(function(){
+	        tc_center();
+	    });
+	});
+	
+	 //更改充值方式
+    function changepay(sel){
+    	var selvalue=$(sel).val();
+    	if(selvalue==1){
+    		//$("#tr_bankcode").hide();
+    		$("#send1").show();
+    		$("#send2").hide();
+    	}else{
+    		//$("#tr_bankcode").show();
+    		$("#send1").hide();
+    		$("#send2").show();
+    	}
+    }
+	function checkSum(butt){
+		var buttId=$(butt).attr("id");
+		var sum=$("#eamount").val();
+		if (sum == null || sum == undefined || sum == '') {
+			alert('输入金额不能为空！');
+			return false;
+		}
+		if(buttId=="send1"){
+			if(sum &lt; 50 || sum &gt; 1000){	
+				alert('请输入大于50小于1000的金额');
+				return false;
+			}
+		}else{
+			if(sum &lt; 50 || sum &gt; 900){	
+				alert('请输入大于50小于900的金额');
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+    //窗口效果
+    function popupQRCode(qrcode){
+    	$("#gray").show();
+        $("#popup").show();//查找ID为popup的DIV show()显示#gray
+        tc_center(qrcode);
+    }
+   
+    function tc_center(qrcode){
+        var _top=($(window).height()-$(".popup").height())/2;
+        var _left=($(window).width()-$(".popup").width())/2;
+        if(qrcode!=null||qrcode!=""){
+            $("#qrcode").html("");
+            var oQRCode = new QRCode("qrcode", {
+                width : 200,
+                height : 200
+            });
+            oQRCode.clear();
+            oQRCode.makeCode(qrcode);
+            $("#scan2d").val(qrcode);
+        }
+        $(".popup").css({top:_top,left:_left});
+    }
+
+</script>
+</head>
+<body>
+	
+		
+			<div class="fillet" style="margin-top:-5px;">
+			
+			<nav class="col-xs-12 title" style="margin-bottom: 5px"><a id="J-goback" href="/page/UserCenter.shtml" class="go-back">返回</a>充值
+			<!-- <span style="float:right;font-size: 14px;font-family: '宋体';color:#CCFFFF" onclick="window.location.href='/page/DWDepositRecord.shtml'">充值记录</span> -->
+			</nav>
+			<div class="btn-group col-xs-12" style="padding-left:15px;padding-right:15px">
+						<a href="/page/Recharge.shtml"><label class="btn btn-default active col-xs-6">充值</label></a>
+						<a href="/page/DWDepositRecord.shtml"><label class="btn btn-default col-xs-6">充值记录</label></a>
+					</div>
+			<div class="fillet container contents" style="padding-top:100px;">
+				<div class="RoundedCorner j panel panel-default">
+					
+					
+						<table style="width: 98%; padding: 0px; margin: 0px;font-family:'微软雅黑';BORDER-BOTTOM: 1px dashed #666666;">
+							<tr>
+								<td class="table_left">充值方式:</td>
+								<td>
+									<select onchange="changepay(this);" style="border-radius:5px 5px 5px 5px ;height: 30px;width:100px;font-size: 16px">
+										<option value="1">微信充值1</option>
+										<option value="2">微信充值2</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="table_left">用户名:</td>
+								<td style="color:red;font-size:16px">#{LoginBean.user.loginname}</td>
+							</tr>
+							<tr id="tr_bankcode" style="display:none">
+								<td class="table_left">选择银行:</td>
+								<td>
+									<select name="ebankcode" id="ebankcode" style="border-radius:5px 5px 5px 5px ;height: 30px;width:100px;font-size: 14px">
+		                                <option value="ICBC">工商银行</option>
+		                                <option value="ABC">农业银行</option>
+		                                <option value="CCB">建设银行</option>
+		                                <option value="BCOM">交通银行</option>
+		                                <option value="BOC">中国银行</option>
+		                                <option value="CMB">招商银行</option>
+		                                <option value="CMBC">民生银行</option>
+		                                <option value="CEBB">光大银行</option>
+		                                <option value="CIB">兴业银行</option>
+		                                <option value="PSBC">中国邮政</option>
+		                                <option value="SPABANK">平安银行</option>
+		                                <option value="ECITIC">中信银行</option>
+		                                <option value="GDB">广东发展银行</option>
+		                                <option value="HXB">华夏银行</option>
+		                                <option value="SPDB">浦发银行</option>
+		                                <option value="BEA">东亚银行</option>
+		                             </select>
+								</td>
+							</tr>
+							<tr>
+								<td class="table_left">充值金额:</td>
+								<td>
+									<input id="eamount" name="eamount" type="text" value="0.00" style="border-radius:5px 5px 5px 5px ;font-size:18px;color:#000;font-weight:bolder;padding-left:10px;" size="7" onkeyup="value=value.replace(/[^0-9\.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9\.]/g,''))"/>
+								</td>
+							</tr>
+							<tr>
+								<td align="center" style="padding:10px" colspan="2">
+			            			<input type="button" id="send1" style="color:#fff;border-radius:5px 5px 5px 5px ;height: 30px;width:100px;background-color:#19a219;border: 0" value="立即充值"/>
+			            			<input type="button" id="send2" style="display:none;color:#fff;border-radius:5px 5px 5px 5px ;height: 30px;width:100px;background-color:#19a219;border: 0" value="立即充值"/>
+								</td>
+							</tr>
+						</table>
+						<div style="padding:10px;color:#000">
+							<center>温馨提示:</center>
+							1、微信充值1金额请控制在50~1000之间;<br/>
+							2、微信充值2金额控制在50~900之间;<br/>
+							3、 更多充值方式请登录电脑版;
+						</div>
+<!-- 			            <input type="hidden" id="ebankcode" name="ebankcode"  value="WALLET_TENCENT_QRCODE"/> -->
+
+			            <input type="hidden" value="#{LoginBean.user.loginname}" id="lname" name="lname"></input>
+			            
+					
+					
+						
+					</div>
+				</div>
+			</div>
+			<ui:include src="/defaultnav.xhtml" />
+	
+	<div id="gray"></div>
+    <div class="popup" id="popup">
+        <div class="top_nav" id='top_nav'>
+            <div align="center" style="padding-top: 10px;">
+                <i></i>
+                <span>打开手机微信，扫一扫支付</span>
+                <a class="guanbi"></a>
+            </div>
+        </div>
+
+        <div class="min">
+            <div style="width: 100%;height: 220px; text-align:center;margin: 0 auto;position:relative; ">
+                <div id="qrcode" style="width:200px;height:200px;margin:0 auto;overflow:hidden; text-align: center; border:1px solid #ddd;z-index:1;" ></div>              
+                <input type="hidden" id="scan2d" value="" style="width:300px;"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

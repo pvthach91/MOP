@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<script type="text/javascript" src="/js/jquery-1.9.1.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/getUrl.js"></script>
+<ui:composition>
+<div class="top-header" id="J-global-topheader">
+	<div class="container clearfix">
+		<div class="left">
+			<span class="menu-games">
+				<span class="main-text">
+					<i class="fa fa-bars"></i>
+					全部游戏
+				</span>
+				<div class="panel">
+					<div class="list-games">
+						<div class="row-title">时时彩</div>
+						<ul>
+							<li><a href="/main.shtml?url=/mmc.shtml">新生秒秒彩</a><span class="fa fa-thumbs-up"></span></li>
+							<li><a href="/main.shtml?url=/ssccs.shtml">新生分分彩</a><span class="fa fa-thumbs-up"></span></li>
+							<li><a href="/main.shtml?url=/sscbf.shtml">新生两分彩</a><span class="fa fa-thumbs-up"></span></li>
+							<li><a href="/main.shtml?url=/ssccq.shtml">重庆时时彩</a><span class="fa fa-thumbs-up"></span></li>
+							<li><a href="/main.shtml?url=/sscxj.shtml">新疆时时彩</a></li>
+							<li><a href="/main.shtml?url=/ssctj.shtml">天津时时彩</a></li>
+							
+							
+							
+						</ul>
+					</div>
+					<div class="list-games">
+						<div class="row-title">十一选五</div>
+						<ul>
+							<li><a href="/main.shtml?url=/cs115.shtml">新生11选5</a><span class="fa fa-thumbs-up"></span></li>
+							<li><a href="/main.shtml?url=/sd115.shtml">山东11选5</a></li>
+							<li><a href="/main.shtml?url=/jx115.shtml">江西11选5</a></li>
+							<li><a href="/main.shtml?url=/gd115.shtml">广东11选5</a></li>
+							
+						</ul>
+					</div>
+					<div class="list-games">
+						<div class="row-title">福/体彩</div>
+						<ul>
+							<li><a href="/main.shtml?url=/cs3d.shtml">新生3D</a><span class="fa fa-thumbs-up"></span></li>
+							<li><a href="/main.shtml?url=/fc3d.shtml">福彩3D</a></li>
+							<li><a href="/main.shtml?url=/pl35.shtml">体彩P3/5</a></li>
+						</ul>
+					</div>
+					<div class="list-games list-games-last">
+						<div class="row-title">休闲游戏</div>
+						<ul>
+							<li><a href="dice.shtml">快三【一区】</a><span class="fa fa-thumbs-up"></span><span class="status status-new">NEW</span></li>
+							<li><a href="dice2.shtml">快三【二区】</a><span class="fa fa-thumbs-up"></span><span class="status status-new">NEW</span></li>
+							<li><a href="dice3.shtml">快三【三区】</a><span class="fa fa-thumbs-up"></span><span class="status status-new">NEW</span></li>
+							<li><a href="javascript:alert('预计2015-09月正式上线,敬请期待.');">港式五张 (免费奖池)</a></li>
+							<li><a href="javascript:alert('预计2015-10月正式上线,敬请期待.');">炸金花 (2元奖池)</a></li>
+							<li><a href="javascript:alert('预计2015-10月正式上线,敬请期待.');">香港马会</a></li>
+						</ul>
+					</div>
+				</div>
+			</span>
+		</div>
+		<div class="right">
+			<span>
+				欢迎您，#{LoginBean.user.nickname}！ 
+			</span>
+			<span class="panel-money">
+				当前余额：
+					<span class="global-money-num">#{LoginBean.ubalance}</span> 
+				元
+			</span>
+			<span class="menu-user">
+				<span class="main-text">
+					<i class="fa fa-user"></i>
+					会员中心
+				</span>
+				<div class="panel">
+					<div class="list">
+						<ul>
+							<li><a href="/main.shtml?url=/page/PersonPwd.shtml">我的账户</a></li>
+							<li><a href="/main.shtml?url=/page/DWDeposit.shtml">银行充提</a></li>
+							<li><a href="/main.shtml?url=/page/BetRecord.shtml">游戏记录</a></li>
+							<li><a href="/main.shtml?url=/page/ReportZb.shtml">账变报表</a></li>
+							<li><a href="/main.shtml?url=/page/AgentReg.shtml">代理管理</a></li>
+							<li><a href="/main.shtml?url=/page/Index.shtml">系统公告</a></li>
+							<li class="last"><a href="/login.shtml"><span class="fa fa-sign-out"></span> 退出登录</a></li>
+						</ul>
+					</div>
+				</div>
+			</span>
+
+			<a class="btn btn-primary" href="/main.shtml?url=/page/DWDeposit.shtml">
+				充值
+			</a>
+			<a class="btn btn-primary" href="/main.shtml?url=/page/DWWithDrawl.shtml">
+				提款
+			</a>
+			
+			<a href="/new_help/new_help_kstb.html">
+				<i class="fa fa-question-circle"></i>
+				游戏帮助
+			</a>
+			
+			<a title="立即咨询在线客服，7*24小时为您排忧解难！" href="javascript:;" onclick="openChat()">
+				<i class="fa fa-phone"></i>
+				在线客服
+			</a>
+		</div>
+	</div>
+</div>
+</ui:composition>
+</html>

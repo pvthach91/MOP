@@ -1,0 +1,51 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BN:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BN_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BN" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="commons-beanutils-1.8.0.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-codec-1.3.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-collections-3.2.1.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-dbutils-1.3.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-digester-1.8.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-fileupload-1.2.2.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-httpclient-3.1.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-io-2.0.1.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-lang-2.5.jar" module-name="BN" />
+          <element id="library" level="module" name="commons-logging-1.1.1.jar" module-name="BN" />
+          <element id="library" level="module" name="darkX-3.3.3.Final.jar" module-name="BN" />
+          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="BN" />
+          <element id="library" level="module" name="ezmorph-1.0.6.jar" module-name="BN" />
+          <element id="library" level="module" name="flashcharXY.jar" module-name="BN" />
+          <element id="library" level="module" name="glassX-3.3.3.Final.jar" module-name="BN" />
+          <element id="library" level="module" name="item.jar" module-name="BN" />
+          <element id="library" level="module" name="jdom.jar" module-name="BN" />
+          <element id="library" level="module" name="jsf-api.jar" module-name="BN" />
+          <element id="library" level="module" name="jsf-facelets-1.1.15.B1.jar" module-name="BN" />
+          <element id="library" level="module" name="jsf-impl.jar" module-name="BN" />
+          <element id="library" level="module" name="json-lib-2.4-jdk15.jar" module-name="BN" />
+          <element id="library" level="module" name="jstl.jar" module-name="BN" />
+          <element id="library" level="module" name="kc-encrypt.jar" module-name="BN" />
+          <element id="library" level="module" name="laguna-3.3.3.Final.jar" module-name="BN" />
+          <element id="library" level="module" name="log4j-1.2.9.jar" module-name="BN" />
+          <element id="library" level="module" name="mail.jar" module-name="BN" />
+          <element id="library" level="module" name="ojdbc6.jar" module-name="BN" />
+          <element id="library" level="module" name="richfaces-api-3.3.3.Final.jar" module-name="BN" />
+          <element id="library" level="module" name="richfaces-impl-3.3.3.Final.jar" module-name="BN" />
+          <element id="library" level="module" name="richfaces-ui-3.3.3.Final.jar" module-name="BN" />
+          <element id="library" level="module" name="slf4j-api-1.5.2.jar" module-name="BN" />
+          <element id="library" level="module" name="slf4j-simple-1.5.2.jar" module-name="BN" />
+          <element id="library" level="module" name="ui.jar" module-name="BN" />
+          <element id="library" level="module" name="wsdl4j-1.6.2.jar" module-name="BN" />
+          <element id="library" level="module" name="xfire-all-1.2.6.jar" module-name="BN" />
+          <element id="library" level="module" name="XmlSchema-1.4.7.jar" module-name="BN" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="BN/web/Web" />
+    </root>
+  </artifact>
+</component>

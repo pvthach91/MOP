@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+	<title>登录</title>
+	<link href="/css/login.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		function over_text(obj)	{
+			document.getElementById(obj).style.border="1px solid #ffff00";
+		}
+	</script>
+</head>
+<body>
+<f:view>
+	<h:form id="loginForm">
+	<div id="divmain">
+	<div id="bg">
+		<div id="bg_login">
+			登&nbsp;录
+		</div>
+		<div id="bg_user">
+			<div class="usericon"></div>
+			<h:inputText class="bg_user" style="margin-left:30px;" value="#{LoginBean.user.loginname}"></h:inputText>
+		</div>
+		<div id="bg_password">
+			<div class="pwdicon"></div>
+			<h:inputSecret class="bg_user" value="#{LoginBean.user.loginname}"></h:inputSecret>
+		</div>
+		<div id="bg_but">
+			<h:commandButton action="INDEXMAIN" value="登 录" class="bg_but" style="font-size:14px;font-weight:bold;color:#333333;border:1px;border-radius:3px"></h:commandButton>
+		</div>
+		<div id="bg_help">
+			<a href="javascript:void(0)" charset="">忘记密码？</a>请点击
+		</div>
+		<div id="bg_bg_but_lcon">
+			<h:commandButton class="bg_but_lcon1" title="推荐下载【Chrome】浏览器"></h:commandButton>
+			<h:commandButton class="bg_but_lcon2" title="推荐下载【FireFox】浏览器"></h:commandButton>
+			<h:commandButton class="bg_but_lcon3" title="推荐下载【IE 8.0】浏览器"></h:commandButton>
+		</div>
+		<div id="bg_news">
+			2013&nbsp;华众娱乐&nbsp;All&nbsp;Rights&nbsp;Reserved.
+		</div>
+	</div>
+	</div>
+</h:form>
+</f:view>
+</body>
+</html>

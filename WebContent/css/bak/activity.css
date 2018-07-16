@@ -1,0 +1,96 @@
+
+.banner{
+	position: relative;
+	width: 100%;
+	height: 235px;
+	overflow: hidden;
+	background: transparent url(../images/discount-bg.jpg) no-repeat center 0;
+}
+
+
+.content{
+	padding-top: 20px;
+}
+
+	.content .nav-bg{
+		position: relative;
+		width: 100%;
+		height: 40px;
+	}
+
+		.content .activity-nav{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 480px;
+			height: 38px;
+			margin: 0 0 0 -240px;
+			line-height: 38px;
+			border: 1px solid #a0bd00;
+			border-radius: 30px;
+			z-index: 1;
+			background: #fff;
+			overflow: hidden;
+		}
+
+			.content .activity-nav li{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				width: 50%;
+				text-align: center;
+			}
+
+			.content .activity-nav li a{
+				color: #a0bd00;
+			}
+
+			.content .activity-nav li.current{
+				background: #a0bd00;
+			}
+
+			.content .activity-nav li.current a{
+				color: #fff;
+			}
+
+		.content .nav-bg .line{
+			position: absolute;
+			top: 20px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background: #c7c7c7;
+		}
+
+	.activity-list{
+
+	}
+
+		.activity-list .title{
+			height: 28px;
+			line-height: 28px;
+			color: #333;
+			background: #bcbcbc;
+		}
+
+			.activity-list .title .time{
+				width: 155px;
+				color: #fff;
+				background: #a0bd00; 
+			}
+
+		.activity-list .info{
+
+		}
+
+			.activity-list .info .thumb{
+				width: 702px;
+				height: 172px;
+				vertical-align: middle;
+			}
+
+			.activity-list .info .desc{
+				width: 480px;
+				line-height: 23px;
+				vertical-align: middle;
+			}

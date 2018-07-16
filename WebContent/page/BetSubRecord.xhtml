@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<title>查看投注记录</title>
+<link href="/css/base_before.css" rel="stylesheet" type="text/css" />
+<link href="/css/base.css" rel="stylesheet" type="text/css" />
+<link href="/css/BrianCss.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+td {
+text-align:center;
+
+}
+
+</style>
+
+<script type="text/javascript">
+	function saveFinish(data){
+		if(data=="success"){
+			alert("成功：撤单完成！");
+			closewin();
+		}else{
+			alert("失败：该投注记录超过了撤单时限，不能撤单。");
+		}
+	}
+	
+	function closewin() {
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+	}
+</script>
+<style>
+	.table tr:hover{
+		background: #f7f7f7;
+	}
+	.table .title{
+
+	}
+	.tdcolor{
+		background:#edc0bf;
+	}
+</style>
+</head>
+<body>
+	<f:view>
+		<h:form id="betRecordForm">
+			<table class="table table-border fs-14 bg-e8 color-333">
+				<tr>
+					<td class="tdcolor">会员名：</td>
+					<td>#{BetRecordBean.betinfo.loginname}</td>
+					<td class="tdcolor">状态：</td>
+					<td>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#2c8118" rendered="#{BetRecordBean.betinfo.status==0?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#302ab0" rendered="#{BetRecordBean.betinfo.status==1?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#302ab0" rendered="#{BetRecordBean.betinfo.status==2?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#ae7237" rendered="#{BetRecordBean.betinfo.status==3?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#dc1515" rendered="#{BetRecordBean.betinfo.status==4?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#ba789d" rendered="#{BetRecordBean.betinfo.status==5?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#ba789d" rendered="#{BetRecordBean.betinfo.status==6?'true':'false'}"/>
+						<h:outputText value="#{BetRecordBean.betinfo.statusname}" style="color:#ba789d" rendered="#{BetRecordBean.betinfo.status==7?'true':'false'}"/>
+					</td>
+				</tr>
+				<tr>
+					<td  class="tdcolor">注单编号：</td>
+					<td>#{BetRecordBean.betinfo.id}</td>
+					<td class="tdcolor">投注时间：</td>
+					<td>#{BetRecordBean.betinfo.inserttime}</td>
+				</tr>
+				<tr>
+					<td class="tdcolor">游戏名称：</td>
+					<td>#{BetRecordBean.betinfo.lotteryname}</td>
+					<td class="tdcolor">动态奖金返点：</td>
+					<td>
+						<h:outputText converter="PercentConverter" value="#{BetRecordBean.betinfo.point}" rendered="#{BetRecordBean.betinfo.point==1?'false':'true'}"/>
+					</td>
+					
+				</tr>
+				<tr>
+					<td class="tdcolor">期号：</td>
+					<td>#{BetRecordBean.betinfo.issue}</td>
+					<td class="tdcolor">注单数：</td>
+					<td>#{BetRecordBean.betinfo.betnumber}注</td>
+				</tr>
+				<tr>
+					<td class="tdcolor">内容摘要：</td>
+					<td colspan="3">
+						<h:outputText rendered="#{BetRecordBean.betinfo.lotteryid&gt;50?'true':'false'}" value="#{BetRecordBean.betinfo.betcontent.substring(0,4)}"/>
+						<h:outputText rendered="#{BetRecordBean.betinfo.lotteryid&gt;50?'false':'true'}" value="#{BetRecordBean.betinfo.betcontent}"/>
+						<h:outputText style="color:blue;" converter="ConverterBetPosition" value="#{BetRecordBean.betinfo.position}"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdcolor">选号明细：</td>
+					<td colspan="3">
+						<textarea class="ui-text w-90 fs-14" rows="4" readonly="readonly">
+							<h:outputText value="#{BetRecordBean.betinfo.codes}" converter="ConverterBetContent" />
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdcolor">模式：</td>
+					<td>
+						<h:outputText value="【元】模式" rendered="#{BetRecordBean.betinfo.betmodle==1?'true':'false'}"/>
+						<h:outputText value="【角】模式" rendered="#{BetRecordBean.betinfo.betmodle==2?'true':'false'}"/>
+						<h:outputText value="【分】模式" rendered="#{BetRecordBean.betinfo.betmodle==3?'true':'false'}"/>
+						<h:outputText value="【厘】模式" rendered="#{BetRecordBean.betinfo.betmodle==4?'true':'false'}"/>
+					</td>
+					<td class="tdcolor">倍数：</td>
+					<td>#{BetRecordBean.betinfo.multiple}倍</td>
+				</tr>
+				<tr>
+					<td class="tdcolor">下注金额：</td>
+					<td>￥ #{BetRecordBean.betinfo.amount}</td>
+					<td class="tdcolor">开奖号码：</td>
+					<td>#{BetRecordBean.betinfo.winnumber}</td>
+				</tr>
+				<tr>
+					<td class="tdcolor">中奖注数：</td>
+					<td>#{BetRecordBean.betinfo.wintimes}注</td>
+					<td class="tdcolor">奖金：</td>
+					<td>￥#{BetRecordBean.betinfo.bonus}</td>
+					
+				</tr>
+				<tr>
+					<td class="tdcolor">是否追号：</td>
+					<td>
+						<h:outputText value="#{BetRecordBean.betinfo.source==1?'是':'否'}"/>
+					</td>
+					<td class="tdcolor">追号编号：</td>
+					<td>#{BetRecordBean.betinfo.traceid}</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="center" height="40px" class="text-center" style="background:#888">
+						<h:panelGroup rendered="#{BetRecordBean.curloginname==BetRecordBean.betinfo.loginname?'true':'false'}">
+							<a4j:commandButton onclick="if(!confirm('请确认：是否确定进行撤单?'))return false;" status="normalStatus" value="撤  单" data="#{GameRecordBean.msg}" oncomplete="saveFinish(data);" styleClass="submitBtn" action="#{GameRecordBean.cancelBet}" rendered="#{BetRecordBean.betinfo.status==0?'true':'false'}">
+								<f:param value="#{BetRecordBean.betinfo.id}" name="id"/>
+							</a4j:commandButton>
+						</h:panelGroup>
+						<input type="button" value="关  闭" onclick="closewin();" class="submitBtn"/>
+					</td>
+				</tr>
+			</table>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

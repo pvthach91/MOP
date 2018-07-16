@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>我的信息</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<link href="/css/BrianCss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	
+	function saveFinish(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：发送消息完成。");
+		}
+	}
+	function viewOpt(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			TopImageSign = '/images/setting.png';
+			var diag = new Dialog();
+			diag.Width = 500;
+			diag.Height = 300;
+			diag.Title = "查看信息";
+			diag.URL = "/page/PersonMsgSub.shtml";
+			diag.show();
+			parent.LoadMsg();
+			return;
+		}
+	}
+	function viewOpt2(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			TopImageSign = '/images/setting.png';
+			var diag = new Dialog();
+			diag.Width = 500;
+			diag.Height = 300;
+			diag.Title = "查看信息";
+			diag.URL = "/page/PersonMsgSub2.shtml";
+			diag.show();
+			return;
+		}
+	}
+	function userSel(){
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 450;
+		diag.Height = 450;
+		diag.Title = "选择信息接收人";
+		diag.URL = "/page/PersonMsgUserSel.shtml";
+		diag.show();
+	}
+	function userInput(ln){
+		document.getElementById("msgForm:recname").value=ln;
+	}
+	function delOpt(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：删除消息完成");
+		}
+	}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="msgForm">
+			<div class="fillet">
+				<div class="RoundedCorner j">
+					<b class="rtop"><b class="r1"></b><b class="r2"></b><b
+						class="r3"></b><b class="r4"></b></b>
+					<div class="fillet">
+						<div id="Funds_funds">
+							<div class="but_Star_Signs"></div>
+							<span style="font-size:13px;"><b>功能导航：</b></span>
+							<a4j:commandButton value="我的消息" onclick="return false;" styleClass="but_Red"/><rich:spacer width="5"/>
+							<a4j:commandButton value="我的银行卡" ajaxSingle="true" action="BINDINGBANK" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="资料修改" ajaxSingle="true" action="PWDCHANGE" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="奖金详情" ajaxSingle="true" action="PRICELIST" styleClass="but_Gray"/>
+						</div>
+						<div class="air">&nbsp;</div>
+						
+								<h:panelGroup id="recPage">
+									<table cellpadding="0" cellspacing="0" border="0" class="tableclass" style="margin-top:3px;width:100%">
+										<tr class="fillet_table_tr">
+											<td style="height: 37px;width: 70px;" align="center"><b>序号</b></td>
+											<td align="center"><b>发件人</b></td>
+											<td align="center"><b>标题</b></td>
+											<td align="center"><b>发送时间</b></td>
+											<td align="center"><b>查看次数</b></td>
+											<td align="center"><b>查看 | 删除</b></td>
+										</tr>
+										<a4j:repeat value="#{PersonMessageBean.reslist}" var="list"
+											 rowKeyVar="keys">
+											<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+												<td style="height: 34px;" align="center">#{keys+1}</td>
+												<td align="center">
+													#{list.sender}
+												</td>
+												<td style="padding-left:5px;">#{list.title}</td>
+												<td align="center">#{list.sendtime}</td>
+												<td align="center">
+													<h:outputText value="新信息" style="color:red" rendered="#{list.viewtimes==0?'true':'false'}"/>
+													<h:outputText value="#{list.viewtimes}" rendered="#{list.viewtimes==0?'false':'true'}"/>
+												</td>
+												<td align="center">
+													<a4j:region>
+													<a4j:commandButton title="查看" status="normalStatus" styleClass="but_Game_Operating" 
+													action="#{PersonMessageBean.view}" data="#{PersonMessageBean.msg}" oncomplete="viewOpt(data)" reRender="recPage">
+														<f:param value="#{list.id}" name="id"/>
+													</a4j:commandButton>
+													<rich:spacer width="12px"/>
+													<a4j:commandButton title="删除" onclick="if(!confirm('确认：是否删除该消息？'))return false;" status="normalStatus" styleClass="delete_icon_cancel2"
+													action="#{PersonMessageBean.del}" data="#{PersonMessageBean.msg}" oncomplete="delOpt(data)" reRender="recPage">
+														<f:param value="#{list.id}" name="id"/>
+													</a4j:commandButton>
+													</a4j:region>
+												</td>
+											</tr>
+										</a4j:repeat>
+									</table>
+									<div style="background:#DDDDDD;height:35px;line-height:30px;width:100%;">
+										<a4j:region>
+												<table width="340px" border="0" align="right">
+													<tr>
+														<td>
+															<h:graphicImage url="/images/page/page-first-disabled.gif" rendered="#{PersonMessageBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+															<a4j:commandButton status="normalStatus" action="#{PersonMessageBean.firstPage}" data="#{PersonMessageBean.msg}" reRender="recPage" oncomplete="pagingFinish(data);"
+															image="/images/page/page-first.gif" style="border:0" title="第一页" rendered="#{PersonMessageBean.curpage=='1'?'false':'true'}"/>
+														</td>
+														<td>
+															<h:graphicImage url="/images/page/page-prev-disabled.gif" rendered="#{PersonMessageBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+															<a4j:commandButton status="normalStatus" action="#{PersonMessageBean.proPage}" data="#{PersonMessageBean.msg}" reRender="recPage"
+															image="/images/page/page-prev.gif" rendered="#{PersonMessageBean.curpage=='1'?'false':'true'}" oncomplete="pagingFinish(data);" style="border:0" title="上一页" />
+														</td>
+														<td align="center">
+															<h:outputText value="Page"/>
+															<input value="#{PersonMessageBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+															<h:outputText value="of #{PersonMessageBean.totalpage}"/>
+														</td> 
+														<td>
+															<h:graphicImage url="/images/page/page-next-disabled.gif" rendered="#{PersonMessageBean.curpage&gt;=PersonMessageBean.totalpage?'true':'false'}"></h:graphicImage>
+															<a4j:commandButton status="normalStatus" image="/images/page/page-next.gif" data="#{PersonMessageBean.msg}" reRender="recPage" oncomplete="pagingFinish(data);" 
+															style="border:0" title="下一页" action="#{PersonMessageBean.nextPage}" rendered="#{PersonMessageBean.curpage&gt;=PersonMessageBean.totalpage?'false':'true'}"/>
+														</td>
+														<td>
+															<h:graphicImage url="/images/page/page-last-disabled.gif" rendered="#{PersonMessageBean.curpage==PersonMessageBean.totalpage?'true':'false'}"></h:graphicImage>
+															<a4j:commandButton status="normalStatus" image="/images/page/page-last.gif" data="#{PersonMessageBean.msg}" reRender="recPage" oncomplete="pagingFinish(data);" 
+															style="border:0" title="最后一页" action="#{PersonMessageBean.lastPage}" rendered="#{PersonMessageBean.curpage==PersonMessageBean.totalpage?'false':'true'}"/>
+														</td>
+														<td>
+															总记录数：#{PersonMessageBean.totalrecord}条
+														</td>
+													</tr>
+												</table>
+										</a4j:region>
+									</div>
+								</h:panelGroup>
+							
+					</div>
+					<b class="rbottom"><b class="r4"></b><b class="r3"></b><b
+						class="r2"></b><b class="r1"></b></b>
+				</div>
+			</div>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

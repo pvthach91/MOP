@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+.message_table{ color:#988740; font-size:14px; margin-top:25px; }
+.message_table td{ text-align:center;}
+.message_table a:link,.message_table a:visited{ color:#988740;}
+.message_div02 .page_in{ margin-right:0px;}

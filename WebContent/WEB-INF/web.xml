@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<filter>
+		<display-name>RichFaces Filter</display-name>
+		<filter-name>richfaces</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+		<init-param>
+			<param-name>createTempFiles</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxRequestSize</param-name>
+			<param-value>100000</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>richfaces</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	<!-- 页面发送Ajax请求接口 -->
+	<!-- PCclient -->
+	<servlet>
+		<servlet-name>PCclientService</servlet-name>
+		<servlet-class>com.brian.service.PCclientService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PCclientService</servlet-name>
+		<url-pattern>/PCclientService.aspx</url-pattern>
+	</servlet-mapping>
+
+	<!-- LiveChat -->
+	<servlet>
+		<servlet-name>LiveChatService</servlet-name>
+		<servlet-class>com.brian.service.LiveChatService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LiveChatService</servlet-name>
+		<url-pattern>/LiveChatService.aspx</url-pattern>
+	</servlet-mapping>
+
+	<!-- out reg -->
+	<servlet>
+		<servlet-name>RegService</servlet-name>
+		<servlet-class>com.brian.service.RegService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegService</servlet-name>
+		<url-pattern>/UserService.aspx</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LotteryService</servlet-name>
+		<servlet-class>com.brian.service.LotteryService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LotteryService</servlet-name>
+		<url-pattern>/LotteryService.aspx</url-pattern>
+	</servlet-mapping>
+			<!-- 一分快骰游戏发送Ajax请求接口 -->
+	<servlet>
+		<servlet-name>K31fGameService</servlet-name>
+		<servlet-class>com.brian.service.K31fGameService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>K31fGameService</servlet-name>
+		<url-pattern>/K31fGameService.aspx</url-pattern>
+	</servlet-mapping>
+		<!-- 六合彩游戏发送Ajax请求接口 -->
+	<servlet>
+		<servlet-name>MarkSixService</servlet-name>
+		<servlet-class>com.brian.service.MarkSixService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MarkSixService</servlet-name>
+		<url-pattern>/MarkSixService.aspx</url-pattern>
+	</servlet-mapping>
+	<!-- GameInterface -->
+	<servlet>
+		<servlet-name>GameService</servlet-name>
+		<servlet-class>com.brian.game.GameService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GameService</servlet-name>
+		<url-pattern>/GameService.aspx</url-pattern>
+	</servlet-mapping>
+	<!-- 后台服务发送信息接口【简单字符串】 -->
+	<servlet>
+		<servlet-name>BackService</servlet-name>
+		<servlet-class>com.brian.service.BackService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackService</servlet-name>
+		<url-pattern>/BackService.aspx</url-pattern>
+	</servlet-mapping>
+	<!-- 后台推送数据包【对象包】 
+	<servlet>
+		<servlet-name>BackPushService</servlet-name>
+		<servlet-class>com.brian.service.BackPushService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BackPushService</servlet-name>
+		<url-pattern>/BackPushService.aspx</url-pattern>
+	</servlet-mapping>
+	 -->
+	<!-- 初始化 -->
+	<servlet>
+		<servlet-name>ServletXY</servlet-name>
+		<servlet-class>com.brian.service.InitServlet</servlet-class>
+		<init-param>
+			<param-name>log4j</param-name>
+			<param-value>WEB-INF\log4j.properties</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logFile</param-name>
+			<param-value>WEB-INF\log.txt</param-value>
+		</init-param>
+		<init-param>
+			<param-name>CNAME</param-name>
+			<param-value>合一彩票</param-value>
+		</init-param>
+		<init-param>
+			<param-name>WS</param-name>
+			<!-- <param-value>http://192.168.3.188:80/UI.cfm</param-value> -->
+			<param-value>http://116.93.111.248:50953/UI.cfm</param-value>
+			<!-- <param-value>http://192.168.3.132:8081/UI.cfm</param-value>  -->
+			<!-- <param-value>http://192.168.3.49:8080/UI.cfm</param-value> -->
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- 过滤器 
+	com.diven.game.common.FilterXY
+	com.diven.game.common.FilterVIP
+	-->
+	<filter>
+		<filter-name>FilterXY</filter-name>
+		<filter-class>
+			com.brian.service.FilterXY
+		</filter-class>
+		<init-param>
+			<param-name>Type</param-name>
+			<param-value>NORMAL</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>FilterXY</filter-name>
+		<url-pattern>*.shtml</url-pattern>
+	</filter-mapping>
+		<filter-mapping>
+		<filter-name>FilterXY</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	
+	<!-- 服务管理
+	<servlet>
+	    <servlet-name>WellBetServlet</servlet-name>
+	    <servlet-class>com.diven.game.common.WellBetService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>WellBetServlet</servlet-name>
+	    <url-pattern>/mg.wellbet</url-pattern>
+	</servlet-mapping>
+	   -->
+	<!-- 文件上传 -->
+	<servlet>
+		<servlet-name>FileUpload</servlet-name>
+		<servlet-class>com.brian.service.UploadFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FileUpload</servlet-name>
+		<url-pattern>/FileUpload.shtml</url-pattern>
+	</servlet-mapping>
+	<!-- 验证码
+	<servlet>
+		<servlet-name>AuthCode</servlet-name>
+		<servlet-class>com.diven.game.common.AuthCode</servlet-class>
+		<init-param>
+			<param-name>width</param-name>
+			<param-value>100</param-value>
+		</init-param>
+		<init-param>
+			<param-name>height</param-name>
+			<param-value>30</param-value>
+		</init-param>
+		<init-param>
+			<param-name>codeCount</param-name>
+			<param-value>5</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthCode</servlet-name>
+		<url-pattern>*.jxf</url-pattern>
+	</servlet-mapping>
+	 -->
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml,/WEB-INF/faces-config-bean.xml,/WEB-INF/faces-navigation.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<!-- Session 超时 -->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	<!-- 错误页面 -->
+	<error-page>
+		<error-code>400</error-code>
+		<location>/login.shtml?code=400</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/login.shtml?code=403</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/login.shtml?code=404</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/login.shtml?code=405</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/login.shtml?code=500</location>
+	</error-page>
+	<error-page>
+		<error-code>501</error-code>
+		<location>/login.shtml?code=501</location>
+	</error-page>
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/login.shtml?code=505</location>
+	</error-page>
+	<error-page>
+	     <exception-type>javax.faces.application.ViewExpiredException</exception-type> 
+	     <location>/login.shtml?code=viewrestored</location> 
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/login.shtml?code=exp</location>
+	</error-page>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.shtml</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

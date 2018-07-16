@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>游戏报表</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}
+	}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="WLReportForm">
+			<div class="fillet">
+				<div class="RoundedCorner j">
+					<b class="rtop"><b class="r1"></b><b class="r2"></b><b
+						class="r3"></b><b class="r4"></b></b>
+					<div class="fillet">
+						<div id="Funds_funds">
+							<div class="but_Star_Signs"></div>
+							<span style="font-size:13px;"><b>功能导航：</b></span>
+							<a4j:commandButton value="账变记录" action="REPORTZB" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="盈亏报表" onclick="return false;" styleClass="but_Red"/>
+						</div>
+						<div class="air">&nbsp;</div>
+						<div id="Game_Time" style="height:60px;">
+							<a4j:region>
+								<div class="fillet_Time">
+									日期：
+									<h:inputText size="20" value="#{ReportWLBean.stime}"
+										id="startTime" styleClass="Wdate" style="padding-left:4px;"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd'})" />
+									<rich:spacer width="10"></rich:spacer>
+									游戏种类：
+									<h:selectOneMenu styleClass="select_Game"
+										value="#{ReportWLBean.lotteryid}">
+										<f:selectItems value="#{ReportWLBean.lotterylist}"></f:selectItems>
+									</h:selectOneMenu>
+									<rich:spacer width="10"></rich:spacer>
+									<a4j:commandButton value="查询" status="normalStatus"
+										styleClass="bntclass" action="#{ReportWLBean.search}"
+										reRender="pgData" data="#{ReportWLBean.msg}"
+										oncomplete="searchfinish(data)" />
+								</div>
+							</a4j:region>
+						</div>
+						<h:panelGroup id="pgData">
+							<table cellpadding="0" cellspacing="0" border="0" class="tableclass" style="margin-top:3px;">
+								<tr class="fillet_table_tr">
+									<td style="height: 37px;" align="center"><b>序号</b></td>
+									<td align="center"><b>游戏种类</b></td>
+									<td align="center"><b>期号</b></td>
+									<td align="center"><b>开奖号码</b></td>
+									<td align="center"><b>投注单数</b></td>
+									<td align="center"><b>投注金额</b></td>
+									<td align="center"><b>中奖注数</b></td>
+									<td align="center"><b>中奖金额</b></td>
+									<td align="center"><b>净盈利</b></td>
+								</tr>
+								<a4j:repeat value="#{ReportWLBean.reslist}" var="list"
+									id="dblist" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+										<td style="height: 34px;" align="center">#{keys+1}</td>
+										<td align="center">
+											#{list.lotteryname}
+										</td>
+										<td align="center">#{list.issue}</td>
+										<td align="center">#{list.winnumber}</td>
+										<td align="center">#{list.betnumber}</td>
+										<td align="center">#{list.amount}</td>
+										<td align="center">#{list.wintimes}</td>
+										<td align="center">#{list.bonus}</td>
+										<td align="center">
+											<font color="#{list.point>=0?'blue':'red'}">#{list.point}</font>
+										</td>
+									</tr>
+								</a4j:repeat>
+							</table>
+						</h:panelGroup>
+					</div>
+					<b class="rbottom"><b class="r4"></b><b class="r3"></b><b
+						class="r2"></b><b class="r1"></b></b>
+				</div>
+			</div>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

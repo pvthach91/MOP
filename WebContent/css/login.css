@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,div,h1,h2,h3,h4,h5,span,a,dl,dt,dd,ul,ol,li,input,p,select,option,img{padding:0px; margin:0px; border:0px;list-style:none;}
+body{font-family:"微软雅黑"; font-size:14px; color:#7A7A7A; }
+a:link,a:visited{color:#707070;text-decoration:none;}
+a:hover{ color:#ff8306; text-decoration:none;}
+/*--------------------登录页面开始------------------*/
+#login{ background:no-repeat center top; height:1080px;}
+.login_in{ width:1100px; overflow:hidden; margin:0 auto;}
+.contact{ width:1100px; padding-top:20px; overflow:hidden;}
+.contact a{ display:block; width:91px; height:30px; float:right; margin-right:19px; background:url(../images/login/btn03.png) no-repeat -2px 0px;}
+.contact .qq{ background-position: -216px 0px; background: url(../images/hdk-bar.png) no-repeat; width: 115px;}
+.contact .qq:hover{background: url(../images/hdk-bar-hv.png) no-repeat;}
+.contact .cs{ background-position: -109px 0px;}
+.logo{ width:430px; height:250px; margin:0 auto; margin-top:95px;}
+.logo a{ display:block; width:430px; height:250px; margin:0 auto;}
+.login_con{ width:490px; height:220px ; background:url(../images/login/login_bg.png) no-repeat center top; margin:0 auto; padding-top:8px; }
+.login_con div{ height:50px; width:490px; line-height:40px;}
+.login_con span{ display:block; width:82px; height:50px; float:left;}
+.login_con .number_in{ float:left; line-height:40px; background:none; color:#fff; width:285px; height:33px;font-size:16px; padding-left:8px; margin-top:4px; font-family:微软雅黑;    border-radius: 5px;}
+.login_con .password_in{ float:left; line-height:40px; background:none; color:#fff; width:285px; height:33px;font-size:16px; padding-left:8px; margin-top:4px;    border-radius: 5px;}
+.login_con .password a{ display:block; float:left; width:100px; height:40px;font-size:16px;}
+.login_con .btn{ display:block; width:300px; height:40px; margin:0 auto; background:url(../images/login/btn_bg01.png) no-repeat; margin-left:78px; }
+.login_con .btn:hover{ background-image:url(../images/login/btn_bg02.png);}
+.login_footer{ overflow:hidden; text-align:center; color:#fff;}
+.login_footer ul{ overflow:hidden; margin:0 auto; width:215px;}
+.login_footer li{ float:left; width:35px; height:35px; margin-right:25px;}
+.login_footer li a{ display:block; width:35px; height:35px; background:url(../images/login/ico01.png) no-repeat 2px -2px;}
+.login_footer .IE a{ background-position:-58px -2px;}
+.login_footer .Firefox a{ background-position:-120px -2px;}
+.login_footer p{ line-height:38px;}
+/*--------------------登录页面结束------------------*/
+
+/*
+
+#login {
+    background-image: url(/images/promo/bg-holiday-login.jpg)!important;
+    background-size: 100%!important;
+}
+.logo {
+    height: 180px!important;
+    background: url(/images/promo/logo-hy-login.png) no-repeat!important;
+}
+.login_footer p {
+    color: #333;
+}*/

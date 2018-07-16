@@ -1,0 +1,39 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<script type="text/javascript" src="/js/jquery-1.9.1.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/getUrl.js"></script>
+	<ui:composition>
+	<div class="side-bar">
+			<ul class="menu-nav pt10 pb10">
+				<li class="">
+					<a class="my-acc data-url" data-url="/page/PersonMsg.shtml" href="#">我的账户</a>
+				</li>
+				<li>
+					<a class="game-history data-url" data-url="/page/BetRecord.shtml" href="#">游戏记录</a>
+				</li>
+				<li>
+					<a class="report-amount data-url" data-url="/page/ReportZb.shtml" href="#">统计报表</a>
+				</li>
+				<li>
+					<a class="proxy-admin data-url" data-url="/page/AgentReg.shtml" href="#">代理管理</a>
+				</li>
+				<li>
+					<a class="system-notice data-url" data-url="/page/Index.shtml" href="#">系统公告</a>
+				</li>
+				<li>
+					<a class="phone" href="javascript:void(0);" onclick="openChat()">投诉咨询</a>
+				</li>
+			</ul>
+			<div class="nav-button">
+				<a href="#" data-url="/page/DWDeposit.shtml" class="recharge inline data-url">
+					充值
+				</a><a href="#" data-url="/page/DWWithDrawl.shtml" class="withdrawals inline data-url">
+					提现
+				</a>
+			</div>
+		</div>
+	</ui:composition>
+</html>

@@ -1,0 +1,68 @@
+#down-panel{
+  border-width: 1px;
+  border-color: rgb(32, 56, 84);
+  border-style: solid;
+  border-radius: 8px;
+  background-color: rgb(235, 235, 235);
+  width: 889;
+  height: 439px;	
+}
+#down-panel .title{
+    font-family: "Microsoft YaHei";
+    color: rgb(248, 89, 89);
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+#down-panel table{
+	margin:55px auto 0 auto;
+	width:640px;
+	font-size:14px
+}
+#down-panel .close{
+	position: absolute;
+    right: 15px;
+    top: 15px;
+	width:40px;
+	cursor: pointer;
+	height:40px;
+	background:url(/images/down-close.png) no-repeat;
+}
+#down-panel td{
+   width:160px;
+   text-align: center;
+}
+#down-panel .title td{
+	color:#f94b42;
+}
+#down-panel .pc{
+	color:#008dff !important;
+}
+.erwei td{
+	padding:25px;
+}
+.pc-down-btn{
+	font-size: 14px;
+	 border-radius: 5px;
+	 background-color: rgb(0, 141, 255);
+	 width: 126px;
+	 color:white;
+	 margin-top:20px;
+	 text-align: center;
+	 line-height:36px;
+	 height: 36px;
+}
+.pc-down-btn:hover{
+	 background-color: #219cff;
+	 cursor: pointer;
+}
+.layui-layer{
+	background:transparent !important;
+}	
+
+
+/*
+.logo a {
+    background: url(/images/promo/logo-hy-login.png) no-repeat!important;
+}*/

@@ -1,0 +1,58 @@
+@charset "utf-8";
+body{font-family:微软雅黑,宋体,黑体; margin:0px; padding:0px; text-align:center;}
+#center{MARGIN-RIGHT:auto; MARGIN-LEFT:auto;}
+div#divbg{position:fixed; top:0; left:0; bottom:0; right:0; z-index:-1;} 
+div#divbg > img{height:100%; width:100%; border:0;}
+a{color:#666666; text-decoration:none; cursor:hand;}
+div {display: inline-block;*display:inline;*zoom:1;}
+.topdiv{TEXT-ALIGN: center;margin:0 auto;height:38px;width:100%;background:#abb1b9;line-height:38px;}
+.loginmain{width:1082px;text-align:center;}
+
+.top_logo{height: 45px; width:264px; background:url(/images/icon.png) no-repeat 0px -544px; cursor:hand;}
+.t_user_text{height: 30px; width:136px; background:url(/images/icon.png) no-repeat -358px -544px;}
+.t_pwd_text{height: 30px; width:134px; background:url(/images/icon.png) no-repeat -494px -544px;}
+.b_loginbnt{height: 28px; width:82px; background:url(/images/icon.png) no-repeat -327px -506px;border:0px;cursor:pointer;color:#996633;}
+.b_loginbnt:hover{background:url(/images/icon.png) no-repeat -493px -506px;color:#42788e;}
+
+.b_loginbnt_forgot{height: 28px; width:80px; background:url(/images/icon.png) no-repeat -411px -506px;border:0px;cursor:pointer;color:#555555;}
+.b_loginbnt_forgot:hover{background:url(/images/icon.png) no-repeat -577px -506px;border:0px;cursor:pointer;color:#515f6a;}
+
+.c_onlineLive{width:80px;height:30px;background: url(/images/icon.png) no-repeat 0px -503px;}
+.c_onlineLive:hover{width:80px;height:30px;background: url(/images/icon.png) no-repeat -82px -503px;}
+.c_onlineQQ{width:80px;height:30px;background: url(/images/icon.png) no-repeat -164px -503px;}
+.c_onlineQQ:hover {width:80px;height:30px;background: url(/images/icon.png) no-repeat -246px -503px;}
+
+.s_mainsplit{height:55px; width:2px; background:url(/images/icon.png) no-repeat -582px -450px;}
+.top_menu_sel{color:#ffd800;margin-top:18px;margin-right:10px;line-height:35px;width:88px; height:35px;background: url(/images/icon.png) no-repeat -267px -546px;float:right;cursor:pointer;}
+.top_menu_float{margin-top:18px;margin-right:10px;float:right;line-height:35px;height:35px;width:88px;cursor:pointer;color:#fbf8dd;}
+.top_menu_float:hover{background: url(/images/icon.png) no-repeat -267px -546px;}
+.top_menu_split{float:right;width:2px; height:37px;background: url(/images/icon.png) no-repeat -549px -465px;margin-top:18px;}
+.top_menu_split2{float:right;width:2px; height:37px;background: url(/images/icon.png) no-repeat -564px -465px;margin-top:18px;margin-right:8px;}
+
+.whritediv{height:625px;width:820px;background:#EEEEEE;vertical-align:middle;margin:0 auto;TEXT-ALIGN:left;}
+.contentdiv {height:600px;width:800px;background: url(/images/Login.png) no-repeat;border:2px; margin:5px 10px; position: absolute;}
+.username_div{padding:15px 0px 0px 287px;vertical-align:middlez;height:37px;line-height:37px;v-align:middle;}
+
+
+#bg_login{color:#999999;padding:214px 0px 0px 383px;}
+.bg_user{color:#000000;width:225px;border-radius:4px;background:#ffffff;border:#999999 solid 1px;padding:0px -20px 0px 20px;height:35px;line-height:35px}
+.username_input{border:0px;margin-top:7px;margin-left:30px;width:180px;height:20px;font-size:18px;padding-left:10px;}
+.username_input_reg{border:0px;width:110px;font-size:16px;padding-left:5px;}
+
+#tbfooter a{color:#888888}
+#tbfooter a:hover{color:#ffffff;}
+
+#bg_password{padding:5px 0px 0px 287px;}
+#bg_but{padding:18px 0px 0px 296px;border:1px;border-radius:3px}
+#bg_but2{padding:8px 0px 0px 296px;border:1px;border-radius:3px}
+.bg_but{height:34px;width:207px;background: url(/images/Login1.png) no-repeat -3px -40px;border:1px;color:#333333;cursor:pointer;font-size:14px;font-weight:bold;color:#333333;}
+.bg_but:hover{height:34px;width:207px;background: url(/images/Login1.png) no-repeat -3px -77px;}
+#bg_help{padding:32px 0px 0px 352px ;color:#666666;font-size:12px;}
+#bg_bg_but_lcon{padding:89px 339px 0px 120px;float:right;}
+
+.bg_but_lcon1{height:35px;width:35px;background: url(/images/Login1.png) no-repeat -0px -2px;border:0px;cursor:pointer;margin-right:10px;}
+.bg_but_lcon2{height:35px;width:35px;background: url(/images/Login1.png) no-repeat -48px -2px;border:0px;cursor:pointer;margin-right:10px;}
+.bg_but_lcon3{height:35px;width:35px;background: url(/images/Login1.png) no-repeat -93px -2px;border:0px;cursor:pointer;}
+#bg_news{padding:15px 302px 0px 0px;color:#cccccc;font-size:12px;float:right;}
+.usericon{height:18px;width:19px;background: url(/images/Login1.png) no-repeat -156px -2px;position: absolute;margin-top:8px;margin-left:8px;}
+.pwdicon{height:19px;width:16px;background: url(/images/Login1.png) no-repeat -136px -2px;position: absolute;margin-top:8px;margin-left:10px;}

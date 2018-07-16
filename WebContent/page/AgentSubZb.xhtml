@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>下级帐变</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+function viewOpt(wid){
+	_SCROLLINGJXF = "yes";
+	var diag = new Dialog();
+	diag.Width = 600;
+	diag.Height = 405;
+	diag.Title = "帐变记录追查";
+	diag.URL = "/page/BetSubRecord.shtml?id="+wid;
+	diag.show();
+}
+function userInput(ln){
+	document.getElementById("GameRecordForm:recname").value=ln;
+}
+function searchfinish(data){
+	if(data){
+		alert(data);
+	}
+}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="AgentForm">
+		<div id="Game_Time" style="height:95px;">
+							<a4j:region>
+								<div class="fillet_Time">
+								账变类型：
+									<h:selectOneMenu styleClass="select_Game"
+										value="#{AgentZbBean.type}">
+										<f:selectItems value="#{AgentZbBean.typelist}"></f:selectItems>
+									</h:selectOneMenu>
+									时间范围：
+									<h:inputText size="22" value="#{AgentZbBean.starttime}"
+										id="startTime" styleClass="Wdate" style="padding-left:4px;"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){$dp.$('AgentForm:endTime').focus();}})" />
+
+									<rich:spacer width="5"></rich:spacer>
+									至
+									<rich:spacer width="5"></rich:spacer>
+									<h:inputText size="22" value="#{AgentZbBean.endtime}"
+										style="padding-left:4px;" id="endTime" styleClass="Wdate"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'AgentForm:startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+									<br/><br/>
+									
+									编号：
+									<h:inputText value="#{AgentZbBean.wid}"
+										styleClass="input_Game" style="width:110px;"></h:inputText>
+									帐变编号：
+									<h:inputText value="#{AgentZbBean.id}" styleClass="input_Game" style="width:110px;"></h:inputText>
+									
+									<rich:spacer width="30"></rich:spacer>
+									<a4j:commandButton value="查询" status="normalStatus"
+										styleClass="submitBtn" action="#{AgentZbBean.btnSearch}"
+										reRender="pgData" data="#{AgentZbBean.msg}"
+										oncomplete="searchfinish(data)" />
+								</div>
+							</a4j:region>
+						</div>
+						<br/>
+						<h:panelGroup id="pgData">
+							<table cellpadding="0" cellspacing="0" border="0"
+								class="tableclass" style="margin-top:-10px;">
+								<tr class="fillet_table_tr">
+									<td style="height: 37px;" align="center"><b>帐变编号</b></td>
+									<td align="center"><b>会员</b></td>
+									<td align="center"><b>时间</b></td>
+									<td align="center"><b>类型</b></td>
+									<td align="center"><b>收入</b></td>
+									<td align="center"><b>支出</b></td>
+									<td align="center"><b>之前余额</b></td>
+									<td align="center"><b>之后余额</b></td>
+									<td align="center"><b>查看</b></td>
+								</tr>
+								<a4j:repeat value="#{AgentZbBean.reslist}" var="list"
+									id="dblist" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+										<td style="height: 32px;" align="center">#{list.id}</td>
+										<td align="center">#{list.loginname}</td>
+										<td align="center">#{list.inserttime.substring(5,16)}</td>
+										<td align="center">#{list.opttypename}</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText style="color:#275717" converter="DoubleConverter" value="#{list.income}" rendered="#{list.income!=0?'true':'false'}"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText style="color:#c91810" converter="DoubleConverter" value="#{list.pay}" rendered="#{list.pay!=0?'true':'false'}"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.beforebalance}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.afterbalance}" converter="DoubleConverter"/>
+										</td>
+										<td align="center">
+											<h:panelGroup rendered="#{list.wid.substring(0,1)=='B'?'true':'false'}">
+												<input type="button" onclick="viewOpt('#{list.wid}');" class="but_Game_Operating" />
+											</h:panelGroup>
+										</td>
+									</tr>
+								</a4j:repeat>
+							</table>
+						
+						<div style="background:#DDDDDD;height:35px;line-height:30px;width:100%;">
+							<a4j:region>
+								<h:panelGroup>
+									<span style="padding-left:20px;">
+										总收入：<font color="#c91810"><b> <h:outputText value="#{AgentZbBean.income}" converter="DoubleConverter"/></b></font> RMB，总支出：<font color="#c91810">
+										<b><h:outputText value="#{AgentZbBean.pay}" converter="DoubleConverter"/></b></font> RMB
+									</span>
+									<table width="340px" border="0" align="right" style="padding-right:20px;">
+										<tr>
+											<td>
+												<h:graphicImage url="/images/page/page-first-disabled.gif" rendered="#{AgentZbBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" action="#{AgentZbBean.firstPage}" data="#{AgentZbBean.msg}" reRender="pgData" oncomplete="pagingFinish(data);"
+												image="/images/page/page-first.gif" style="border:0" title="第一页" rendered="#{AgentZbBean.curpage=='1'?'false':'true'}"/>
+											</td>
+											<td>
+												<h:graphicImage url="/images/page/page-prev-disabled.gif" rendered="#{AgentZbBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" action="#{AgentZbBean.proPage}" data="#{AgentZbBean.msg}" reRender="pgData"
+												image="/images/page/page-prev.gif" rendered="#{AgentZbBean.curpage=='1'?'false':'true'}" oncomplete="pagingFinish(data);" style="border:0" title="上一页" />
+											</td>
+											<td align="center">
+												<h:outputText value="Page"/>
+												<input value="#{AgentZbBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+												<h:outputText value="/ #{AgentZbBean.totalpage}"/>
+											</td> 
+											<td>
+												<h:graphicImage url="/images/page/page-next-disabled.gif" rendered="#{AgentZbBean.curpage&gt;=AgentZbBean.totalpage?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" image="/images/page/page-next.gif" data="#{AgentZbBean.msg}" reRender="pgData" oncomplete="pagingFinish(data);" 
+												style="border:0" title="下一页" action="#{AgentZbBean.nextPage}" rendered="#{AgentZbBean.curpage&gt;=AgentZbBean.totalpage?'false':'true'}"/>
+											</td>
+											<td>
+												<h:graphicImage url="/images/page/page-last-disabled.gif" rendered="#{AgentZbBean.curpage==AgentZbBean.totalpage?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" image="/images/page/page-last.gif" data="#{AgentZbBean.msg}" reRender="pgData" oncomplete="pagingFinish(data);" 
+												style="border:0" title="最后一页" action="#{AgentZbBean.lastPage}" rendered="#{AgentZbBean.curpage==AgentZbBean.totalpage?'false':'true'}"/>
+											</td>
+											<td>
+												总记录数：#{AgentZbBean.totalrecord}条
+											</td>
+											<td width="10">
+											</td>
+										</tr>
+									</table>
+								</h:panelGroup>
+							</a4j:region>
+						</div>
+						</h:panelGroup>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

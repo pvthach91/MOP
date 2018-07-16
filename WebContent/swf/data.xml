@@ -1,0 +1,12 @@
+﻿<chart palette='7' caption='34期【超速分分彩】开奖号码分布图' xAxisName='号码分布' yAxisName='出现次数' showValues='1' decimals='0' formatNumberScale='0' useRoundEdges='1'>
+	<set label='【0】' value='124' />
+	<set label='【1】' value='533' />
+	<set label='【2】' value='971' />
+	<set label='【3】' value='694' />
+	<set label='【4】' value='261' />
+	<set label='【5】' value='261' />
+	<set label='【6】' value='563' />
+	<set label='【7】' value='89' />
+	<set label='【8】' value='378' />
+	<set label='【9】' value='583' />
+</chart>

@@ -1,0 +1,742 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>充值</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<link href="/css/tab.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}
+	}
+	
+	function setTab(name,cursel,n){ 
+		for(i=1;i&lt;=n;i++){ 
+			var menu=document.getElementById(name+i); 
+			var con=document.getElementById("con_"+name+"_"+i); 
+			menu.className=i==cursel?"hover":""; 
+			con.style.display=i==cursel?"block":"none"; 
+		} 
+	}
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功，等待客服审核。");
+			window.location.reload();
+		}
+	}
+	/////////////////////////////////////////HCPay
+	function submitHCPayForm(){
+		var x = document.getElementById("hcamt").value;
+		if(isNaN(x)){
+			alert("失败：金额输入有误，请重新输入。");
+			return false;
+		}
+		if(x&lt;100){
+			alert("失败：最小充值金额为100元。");
+			return false;
+		}
+		if(x&gt;50000){
+			alert("失败：最大充值金额为 50000 元。");
+			return false;
+		}
+		return true;
+	}
+	function hbankchange(tvalue,sid){
+		for(i=1;i&lt;8;i++){
+			document.getElementById("htd"+i).style.backgroundColor ="#f0f6fe";
+			document.getElementById("hcr"+i).checked=false;
+		}
+		document.getElementById("htd"+sid).style.backgroundColor ="#e3d5b0";
+		document.getElementById("hcr"+sid).checked=true;
+		document.getElementById("hcbankcode").value=tvalue;
+	}
+	/////////////////////////////////////////Yeepay
+	function submitYeepayForm(){
+		var x = document.getElementById("amt").value;
+		if(isNaN(x)){
+			alert("失败：金额输入有误，请重新输入。");
+			return false;
+		}
+		if(x&lt;100){
+			alert("失败：最小充值金额为100元。");
+			return false;
+		}
+		if(x&gt;50000){
+			alert("失败：最大充值金额为 50000 元。");
+			return false;
+		}
+		return true;
+	}
+	function ybankchange(tvalue,sid){
+		for(i=1;i&lt;8;i++){
+			document.getElementById("ytd"+i).style.backgroundColor ="#f0f6fe";
+			document.getElementById("yer"+i).checked=false;
+		}
+		document.getElementById("ytd"+sid).style.backgroundColor ="#e3d5b0";
+		document.getElementById("yer"+sid).checked=true;
+		document.getElementById("yebankcode").value=tvalue;
+	}
+	////////////////////////////////////////
+	function bankchange(tvalue,sid){
+		for(i=1;i&lt;8;i++){
+			document.getElementById("td"+i).style.backgroundColor ="#f0f6fe";
+			document.getElementById("er"+i).checked=false;
+		}
+		document.getElementById("td"+sid).style.backgroundColor ="#e3d5b0";
+		document.getElementById("er"+sid).checked=true;
+		document.getElementById("ebankcode").value=tvalue;
+	}
+	function submitIPSForm(){
+		var x = document.getElementById("eamount").value;
+		if(isNaN(x)){
+			alert("失败：金额输入有误，请重新输入。");
+			return false;
+		}
+		if(x&lt;100){
+			alert("失败：最小充值金额为100元。");
+			return false;
+		}
+		if(x&gt;50000){
+			alert("失败：最大充值金额为 50000 元。");
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<f:view>
+			<div class="fillet">
+				<div class="RoundedCorner j">
+					<b class="rtop">
+						<b class="r1"></b><b class="r2"></b>
+						<b class="r3"></b><b class="r4"></b>
+					</b>
+					<div class="fillet">
+						<h:form id="DepositForm6">
+						<div id="Funds_funds">
+							
+							<div class="but_Star_Signs"></div>
+							<span style="font-size:13px;"><b>功能导航：</b></span>
+							
+							<a4j:commandButton value="充值" onclick="return false;" styleClass="but_Red"/><rich:spacer width="5"/>
+							<a4j:commandButton value="充值记录" action="DEPOSITRECORD" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="提现" action="WITHDRAWL" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="提现记录" action="WITHDRAWLRECORD" styleClass="but_Gray"/>
+							
+						</div>
+						</h:form>
+						<h:inputHidden value="#{DepositBean.ipsparam}" id="ipsparam"/>
+						
+						<div id="Tab1" style="font-size:13px;font-family:'微软雅黑',tahoma;margin-top:5px;"> 
+								<div class="Menubox">
+									<ul>
+										<a4j:repeat value="#{DepositBean.bankcardlist}" var="list" rowKeyVar="keys">
+											<li id="one#{keys+1}" onclick="setTab('one',#{keys+1},#{DepositBean.nums})" class="#{keys==0?'hover':''}">#{list.tab}</li>
+										</a4j:repeat>
+									</ul>
+								</div>
+								<div class="Contentbox" style="height:480px;">
+									<a4j:repeat value="#{DepositBean.bankcardlist}" var="list" rowKeyVar="keys" id="spg">
+										<div id="con_one_#{keys+1}" class="#{keys==0?'hover':''}" style="display:#{keys==0?'block':'none'}">
+											<h:panelGroup rendered="#{list.type==6?'true':'false'}">
+											<h:form id="DepositForm3">
+												<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;margin-left:20px;margin-top:10px;width:95%;line-height:45px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+													<tr>
+														<td style="width:110px;border:1px solid #b9cae1;">
+															<table cellpadding="4" cellspacing="4">
+																<tr>
+																	<td><img src="/images/John/tenpay.png"/></td>
+																</tr>
+															</table>
+														</td>
+														<td style="padding-left:30px;">
+															<table style="font-size:14px;text-align:left;">
+																<tr>
+																	<td>财付通姓名：</td>
+																	<td style="color:blue;font-size:15px;"><b>#{list.name}</b><br/></td>
+																</tr>
+																<tr>
+																	<td>财付通帐号：</td>
+																	<td style="color:blue;font-size:16px;"><b>#{list.showbankcard}</b></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+												<div style="margin-top:15px;height:30px;color:#21610b;text-align:left;margin-left:20px;">
+													<img src="/images/page/page-next-disabled.gif"/>如果已经充值成功，请填写下面的申请表格：
+												</div>
+												<a4j:region>
+												<table style="margin-left:20px;width:95%;line-height:35px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+																<tr><td height="8px"></td></tr>
+																<tr>
+																	<td style="width:140px;" align="right">
+																		<font color="red">*</font>财付通姓名：
+																	</td>
+																	<td align="left">
+																		<h:inputText value="#{DepositBean.aliname}" maxlength="20" styleClass="input_Game"/>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		<font color="red">*</font>充值金额：
+																	</td>
+																	<td align="left">
+																		<h:inputText value="#{DepositBean.alimoney}" maxlength="10" styleClass="input_Game" style="font-size:16px;color:blue;width:100px"/>
+																		(最小充值金额 <font color="#8e2020"><b>#{list.minamount}</b></font> RMB / 最大充值金额 <font color="#8e2020"><b>#{list.maxamount}</b></font> RMB)
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		备注：
+																	</td>
+																	<td align="left">
+																		<h:inputTextarea value="#{DepositBean.remark}" maxlength="100" style="width:400px;height:35px;border:1px solid #cccccc;padding-left:5px;color:#292e34;background:#fdfdfd;color:#000000"></h:inputTextarea>
+																	</td>
+																</tr>
+													<tr>
+														<td colspan="2" align="center" height="50px">
+															<a4j:commandButton value="提 交" status="normalStatus" styleClass="bntclass" action="#{DepositBean.tenpay}" data="#{DepositBean.msg}" oncomplete="savefinish(data)">
+																<f:param name="cid" value="#{list.id}"/>
+															</a4j:commandButton>
+														</td>
+													</tr>
+												</table>
+												</a4j:region>
+												</h:form>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{list.type==3?'true':'false'}">
+												<h:form id="DepositForm2">
+												<div style="margin-top:15px;height:30px;color:#21610b;text-align:left;margin-left:20px;">
+													1、
+													<a href="http://www.alipay.com" target="_blank" title="点击进入支付宝" style="color:#">点击进入支付宝</a>
+													<rich:spacer width="15px"/>
+													【全天 <font color="c02e2e"><b>24小时</b></font> 充值】
+												</div>
+												<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;margin-left:20px;width:95%;line-height:45px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+													<tr>
+														<td style="width:110px;border:1px solid #b9cae1;">
+															<table cellpadding="4" cellspacing="4">
+																<tr>
+																	<td>
+																		<img src="/images/John/alipay.png"/>
+																	</td>
+																</tr>
+															</table>
+														</td>
+														<td style="padding-left:30px;">
+															<table style="font-size:14px;text-align:left;">
+																<tr>
+																	<td>支付宝姓名：</td>
+																	<td style="color:blue;font-size:15px;"><b>#{list.name}</b><br/></td>
+																</tr>
+																<tr>
+																	<td>支付宝帐号：</td>
+																	<td style="color:blue;font-size:16px;"><b>#{list.showbankcard}</b></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+												<div style="margin-top:15px;height:30px;color:#21610b;text-align:left;margin-left:20px;">
+													2、如果已经充值成功，请填写下面的申请表格：
+												</div>
+												<a4j:region>
+												<table style="margin-left:20px;width:95%;line-height:35px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+																<tr><td height="8px"></td></tr>
+																<tr>
+																	<td style="width:140px;" align="right">
+																		<font color="red">*</font>支付宝姓名：
+																	</td>
+																	<td align="left">
+																		<h:inputText value="#{DepositBean.aliname}" maxlength="20" styleClass="input_Game"/>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		<font color="red">*</font>充值金额：
+																	</td>
+																	<td align="left">
+																		<h:inputText value="#{DepositBean.alimoney}" maxlength="10" styleClass="input_Game" style="font-size:16px;color:blue;width:100px"/>
+																		(最小充值金额 <font color="#8e2020"><b>#{list.minamount}</b></font> RMB / 最大充值金额 <font color="#8e2020"><b>#{list.maxamount}</b></font> RMB)
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		备注：
+																	</td>
+																	<td align="left">
+																		<h:inputTextarea value="#{DepositBean.remark}" maxlength="100" style="width:400px;height:35px;border:1px solid #cccccc;padding-left:5px;color:#292e34;background:#fdfdfd;color:#000000"></h:inputTextarea>
+																	</td>
+																</tr>
+													<tr>
+														<td colspan="2" align="center" height="50px">
+															<a4j:commandButton value="提 交" status="normalStatus" styleClass="bntclass" action="#{DepositBean.alipay}" data="#{DepositBean.msg}" oncomplete="savefinish(data)">
+																<f:param name="cid" value="#{list.id}"/>
+															</a4j:commandButton>
+														</td>
+													</tr>
+												</table>
+												</a4j:region>
+												</h:form>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{list.type==7?'true':'false'}">
+												<!-- 汇潮支付 -->
+												<form action="#{list.remark}" name="hcbao" onsubmit="return submitHCPayForm();" target="_brank" id="ehcpay" method="post">
+												<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;margin-left:20px;margin-top:10px;width:95%;line-height:45px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+													<tr>
+														<td style="width:110px;border:1px solid #b9cae1;" align="right">
+															<b>选择银行：</b>
+														</td>
+														<td align="left" style="width:140px;border:1px solid #b9cae1;">
+															<table style="margin-top:15px;margin-left:15px;">
+																<tr>
+																	<td title="工商银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;width:225px;cursor:pointer;" id="htd1" onclick="hbankchange('ICBC',1);">
+																		<input type="radio" name="Bank" class="but_radio" id="hcr1"></input>
+																		<div class="but_icbc" style="margin-left:30px;"></div>
+																	</td>
+																	<td width="20px"></td>
+																	<td title="农业银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;width:225px;cursor:pointer;" id="htd2" onclick="hbankchange('ABC',2)">
+																		<input type="radio" name="Bank" class="but_radio" id="hcr2"></input>
+																		<div class="but_abc" style="margin-left:7px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:20px"><td></td></tr>
+																<tr>
+																	<td title="建设银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="htd3" onclick="hbankchange('CCB',3)">
+																		<input type="radio" name="Bank" class="but_radio" id="hcr3"></input>
+																		<div class="but_ccb" style="margin-left:8px;"></div>
+																	</td>
+																	<td width="10px"></td>
+																	<td title="招商银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="htd4"  onclick="hbankchange('CMB',4);">
+																		<input type="radio" name="Bank" class="but_radio" id="hcr4"></input>
+																		<div class="but_cmb" style="margin-left:8px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:20px"><td></td></tr>
+																<tr>
+																	<td title="中国银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="htd5" onclick="hbankchange('BOCSH',5)">
+																		<input type="radio" name="Bank" class="but_radio" id="hcr5"></input>
+																		<div class="but_cb" style="margin-left:8px;"></div>
+																	</td>
+																	<td width="10px"></td>
+																	<td title="民生银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="htd6" onclick="hbankchange('CMBC',6);">
+																		<input type="radio" name="Bank" class="but_radio" id="hcr6"></input>
+																		<div class="but_ms" style="margin-left:8px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:10px;">
+																	<td></td>
+																</tr>
+																<tr style="height:10px;">
+																	<td style="BORDER-BOTTOM: 1px dashed #666666;"></td><td style="BORDER-BOTTOM: 1px dashed #666666;"></td><td style="BORDER-BOTTOM: 1px dashed #666666;"></td>
+																</tr>
+																<tr>
+																	<td colspan="3" style="padding-left:6px;" id="htd7">
+																		<table>
+																			<tr>
+																				<td>
+																					其他银行:
+																				</td>
+																				<td>
+																					<input type="radio" name="Bank" class="but_radio" id="hcr7"></input>
+																				</td>
+																				<td>
+																					<h:selectOneMenu onchange="hbankchange(this.value,7)" styleClass="select_Game" style="width:320px;font-size:13px;line-height:30px;">
+																						<f:selectItem itemLabel="== 请选择其他银行  ==" itemValue=""></f:selectItem>
+																						<f:selectItem itemLabel="浦发银行" itemValue="SPDB"></f:selectItem>
+																						<f:selectItem itemLabel="广发银行" itemValue="GDB"></f:selectItem>
+																						<f:selectItem itemLabel="交通银行" itemValue="BOCOM"></f:selectItem>
+																						<f:selectItem itemLabel="邮政储蓄银行" itemValue="PSBC"></f:selectItem>
+																						<f:selectItem itemLabel="中信银行" itemValue="CNCB"></f:selectItem>
+																						<f:selectItem itemLabel="光大银行" itemValue="CEB"></f:selectItem>
+																						
+																						<f:selectItem itemLabel="华夏银行" itemValue="HXB"></f:selectItem>
+																						<f:selectItem itemLabel="兴业银行" itemValue="CIB"></f:selectItem>
+																						<f:selectItem itemLabel="上海银行" itemValue="BOS"></f:selectItem>
+																						<f:selectItem itemLabel="上海农商" itemValue="SRCB"></f:selectItem>
+																						<f:selectItem itemLabel="平安银行" itemValue="PAB"></f:selectItem>
+																						<f:selectItem itemLabel="北京银行" itemValue="BCCB"></f:selectItem>
+																						<f:selectItem itemLabel="中国银行（大额）" itemValue="BOC"></f:selectItem>
+																						<f:selectItem itemLabel="银联支付" itemValue="UNIONPAY"></f:selectItem>
+																						<f:selectItem itemLabel="其他银行" itemValue=""></f:selectItem>
+																					</h:selectOneMenu>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr style="height:15px">
+																	<td>
+																		
+																	</td>
+																</tr>
+															</table>
+															
+														</td>
+													</tr>
+													<tr>
+														<td style="border:1px solid #b9cae1;" align="right">
+															<b>汇款金额：</b>
+														</td>
+														<td align="left" style="border:1px solid #b9cae1;padding-left:15px;">
+															<input type="hidden" id="hcbankcode" name="hcbankcode" value=""></input>
+															<input type="hidden" id="hcln" name="hcln" value="#{LoginBean.user.loginname}"></input>
+															<input type="text" id="hcamt" name="hcamt" value="0" onkeyup="value=value.replace(/[^0-9\.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9\.]/g,''))" maxlength="10" class="input_Game" style="font-size:16px;width:100px;color:blue;"/>
+															(单笔最小充值金额 <font color="#8e2020"><b>#{list.minamount}</b></font> RMB / 最大充值金额 <font color="#8e2020"><b>#{list.maxamount}</b></font> RMB)
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2" style="height:60px;" align="center">
+															<input type="submit" value="下一步" class="bntclass" name="submit"/>
+														</td>
+													</tr>
+												</table>
+												</form>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{list.type==5?'true':'false'}">
+												<!-- 易宝支付 -->
+												<form action="http://app.xingyuanhaorui.com/page/YeePaySub.php" name="yeebao" onsubmit="return submitYeepayForm();" target="_brank" id="yeebao" method="post">
+												<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;margin-left:20px;margin-top:10px;width:95%;line-height:45px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+													<tr>
+														<td style="width:110px;border:1px solid #b9cae1;" align="right">
+															<b>选择银行：</b>
+														</td>
+														<td align="left" style="width:140px;border:1px solid #b9cae1;">
+															<table style="margin-top:15px;margin-left:15px;">
+																<tr>
+																	<td title="工商银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;width:225px;cursor:pointer;" id="ytd1" onclick="ybankchange('ICBC-NET-B2C',1);">
+																		<input type="radio" name="Bank" class="but_radio" id="yer1"></input>
+																		<div class="but_icbc" style="margin-left:30px;"></div>
+																	</td>
+																	<td width="20px"></td>
+																	<td title="农业银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;width:225px;cursor:pointer;" id="ytd2" onclick="ybankchange('ABC-NET-B2C',2)">
+																		<input type="radio" name="Bank" class="but_radio" id="yer2"></input>
+																		<div class="but_abc" style="margin-left:7px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:20px"><td></td></tr>
+																<tr>
+																	<td title="建设银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="ytd3" onclick="ybankchange('CCB-NET-B2C',3)">
+																		<input type="radio" name="Bank" class="but_radio" id="yer3"></input>
+																		<div class="but_ccb" style="margin-left:8px;"></div>
+																	</td>
+																	<td width="10px"></td>
+																	<td title="招商银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="ytd4"  onclick="ybankchange('CMBCHINA-NET-B2C',4);">
+																		<input type="radio" name="Bank" class="but_radio" id="yer4"></input>
+																		<div class="but_cmb" style="margin-left:8px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:20px"><td></td></tr>
+																<tr>
+																	<td title="中国银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="ytd5" onclick="ybankchange('BOC-NET-B2C',5)">
+																		<input type="radio" name="Bank" class="but_radio" id="yer5"></input>
+																		<div class="but_cb" style="margin-left:8px;"></div>
+																	</td>
+																	<td width="10px"></td>
+																	<td title="民生银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="ytd6" onclick="ybankchange('CMBC-NET-B2C',6);">
+																		<input type="radio" name="Bank" class="but_radio" id="yer6"></input>
+																		<div class="but_ms" style="margin-left:8px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:10px;">
+																	<td></td>
+																</tr>
+																<tr style="height:10px;">
+																	<td style="BORDER-BOTTOM: 1px dashed #666666;"></td><td style="BORDER-BOTTOM: 1px dashed #666666;"></td><td style="BORDER-BOTTOM: 1px dashed #666666;"></td>
+																</tr>
+																<tr>
+																	<td colspan="3" style="padding-left:6px;" id="ytd7">
+																		<table>
+																			<tr>
+																				<td>
+																					其他银行:
+																				</td>
+																				<td>
+																					<input type="radio" name="Bank" class="but_radio" id="yer7"></input>
+																				</td>
+																				<td>
+																					<h:selectOneMenu onchange="ybankchange(this.value,7)" styleClass="select_Game" style="width:320px;font-size:13px;line-height:30px;">
+																						<f:selectItem itemLabel="== 请选择其他银行  ==" itemValue=""></f:selectItem>
+																						<f:selectItem itemLabel="邮政储蓄银行" itemValue="POST-NET-B2C"></f:selectItem>
+																						<f:selectItem itemLabel="交通银行" itemValue="BOCO-NET-B2C"></f:selectItem>
+																						<f:selectItem itemLabel="兴业银行" itemValue="CIB-NET-B2C"></f:selectItem>
+																						<f:selectItem itemLabel="中信银行" itemValue="ECITIC-NET-B2C"></f:selectItem>
+																						<f:selectItem itemLabel="光大银行" itemValue="CEB-NET-B2C"></f:selectItem>
+																						<f:selectItem itemLabel="更多其他银行" itemValue=""></f:selectItem>
+																					</h:selectOneMenu>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr style="height:15px">
+																	<td>
+																		
+																	</td>
+																</tr>
+															</table>
+															
+														</td>
+													</tr>
+													<tr>
+														<td style="border:1px solid #b9cae1;" align="right">
+															<b>汇款金额：</b>
+														</td>
+														<td align="left" style="border:1px solid #b9cae1;padding-left:15px;">
+															<input type="hidden" id="yebankcode" name="yebankcode" value=""></input>
+															<input type="hidden" id="ln" name="ln" value="#{LoginBean.user.loginname}"></input>
+															<input type="text" id="amt" name="amt" value="0" onkeyup="value=value.replace(/[^0-9\.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9\.]/g,''))" maxlength="10" class="input_Game" style="font-size:16px;width:100px;color:blue;"/>
+															(单笔最小充值金额 <font color="#8e2020"><b>#{list.minamount}</b></font> RMB / 最大充值金额 <font color="#8e2020"><b>#{list.maxamount}</b></font> RMB)
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2" style="height:60px;" align="center">
+															<input type="submit" value="下一步" class="bntclass" name="submit"/>
+														</td>
+													</tr>
+												</table>
+												</form>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{list.type==2?'true':'false'}">
+												<!-- IPS 支付 -->
+												<form action="http://app.koiqi.cn/page/IPSDepositNew.php" name="ipsform" onsubmit="return submitIPSForm();" target="_brank" id="ipsform" method="post">
+												<input type="hidden" value="" id="ebankcode" name="ebankcode"></input>
+												<input type="hidden" value="#{LoginBean.user.loginname}" id="lname" name="lname"></input>
+												<table cellspacing="0" cellpadding="0" style="border-collapse: collapse;margin-left:20px;margin-top:10px;width:95%;line-height:45px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+													<tr>
+														<td style="width:110px;border:1px solid #b9cae1;" align="right">
+															<b>选择银行：</b>
+														</td>
+														<td align="left" style="width:140px;border:1px solid #b9cae1;">
+															<table style="margin-top:15px;margin-left:15px;">
+																<tr>
+																	<td title="工商银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;width:225px;cursor:pointer;" id="td1" onclick="bankchange('00004',1);">
+																		<input type="radio" name="Bank" class="but_radio" id="er1"></input>
+																		<div class="but_icbc" style="margin-left:30px;"></div>
+																	</td>
+																	<td width="20px"></td>
+																	<td title="农业银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;width:225px;cursor:pointer;" id="td2" onclick="bankchange('00017',2)">
+																		<input type="radio" name="Bank" class="but_radio" id="er2"></input>
+																		<div class="but_abc" style="margin-left:7px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:20px"><td></td></tr>
+																<tr>
+																	<td title="建设银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="td3" onclick="bankchange('00015',3)">
+																		<input type="radio" name="Bank" class="but_radio" id="er3"></input>
+																		<div class="but_ccb" style="margin-left:8px;"></div>
+																	</td>
+																	<td width="10px"></td>
+																	<td title="招商银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="td4"  onclick="bankchange('00021',4);">
+																		<input type="radio" name="Bank" class="but_radio" id="er4"></input>
+																		<div class="but_cmb" style="margin-left:8px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:20px"><td></td></tr>
+																<tr>
+																	<td title="中国银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="td5" onclick="bankchange('00083',5)">
+																		<input type="radio" name="Bank" class="but_radio" id="er5"></input>
+																		<div class="but_cb" style="margin-left:8px;"></div>
+																	</td>
+																	<td width="10px"></td>
+																	<td title="民生银行" style="border: 1px solid #CCCCCC;padding:5px 5px 5px 5px;cursor:pointer;" id="td6" onclick="bankchange('00013',6);">
+																		<input type="radio" name="Bank" class="but_radio" id="er6"></input>
+																		<div class="but_ms" style="margin-left:8px;"></div>
+																	</td>
+																</tr>
+																<tr style="height:10px;">
+																	<td></td>
+																</tr>
+																<tr style="height:10px;">
+																	<td style="BORDER-BOTTOM: 1px dashed #666666;"></td><td style="BORDER-BOTTOM: 1px dashed #666666;"></td><td style="BORDER-BOTTOM: 1px dashed #666666;"></td>
+																</tr>
+																<tr>
+																	<td colspan="3" style="padding-left:6px;" id="td7">
+																		<table>
+																			<tr>
+																				<td>
+																					其他银行:
+																				</td>
+																				<td>
+																					<input type="radio" name="Bank" class="but_radio" id="er7"></input>
+																				</td>
+																				<td>
+																					<h:selectOneMenu onchange="bankchange(this.value,7)" styleClass="select_Game" style="width:320px;font-size:13px;line-height:30px;">
+																						<f:selectItem itemLabel="== 请选择其他银行  ==" itemValue="-1"></f:selectItem>
+																						<f:selectItems value="#{DepositBean.ipsbank}"></f:selectItems>
+																					</h:selectOneMenu>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr style="height:15px">
+																	<td>
+																	</td>
+																</tr>
+															</table>
+															
+														</td>
+													</tr>
+													<tr>
+														<td style="border:1px solid #b9cae1;" align="right">
+															<b>汇款金额：</b>
+														</td>
+														<td align="left" style="border:1px solid #b9cae1;padding-left:15px;">
+															<input type="text" id="eamount" name="eamount" value="0" onkeyup="value=value.replace(/[^0-9\.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9\.]/g,''))" maxlength="10" class="input_Game" style="font-size:16px;width:100px;color:blue;"/>
+															(单笔最小充值金额 <font color="#8e2020"><b>#{list.minamount}</b></font> RMB / 最大充值金额 <font color="#8e2020"><b>#{list.maxamount}</b></font> RMB)
+														</td>
+													</tr>
+													<tr>
+														<td colspan="2" style="height:60px;" align="center">
+															<input type="submit" value="下一步" class="bntclass" name="submit"/>
+														</td>
+													</tr>
+												</table>
+												</form>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{list.type==1?'true':'false'}" style="text-align:center;">
+												<h:form id="DepositForm1">
+												<table style="width:95%;background:#ecf6e7;margin-left:20px;margin-top:10px;border:1px solid #a6b799;">
+													<tr>
+														<td style="width:240px;border-right:1px solid #a6b799;">
+															<div class="but_#{list.icon}" style="margin-left:15px;"></div>
+														</td>
+														<td>
+															<table style="margin-top:10px;margin-left:50px;line-height:35px;">
+																<tr>
+																	<td align="right">
+																		收款银行：
+																	</td>
+																	<td align="left">
+																		<h:outputText value="中国工商银行" rendered="#{list.icon=='icbc'?'true':'false'}"/>
+																		<h:outputText value="农业银行" rendered="#{list.icon=='abc'?'true':'false'}"/>
+																		<h:outputText value="建设银行" rendered="#{list.icon=='ccb'?'true':'false'}"/>
+																		<h:outputText value="招商银行" rendered="#{list.icon=='cmb'?'true':'false'}"/>
+																		<h:outputText value="民生银行" rendered="#{list.icon=='cmbc'?'true':'false'}"/>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		收款人：
+																	</td>
+																	<td align="left" style="color:#21610b;font-size:15px;">
+																		<b>#{list.name}</b>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right" style="height:35px;">
+																		收款帐号：
+																	</td>
+																	<td align="left" style="color:#21610b;font-size:15px;">
+																		<b>#{list.showbankcard}</b>
+																	</td>
+																</tr>
+																
+															</table>
+														</td>
+													</tr>
+												</table>
+												
+												<div style="margin-top:15px;height:30px;color:#21610b;text-align:left;margin-left:20px;">
+													<img src="/images/page/page-next-disabled.gif"/>如果已经充值成功，请填写下面的充值申请表格：    <a href="/helpCenter/#{list.icon}.html" target="_blank">充值演示图</a>
+												</div>
+												<a4j:region>
+												<table style="margin-left:20px;width:95%;line-height:35px;border:1px solid #b9cae1;color:#4e4c4c;background:#f0f6fe;">
+																<tr><td height="8px"></td></tr>
+																<tr>
+																	<td style="width:140px;" align="right">
+																		汇款卡户名：
+																	</td>
+																	<td align="left">
+																		<h:inputText value="#{DepositBean.dpname}" maxlength="20" styleClass="input_Game"/>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		汇款金额：
+																	</td>
+																	<td align="left">
+																		<h:inputText value="#{DepositBean.dpamount}" maxlength="10" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" styleClass="input_Game" style="font-size:16px;color:blue;width:100px"/>
+																		(最小充值金额 <font color="#8e2020"><b>#{list.minamount}</b></font> RMB / 最大充值金额 <font color="#8e2020"><b>#{list.maxamount}</b></font> RMB)
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		汇款时间：
+																	</td>
+																	<td align="left">
+																		<h:inputText size="22" value="#{DepositBean.dptime}" style="padding-left:4px;" styleClass="Wdate"
+																			onmouseover="this.style.cursor='pointer';" 
+																			onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		汇款方式：
+																	</td>
+																	<td align="left">
+																		<h:selectOneMenu styleClass="select_Game" value="#{DepositBean.dpmethod}" style="width:150px;">
+																			<f:selectItem itemLabel="网上银行" itemValue="网上银行"></f:selectItem>
+																			<f:selectItem itemLabel="手机网转" itemValue="手机网转"></f:selectItem>
+																			<f:selectItem itemLabel="ATM或柜员机" itemValue="ATM或柜员机"></f:selectItem>
+																			<f:selectItem itemLabel="现金柜台" itemValue="现金柜台"></f:selectItem>
+																			<f:selectItem itemLabel="跨行" itemValue="跨行"></f:selectItem>
+																		</h:selectOneMenu>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="right">
+																		备注：
+																	</td>
+																	<td align="left">
+																		<h:inputTextarea value="#{DepositBean.remark}" maxlength="100" style="width:400px;height:35px;border:1px solid #cccccc;padding-left:5px;color:#292e34;background:#fdfdfd;color:#000000"></h:inputTextarea>
+																	</td>
+																</tr>
+													<tr>
+														<td colspan="2" align="center" height="50px">
+															<a4j:commandButton value="提 交" status="normalStatus" styleClass="bntclass" action="#{DepositBean.offlineDeposit}" data="#{DepositBean.msg}" oncomplete="savefinish(data)">
+																<f:param name="cid" value="#{list.id}"/>
+															</a4j:commandButton>
+														</td>
+													</tr>
+												</table>
+												</a4j:region>
+												</h:form>
+											</h:panelGroup>
+										</div>
+									</a4j:repeat>
+								</div> 
+							</div>
+					</div>
+					<b class="rbottom">
+						<b class="r4"></b><b class="r3"></b>
+						<b class="r2"></b><b class="r1"></b>
+					</b>
+				</div>
+			</div>
+			<a4j:region>
+				<a4j:jsFunction name="sendToSave" status="normalStatus" action="#{DepositBean.IPSDeposit2}" data="#{DepositBean.msg}" oncomplete="openIps(data)">
+					<f:param name="amount"/>
+					<f:param name="bankcode"/>
+				</a4j:jsFunction>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+	</f:view>
+</body>
+</html>

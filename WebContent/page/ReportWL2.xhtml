@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>盈亏报表2</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="/js/google_analy.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+	function showReport(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		window.location.reload();
+	}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="WLReportForm">
+			<div class="fillet">
+				<div class="RoundedCorner j">
+					<b class="rtop"><b class="r1"></b><b class="r2"></b><b
+						class="r3"></b><b class="r4"></b></b>
+					<div class="fillet">
+						<div id="Funds_funds">
+							<div class="but_Star_Signs"></div>
+							<span style="font-size:13px;"><b>功能导航：</b></span>
+							<a4j:commandButton value="账变记录" action="REPORTZB" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="历史报表" action="REPORTWL" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="今日报表" onclick="return false;" styleClass="but_Red"/><rich:spacer width="5"/>
+							<a4j:commandButton value="团队总览" action="REPORTTD" styleClass="but_Gray"/><rich:spacer width="5"/>
+						</div>
+						<div class="air">&nbsp;</div>
+						<div id="Game_Time" style="height:85px;">
+							<a4j:region>
+								<div class="fillet_Time">
+									<h:selectOneMenu styleClass="select_Game" value="#{ReportWinLoss2Bean.order}" style="width:150px">
+										<f:selectItem itemValue="0" itemLabel="投注量从大到小"></f:selectItem>
+										<f:selectItem itemValue="1" itemLabel="返点从大到小"></f:selectItem>
+										<f:selectItem itemValue="2" itemLabel="中奖从大到小"></f:selectItem>
+										<f:selectItem itemValue="3" itemLabel="活动从大到小"></f:selectItem>
+										<f:selectItem itemValue="4" itemLabel="充值从大到小"></f:selectItem>
+										<f:selectItem itemValue="5" itemLabel="提现从大到小"></f:selectItem>
+									</h:selectOneMenu>
+									<rich:spacer width="10"></rich:spacer>
+									<a4j:commandButton value="查询" status="normalStatus"
+										styleClass="bntclass" action="#{ReportWinLoss2Bean.subSearch}"
+										data="#{ReportWinLoss2Bean.msg}"
+										oncomplete="searchfinish(data)">
+										<f:param name="ln" value="#{LoginBean.user.loginname}"/>
+									</a4j:commandButton>
+								</div>
+							</a4j:region>
+							
+							<div style="margin-left:15px;margin-top:15px;font-size:13px;">
+								<b>
+									<font color="red">注意：</font>本报表只包含<font color="red">今天00:00:00 至23:59:59</font>数据。历史记录请查看【历史报表】
+								</b>
+							</div>
+						</div>
+						
+						<h:panelGroup id="pgData">
+							<table cellpadding="0" cellspacing="0" border="0" class="tableclass" style="margin-top:3px;">
+								<tr class="fillet_table_tr">
+									<td align="center"><b>会员</b></td>
+									<td align="center"><b>充值</b></td>
+									<td align="center"><b>提现</b></td>
+									<td align="center"><b>投注</b></td>
+									<td align="center"><b>返点</b></td>
+									<td align="center"><b>中奖</b></td>
+									<td align="center"><b>活动</b></td>
+									<td align="center"><b>盈利</b></td>
+								</tr>
+								<tr style="background:#d4d4b9;font-weight:bold;color:#105a06">
+										<td style="height: 32px;" align="center">
+											<b>
+												#{ReportWinLoss2Bean.firstlist.loginname}
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.deposit}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.withdrawl}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.bet}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.bonus}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.win}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.active}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.firstlist.total}" converter="DoubleConverter"/>
+											</b>
+										</td>
+								</tr>
+								<a4j:repeat value="#{ReportWinLoss2Bean.reslist}" var="list" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+										<td style="height: 32px;" align="center">
+											<a4j:commandLink status="normalStatus" title="点击查看【#{list.loginname}】团队明细" value="#{list.loginname}" ajaxSingle="true" action="#{ReportWinLoss2Bean.subSearch}" data="#{ReportWinLoss2Bean.msg}" oncomplete="showReport(data)">
+												<f:param name="ln" value="#{list.loginname}"/>
+											</a4j:commandLink>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.deposit}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.withdrawl}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.bet}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.bonus}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.win}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.active}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.total}" style="color:#{list.total>=0?'#444444':'red'}" converter="DoubleConverter"/>
+										</td>
+									</tr>
+								</a4j:repeat>
+								<tr style="background:#d4d4b9">
+										<td style="height: 32px;" align="center">
+											<b>
+												#{ReportWinLoss2Bean.totallist.loginname}
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.deposit}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.withdrawl}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.bet}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.bonus}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.win}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.active}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLoss2Bean.totallist.total}" converter="DoubleConverter"/>
+											</b>
+										</td>
+									</tr>
+							</table>
+						</h:panelGroup>
+					</div>
+					<b class="rbottom"><b class="r4"></b><b class="r3"></b><b
+						class="r2"></b><b class="r1"></b></b>
+				</div>
+			</div>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

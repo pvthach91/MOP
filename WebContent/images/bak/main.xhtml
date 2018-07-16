@@ -1,0 +1,296 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<title>== #{LoginBean.webname} - 官方网站 ==</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css" />
+	<script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
+	<script language="javascript" src="/js/jquery.dialogUI.js"></script>
+	<script type="text/javascript" src="/js/zDrag.js"></script>
+	<script type="text/javascript" src="/js/zDialog.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function betRecordOpt(sid){
+		//_SCROLLINGJXF = "auto";
+		var diag = new Dialog();
+		diag.Width = 600;
+		diag.Height = 405;
+		diag.Title = "查看投注记录";
+		diag.URL = "/page/BetSubRecord.shtml?id="+sid;
+		diag.show();
+	}
+	function showNewWin(title,w,h,url){
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = w;
+		diag.Height = h;
+		diag.Title = title;
+		diag.URL = url;
+		diag.show();
+	}
+	function NewWin(icon,title,url,w,h){
+		TopImageSign = icon;
+		var diag = new Dialog();
+		diag.Width = w;
+		diag.Height = h;
+		diag.Title = title;
+		diag.URL = url;
+		diag.show();
+	}
+	function showMsgs(){
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 700;
+		diag.Height = 500;
+		diag.Title = "";
+		diag.URL = "/page/IndexMsgSub.shtml";
+		diag.show();
+	}
+	function showDP(url){
+		//_SCROLLINGJXF = "auto";
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 1000;
+		diag.Height = 600;
+		diag.Title = "帐户充值";
+		diag.URL = url;
+		diag.show();
+	}
+	window.autoHeight = function(height){
+		var winHeight = $(window).height() - $('.page-desc').height() - $('.bottom').height();
+		if(height > winHeight){
+			$('#mainiframe').height(height);	
+		}else{
+			$('#mainiframe').height(winHeight);
+		}
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="topForm">
+			<!--导航-->
+			<div class="nav">
+				<div class="layout">
+					<div class="logo"></div>
+					<div class="f-left lottery-type-select">
+						全部彩种
+						<div class="lottery-list-details">
+							<div class="arrow"></div>
+							<ul class="type-list clearfix">
+								<li>时时彩</li>
+								<li>11选5</li>
+								<li>低频彩</li>
+							</ul>
+							<ul class="lottery-info-list clearfix">
+								<li class="no-border">
+									<a href="javascript:;" class="data-url" data-url="/mmc.shtml">新生秒秒彩</a>
+									<a href="javascript:;" class="data-url" data-url="/ssccs.shtml">新生分分彩</a>
+									<a href="javascript:;" class="data-url" data-url="/sscbf.shtml">新生两分彩</a>
+									<a href="javascript:;" class="data-url" data-url="/ssccq.shtml">重庆时时彩</a>
+									<a href="javascript:;" class="data-url" data-url="/sscxj.shtml">新疆时时彩</a>
+									<a href="javascript:;" class="data-url" data-url="/ssctj.shtml">天津时时彩</a>
+								</li>
+								<li>
+									<a href="javascript:;" class="data-url" data-url="/cs115.shtml">新生十一选五</a>
+									<a href="javascript:;" class="data-url" data-url="/sd115.shtml">山东十一选五</a>
+									<a href="javascript:;" class="data-url" data-url="/jx115.shtml">江西十一选五</a>
+									<a href="javascript:;" class="data-url" data-url="/gd115.shtml">广东十一选五</a>
+									<a href="javascript:;"></a>
+									<a href="javascript:;"></a>
+								</li>
+								<li>
+									<a href="javascript:;" class="data-url" data-url="/cs3d.shtml">新生3D</a>
+									<a href="javascript:;" class="data-url" data-url="/fc3d.shtml">福彩3D</a>
+									<a href="javascript:;" class="data-url" data-url="/pl35.shtml">排列三五</a>
+									<a href="javascript:;"></a>
+									<a href="javascript:;"></a>
+									<a href="javascript:;"></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="model-nav">
+						<li>
+							<a href="#" class="data-url" data-url="/page/default.shtml">
+								<span>首&nbsp;&nbsp;&nbsp;页</span>
+								<span>HOME</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="data-url" data-url="/page/introduce.shtml">
+								<span>游戏介绍</span>
+								<span>INTRODUCTION</span>
+							</a>  
+						</li>
+						<li>
+							<a href="#" class="data-url" data-url="/page/activity.shtml">
+								<span>优惠活动</span>
+								<span>ACTIVITIES</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="data-url" data-url="/page/AgentReg.shtml">
+								<span>代理管理</span>
+								<span>AGENT MANAGE</span>
+							</a>
+						</li>
+					</ul>
+					<div class="other-info">
+						<div class="user-control">
+							<div href="#" class="login-button" >
+								<a href="#" class="data-url" data-url="/page/PersonMsg.shtml">进入个人中心</a>
+								<div class="login-ready-info">
+									<i class="icon"></i>
+									<ul class="user-center-panel">
+										<li class="black">#{LoginBean.user.nickname}</li>
+										<h:panelGroup rendered="#{LoginBean.user.param8==0?'false':'true'}">
+										<li title="#{LoginBean.user.param9}">
+											<span class="balance inline">当前分红</span>
+											<span class="balance-num inline">&yen;¥#{LoginBean.user.param10} / #{LoginBean.user.param8}%</span>
+											<span class="refresh inline"></span>
+										</li>
+										</h:panelGroup>
+										<li>
+											<span id="eDpIcon" class="recharg inline">充值</span>
+											<span class="break-line inline"></span>
+											<span class="withdrawals inline data-url"  data-url="/page/DWWithDrawl.shtml">提现</span>
+										</li>
+										<li class="history">
+											<a class="data-url" data-url="/page/BetRecord.shtml" href="#">游戏记录</a>
+										</li>
+										<li class="proxy-admin">
+											<a class="data-url" data-url="/page/Index.shtml" href="#">系统公告</a>
+										</li>
+										<li class="my-info">
+											<a class="data-url" data-url="/page/PersonMsg.shtml" href="#">我的信息</a>
+										</li>
+										<li class="logout"><a4j:commandLink title="安全退出系统" onclick="if(!confirm('请确认：是否退出系统?'))return false;" oncomplete="exitLogin();" value="退出" action="#{LoginBean.loginout}"/></li>
+									</ul>
+								</div>
+							</div>
+							<a href="#" class="gurest-service" title="点击与新生在线客服对话" onclick="window.open('http://chat7.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=11866&amp;jid=1080652451&amp;enterurl=','chatwindow','height=510,width=850');">在线客服</a>
+						</div>
+						<div class="time-area fs-12">
+							<span class="balance inline">账户余额</span>
+							<span id="ebalance" class="balance-num inline color-fff">&yen;<h:outputText value="#{LoginBean.user.balance}" converter="DoubleConverter"/></span>
+							<span id="bnt_refreshbalance" class="refresh-balance inline" title="刷新余额">刷新</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--content-->
+			<iframe id="mainiframe" allowtransparency="true" style="background-color-transparent;width:100%" src="/page/default.shtml" frameborder="0" height="850px" scrolling="no"/>
+			<!---->
+			<div class="page-desc clearfix">
+				<div class="layout">
+					<div class="group">
+						<div>
+							<span></span>合作伙伴 
+						</div>
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="browser">
+						<div>
+							<span></span>支持多种浏览器
+						</div>
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!---->
+
+			<!--bottom-->
+			<div class="bottom clearfix">
+				<div class="layout">
+					<ul class="bottom-nav clearfix">
+						<li>
+							<a href="#">2010-2014@ 彩票</a>
+						</li>
+						<li>|</li>
+						<li>
+							<a href="#">关于彩票</a>
+						</li>
+						<li>|</li>
+						<li>
+							<a href="#">联系我们</a>
+						</li>
+						<li>|</li>
+						<li>
+							<a href="#">合作伙伴</a>
+						</li>
+						<li>|</li>
+						<li>
+							<a href="#">在线客服</a>
+						</li>
+						<li>|</li>
+						<li>
+							<a href="/bncp8.zip">客户端下载</a>
+						</li>
+					</ul>
+					<p class="clearfix">
+						客服邮箱：xinshengcaipiao@gmail.com <!--联系电话： 0063-939548888-->
+					</p>
+				</div>
+				<div id="enotice" style="display:none" onMouseOver="iScrollAmount=0" onMouseOut="iScrollAmount=1">
+						<h:outputText value="#{LoginBean.notice}" escape="false"/>
+					</div>
+			</div>
+			<a4j:region>
+				<a4j:jsFunction name="SysOp" action="#{LoginBean.Online}">
+				</a4j:jsFunction>
+				<a4j:jsFunction name="LoadMsg" action="#{LoginBean.Online}" reRender="emsgs">
+				</a4j:jsFunction>
+				<a4j:jsFunction name="noticeClick" action="#{SysMsgBean.showmsg}" oncomplete="showMsgs();">
+					<f:param name="id"></f:param>
+				</a4j:jsFunction>
+			</a4j:region>
+		</h:form>
+	</f:view>
+	<script type="text/javascript">
+		var dvNotice = document.getElementById("enotice");
+		//alert(dvNotice.innerHTML);
+		var iLineHeight = 35;
+		var iLineCount = dvNotice.innerHTML.split("&lt;br&gt;").length-1;
+		//alert(iLineCount);
+		var iScrollAmount = 1;
+		if (navigator.userAgent.indexOf('Firefox') >= 0){
+			dvNotice.scrollTop=0;
+		}
+		function noticeShow() {
+			dvNotice.scrollTop += iScrollAmount;
+			//alert(dvNotice.scrollTop  +"-"+ iLineCount * iLineHeight);
+			if (dvNotice.scrollTop == iLineCount * iLineHeight){
+				dvNotice.scrollTop = 0;
+			}
+			
+			if(dvNotice.scrollTop % iLineHeight == 0 ) {
+				window.setTimeout( "noticeShow()", 3000);
+			}else{
+				window.setTimeout( "noticeShow()", 50);
+			}
+		}
+		dvNotice.innerHTML += dvNotice.innerHTML; 
+		window.setTimeout( "noticeShow()", 3000 );
+	</script>
+</body>
+</html>

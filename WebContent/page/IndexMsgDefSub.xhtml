@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link type="text/css" rel="stylesheet" href="/css/base.css" />
+		<link href="/css/BrianCss.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			function closewin(){
+				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                parent.layer.close(index);
+			}
+		</script>
+		<style>
+			div#divbg{position:fixed; top:0px; left:0; bottom:0; right:0; z-index:-1;} 
+			div#divbg > img{height:100%; width:100%; border:0;}
+		</style>
+		<title>公告</title>
+	</head>
+	<body style="background-color: #FFFFFF; width: 100%; padding: 0px; margin: 0px;">
+		<div id="divbg"><img src="/images/loginbg/backgroud.jpg"/></div>
+		<table style="border:1px solid #cccccc;width:100%">
+			<tr style="height:190px;">
+				<td style="font-size:14px;text-indent:28px;height:28px;font-family:'微软雅黑','宋体';padding-left:20px;line-height:30px;padding-right:20px;">
+					<h:outputText value="#{SysMsgBean.showitem.content}" escape="false"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="center" height="40px" style="BORDER-TOP: 1px dashed #BBBBBB;">
+					<input type="button" value="关闭" onclick="closewin();" class="submitBtn"/>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

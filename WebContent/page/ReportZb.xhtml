@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>帐变查询</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<link rel="stylesheet" type="text/css" href="/css/ucenter.css"/>
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+// function viewOpt(wid){
+// 	_SCROLLINGJXF = "yes";
+// 	var diag = new Dialog();
+// 	diag.Width = 600;
+// 	diag.Height = 405;
+// 	diag.Title = "帐变记录追查";
+// 	diag.URL = "/page/BetSubRecord.shtml?id="+wid;
+// 	diag.show();
+// }
+
+function viewOpt(wid) {
+	layer.open({
+	    type: 2,
+	    title: '帐变记录追查',
+	    shadeClose: true,
+	    closeBtn: 1,
+	    shade: 0.1,
+	    area: ['600px', '450px'],
+	    content: "/page/BetSubRecord.shtml?id="+wid //iframe的url
+	}); 
+}
+
+function userSel(){
+	TopImageSign = '/images/setting.png';
+	var diag = new Dialog();
+	diag.Width = 450;
+	diag.Height = 450;
+	diag.Title = "选择会员";
+	diag.URL = "/page/PersonMsgUserSel.shtml";
+	diag.show();
+}
+function userInput(ln){
+	document.getElementById("GameRecordForm:recname").value=ln;
+}
+function searchfinish(data){
+	if(data){
+		alert(data);
+	}else{
+		window.location.reload();
+	}
+}
+function pageKeyDown(num){
+	if(num.length>0){
+		if(event.keyCode==13) {
+			pageKeyDownOPT(num);
+		}
+	}
+}
+</script>
+</head>
+<body>
+
+<!--头部-->
+<ui:include src="/bar.xhtml" />
+
+	<f:view>
+		<h:form id="GameRecordForm">
+			<!--content-->
+			<div id="content">
+				<div class="content">
+					<h2>统计报表</h2>
+						<div class="tab_box">
+							<ul class="tab_nav">
+								<li class="on">
+									<a href="/page/ReportZb.shtml" style="font-size:14px;">账变记录</a>
+								</li>
+								<li>
+									<a href="/page/BonusReport.shtml" style="font-size:14px;">赠送红利</a>
+								</li>
+								<li>
+									<a href="/page/ReportWL.shtml" style="font-size:14px;">统计报表</a>
+								</li>
+								<li>
+									<a href="/page/ReportTD.shtml" style="font-size:14px;">团队总览</a>
+								</li>
+								<li>
+									<a href="/page/ReportDay.shtml" style="font-size:14px;">每日下级报表</a>
+								</li>
+							</ul>
+						</div>
+					<div class="tab_in">
+							<div id="game_top" class="game_top">
+								<div class="game_top_in">
+									<label>帐变类型：</label>
+									<h:selectOneMenu styleClass="kind"
+										value="#{BalanceChangeBean.type}">
+										<f:selectItems value="#{BalanceChangeBean.typelist}"></f:selectItems>
+									</h:selectOneMenu>
+									<label>时间范围：</label>
+									<h:inputText size="22" value="#{BalanceChangeBean.starttime}"
+									id="startTime" styleClass="time" style="padding-left:4px;"
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){$dp.$('GameRecordForm:endTime').focus();}})" />
+									<span>至</span>
+									<h:inputText size="22" value="#{BalanceChangeBean.endtime}"
+									style="padding-left:4px;" id="endTime" styleClass="time"
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'GameRecordForm:startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+								</div>	
+								<div class="game_top_in">
+									<label>编号：</label>
+									<h:inputText value="#{BalanceChangeBean.wid}"
+											styleClass="num"></h:inputText>
+									<label>帐变编号：</label>
+									<h:inputText value="#{BalanceChangeBean.id}" styleClass="num"></h:inputText>
+									<a4j:commandButton value="查询" status="normalStatus"
+									styleClass="submitBtn" action="#{BalanceChangeBean.btnSearch}"
+									data="#{BalanceChangeBean.msg}"
+									oncomplete="searchfinish(data)" />
+								</div>
+							</div>
+							<h:panelGroup id="pgData">
+							<div class="game_mod">
+								<table border="0" class="tabbox" cellspacing="1" width="1024" cellpadding="0" bgcolor="#e9d0cf" >
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											<th>帐变编号</th>
+											<th>时间</th>
+											<th>类型</th>
+											<th>收入</th>
+											<th>支出</th>
+											<th>之前余额</th>
+											<th>之后余额</th>
+											<th>备注</th>
+											<th>查看</th>
+										</tr>
+									</thead>
+									<tbody>
+										<a4j:repeat value="#{BalanceChangeBean.reslist}" var="list"
+											id="dblist" rowKeyVar="keys">
+											<tr style="background:#{keys%2==1?'#fafafa':'#FFFFFF'}">
+												<td>#{list.id}</td>
+												<td>#{list.inserttime.substring(5,16)}</td>
+												<td>#{list.opttypename}</td>
+												<td>
+													<h:outputText style="color:#275717" converter="DoubleConverter" value="#{list.income}" rendered="#{list.income!=0?'true':'false'}"/>
+												</td>
+												<td>
+													<h:outputText style="color:#c91810" converter="DoubleConverter" value="#{list.pay}" rendered="#{list.pay!=0?'true':'false'}"/>
+												</td>
+												<td>
+													<h:outputText value="#{list.beforebalance}" converter="DoubleConverter"/>
+												</td>
+												<td>
+													<h:outputText value="#{list.afterbalance}" converter="DoubleConverter"/>
+												</td>
+												<td>#{list.remark}
+												</td>
+												<td>
+													<h:panelGroup rendered="#{list.wid.substring(0,1)=='B'?'true':'false'}">
+														<a href="javascript:void(0);" onclick="viewOpt('#{list.wid}');">查看</a>
+													</h:panelGroup>
+												</td>
+											</tr>
+										</a4j:repeat>
+									</tbody>
+								</table>
+								<a4j:region>
+									<h:panelGroup>
+										<div class="game_bt">
+											<p class="game_bt_l">
+												总收入：<span class="color-red">
+												<h:outputText value="#{BalanceChangeBean.income}" converter="DoubleConverter"/></span> RMB     
+												<span class="ml20">总支出：</span>
+												<span class="color-red">
+												<h:outputText value="#{BalanceChangeBean.pay}" converter="DoubleConverter"/>
+												</span> RMB
+											</p>
+											<ul class ="page-list">
+												<li>
+													<a4j:commandLink  action="#{BalanceChangeBean.firstPage}" data="#{BalanceChangeBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+												</li>
+												<li>
+													<a4j:commandLink status="normalStatus" action="#{BalanceChangeBean.proPage}" data="#{BalanceChangeBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+												</li>
+												<li>
+													<input value="#{BalanceChangeBean.curpage}" onkeydown="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+													<h:outputText value=" / #{BalanceChangeBean.totalpage}"/>
+												</li>
+												<li>
+													<a4j:commandLink status="normalStatus" data="#{BalanceChangeBean.msg}" oncomplete="searchfinish(data);"
+													title="下一页" value="下一页" action="#{BalanceChangeBean.nextPage}" />
+												</li>
+												<li>
+													<a4j:commandLink  data="#{BalanceChangeBean.msg}" oncomplete="searchfinish(data);"
+													title="尾页" value="尾页" action="#{BalanceChangeBean.lastPage}" />
+												</li>
+												<li>
+												总记录数：#{BalanceChangeBean.totalrecord}条
+												</li>
+											</ul>
+										</div>
+									</h:panelGroup>
+								</a4j:region>
+								
+							</div>
+							</h:panelGroup>
+						</div>
+						</div>
+					</div>
+			<a4j:region>
+				<a4j:jsFunction name="pageKeyDownOPT" status="normalStatus" action="#{BalanceChangeBean.inputPage}" data="#{BalanceChangeBean.msg}" oncomplete="searchfinish(data)">
+					<f:param name="num"/>
+				</a4j:jsFunction>
+			</a4j:region>
+		</h:form>
+	</f:view>
+	
+	
+<ui:include src="/foot.xhtml" />
+
+
+
+</body>
+</html>

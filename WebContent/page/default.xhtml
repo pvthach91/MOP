@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.css" />
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog2.js"></script>
+<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function showMsg(){
+		parent.NewWin("/images/setting.png","","/page/IndexMsgSub.shtml",700,500);
+	}
+	function reloads(){
+		window.location.reload();
+	}
+	function advCheck(){
+		var s = document.getElementById("IndexForm:userstatus").value;
+		if(console){
+			console.log(s);
+		}
+		if(s!=""){
+			TopImageSign = '/images/setting.png';
+			var diag = new Dialog();
+			diag.Width = 700;
+			diag.Height = 500;
+			diag.Title = "";
+			diag.URL = "/page/IndexMsgDefSub.shtml";
+			diag.show();
+		}
+	}
+</script>
+<title>系统公告</title>
+</head>
+<body style="width:100%;padding:75px 0 0 0;margin:0px;" onload="advCheck()">
+	<f:view>
+		<h:form id="IndexForm">
+		<h:inputHidden value="#{SysMsgBean.showitem.title}" id="userstatus"/>
+		<div class="content layout">
+			<div class="info-side clearfix">
+				<div class="service"></div>
+				<div class="about">
+					<p class="">
+						新生娱乐（XINSHENG），尊享欧亚双重牌照，并经第三方游戏公司Gaming Laboratories International（GLI）权威认证，荣获全球多家实力名企的注资加盟。新生实力雄厚，是一家专业、安全的大型购彩平台。 新生娱乐坚持“精品游戏”的理念，为广大玩家精选了9款高频彩票游戏，包括重庆、黑龙江、新疆、天津、上海时时彩，以及...
+					</p>
+				</div>
+			</div>
+			<div class="lottery-list clearfix">
+				<div class="cqssc">
+					<div>
+						<p>24小时新生分分彩，是菲律宾博彩监察联合会（POCCOR）授权新生彩票集团发行的超高频彩票。 POCCOR采用国际流行的高度精确的随机数字生成器（RNG）设备将为每个游戏产生随机结果。 客户的购彩玩法或购彩金额不会影响RNG所生成的数字。POCCOR所用RNG已由“国际博弈研究室（GLI）”验证， 它是一家得到国际认可和普遍尊重的测试认证机构。</p>
+					</div>
+					<a href="#" class="jsmmc data-url" data-url="/mmc.shtml">新生秒秒彩</a>
+					<a href="#" class="csffc data-url" data-url="/ssccs.shtml">新生分分彩</a>
+					<a href="#" class="bflfc data-url" data-url="/sscbf.shtml">新生两分彩</a>
+					<a href="#" class="xjssc data-url" data-url="/sscxj.shtml">新疆时时彩</a>
+					<a href="#" class="tjssc data-url" data-url="/ssctj.shtml">天津时时彩</a>
+					<a href="#" class="cqssc data-url" data-url="/ssccq.shtml">重庆时时彩</a>
+				</div>
+				<div class="sd115">
+					<div class="text-area">
+						<p>玩法简单多样，包含包括任选一、任选二、任选三、任选四、任选五、任选六、任选七、任选八、前二直选、前二组选、前三直选、前三组选等多种玩法。</p>
+		<p>11选5是从01-11共11个号码中任选1-8个号码进行投注，每期开出5个号码为中奖号码，竞猜5位开奖号码的全部或部分号码。投注方式灵活，开奖频次高，全面满足不同彩民的投注需要。新生目前上线了广东、重庆、江西、山东四省的11选5。</p>
+		<p>体彩11选5是经中华人民共和国财政部批准，由国家体育总局体育彩票管理中心组织发行，各省市体育彩票发行中心公布开奖结果的快开彩票。目前已有山东、江西、广东、重庆、江苏等省市发行了11选5。</p>
+		<p>“十一运夺金”又称山东11选5，投注区号码范围为01～11，每一个号码分别代表一种运动项目。每期开出5个号码作为中奖号码。十一运夺金玩法即是竞猜5位开奖号码的全部号码或部分号码。开奖频率高，国内首个11选5玩法。</p>
+					</div>
+					<a href="#" class="cq115 data-url" data-url="/cs115.shtml">山东11选5</a>
+					<a href="#" class="jx115 data-url" data-url="/jx115.shtml">江西11选5</a>
+					<a href="#" class="gd115 data-url" data-url="/gd115.shtml">广东11选5</a>
+					<a href="#" class="sd115 data-url" data-url="/sd115.shtml">新生11选5</a>
+				</div>
+				<div class="fc3d">
+					<div class="text-area">
+						<p>新生3D是为迎合广大玩家所自主研发的相同于高频福彩3D，解决了福彩3D每天一期的弊端，让更多玩家能更好的参与享受高频购彩的快乐与刺激。
+</p>
+	<p>“3D”是指以三个号码排列或组合为一注进行单式投注，投注号码由000-999组成，三个位置从左至右分别为“百位”、“十位”、“个位”，一组三个号码的排列或组合称为一注。
+</p>
+		<p>“排列五”投注区分为（万位、千位和百位/万位、千位、百位、十位和个位），各位号码范围为0～9。每期从各位上开出1个号码作为中奖号码，即开奖号码为3位数/5位数。排列三即开奖号码为3位数，排列五即开奖号码为5位数。 属于智力型彩种。
+</p><p>中国福利彩票3D游戏（以下简称3D），是以一个3位自然数为投注号码的彩票。3D在各省 （区、市）保留各自奖池、单独派奖的基础上实行三统一，即统一名称标识、统一游戏规则、统一开 奖号码。
+</p>
+					</div>
+					<a href="#" class="cs3d data-url" data-url="/cs3d.shtml">新生3D</a>
+					<a href="#" class="fc3d data-url" data-url="/fc3d.shtml">福彩3D</a>
+					<a href="#" class="tcp3p5 data-url" data-url="/pl35.shtml">体彩P3P5</a>
+				</div>
+			</div>
+		</div> 
+		</h:form>
+	</f:view>
+</body>
+<script type="text/javascript">
+	var jQuery = window.parent.jQuery;
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		height = 0;	
+    	var ifrm = jQuery("#mainiframe")[0].contentWindow.document; 
+    	setInterval(function(){
+    		height=jQuery(ifrm).find('body').outerHeight();
+    		if(height != heightHistory){
+    			if(!parentWindow.autoHeight){
+    				return;
+    			}
+    			parentWindow.autoHeight(height);		
+    		}
+    		heightHistory = height;
+    	},1000);
+    	jQuery(ifrm).find('.data-url').click(function(){
+    		jQuery("#mainiframe").attr('src', jQuery(this).attr('data-url'));
+    	});
+    });
+</script>
+</html>

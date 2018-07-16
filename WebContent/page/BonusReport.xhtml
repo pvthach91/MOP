@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>统计报表</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+	function showReport(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		window.location.reload();
+	}
+	function opentrees(obj,rid){
+		if(obj.src.indexOf("plus3.gif")>=0){
+			//alert("open");
+			obj.src="/images/diven/xytree/minus3.gif";
+			document.getElementById(rid).style.display="";
+		}else{
+			//alert("close");
+			obj.src="/images/diven/xytree/plus3.gif";
+			document.getElementById(rid).style.display="none";
+		}
+	}
+</script>
+<style>
+	.tdrightbg{text-align:right;background:#efe1c3;font-size:12px;color:#555555;}
+	.tdleftbg{padding-left:8px;background:#f8f4ec;font-size:12px;color:#000000;}
+</style>
+</head>
+<body>
+<!--头部-->
+<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="WLReportForm">
+			<!--content-->
+			<div id="content">
+				<div class="content">
+					<h2>统计报表</h2>
+						<div class="tab_box">
+							<ul class="tab_nav">
+								<li>
+									<a href="/page/ReportZb.shtml" style="font-size:14px;">账变记录</a>
+								</li>
+								<li  class="on">
+									<a href="/page/BonusReport.shtml" style="font-size:14px;">赠送红利</a>
+								</li>
+								<li  >
+									<a href="/page/ReportWL.shtml" style="font-size:14px;">统计报表</a>
+								</li>
+								<li>
+									<a href="/page/ReportTD.shtml" style="font-size:14px;">团队总览</a>
+								</li>
+								<li>
+									<a href="/page/ReportDay.shtml" style="font-size:14px;">每日下级报表</a>
+								</li>
+							</ul>
+						</div>
+					
+					<div class="tab_in">
+						<div class="game_top">
+							<a4j:region>
+							<div class="game_top_in">
+								<label>日期:</label>
+								<h:inputText size="15" value="#{BonusReportBean.stime}"
+									id="startTime" styleClass="time" 
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd',onpicked:function(){$dp.$('WLReportForm:endTime').focus();}})" /> 00:00:00
+								<label>至:</label>
+								<h:inputText size="15" value="#{BonusReportBean.etime}" id="endTime" styleClass="time"
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'WLReportForm:startTime\')}',dateFmt:'yyyy-MM-dd'})" />
+									23:59:59
+							</div>	
+							<div class="game_top_in">
+							<label>用户名:</label>
+								<h:inputText size="15" styleClass="num" value="#{BonusReportBean.loginname}"/>
+							
+								<label>类型:</label>
+								<h:selectOneMenu styleClass="kind" value="#{BonusReportBean.type}" style="width:150px">
+									<f:selectItem itemValue="-2" itemLabel="==全部=="></f:selectItem>
+									<f:selectItem itemValue="13" itemLabel="平台【赠送礼金】"></f:selectItem>
+									<f:selectItem itemValue="17" itemLabel="上级【充值】"></f:selectItem>
+									<f:selectItem itemValue="10" itemLabel="【充值】下级"></f:selectItem>
+									<f:selectItem itemValue="53" itemLabel="我的【活动】"></f:selectItem>
+									<f:selectItem itemValue="52" itemLabel="派发【活动】"></f:selectItem>
+									<f:selectItem itemValue="54" itemLabel="我的【分红】"></f:selectItem>
+									<f:selectItem itemValue="51" itemLabel="派发【分红】"></f:selectItem>
+								</h:selectOneMenu>
+								
+								
+								<a4j:commandButton value="查询" status="normalStatus"
+									styleClass="submitBtn" action="#{BonusReportBean.bntSearch}"
+									data="#{BonusReportBean.msg}"
+									oncomplete="searchfinish(data)">
+									<f:param name="ln" value="#{LoginBean.user.loginname}"/>
+								</a4j:commandButton>
+							</div>
+							</a4j:region>
+						</div>
+							<h:panelGroup id="pgData">
+							<div class="game_mod">
+								<table class="tabbox" border="0" cellspacing="1" width="1024" cellpadding="0" bgcolor="#e9d0cf">
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											 <th>时间</th>
+											<th>用户名</th>
+											<th>类型</th>
+											<th>收入</th>
+											<th>支出</th>
+											<th>备注</th>
+										</tr>
+									
+									
+									<a4j:repeat value="#{BonusReportBean.reslist}" var="list" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+										<td align="center">
+											<h:outputText value="#{list.opttime}" />
+										</td>
+										<td align="center">
+											<h:outputText value="#{list.loginname}" />
+										</td>
+										<td align="center">
+											<h:outputText value="平台【赠送礼金】" rendered="#{list.opttype==13?true:false}"/>      
+											<h:outputText value="上级【充值】" rendered="#{list.opttype==17?true:false}"/>          
+											<h:outputText value="【充值】下级" rendered="#{list.opttype==10?true:false}"/>          
+											<h:outputText value="我的【活动】" rendered="#{list.opttype==53?true:false}"/>          
+											<h:outputText value="派发【活动】" rendered="#{list.opttype==52?true:false}"/>          
+											<h:outputText value="我的【分红】" rendered="#{list.opttype==54?true:false}"/>          
+											<h:outputText value="派发【分红】" rendered="#{list.opttype==51?true:false}"/>          
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.income}" />
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.pay}" />
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.remark}" />
+										</td>
+									</tr>
+									
+								</a4j:repeat>
+								</thead>
+								</table>
+								<a4j:region>
+									<h:panelGroup>
+										<div class="game_bt">
+											<ul class ="page-list">
+												<li>
+													<a4j:commandLink  action="#{BonusReportBean.firstPage}" data="#{BonusReportBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+												</li>
+												<li>
+													<a4j:commandLink status="normalStatus" action="#{BonusReportBean.proPage}" data="#{BonusReportBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+												</li>
+												<li>
+													<input value="#{BonusReportBean.curpage}" onkeydown="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+													<h:outputText value=" / #{BonusReportBean.totalpage}"/>
+												</li>
+												<li>
+													<a4j:commandLink status="normalStatus" data="#{BonusReportBean.msg}" oncomplete="searchfinish(data);"
+													title="下一页" value="下一页" action="#{BonusReportBean.nextPage}" />
+												</li>
+												<li>
+													<a4j:commandLink  data="#{BonusReportBean.msg}" oncomplete="searchfinish(data);"
+													title="尾页" value="尾页" action="#{BonusReportBean.lastPage}" />
+												</li>
+												<li>
+												总记录数：#{BonusReportBean.totalrecord}条
+												</li>
+											</ul>
+										</div>
+									</h:panelGroup>
+								</a4j:region>
+							</div>
+							</h:panelGroup>
+							<!---->
+						</div>
+					</div>
+				</div>
+		</h:form>
+	</f:view>
+	
+	
+	
+<div id="footer">
+    <div class="footer">
+         <div class="footer_l">
+            <h3>银行支持 <span>About us</span></h3>
+             <a href="#"><img src="../images/public/pic_foot01_r2_c2.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r5_c6.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r3_c12.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r1_c20.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r16_c1.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r17_c5.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r15_c14.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r14_c19.png" alt=""/></a>
+         </div>
+        <div class="footer_l footer_r">
+            <h3>银行支持 <span>About us</span></h3>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c27.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c29.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r6_c38.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c26.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r13_c32.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r16_c39.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c41.png" alt=""/></a>
+        </div>
+        <div class="clear"></div>
+        <p class="accredit">我们是由菲律宾政府 NORTH CAGAYAN 和 CEZA 所授权 并拥有合法博彩牌照，并接受其机构监管，严格按照上述机构颁发的规则进行运营。</p>
+        <p>Copyright © 2015 DaTanglottery, Inc. All Rights Reserved.</p>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>下级投注</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script language="javascript" src="/js/SearchPage.js"></script>
+</head>
+<body>
+	<f:view>
+		<h:form id="AgentForm">
+		<div id="Game_Time">
+							<a4j:region>
+								<div class="fillet_Time">
+									时间范围：
+									<h:inputText size="20" value="#{AgentBetBean.starttime}"
+										id="startTime" styleClass="Wdate" style="padding-left:4px;"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){$dp.$('AgentForm:endTime').focus();}})" />
+
+									<rich:spacer width="5"></rich:spacer>
+									至
+									<rich:spacer width="5"></rich:spacer>
+									<h:inputText size="20" value="#{AgentBetBean.endtime}"
+										style="padding-left:4px;" id="endTime" styleClass="Wdate"
+										onmouseover="this.style.cursor='pointer';"
+										onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'AgentForm:startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+									
+									<rich:spacer width="10"></rich:spacer>
+									状态：
+									<h:selectOneMenu styleClass="select_Game" value="#{AgentBetBean.status}">
+										<f:selectItems value="#{AgentBetBean.statuslist}"></f:selectItems>
+									</h:selectOneMenu>
+
+									<rich:spacer width="10"></rich:spacer>
+
+									<label for="GameRecordForm:ezh" style="cursor: pointer">包含追号</label>
+									<h:selectBooleanCheckbox value="#{AgentBetBean.tracecheck}"
+										id="ezh">
+									</h:selectBooleanCheckbox>
+									<br/>
+									<br/>游戏种类：
+
+									<h:selectOneMenu styleClass="select_Game"
+										value="#{AgentBetBean.lotteryid}">
+										<f:selectItems value="#{AgentBetBean.lotterylist}"></f:selectItems>
+									</h:selectOneMenu>
+									注单编号：
+									<h:inputText value="#{AgentBetBean.betid}" styleClass="input_Game"></h:inputText>
+									
+									
+									<rich:spacer width="10"></rich:spacer>
+									<input type="button" value="查询" onclick="searchOpt();" class="submitBtn"/>
+								</div>
+								<a4j:jsFunction name="searchOpt" status="normalStatus" action="#{AgentBetBean.btnSearch}" reRender="pgData" data="#{AgentBetBean.msg}" oncomplete="searchfinish(data)">
+								</a4j:jsFunction>
+							</a4j:region>
+						</div>
+						<br/>
+						<h:panelGroup id="pgData">
+							<table cellpadding="0" cellspacing="0" border="0"
+								class="tableclass" style="margin-top:-10px;">
+								<tr class="fillet_table_tr">
+									<td align="center"><b>会员</b></td>
+									<td style="height: 37px;" align="center"><b>游戏名称</b></td>
+									<td align="center"><b>游戏玩法</b></td>
+									<td align="center"><b>投注时间</b></td>
+									<td align="center"><b>游戏期号</b></td>
+									<td align="center"><b>追号</b></td>
+									<td align="center"><b>投注额</b></td>
+									<td align="center"><b>奖金</b></td>
+									<td align="center"><b>状态</b></td>
+									<td align="center"><b>查看</b></td>
+								</tr>
+								<a4j:repeat value="#{AgentBetBean.reslist}" var="list"
+									id="dblist" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+										<td align="center">#{list.loginname}</td>
+										<td style="height: 34px;" align="center">#{list.lotteryname}</td>
+										<td align="center">#{list.methodname}</td>
+										<td align="center">#{list.inserttime.substring(5,16)}</td>
+										<td align="center">#{list.issue}</td>
+										<td align="center">
+											<h:outputText value="否" rendered="#{list.source==1?'false':'true'}"/>
+											<a4j:commandButton onclick="traceRecordOpt('#{list.traceid}');return false;" styleClass="but_Game_Operating" rendered="#{list.source==1?'true':'false'}"></a4j:commandButton>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.amount}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.bonus}" converter="DoubleConverter"/>
+										</td>
+										<td align="center">
+											<h:outputText value="#{list.statusname}" style="color:#2c8118" rendered="#{list.status==0?'true':'false'}"/>
+											<h:outputText value="#{list.statusname}" style="color:#302ab0" rendered="#{list.status==1?'true':'false'}"/>
+											<h:outputText value="#{list.statusname}" style="color:#302ab0" rendered="#{list.status==2?'true':'false'}"/>
+											<h:outputText value="#{list.statusname}" style="color:#ae7237" rendered="#{list.status==3?'true':'false'}"/>
+											<h:outputText value="#{list.statusname}" style="color:#dc1515" rendered="#{list.status==4?'true':'false'}"/>
+											<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==5?'true':'false'}"/>
+											<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==6?'true':'false'}"/>
+										</td>
+										<td align="center"><input type="button"
+											onclick="betRecordOpt('#{list.id}');"
+											class="but_Game_Operating" /></td>
+									</tr>
+								</a4j:repeat>
+							</table>
+						
+					<div style="background:#DDDDDD;height:35px;line-height:30px;width:100%;">
+						<a4j:region>
+							<span style="padding-left:10px;">
+								总投注额：<font color="#c91810"><b> <h:outputText value="#{AgentBetBean.tamount}" converter="DoubleConverter"/></b></font> RMB，中奖：<font color="#c91810"><b><h:outputText value="#{AgentBetBean.twin}" converter="DoubleConverter"/></b></font> RMB
+							</span>
+							<table width="340px" border="0" align="right" style="padding-right:20px;">
+										<tr>
+											<td>
+												<h:graphicImage url="/images/page/page-first-disabled.gif" rendered="#{AgentBetBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" action="#{AgentBetBean.firstPage}" data="#{AgentBetBean.msg}" reRender="pgData" oncomplete="searchfinish(data);"
+												image="/images/page/page-first.gif" style="border:0" title="第一页" rendered="#{AgentBetBean.curpage=='1'?'false':'true'}"/>
+											</td>
+											<td>
+												<h:graphicImage url="/images/page/page-prev-disabled.gif" rendered="#{AgentBetBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" action="#{AgentBetBean.proPage}" data="#{AgentBetBean.msg}" reRender="pgData"
+												image="/images/page/page-prev.gif" rendered="#{AgentBetBean.curpage=='1'?'false':'true'}" oncomplete="searchfinish(data);" style="border:0" title="上一页" />
+											</td>
+											<td align="center">
+												<h:outputText value="Page"/>
+												<input value="#{AgentBetBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+												<h:outputText value="of #{AgentBetBean.totalpage}"/>
+											</td> 
+											<td>
+												<h:graphicImage url="/images/page/page-next-disabled.gif" rendered="#{AgentBetBean.curpage&gt;=AgentBetBean.totalpage?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" image="/images/page/page-next.gif" data="#{AgentBetBean.msg}" reRender="pgData" oncomplete="searchfinish(data);" 
+												style="border:0" title="下一页" action="#{AgentBetBean.nextPage}" rendered="#{AgentBetBean.curpage&gt;=AgentBetBean.totalpage?'false':'true'}"/>
+											</td>
+											<td>
+												<h:graphicImage url="/images/page/page-last-disabled.gif" rendered="#{AgentBetBean.curpage==AgentBetBean.totalpage?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" image="/images/page/page-last.gif" data="#{AgentBetBean.msg}" reRender="pgData" oncomplete="searchfinish(data);" 
+												style="border:0" title="最后一页" action="#{AgentBetBean.lastPage}" rendered="#{AgentBetBean.curpage==AgentBetBean.totalpage?'false':'true'}"/>
+											</td>
+											<td>
+												总记录数：#{AgentBetBean.totalrecord}条
+											</td>
+										</tr>
+							</table>
+					</a4j:region>
+				</div>
+			</h:panelGroup>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

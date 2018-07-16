@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<link href="/css/main.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
+	<script language="javascript" src="/js/jquery.dialogUI.js"></script>
+	<script language="javascript" src="/js/main.js"></script>
+</head>
+<body style="background-color: #585858; width: 100%; padding: 0px; margin: 0px;">
+	<f:view>
+		<h:form id="topForm">
+			<center>
+			<div id="div_main">
+				<div id="top_main">
+					<div id="top_logo"></div>
+					<div id="top_menu">
+						<div id="top_loginopt">
+							<div id="top_userinfo2">
+								<div style="float:right;margin-right:30px;">
+									<input id="bnt_message" type="button" value=""/><a href="javascript:void(0)">我的消息（<font color="#fdd600"><b>0</b></font>）</a>|     
+									<input id="bnt_help" type="button" value=""/>
+									<a href="javascript:void(0)">帮助中心</a> |
+									<input id="bnt_cs" type="button" value=""/>
+									<a href="javascript:void(0)">在线客服</a> |
+									<input id="bnt_exit" type="button" value=""/><a href="javascript:void(0)">安全退出</a>
+								</div>
+								<div class="c_top_userbalance">
+									<div class="c_top_userflag"/>
+									<div id="e_hiddenbalance" style="float:left;cursor:pointer;" title="点击隐藏金额">
+										<span style="color:#fdd600;margin-right:20px;">
+											<b>#{LoginBean.user.nickname} </b> 
+										</span>
+										
+										<span style="font-family:'微软雅黑';color:#fdd600">
+											￥ <span id="ebalance">#{LoginBean.user.balance}</span>
+										</span>
+										<input id="bnt_refreshbalance" type="button" value="" title="刷新余额"/>
+										
+									</div>
+									<div id="e_showbalance" style="float:left;display:none;cursor:pointer;" title="点击显示金额">
+										点击显示
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="top_submenu">
+							<div class="top_menu_float" value="/ssccq.shtml">优惠活动</div>
+							<div class="top_menu_float" value="/MessageCenter1.html">消息中心</div>
+							<div class="top_menu_float" value="e_menu_5">代理管理</div>
+							<div class="top_menu_float" value="/Personal.html">个人管理</div>
+							<div class="top_menu_float" value="/page/GameRecord.shtml">游戏记录</div>
+							<div class="top_menu_float" value="/Log_Home.html">银行充提</div>
+							<div class="top_menu_sel" value="/Log_Home.html">首 页</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="left_ban">
+					<div style="height:38px;">
+						<div class="c_depositwith_bnt2" id="financeOpt">
+							财务转账
+						</div>
+					</div>
+					<div class="left_title">
+						<div class="left_title_icon"></div> 
+						 低频彩票
+					</div>
+					<div class="left_items" data="/fc3d.shtml">
+						<div class="left_number_icon"><b>1</b></div> 
+						<b><font style="font-size:14px;">福彩</font></b>3D
+					</div>
+					<div class="left_items" data="/pl35.shtml">
+						<div class="left_number_icon"><b>2</b></div> 
+						<b><font style="font-size:14px;">体彩</font></b>P3P5
+					</div>
+					<div class="left_title">
+						<div class="left_title_icon"></div> 
+						 时时彩【高频】
+					</div>
+					<div class="left_items" data="/ssccq.shtml">
+						<div class="left_number_icon"><b>1</b></div> 
+						<b><font style="font-size:14px;">重庆</font></b>时时彩
+					</div>
+					<div class="left_items" data="/sscxj.shtml">
+						<div class="left_number_icon"><b>2</b></div> 
+						<b><font style="font-size:14px;">新疆</font></b>时时彩
+					</div>
+					<div class="left_items">
+						<div class="left_number_icon"><b>3</b></div> 
+						<b><font style="font-size:14px;">黑龙江</font></b>时时彩
+					</div>
+					<div class="left_items" data="/ssctj.shtml">
+						<div class="left_number_icon"><b>4</b></div> 
+						<b><font style="font-size:14px;">天津</font></b>时时彩
+					</div>
+					<div class="left_items" data="/sslsh.shtml">
+						<div class="left_number_icon"><b>5</b></div> 
+						<b><font style="font-size:14px;">上海</font></b>时时乐
+					</div>
+					
+					<div class="left_title">
+						<div class="left_title_icon"></div> 
+						 十一选五【高频】
+					</div>
+					<div class="left_items" data="/sd115.shtml">
+						<div class="left_number_icon"><b>1</b></div> 
+						<b><font style="font-size:14px;">山东</font></b>11选5
+					</div>
+					<div class="left_items" data="/jx115.shtml">
+						<div class="left_number_icon"><b>2</b></div> 
+						<b><font style="font-size:14px;">江西</font></b>11选5
+					</div>
+					<div class="left_items" data="/gd115.shtml">
+						<div class="left_number_icon"><b>3</b></div> 
+						<b><font style="font-size:14px;">广东</font></b>11选5
+					</div>
+					<div class="left_items" data="/cq115.shtml">
+						<div class="left_number_icon"><b>4</b></div> 
+						<b><font style="font-size:14px;">重庆</font></b>11选5
+					</div>
+				</div>
+				<div id="div_content">
+					<iframe id="mainiframe" src="/Log_Home.html" frameborder="0" height="610px" scrolling="auto" style="width:798px; filter:alpha(opacity=96); -moz-opacity:0.96; opacity:0.96;"/>
+				</div>
+			</div>
+			</center>
+			<a4j:region>
+				<a4j:jsFunction name="SysOp" action="#{LoginBean.Online}">
+				</a4j:jsFunction>
+			</a4j:region>
+		</h:form>
+	</f:view>
+</body>
+</html>

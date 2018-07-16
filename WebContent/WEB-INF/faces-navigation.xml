@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>REG1</from-outcome>
+			<to-view-id>/reg.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>INDEXMAIN</from-outcome>
+			<to-view-id>/main.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- ===================================游戏记录========================== -->
+		<!-- 投注记录 -->
+		<navigation-case>
+			<from-outcome>BETRECORD</from-outcome>
+			<to-view-id>/page/BetRecord.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 追号记录 -->
+		<navigation-case>
+			<from-outcome>TRACERECORD</from-outcome>
+			<to-view-id>/page/TraceRecord.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 设置资金密码 -->
+		<navigation-case>
+			<from-outcome>SETTINGZJPWD</from-outcome>
+			<to-view-id>/page/PersonZJPwd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- ==================================个人=============================-->
+		<!-- ==================================个人=============================-->
+		<!-- 奖金详情 -->
+		<navigation-case>
+			<from-outcome>PRICELIST</from-outcome>
+			<to-view-id>/page/PriceList.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<!-- 绑定银行 -->
+		<navigation-case>
+			<from-outcome>BINDINGBANK</from-outcome>
+			<to-view-id>/page/PersonBank1.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 我的消息 -->
+		<navigation-case>
+			<from-outcome>MYMSG</from-outcome>
+			<to-view-id>/page/PersonMsg.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 密码修改 -->
+		<navigation-case>
+			<from-outcome>PWDCHANGE</from-outcome>
+			<to-view-id>/page/PersonPwd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- ==================================银行充提=============================-->
+		<!-- 充值 -->
+		<navigation-case>
+			<from-outcome>DEPOSIT</from-outcome>
+			<to-view-id>/page/DWDeposit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 充值记录 -->
+		<navigation-case>
+			<from-outcome>DEPOSITRECORD</from-outcome>
+			<to-view-id>/page/DWDepositRecord.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 提现 -->
+		<navigation-case>
+			<from-outcome>WITHDRAWL</from-outcome>
+			<to-view-id>/page/DWWithDrawl.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 提现记录  -->
+		<navigation-case>
+			<from-outcome>WITHDRAWLRECORD</from-outcome>
+			<to-view-id>/page/DWWithDrawlRecord.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- ==================================代理================================ -->
+		<!-- 用户注册 -->
+		<navigation-case>
+			<from-outcome>AGENTREG</from-outcome>
+			<to-view-id>/page/AgentReg.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 用户列表 -->
+		<navigation-case>
+			<from-outcome>AGENTUSER</from-outcome>
+			<to-view-id>/page/AgentUser.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 自动注册 -->
+		<navigation-case>
+			<from-outcome>AGENTAUTOREG</from-outcome>
+			<to-view-id>/page/AgentAutoReg.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 团队余额 -->
+		<navigation-case>
+			<from-outcome>AGENTBALANCE</from-outcome>
+			<to-view-id>/page/AgentBalance.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- ===================================帐变报表============================= -->
+		<!-- 帐变记录 -->
+		<navigation-case>
+			<from-outcome>REPORTZB</from-outcome>
+			<to-view-id>/page/ReportZb.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 盈亏报表 -->
+		<navigation-case>
+			<from-outcome>REPORTWL</from-outcome>
+			<to-view-id>/page/ReportWL.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>REPORTWL2</from-outcome>
+			<to-view-id>/page/ReportWL2.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<!-- 团队总览 -->
+		<navigation-case>
+			<from-outcome>REPORTTD</from-outcome>
+			<to-view-id>/page/ReportTD.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

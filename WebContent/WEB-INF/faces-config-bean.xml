@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	<!-- Live chat link provider  -->
+	<managed-bean>
+	 	<managed-bean-name>LiveChatUrlProvider</managed-bean-name>
+		<managed-bean-class>com.brian.ui.LiveChatUrlProvider</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 登录 -->
+	 <managed-bean>
+	 	<managed-bean-name>LoginBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 秒秒彩 -->
+	 <managed-bean>
+	 	<managed-bean-name>MMCBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.MMCBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 邦尼分分彩 -->
+	 <managed-bean>
+	 	<managed-bean-name>CSSSCBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.CSSSCBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 新加坡45秒 -->
+	 <managed-bean>
+	 	<managed-bean-name>Jz45Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.Jz45Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- pk10 -->
+	 <managed-bean>
+	 	<managed-bean-name>PK10Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.PK10Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- pk10官彩-->
+	 <managed-bean>
+	 	<managed-bean-name>PK105FBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.PK105FBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 邦尼两分彩 -->
+	 <managed-bean>
+	 	<managed-bean-name>SSCBFBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.SSCBFBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 邦尼3D -->
+	 <managed-bean>
+	 	<managed-bean-name>Cs3dBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.Cs3dBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 邦尼十一选五 -->
+	 <managed-bean>
+	 	<managed-bean-name>CS11X5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.CS11X5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 重庆时时彩 -->
+	 <managed-bean>
+	 	<managed-bean-name>CqSSCBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.CqSSCBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <managed-bean>
+	 	<managed-bean-name>XjSSCBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.XjSSCBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <managed-bean>
+	 	<managed-bean-name>SscHljBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.SscHljBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <managed-bean>
+	 	<managed-bean-name>JxSSCBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.JxSSCBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <managed-bean>
+	 	<managed-bean-name>TjSSCBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.TjSSCBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 上海时时乐 -->
+	 <managed-bean>
+	 	<managed-bean-name>ShSSLBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.ShSSLBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 福彩3D -->
+	 <managed-bean>
+	 	<managed-bean-name>FC3DBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.FC3DBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 排列35 -->
+	 <managed-bean>
+	 	<managed-bean-name>PL35Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.PL35Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 山东11X5 -->
+	 <managed-bean>
+	 	<managed-bean-name>SD11X5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.SD11X5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 江西11X5 -->
+	 <managed-bean>
+	 	<managed-bean-name>JX11X5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.JX11X5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 广东11X5 -->
+	 <managed-bean>
+	 	<managed-bean-name>GD11X5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.GD11X5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	<!-- 江苏11X5 -->
+	<managed-bean>
+		<managed-bean-name>JS11X5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.JS11X5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	 <!-- 重庆11X5 -->
+	 <managed-bean>
+	 	<managed-bean-name>CQ11X5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.CQ11X5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 韩国1.5分彩 -->
+	 <managed-bean>
+	 	<managed-bean-name>HG1_5Bean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.HG1_5Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 	 <!-- 韩国1.5分彩 -->
+	 <managed-bean>
+	 	<managed-bean-name>QQBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.QQBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 游戏记录 -->
+	 <managed-bean>
+	 	<managed-bean-name>GameRecordBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.GameRecordBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- SUB查看投注单 -->
+	 <managed-bean>
+	 	<managed-bean-name>BetRecordBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.BetRecordBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- SUB查看追号单 -->
+	 <managed-bean>
+	 	<managed-bean-name>TraceRecordBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.TraceRecordBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 帐变查询 -->
+	 <managed-bean>
+	 	<managed-bean-name>BalanceChangeBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.BalanceChangeBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 追号查询 -->
+	 <managed-bean>
+	 	<managed-bean-name>TraceSearchBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.TraceSearchBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 财务查询 -->
+	<managed-bean>
+	 	<managed-bean-name>TransferBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.TransferBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 奖金详情 -->
+	 <managed-bean>
+	 	<managed-bean-name>PriceBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.PriceBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 系统公告 -->
+	 <managed-bean>
+	 	<managed-bean-name>SysMsgBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.SysMsgBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 输赢报表 -->
+	 <managed-bean>
+	 	<managed-bean-name>ReportWLBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.ReportWLBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 输赢报表(新) -->
+	 <managed-bean>
+	 	<managed-bean-name>ReportWinLossBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.ReportWinLossBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 遗漏分析 -->
+	 <managed-bean>
+	 	<managed-bean-name>YLFXBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.YLFXBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 最近开奖号码 -->
+	 <managed-bean>
+	 	<managed-bean-name>UIWinOpenNumberBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.UIWinOpenNumberBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 账户安全 -->
+	 <managed-bean>
+	 	<managed-bean-name>IndexBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.IndexBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- ============================ 银行充提 ============================ -->
+	 <!-- 存款 -->
+	 <managed-bean>
+	 	<managed-bean-name>DepositBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.DepositBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 存款查询 -->
+	 <managed-bean>
+	 	<managed-bean-name>DepositSearchBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.DepositSearchBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 提现 -->
+	 <managed-bean>
+	 	<managed-bean-name>WithdrawalBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.WithdrawalBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 提现查询 -->
+	 <managed-bean>
+	 	<managed-bean-name>WithdrawalSearchBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.WithdrawalSearchBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- ==========================代理部分============================ -->
+	 <!-- 推广用户自动注册 -->
+	 <managed-bean>
+	 	<managed-bean-name>RegBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.RegBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 手工用户注册 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentRegBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentRegBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 用户查询-->
+	 <managed-bean>
+	 	<managed-bean-name>AgentUserSearchBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentUserSearchBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 自动注册 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentAutoRegBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentAutoRegBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 团队余额 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentBalanceBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentBalanceBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 
+	 <!-- 代理查看下线帐变 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentZbBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentZbBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 代理查看下线投注 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentBetBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentBetBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- =========================个人部分========================== -->
+	 <!-- 密码修改 -->
+	 <managed-bean>
+	 	<managed-bean-name>PersonPwdBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.PersonPwdBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 银行卡绑定 -->
+	 <managed-bean>
+	 	<managed-bean-name>PersonBankCardBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.PersonBankCardBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 消息查询 -->
+	 <managed-bean>
+	 	<managed-bean-name>PersonMessageBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.PersonMessageBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 已发送的消息 -->
+	 <managed-bean>
+	 	<managed-bean-name>PersonMsgSendBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.PersonMsgSendBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 发送消息时用户的选择 -->
+	 <managed-bean>
+	 	<managed-bean-name>PersonMsgUserBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.PersonMsgUserBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 
+	 <!-- IP过滤 -->
+	 <managed-bean>
+	 	<managed-bean-name>IPForBid</managed-bean-name>
+		<managed-bean-class>com.brian.ui.IpForBidBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 我的最新投注 -->
+	 <managed-bean>
+	 	<managed-bean-name>UINewBetBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.UINewBetBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 团队总览 -->
+	 <managed-bean>
+	 	<managed-bean-name>ReportTDBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.ReportTDBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 今日报表 -->
+	 <managed-bean>
+	 	<managed-bean-name>ReportWinLoss2Bean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.ReportWinLoss2Bean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 号码分布 -->
+	 <managed-bean>
+	 	<managed-bean-name>WinNumLayoutBean</managed-bean-name>
+		<managed-bean-class>com.brian.ui.WinNumLayoutBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- K31 -->
+	 <managed-bean>
+	 	<managed-bean-name>K31Bean</managed-bean-name>
+		<managed-bean-class>com.brian.game.K31Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- K32 -->
+	 <managed-bean>
+	 	<managed-bean-name>K32Bean</managed-bean-name>
+		<managed-bean-class>com.brian.game.K32Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- K33 -->
+	 <managed-bean>
+	 	<managed-bean-name>K33Bean</managed-bean-name>
+		<managed-bean-class>com.brian.game.K33Bean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 配额管理 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentPEBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentPEBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 配额下级子表 -->
+	 <managed-bean>
+	 	<managed-bean-name>AgentPESubBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.AgentPESubBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	 <!-- 下级15天报表 -->
+	 <managed-bean>
+	 	<managed-bean-name>Report15DayBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.Report15DayBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>
+	  <managed-bean>
+	 	<managed-bean-name>BonusReportBean</managed-bean-name>
+		<managed-bean-class>com.brian.uipage.BonusReportBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	 </managed-bean>
+</faces-config>

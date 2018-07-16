@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>提现</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<link rel="stylesheet" type="text/css" href="/css/AgentReg.css" />
+<link rel="stylesheet" type="text/css" href="/css/PersonBank.css" />
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="../js/zDrag.js"></script>
+<script type="text/javascript" src="../js/zDialog.js"></script>
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：您提交提现申请成功，请等待出款。");
+			window.top.loadbalance();
+			window.location.reload();
+		}
+	}
+</script>
+</head>
+<body>
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+			<div id="content">
+				<div class="content">
+						<h2>提现</h2>
+						<div class="tab_box">
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/DWDeposit.shtml">充值</a>
+							</li>
+							<li>
+								<a href="/page/DWDepositRecord.shtml">充值记录</a>
+							</li>
+							<li class="on">
+								<a href="/page/DWWithDrawl.shtml">提现</a>
+							</li>
+							<li>
+								<a href="/page/DWWithDrawlRecord.shtml">提现记录</a>
+							</li>
+						</ul>
+				</div>
+					<div class="tent-layout-info">
+						<div class="layour-area">
+							<div class="ui-desc">
+								<p class="fs-14"><b>使用提示：</b></p>
+								<div class="color-888 fs-12">
+<!-- 								#{WithdrawalBean.mrtxcs} -->
+									<p>1、每天限提现 <span style="color:red;font-size:20px;">5</span>次，今天您已经成功发起了 <span style="color:red;font-size:20px;">#{WithdrawalBean.wtimes}</span> 次提现申请。</p>
+									<p>2、全天 <span class="color-red">24</span> 小时 提现。</p>
+									<p>3、新绑定的提现银行卡需要超过 <span class="color-red">6</span> 小时才能正常提款。</p>
+									<p>4、一个账户只能绑定同一个开户人姓名的银行卡。</p>
+								</div>
+							</div>
+							<div class="line"></div>
+							<div class="air">
+								#{WithdrawalBean.pageinit}
+							</div>
+							<table class="table table01 no-hover fs-14">
+								<tbody>
+									<tr>
+										<td class="text-right pr50" width="30%">-- 可用余额 --</td>
+										<td class="text-left"><span class="color-red fs-16"><font color="c02e2e" style="font-size:16px"><b><h:outputText value="#{LoginBean.user.balance}" converter="DoubleConverter"/></b></font></span> RMB</td>
+									</tr>
+									<tr>
+										<td class="text-right pr50">-- 收款银行 --</td>
+										<td class="text-left">
+											<h:selectOneMenu styleClass="ui-select w200" value="#{WithdrawalBean.cardid}"  style="width:280px;font-size:14px">
+											<f:selectItems value="#{WithdrawalBean.banklist}"></f:selectItems>
+										</h:selectOneMenu>
+										</td>
+									</tr>
+									<tr>
+										<td class="text-right pr50">-- 汇款金额 --</td>
+										<td class="text-left">
+											<h:inputText value="#{WithdrawalBean.wamount}" styleClass="ui-input w150" style="font-size:16px;color:blue;" size="15" onkeyup="value=value.replace(/[^0-9\.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^0-9\.]/g,''))"/>
+										(最小提现金额 <font color="c02e2e"><b>#{WithdrawalBean.wmin}</b></font> RMB / 最大 <font color="c02e2e"><b>#{WithdrawalBean.wmax}</b></font> RMB)
+										</td>
+									</tr>
+									
+									<tr>
+										<td class="text-right pr50">--资金密码--</td>
+										<td class="text-left">
+											<h:inputSecret value="#{WithdrawalBean.checkpwd}" styleClass="ui-input w150" style="font-size:14px;width:127px"/>
+											
+										</td>
+									</tr>
+									<tr>
+										<td class="text-center color-red" colspan="2">
+											<div class="wrap-style w150 inline">
+												<a4j:commandButton value="下一步" style='margin-left:160px'
+										styleClass="wrap-style-insaid submitBtn" action="#{WithdrawalBean.apply}"
+										data="#{WithdrawalBean.msg}"
+										oncomplete="savefinish(data)" />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+		<!--底部-->
+	<ui:include src="/foot.xhtml" />
+</body>
+</html>

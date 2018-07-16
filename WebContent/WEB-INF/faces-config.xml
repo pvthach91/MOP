@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+	<!-- 投注位置 -->
+	<converter>
+        <converter-id>ConverterBetPosition</converter-id>
+        <converter-class>com.brian.service.ConverterBetPosition</converter-class>
+    </converter>
+	<!-- 投注内容转化器 -->
+	<converter>
+        <converter-id>ConverterBetContent</converter-id>
+        <converter-class>com.brian.service.ConverterBetContent</converter-class>
+    </converter>
+	<!-- Double转化器 -->
+	<converter>
+        <converter-id>DoubleConverter</converter-id>
+        <converter-class>com.brian.service.ConverterDouble</converter-class>
+    </converter>
+    <!-- 百分比转化器 -->
+	<converter>
+        <converter-id>PercentConverter</converter-id>
+        <converter-class>com.brian.service.ConverterPercent</converter-class>
+    </converter>
+    <!-- 百分比转化器 -->
+	<converter>
+        <converter-id>WinNumberConverter</converter-id>
+        <converter-class>com.brian.service.ConverterWinNumber</converter-class>
+    </converter>
+	<application>
+		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+	</application>
+	
+</faces-config>

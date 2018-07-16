@@ -1,0 +1,81 @@
+@charset "utf-8";
+/*
+public CSS
+*/
+a {color:#393838; text-decoration:none; cursor:hand;}
+body {
+	font-family:"微软雅黑",tahoma; 
+	padding:0px;
+	margin:0px;
+	font-size:12px;
+	color:#ebebeb;
+}
+div#div_main{width:1082px}
+div#top_main{height:38px; background:#abb1b9; width:1082px; display:inline-block; border-bottom: #363d49 1px solid; }
+div#divbg{position:fixed; top:0; left:0; bottom:0; right:0; z-index:-1;} 
+div#divbg > img{height:100%; width:100%; border:0;}
+.b_depositbnt{height: 28px; width:82px; background:url(/images/icon.png) no-repeat -327px -506px;border:0px;cursor:pointer;color:#996633;}
+.top_logo{height: 45px; width:264px; background:url(/images/icon.png) no-repeat 0px -544px; cursor:hand;}
+
+.c_depositwith_bnt{float:right;width:56px;height:32px;line-height:32px;background: url(/images/icon.png) no-repeat -130px -468px;color:#ddc9a5;margin-left:8px;margin-top:10px;font-size:13px;cursor:pointer;}
+.c_depositwith_bnt:hover{width:56px;height:32px;line-height:32px;background: url(/images/icon.png) no-repeat -185px -468px;color:#ffbcbc;}
+
+.c_onlineLive{width:80px;height:30px;background: url(/images/icon.png) no-repeat 0px -503px;}
+.c_onlineLive:hover{width:80px;height:30px;background: url(/images/icon.png) no-repeat -82px -503px;}
+
+.c_onlineQQ{width:80px;height:30px;background: url(/images/icon.png) no-repeat -164px -503px;}
+.c_onlineQQ:hover {width:80px;height:30px;background: url(/images/icon.png) no-repeat -246px -503px;}
+
+.c_depositwith_bnt2{float:left;width:87px;height:26px;line-height:26px;background: url(/images/icon.png) no-repeat -555px -386px;color:#373737;margin-left:44px;margin-top:10px;font-size:13px;cursor:pointer;font-weight:bold;}
+.c_depositwith_bnt2:hover{width:87px;height:26px;line-height:26px;background: url(/images/icon.png) no-repeat -555px -415px;color:#5c3a14;}
+.divsplit{width:3px;height:27px;background: url(/images/icon.png) no-repeat -247px -469px;}
+.adv_Icon{width:16px;height:17px;background: url(/images/icon.png) no-repeat -259px -474px;}
+
+.b_loginbnt{margin-top:5px;margin-left:20px;float:right;text-align:center;line-height:28px;height: 28px; width:82px; background:url(/images/icon.png) no-repeat -327px -506px;border:0px;cursor:pointer;color:#996633;}
+.b_loginbnt:hover{background:url(/images/icon.png) no-repeat -493px -506px;color:#42788e;}
+
+div#top_logo{height: 40px; width:234px; float:left; background:url(/images/icon.png) no-repeat -453px -236px; cursor:hand;margin:15px 12px;}
+#top_loginopt{line-height:38px;color:#3c424a;font-size:12px;float:right;}
+
+#top_loginopt a{color:#393838;}
+#top_loginopt a:hover{color:#991f1f;}
+#top_loginopt input{vertical-align:middle;}
+#bnt_message{height:28px;width:26px;background: url(/images/icon.png) no-repeat -272px -4px;border:0px;}
+#bnt_help{height:28px;width:24px;background: url(/images/icon.png) no-repeat -298px 0px;border:0px;}
+#bnt_cs{height:28px;width:26px;background: url(/images/icon.png) no-repeat -324px -2px;border:0px;}
+#bnt_exit{height:28px;width:28px;background: url(/images/icon.png) no-repeat -352px -2px;border:0px;}
+#bnt_refreshbalance{width:19px; height:24px;background: url(/images/icon.png) no-repeat -248px -5px;border:0px;margin-top:-5px;cursor:pointer;}
+#bnt_withdrawl{width:27px; height:24px;background: url(/images/icon.png) no-repeat -217px -5px;color:#ededed;border:0px;font-size:12px;font-weight:bold;}
+#bnt_deposit{width:27px; height:24px;background: url(/images/icon.png) no-repeat -180px -5px;color:#ededed;border:0px;font-size:12px;font-weight:bold;}
+
+#top_userinfo1{width:327px;float:left;line-height:49px;}
+.c_top_userflag{width:20px;height:19px;margin-top:16px;margin-left:20px;margin-right:7px;background: url(/images/icon.png) no-repeat -0px -100px;border:0px;float:left;}
+.c_top_userbalance{float:right;margin-right:10px;height:20px;}
+
+#tbfooter a{color:#999999}
+#tbfooter a:hover{color:#ffffff;}
+
+#enotice a{color:#635b4b}
+#enotice a:hover{color:#d61a1a;}
+
+.top_menu_sel{color:#ffd800;margin-top:18px;margin-right:10px;line-height:35px;width:88px; height:35px;background: url(/images/icon.png) no-repeat -267px -546px;float:right;cursor:pointer;}
+.top_menu_float{margin-top:18px;margin-right:10px;float:right;line-height:35px;height:35px;width:88px;cursor:pointer;color:#fbf8dd;}
+.top_menu_float:hover{background: url(/images/icon.png) no-repeat -267px -546px;}
+
+.top_menu_split{float:right;width:2px; height:37px;background: url(/images/icon.png) no-repeat -549px -465px;margin-top:18px;}
+.top_menu_split2{float:right;width:2px; height:37px;background: url(/images/icon.png) no-repeat -564px -465px;margin-top:18px;margin-right:8px;}
+/**
+Left CSS
+*/
+#left_ban{width:100%;height:794px;margin:0px 0;float:left;border-top: #abb1b9 1px solid;border-left: #abb1b9 1px solid;border-bottom: #abb1b9 1px solid;}
+.left_title{height:30px;color:#e0c993;line-height:30px;text-align:left;font-size:14px;}
+.left_title_icon{margin-right:10px;margin-left:6px;width:22px; height:26px;background: url(/images/icon.png) no-repeat -214px -33px;float:left;}
+
+#left_ban a{color:#ebebeb}
+#left_ban a:hover{color:#ffd800;}
+.left_number_icon{padding-right:5px;margin-top:5px;width:22px; height:20px;background: url(/images/icon.png) no-repeat -282px -474px;float:left;text-align:center;font-weight:bold;}
+.left_items{padding-left:35px;text-align:left;height:32px;line-height:28px;margin-left:5px;margin-top:0px;margin-right:5px;border-bottom:#8091a5 1px solid;color:#FFFFFF;cursor:pointer;letter-spacing:1px;}
+.left_items:hover{background:#444444;}
+.left_itemsclick{color:#ffd57e;}
+#div_content{margin-left:7px;margin-top:5px;}
+.s_mainsplit{height:55px; width:2px; background:url(/images/icon.png) no-repeat -581px -450px;}

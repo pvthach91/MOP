@@ -1,0 +1,195 @@
+
+
+
+.desktop {
+	background: url(table-cont-bg.png?v=1) no-repeat center -80px;
+}
+
+.desktop .ct-user {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 400px;
+}
+.desktop .ct-user .btn {
+	padding-left: 40px;
+	padding-right: 40px;
+
+}
+.desktop .chipgroup-cont {
+  position: absolute;
+  left: 60px;
+  top: 390px;
+  width: 50px;
+}
+.desktop .chipgroup-cont .chip {
+	position: absolute;
+	opacity: 1;
+}
+.desktop .chipgroup-cont .chip-index-0 {
+  top: 0;left: 0px;}
+.desktop .chipgroup-cont .chip-index-1 {
+  top: 0px;left: 35px;}
+.desktop .chipgroup-cont .chip-index-2 {
+  top: 0px;left: 70px;}
+.desktop .chipgroup-cont .chip-index-3 {
+  top: 0px;left: 105px;}
+.desktop .chipgroup-cont .chip-index-4 {
+  top: 0px;left: 140px;}
+.desktop .chipgroup-cont .chip-index-5 {
+  top: 0px;left: 175px;}
+.desktop .chipgroup-cont .chip-index-6 {
+  top: 0px;left: 210px;}
+.desktop .chipgroup-cont .chip-index-7 {
+  top: 0px;left: 245px;}
+.desktop .chipgroup-cont .chip-selected {
+  margin-top: 0;
+  left: 285px;
+  top: -80px;
+  transition: all .5s;
+}
+
+
+
+.chip, .global-chip, .move-chip {
+  position: absolute;
+  opacity: 1;
+}
+
+
+
+
+.desktop {
+
+}
+.desktop .money {
+  position: absolute;
+  text-align: center;
+  top: 400px;
+  left: 690px;
+  font-size: 12px;
+  border: 1px solid rgba(193, 193, 193, 0.16);
+  padding: 5px 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.27) inset;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.19);
+  color: #FFF;
+}
+.desktop .money .num {
+font-weight: bold;
+color: #EEDF00;
+font-size: 14px;
+text-shadow: 1px 1px 1px #002314;
+}
+.desktop .money .money-tip {
+  position: absolute;
+  right: -100px;
+  top: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFFC00;
+  opacity: 0;
+}
+.desktop .money .money-tip-down {
+  color: #05FF00;
+}
+
+.desktop .bet-money-cont {
+  position: absolute;
+  z-index: 10;
+  width: 300px;
+  left: 465px;
+  top: 310px;
+}
+.desktop .bet-money-cont .chip {
+  display: none;
+}
+.desktop .bet-money-cont .tip {
+  position: absolute;
+  top: 13px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #FFEF00;
+  text-shadow: 1px 1px 1px #000;
+  opacity: .2;
+}
+.desktop .bet-money-cont-active {
+  display: block;
+}
+.desktop .bet-money-cont-active .chip {
+  display: block;
+}
+.desktop .bet-money-cont-active .tip {
+  left: 60px;
+}
+
+.desktop .bet-money-cont .chips-cont {
+  position: absolute;
+  left: 0;
+  top: 30px;
+}
+.desktop .bet-money-cont .btn-restart {
+  position: absolute;
+  display: none;
+  left: -40px;
+  top: 10px;
+  padding-left:40px;
+  padding-right:40px;
+}
+
+
+
+
+
+.cards {
+	position: absolute;
+}
+.cards-banker {
+  left: 378px;
+  top: 20px;
+  width: 430px;
+  height: 100px;
+
+}
+.cards-player {
+  left: 378px;
+  top: 170px;
+  width: 430px;
+  height: 100px;
+
+}
+.cards-win .card-n {
+  box-shadow: 0px 6px 40px #FFEF00;
+}
+.card_group_info {
+  position: absolute;
+  left: 310px;
+  top: 45px;
+  font-size: 24px;
+  font-family: "幼圆", "Microsoft Yahei";
+  color: #00BF72;
+  text-shadow: 1px 1px 1px #00341E;
+}
+.card_group_info .win-text {
+  color: #FFF200;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

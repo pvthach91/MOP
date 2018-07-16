@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<title>== #{LoginBean.webname} - 官方网站 ==</title>
+	<link href="/css/main.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
+	<script language="javascript" src="/js/jquery.dialogUI.js"></script>
+	<script language="javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/zDrag.js"></script>
+	<script type="text/javascript" src="/js/zDialog.js"></script>
+	<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function betRecordOpt(sid){
+		//_SCROLLINGJXF = "auto";
+		var diag = new Dialog();
+		diag.Width = 600;
+		diag.Height = 405;
+		diag.Title = "查看投注记录";
+		diag.URL = "/page/BetSubRecord.shtml?id="+sid;
+		diag.show();
+	}
+	function showMsgs(){
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 700;
+		diag.Height = 500;
+		diag.Title = "";
+		diag.URL = "/page/IndexMsgSub.shtml";
+		diag.show();
+	}
+	function showDP(url){
+		//_SCROLLINGJXF = "auto";
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 1000;
+		diag.Height = 600;
+		diag.Title = "帐户充值";
+		diag.URL = url;
+		diag.show();
+	}
+	</script>
+</head>
+<body style="background: #585858; width: 100%; padding: 0px; margin: 0px;">
+	<f:view>
+		<h:form id="topForm">
+			<div id="divbg"><img src="/images/bg/1.jpg" /></div> 
+			<center>
+			<div id="div_main">
+				<div id="top_main">
+					<div style="float:left;color:#444444;margin-top:10px;margin-left:15px;">客服热线：+63 9276555888</div>
+					<div id="top_menu">
+						<div id="top_loginopt">
+								<div style="float:right;margin-right:20px;">
+									<table cellspacing="0" cellpadding="0" border="0"><tr>
+										<td><div class="divsplit" style="margin-right:10px;"></div></td>
+										<td><input id="bnt_message" type="button" value=""/><a href="javascript:void(0)" id="aMsg">消息(<font color="#b50000">
+											<b><h:outputText value="#{LoginBean.msgnum}" id="emsgs"/></b>
+											</font>)</a>
+										</td>
+										<td><div class="divsplit" style="margin-left:10px;margin-right:10px;"></div></td>
+										
+										<td>
+											<a href="javascript:void(0)" onclick="window.open('#{LiveChatUrlProvider.liveChatUrl}','chatwindow','height=510,width=850');">
+												<div class="c_onlineLive"></div>
+											</a>
+										</td>
+										<td><div class="divsplit" style="margin-left:10px;margin-right:10px;"></div></td>
+										<td>
+											<a target="_blank" href="http://wpa.qq.com/msgrd?uin=361233417&amp;site=qq&amp;menu=yes">
+												<div class="c_onlineQQ" title="QQ客服咨询"></div>
+											</a>
+										</td>
+										<td><div class="divsplit" style="margin-left:10px;margin-right:10px;"></div></td>
+										<td>
+											<a href="/help/about.html" target="_blank">帮助</a>
+										</td>
+										<td><div class="divsplit" style="margin-left:10px;margin-right:10px;"></div></td>
+										<td>
+											<a4j:commandLink onclick="if(!confirm('请确认：是否退出系统?'))return false;" oncomplete="exitLogin();" value="退出" action="#{LoginBean.loginout}"/>
+										</td>
+									</tr>
+									</table>
+							</div>
+							<div class="c_top_userbalance">
+								<div class="b_loginbnt" id="depositBnt" title="账户充值">
+									充 值
+								</div>
+								<div id="e_hiddenbalance" style="float:right;cursor:pointer;font-size:13px;">
+									<div id="eHiddenMan" title="点击隐藏金额" class="c_top_userflag" style="margin-top:10px;"/>
+									<span style="color:#4e2a00;margin-right:18px;">
+										#{LoginBean.user.nickname} 
+									</span>
+									<span style="font-family:'微软雅黑';color:#4e2a00;">
+										￥ <span id="ebalance">
+											<h:outputText value="#{LoginBean.user.balance}" converter="DoubleConverter"/>
+										</span>
+									</span>
+									<input id="bnt_refreshbalance" type="button" value="" title="刷新余额"/>
+								</div>
+								<div id="e_showbalance" style="margin-top:-3px;float:left;display:none;cursor:pointer;" title="点击显示金额">
+									<div class="c_top_userflag"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="top_submenu2" style="width:100%;height:71px;line-height:71px;background:#626a77;font-size:14px;">
+					<span class="top_logo" style="margin-top:15px;cursor:pointer;float:left;margin-left:15px;" title="361彩票 - 官方网站"></span>
+					<div class="top_menu_float" value="/page/promo.shtml">优惠</div>
+					<div class="top_menu_split2"></div>
+					<div class="top_menu_sel" value="/page/Index.shtml" id="eMain">系统公告</div>
+					<div class="top_menu_split2"></div>
+					<div class="top_menu_float" value="/page/AgentReg.shtml">代理管理</div>
+					<div class="top_menu_split2"></div>
+					<div class="top_menu_float" value="/page/ReportZb.shtml">帐变报表</div>
+					<div class="top_menu_split2"></div>
+					<div class="top_menu_float" value="/page/BetRecord.shtml">游戏记录</div>
+					<div class="top_menu_split2"></div>
+					<div class="top_menu_float" value="/page/DWDeposit.shtml" id="ebankitem">银行充提</div>
+					<div class="top_menu_split2"></div>
+					<div class="top_menu_float" value="/page/PersonMsg.shtml" id="ePersonInfo">我的帐户</div>
+				</div>
+				<div style="width:100%;height:800px;background:rgba(197, 185, 157, 0.4)!important;background:#c5b99d;filter:Alpha(opacity=40);">
+					<div style="position:relative;width:100%;color:#FFFFFF;">
+						<table style="width:100%;" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="22%" valign="top">
+									<div id="left_ban">
+										<div class="left_title">
+											<div class="left_title_icon"></div> 
+											 时时彩
+										</div>
+										<div class="left_items" data="/mmc.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">天娱</font>秒秒彩<font color="yellow">【新】</font>
+										</div>
+										<div class="left_items" data="/ssccs.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">超速</font>分分彩<font color="yellow">【火爆】</font>
+										</div>
+										<div class="left_items" data="/sscbf.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">缤纷</font>两分彩<font color="yellow">【热】</font>
+										</div>
+										<div class="left_items" data="/ssccq.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">重庆</font>时时彩<font color="yellow">【热】</font>
+										</div>
+										<div class="left_items" data="/sscxj.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">新疆</font>时时彩
+										</div>
+										<div class="left_items" data="/sschlj.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">黑龙江</font>时时彩
+										</div>
+										<div class="left_items" data="/ssctj.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">天津</font>时时彩
+										</div>
+										<div class="left_items" data="/sslsh.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">上海</font>时时乐
+										</div>
+										
+										<div class="left_title" style="padding-top:35px;">
+											<div class="left_title_icon"></div> 
+											 3D 彩票
+										</div>
+										<div class="left_items" data="/cs3d.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">超速</font>3D<font color="yellow">【热】</font>
+										</div>
+										<div class="left_items" data="/fc3d.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">福彩</font>3D
+										</div>
+										<div class="left_items" data="/pl35.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">体彩</font>P3P5
+										</div>
+										<div class="left_title" style="padding-top:35px;">
+											<div class="left_title_icon"></div> 
+											 十一选五
+										</div>
+										<div class="left_items" data="/sd115.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">山东</font>11选5
+										</div>
+										<div class="left_items" data="/jx115.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">江西</font>11选5
+										</div>
+										<div class="left_items" data="/gd115.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">广东</font>11选5
+										</div>
+										<div class="left_items" data="/cq115.shtml">
+											<div class="left_number_icon"></div> 
+											<font style="font-size:14px;">重庆</font>11选5
+										</div>
+									</div>
+								</td>	
+								<td width="78%" valign="top">
+									<table style="width:100%;border:1px solid #abb1b9" cellspacing="0" cellpadding="0">
+										<tr><td style="background:#b6bbc2;height:40px;">
+											<table>
+												<tr>
+													<td>
+														<span style="vertical-align:middle;">
+															<img src="/images/t.gif" class="adv_Icon" style="margin-left:20px;"/>
+														</span>
+													 	<b><font color="#454e5d" style="font-size:13px;">系统公告</font></b>
+													</td>
+													<td style="padding-left:20px;margin-top:-5px;">
+														<div id="enotice" style="margin-top:5px;width:600px;height:16px;overflow:hidden;font-size:12px;font-color:#FFFFFF;text-align:left" onMouseOver="iScrollAmount=0" onMouseOut="iScrollAmount=1">
+					                           				<h:outputText value="#{LoginBean.notice}" escape="false"/>
+					                           			</div>
+													</td>
+												</tr>
+											</table>
+										</td></tr>
+										<tr><td>
+											<iframe id="mainiframe" allowtransparency="true" style="background-color-transparent;width:840px;padding:2px 2px 2px 2px;" src="/page/Index.shtml" frameborder="0" height="750px" scrolling="auto"/>
+										</td></tr>
+									</table>
+									
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div style="width:100%;height:61px;border:#435361 solid 1px;background:#1d2730;text-align:center;">
+					<table width="100%">
+						<tr>
+						<td><img src="/images/main/first_cagayan.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td><img src="/images/main/fczx.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td width="80px" align="center"><img src="/images/main/copyright_1.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td width="80px" align="center"><img src="/images/main/copyright_2.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td><img src="/images/main/alipay.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td><img src="/images/main/copyright_3.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td width="100px" align="center">
+							<img src="/images/main/yl.png" width="52px" height="30px"/>
+						</td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td><img src="/images/main/copyright_4.png"/></td>
+						<td><div class="s_mainsplit" style="vertical-align:middle;"></div></td>
+						<td><img src="/images/main/copyright_5.png"/></td>
+					</tr>
+					</table>
+				</div>
+				
+				<div style="width:100%;height:50px;filter:alpha(opacity=50);-moz-opacity:0.5;opacity: 0.5; background-color:#000000;">
+					<div class="loginmain" style="position:relative;font-size:12px;padding-top:10px;text-align:left;">
+						<table id="tbfooter" width="80%" style="text-align:center;color:#999999;margin-left:30px;margin-top:5px;">
+							<tr>
+								<td><a href="/help/about.html" target="_blank">关于我们</a></td><td> | </td>
+								<td><a href="/help/question.html" target="_blank">常见问题</a></td>
+								<td> | </td>
+								<td><a href="/help/contact.html" target="_blank">联系我们</a></td>
+								<td> | </td>
+								<td><a href="/help/service.html" target="_blank">服务条款</a></td>
+								<td> | </td>
+								<td><a href="/help/hidden.html" target="_blank">隐私政策责任</a></td>
+								<td> | </td>
+								<td><a href="/help/service.html" target="_blank">免责声明</a></td>
+								<td> | </td>
+								<td>客服热线：+852-81931866</td>
+								<td> | </td>
+								<td>集团咨询：+63-9176888888</td>
+							</tr>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+			</center>
+			<a4j:region>
+				<a4j:jsFunction name="SysOp" action="#{LoginBean.Online}">
+				</a4j:jsFunction>
+				<a4j:jsFunction name="LoadMsg" action="#{LoginBean.Online}" reRender="emsgs">
+				</a4j:jsFunction>
+				<a4j:jsFunction name="noticeClick" action="#{SysMsgBean.showmsg}" oncomplete="showMsgs();">
+					<f:param name="id"></f:param>
+				</a4j:jsFunction>
+			</a4j:region>
+		</h:form>
+	</f:view>
+	<script type="text/javascript">
+		var dvNotice = document.getElementById("enotice");
+		//alert(dvNotice.innerHTML);
+		var iLineHeight = 16;
+		var iLineCount = dvNotice.innerHTML.split("&lt;br&gt;").length-1;
+		//alert(iLineCount);
+		var iScrollAmount = 1;
+		if (navigator.userAgent.indexOf('Firefox') >= 0){
+			dvNotice.scrollTop=0;
+		}
+		function noticeShow() {
+			dvNotice.scrollTop += iScrollAmount;
+			//alert(dvNotice.scrollTop  +"-"+ iLineCount * iLineHeight);
+			if (dvNotice.scrollTop == iLineCount * iLineHeight){
+				dvNotice.scrollTop = 0;
+			}
+			
+			if(dvNotice.scrollTop % iLineHeight == 0 ) {
+				window.setTimeout( "noticeShow()", 3000);
+			}else{
+				window.setTimeout( "noticeShow()", 50);
+			}
+		}
+		dvNotice.innerHTML += dvNotice.innerHTML; 
+		window.setTimeout( "noticeShow()", 3000 );
+	</script>
+</body>
+</html>

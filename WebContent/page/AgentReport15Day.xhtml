@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>下级15天发展情况报表</title>
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/css/ucenter.css" />
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功:操作完成!");
+			parent.reloads();
+		}
+	}
+	function closewin() {
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="GameRecordForm">
+			<rich:tabPanel switchType="client" style="width:100%;">
+				<rich:tab>
+					<f:facet name="label">
+						<span style="font-size:13px;"><b>【个人报表】</b></span>
+					</f:facet>
+					<table class="hovertable" style="width:100%">
+							<tr><td colspan="8" style="font-size:14px;text-align:center;"><b>最近15天【<font color="#7f0707">#{Report15DayBean.loginname}</font>】个人发展情况</b></td></tr>
+							<tr><th>日期</th><th>总充值</th><th>总提现</th><th>投注</th><th>中奖</th><th>返点</th><th>活动</th><th>盈亏</th></tr>
+							<a4j:repeat value="#{Report15DayBean.personlist}" var="list" rowKeyVar="keys">
+							<tr>
+									<td>#{list.rtime}</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.dp}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.wd}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.tz}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.win}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.fd}"/>
+									</td>
+									<td><h:outputText converter="DoubleConverter" value="#{list.bonus}"/></td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.win+list.fd+list.bonus-list.tz}"/>
+									</td>
+							</tr>
+						</a4j:repeat>
+					</table>
+				</rich:tab>
+				<rich:tab>
+					<f:facet name="label">
+						<span style="font-size:13px;"><b>【团队报表】</b></span>
+					</f:facet>
+					<table class="hovertable" style="width:100%">
+							<tr><td colspan="8" style="font-size:14px;text-align:center;"><b>最近15天【<font color="#7f0707">#{Report15DayBean.loginname}</font>】团队发展情况</b></td></tr>
+							<tr><th>日期</th><th>总充值</th><th>总提现</th><th>投注</th><th>中奖</th><th>返点</th><th>活动</th><th>盈亏</th></tr>
+							<a4j:repeat value="#{Report15DayBean.teamlist}" var="list" rowKeyVar="keys">
+							<tr>
+									<td>#{list.rtime}</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.dp}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.wd}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.tz}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.win}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.fd}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.bonus}"/>
+									</td>
+									<td>
+										<h:outputText converter="DoubleConverter" value="#{list.win+list.fd+list.bonus-list.tz}"/>
+									</td>
+							</tr>
+						</a4j:repeat>
+					</table>
+				</rich:tab>
+			</rich:tabPanel>
+										
+		</h:form>
+	</f:view>
+</body>
+</html>

@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>合一彩票官方网站</title>
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css" />
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	
+	function saveFinish(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：发送消息完成。");
+		}
+	}
+	function viewOpt(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+// 			TopImageSign = '/images/setting.png';
+// 			var diag = new Dialog();
+// 			diag.Width = 500;
+// 			diag.Height = 300;
+// 			diag.Title = "查看信息";
+// 			diag.URL = "/page/PersonMsgSub.shtml";
+// 			diag.show();
+// 			parent.LoadMsg();
+// 			return;
+			layer.open({
+			    type: 2,
+			    title: '查看信息',
+			    shadeClose: true,
+			    closeBtn: 1,
+			    shade: 0.1,
+			    area: ['500px', '360px'],
+			    content: '/page/PersonMsgSub.shtml' //iframe的url
+			    
+			}); 
+		}
+	}
+	function viewOpt2(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+// 			TopImageSign = '/images/setting.png';
+// 			var diag = new Dialog();
+// 			diag.Width = 500;
+// 			diag.Height = 300;
+// 			diag.Title = "查看信息";
+// 			diag.URL = "/page/PersonMsgSub2.shtml";
+// 			diag.show();
+// 			return;
+				
+			layer.open({
+			    type: 2,
+			    title: '查看信息',
+			    shadeClose: true,
+			    closeBtn: 1,
+			    shade: 0.1,
+			    area: ['500px', '300px'],
+			    content: '/page/PersonMsgSub2.shtml' //iframe的url
+			}); 
+		}
+	}
+	function userSel(){
+// 		TopImageSign = '/images/setting.png';
+// 		var diag = new Dialog();
+// 		diag.Width = 450;
+// 		diag.Height = 450;
+// 		diag.Title = "选择信息接收人";
+// 		diag.URL = "/page/PersonMsgUserSel.shtml";
+// 		diag.show();
+		
+		layer.open({
+		    type: 2,
+		    title: '选择信息接收人',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['450px', '450px'],
+		    content: '/page/PersonMsgUserSel.shtml' //iframe的url
+		}); 
+	}
+	function userInput(ln){
+		document.getElementById("msgForm:recname").value=ln;
+	}
+	function delOpt(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：删除消息完成");
+		}
+	}
+</script>
+<style>
+	.ui-table-area .tab-content{
+		display: none;
+	}
+	.ui-table-area .current{
+		display: block;
+	}
+	.ui-table-area thead{
+		border-bottom: 1px solid #f1f1f1;
+	}
+</style>
+</head>
+<body>
+
+<!--头部-->
+<ui:include src="/bar.xhtml"/>
+	<f:view>
+		<h:form id="msgForm">
+			<div id="content">
+				<div class="content">
+						<h2>操作日志</h2>
+					    <div id="info1" class="recharge_div02 message_div02">
+        <h:panelGroup id="recPage">
+	        <table class="tabbox" border="0" cellspacing="1" cellpadding="0" width="100%" bgcolor="#e9d0cf">
+	          <tr id="tr-op" bgcolor="#ffe7e5">
+	            <th>序号</th>
+	            <th>时间</th>
+	            <th>操作类型</th>
+	            <th>IP</th>
+	            <th>IP所属地</th>
+	          </tr>
+				<a4j:repeat value="#{ExportBean.reslist}" var="list"
+					 rowKeyVar="keys">
+					<tr style="background:#{keys%2==1?'#EEEEDD':'#f4f4f4'}">
+						<td align="center">#{keys+1}</td>
+						<td align="center">
+							#{list.inserttime}
+						</td>
+						<td>
+								<h:outputText value="充值提现" rendered="#{list.logtype==13?true:false}"/>      
+								<h:outputText value="转账充值" rendered="#{list.logtype==23?true:false}"/>      
+								<h:outputText value="存款申请" rendered="#{list.logtype==16?true:false}"/>      
+								<h:outputText value="提现申请" rendered="#{list.logtype==17?true:false}"/>      
+								<h:outputText value="银行卡绑定" rendered="#{list.logtype==14?true:false}"/>      
+								<h:outputText value="银行卡锁定" rendered="#{list.logtype==15?true:false}"/>      
+								<h:outputText value="注册会员" rendered="#{list.logtype==5?true:false}"/>      
+								<h:outputText value="登录" rendered="#{list.logtype==1?true:false}"/>      
+								<h:outputText value="客户自己修改密码" rendered="#{list.logtype==4?true:false}"/>      
+								<h:outputText value="修改客户资料" rendered="#{list.logtype==19?true:false}"/>      
+								<h:outputText value="删除银行卡" rendered="#{list.logtype==20?true:false}"/>      
+								<h:outputText value="首次登录" rendered="#{list.logtype==21?true:false}"/>      
+								</td>
+								
+						<td style="padding-left:5px;">#{list.ip}</td>
+						<td align="center"></td>
+					</tr>
+				</a4j:repeat>
+	        </table>
+			<br />
+        </h:panelGroup>
+    </div>
+   
+    
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+	<ui:include src="/foot.xhtml" />
+</body>
+<script type="text/javascript">
+
+	function change(from,to){
+		$("#info"+from).css('display','none');
+		$("#info"+to).css('display','block');
+	}
+
+</script>
+<script type="text/javascript">
+	$(function(){
+			var aip="";
+			$('#tr-op').nextAll().each(function(){
+				var cc = $(this);
+				var tip = $(this).next().children('td:eq(3)').text();
+				$.ajax({
+					type : "POST",
+					url : "../LotteryService.aspx",
+					data : { flag: "getIP", ip: tip},
+					success : function(data) {
+					cc.children('td:eq(4)').text(data);
+					}
+				});
+			});
+	})
+</script>
+</html>

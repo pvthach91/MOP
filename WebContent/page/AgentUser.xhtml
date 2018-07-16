@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>下级会员</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/PersonBank.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<link rel="stylesheet" type="text/css" href="/css/AgentReg.css" />
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+	
+	function edit(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		layer.open({
+		    type: 2,
+		    title: '编辑会员信息',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['520px', '350px'],
+		    content: '/page/AgentSubUpdate.shtml' //iframe的url
+		    
+		}); 
+	}
+	function deposit(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		layer.open({
+		    type: 2,
+		    title: '会员充值',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['500px', '460px'],
+		    content: '/page/AgentSubDeposit.shtml' //iframe的url
+		    
+		}); 
+	}
+	function tbalance(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		layer.open({
+		    type: 2,
+		    title: '团队余额',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['500px', '300px'],
+		    content: '/page/AgentSubTBalance.shtml' //iframe的url
+		    
+		}); 
+	}
+	function zbView(data){
+		if(data=='-1'){
+			data="非法操作";
+		}
+		if(data){
+			alert(data);
+			return;
+		}
+		
+		layer.open({
+		    type: 2,
+		    title: '下级帐变查看',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['740px', '510px'],
+		    content: '/page/AgentSubZb.shtml' //iframe的url
+		}); 
+	}
+	function betView(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		layer.open({
+		    type: 2,
+		    title: '下级投注记录',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['700px', '500px'],
+		    content: '/page/AgentSubBet.shtml' //iframe的url
+		}); 
+	}
+	function report15day(lname){
+		
+		layer.open({
+		    type: 2,
+		    title: '最近15天发展情况',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['900px', '500px'],
+		    content: "/page/AgentReport15Day.shtml?lname=" + lname //iframe的url
+		}); 
+	}
+	function reloads(){
+		window.location.reload();
+	}
+	function pageKeyDown(num){
+		if(num.length>0){
+			if(event.keyCode==13) {
+				pageKeyDownOPT(num);
+			}
+		}
+	}
+</script>	
+
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+
+		<div id="content">
+			<div class="content">
+						<h2>代理管理</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li>
+							<a href="/page/AgentReg.shtml" style="font-size:14px;">会员注册</a>
+							</li>
+							<li class="on">
+								<a href="/page/AgentUser.shtml" style="font-size:14px;">下级会员</a>
+							</li>
+							<li>
+								<a href="/page/AgentAutoReg.shtml" style="font-size:14px;">注册推广</a>
+							</li>
+							<li>
+								<a href="/page/AgentPE.shtml" style="font-size:14px;">配额管理</a>
+							</li>
+							<li>
+								<a href="/page/AgentBalance.shtml" style="font-size:14px;">团队余额</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab_in">
+						<div class="game_top">
+							<div class="game_top_in">
+								<label>用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名：</label>
+								<h:inputText value="#{AgentUserSearchBean.loginname}" styleClass="kind" size="10"/>
+								<label>账户余额：</label>
+								<h:inputText value="#{AgentUserSearchBean.samount}" styleClass="kind" size="6"/>
+								<span>至</span>
+								<h:inputText value="#{AgentUserSearchBean.eamount}" styleClass="kind" size="6"/>
+							</div>	
+							<div class="game_top_in">
+								<label>会员范围：</label>
+								<h:selectOneMenu styleClass="kind" value="#{AgentUserSearchBean.userarea}">
+									<f:selectItem itemValue="0" itemLabel="直属会员"></f:selectItem>
+									<f:selectItem itemValue="1" itemLabel="全部会员"></f:selectItem>
+								</h:selectOneMenu>
+								<label>排序：</label>
+								<h:selectOneMenu styleClass="kind" value="#{AgentUserSearchBean.order}" style="width:150px">
+								<f:selectItem itemValue="0" itemLabel="注册时间顺序"></f:selectItem>
+								<f:selectItem itemValue="1" itemLabel="注册时间逆序"></f:selectItem>
+								<f:selectItem itemValue="2" itemLabel="余额从大到小"></f:selectItem>
+								<f:selectItem itemValue="3" itemLabel="余额从小到大"></f:selectItem>
+								<f:selectItem itemValue="4" itemLabel="登录次数从大到小"></f:selectItem>
+								<f:selectItem itemValue="5" itemLabel="返点从大到小"></f:selectItem>
+								</h:selectOneMenu>
+								<a4j:commandButton value="查询" styleClass="submitBtn" status="normalStatus" action="#{AgentUserSearchBean.btnSearch}"
+								data="#{AgentUserSearchBean.msg}" oncomplete="searchfinish(data)" />
+							</div>
+						</div>
+							<!---->
+							<div class="game_mod">
+								<h:panelGroup id="pgData">
+								<table class="tabbox" border="0" cellspacing="1" width="1024" cellpadding="0" bgcolor="#e9d0cf">
+										<tr bgcolor="#ffe7e5">
+											<th width="110">用户名</th>
+											<th width="120">余额</th>
+											<th width="60">返点</th>
+											<th width="100">注册时间</th>
+											<th width="100">最近登陆时间</th>
+											<th width="80">登陆次数</th>
+											<th width="">代理</th>
+											<th width="70">状态</th>
+											<th width="170">操作</th>
+										</tr>
+										<a4j:repeat value="#{AgentUserSearchBean.reslist}" var="list" rowKeyVar="keys">
+											<tr bgcolor="#f3f3f3">
+												<td align="left">#{list.loginname}</td>
+												<td>
+													<h:outputText value="#{list.balance}" converter="DoubleConverter"/>
+												</td>
+												<td>
+													<h:outputText value="#{list.pointssc}" converter="PercentConverter"/>%
+												</td>
+												<td>#{list.addtime.substring(5,16)}</td>
+												<td>#{list.lastlogintime.substring(5,16)}</td>
+												<td>#{list.logintimes}</td>
+												<td>#{list.param2}</td>
+												<td>
+													<img src="/images/diven/small/group.png" title="最近15天发展情况" style="cursor:pointer;" onclick="report15day('#{list.loginname}');"/>
+												</td>
+												<td>
+													<font color="#1c2ca0">
+														<a4j:commandLink rendered="#{LoginBean.user.param4=='4'?'true':'false'}" value="充值" status="normalStatus" action="#{AgentUserSearchBean.edit}" data="#{AgentUserSearchBean.msg}" oncomplete="deposit(data)">
+															<f:param name="id" value="#{list.id}"/>
+														</a4j:commandLink>
+														<rich:spacer width="5"></rich:spacer>
+														
+														<a4j:commandLink value="编辑" status="normalStatus" action="#{AgentUserSearchBean.pointEdit}" data="#{AgentUserSearchBean.msg}" oncomplete="edit(data)">
+																<f:param name="id" value="#{list.id}"/>
+															</a4j:commandLink>
+															<rich:spacer width="5"></rich:spacer>
+															
+														<a4j:commandLink value="投注" status="normalStatus" action="#{AgentBetBean.init}" data="#{AgentBetBean.msg}" oncomplete="betView(data)">
+																<f:param name="id" value="#{list.loginname}"/>
+														</a4j:commandLink>
+														<rich:spacer width="5"></rich:spacer>
+														
+														<a4j:commandLink value="帐变" status="normalStatus" action="#{AgentZbBean.init}" data="#{AgentZbBean.msg}" oncomplete="zbView(data)">
+															<f:param name="id" value="#{list.loginname}"/>
+														</a4j:commandLink>
+														<rich:spacer width="5"></rich:spacer>
+														<a4j:commandLink value="团队" status="normalStatus" action="#{AgentUserSearchBean.tbalance}" data="#{AgentUserSearchBean.msg}" oncomplete="tbalance(data)">
+															<f:param name="id" value="#{list.id}"/>
+														</a4j:commandLink>
+													</font>
+												</td>
+											</tr>
+										</a4j:repeat>
+								</table>
+								<br />
+								<div class="">
+									<div class="">
+										<font color="red">注意：</font>只能<font color="red"> 编辑</font> 或者 <font color="red"> 充值</font>您的直属会员
+									</div>
+									<a4j:region>
+									<ul class="page-list f-right mr10 mt10">
+										<li>
+											<a4j:commandLink status="normalStatus" action="#{AgentUserSearchBean.proPage}" data="#{AgentUserSearchBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+										</li>
+										<li>
+											<input value="#{AgentUserSearchBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+											<h:outputText value=" / #{AgentUserSearchBean.totalpage}"/>
+										</li>
+										<li>
+											<a4j:commandLink status="normalStatus" data="#{AgentUserSearchBean.msg}" oncomplete="searchfinish(data);"
+											title="下一页" value="下一页" action="#{AgentUserSearchBean.nextPage}" />
+										</li>
+										<li>
+											总记录数：#{AgentUserSearchBean.totalrecord}条
+										</li>
+									</ul>
+									</a4j:region>
+								</div>
+								
+								</h:panelGroup>
+								
+								
+								
+							</div>
+						
+						<!---->
+					</div>
+					</div>
+				</div>
+			<a4j:region>
+				<a4j:jsFunction name="pageKeyDownOPT" status="normalStatus" action="#{AgentUserSearchBean.inputPage}" data="#{AgentUserSearchBean.msg}" oncomplete="searchfinish(data)">
+					<f:param name="num"/>
+				</a4j:jsFunction>
+			</a4j:region>
+			
+			
+		</h:form>
+	</f:view>
+	
+
+	<!--底部-->
+	<ui:include src="/foot.xhtml" />
+	
+	
+</body>
+</html>

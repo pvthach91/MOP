@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+.recharge_div01 .recharge_p01 a{ display:block; float:left; margin-right:1px; background:rgba(22,22,56,0.5); color:#fff;}
+.recharge_div01 .recharge_p01 a:hover{ background:#f7f7ff; color:#ea5635;}
+.recharge_div01 .recharge_p01 .cur{ background:#f7f7ff; color:#ea5635;}
+.recharge_div02{ height:860px; width:1100px; margin:0 auto; background:#f7f7ff; padding-top:40px;}
+.recharge_div02 .p01{ width:1025px; border-bottom:2px solid #ea5635; overflow:hidden; margin:0 auto;}
+.recharge_div02 .p01 a{display:block; width:120px; text-align:center; line-height:30px; color:#E95532; font-size:14px; border-top-left-radius:3px; border-top-right-radius:3px; background:#f4f1e5; height:30px; float:left; margin-right:1px;}
+.recharge_div02 .p01 .cur{ background:#ea5635; color:#fff;}
+.recharge_div02 .p01 a:hover{background:#ea5635; color:#fff;}
+.recharge_money{ width:1024px; height:114px; border:1px solid #cdc49d; margin:0 auto; text-align:center; font-size:14px; padding-top:30px; color:#e95531; line-height:24px; margin-top:60px; background:#f3f0e4;}
+.recharge_money .p02{ color:#3D4375;}
+.recharge_money .btn a{ display:block; width:120px; height:32px; border-radius:3px; background:#e95531; text-align:center; line-height:32px; margin:0 auto; color:#fff; margin-top:10px;}

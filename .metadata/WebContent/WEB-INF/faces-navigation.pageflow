@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13874490919780" configfile="/DT-NEW/WebContent/WEB-INF/faces-navigation.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="3250" id="pf13874491140411" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13874491140412 pf13874491140414 pf13933209058220 pf13933209311112 pf13933209710674 pf13933210472726 pf13933210472727 pf139334560665211 pf13934414722600 pf13934414722601 pf13934414722602 pf13934414722603 pf13953048872610 pf13953048872611 pf13953048872612 pf13953048872613 pf13953048872614 pf13953048872615 pf13986932179370 pf14040341870343 pf14044849684660" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="reg.xhtml" x="338" y="178" id="pf13874491140418" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13874491140412" path="/reg.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="main.xhtml" x="338" y="562" id="pf138744911404110" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf13874491140414" path="/main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/PersonMsg.xhtml" x="338" y="946" id="pf13933209058221" referenceLink="//@navigationRule.0/@navigationCase.7/@toViewId|" inlinks="pf13933209058220" path="/page/PersonMsg.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/PersonBank1.xhtml" x="338" y="1330" id="pf13933209311113" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf13933209311112" path="/page/PersonBank1.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/PersonZJPwd.xhtml" x="338" y="1714" id="pf13933209710675" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf13933209710674" path="/page/PersonZJPwd.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/BetRecord.xhtml" x="338" y="2098" id="pf13933210472728" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf13933210472726" path="/page/BetRecord.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/TraceRecord.xhtml" x="338" y="2482" id="pf13933210472729" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf13933210472727" path="/page/TraceRecord.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/PersonPwd.xhtml" x="338" y="2866" id="pf139334560665212" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf139334560665211" path="/page/PersonPwd.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/DWDeposit.xhtml" x="338" y="3250" id="pf13934414722614" referenceLink="//@navigationRule.0/@navigationCase.9/@toViewId|" inlinks="pf13934414722600" path="/page/DWDeposit.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/DWDepositRecord.xhtml" x="338" y="3634" id="pf13934414722615" referenceLink="//@navigationRule.0/@navigationCase.10/@toViewId|" inlinks="pf13934414722601" path="/page/DWDepositRecord.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/DWWithDrawl.xhtml" x="338" y="4018" id="pf13934414722616" referenceLink="//@navigationRule.0/@navigationCase.11/@toViewId|" inlinks="pf13934414722602" path="/page/DWWithDrawl.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/DWWithDrawlRecord.xhtml" x="338" y="4402" id="pf13934414722617" referenceLink="//@navigationRule.0/@navigationCase.12/@toViewId|" inlinks="pf13934414722603" path="/page/DWWithDrawlRecord.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/AgentUser.xhtml" x="338" y="4786" id="pf13953048872626" referenceLink="//@navigationRule.0/@navigationCase.14/@toViewId|" inlinks="pf13953048872610" path="/page/AgentUser.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/AgentAutoReg.xhtml" x="338" y="5170" id="pf13953048872627" referenceLink="//@navigationRule.0/@navigationCase.15/@toViewId|" inlinks="pf13953048872611" path="/page/AgentAutoReg.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/AgentBalance.xhtml" x="338" y="5554" id="pf13953048872628" referenceLink="//@navigationRule.0/@navigationCase.16/@toViewId|" inlinks="pf13953048872612" path="/page/AgentBalance.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/ReportZb.xhtml" x="338" y="5938" id="pf13953048872629" referenceLink="//@navigationRule.0/@navigationCase.17/@toViewId|" inlinks="pf13953048872613" path="/page/ReportZb.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/ReportWL.xhtml" x="338" y="6322" id="pf139530488726210" referenceLink="//@navigationRule.0/@navigationCase.18/@toViewId|" inlinks="pf13953048872614" path="/page/ReportWL.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/AgentReg.xhtml" id="pf139530488726211" referenceLink="//@navigationRule.0/@navigationCase.13/@toViewId|" inlinks="pf13953048872615" path="/page/AgentReg.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/PriceList.xhtml" id="pf13986932179381" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf13986932179370" path="/page/PriceList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/ReportTD.xhtml" id="pf14040341870364" referenceLink="//@navigationRule.0/@navigationCase.21/@toViewId|" inlinks="pf14040341870343" path="/page/ReportTD.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page/ReportWL2.xhtml" id="pf14044849684671" referenceLink="//@navigationRule.0/@navigationCase.19/@toViewId|" inlinks="pf14044849684660" path="/page/ReportWL2.xhtml"/>
+  <links id="pf13874491140412" target="pf13874491140418" source="pf13874491140411"/>
+  <links id="pf13874491140414" target="pf138744911404110" source="pf13874491140411"/>
+  <links id="pf13933209058220" target="pf13933209058221" source="pf13874491140411"/>
+  <links id="pf13933209311112" target="pf13933209311113" source="pf13874491140411"/>
+  <links id="pf13933209710674" target="pf13933209710675" source="pf13874491140411"/>
+  <links id="pf13933210472726" target="pf13933210472728" source="pf13874491140411"/>
+  <links id="pf13933210472727" target="pf13933210472729" source="pf13874491140411"/>
+  <links id="pf139334560665211" target="pf139334560665212" source="pf13874491140411"/>
+  <links id="pf13934414722600" target="pf13934414722614" source="pf13874491140411"/>
+  <links id="pf13934414722601" target="pf13934414722615" source="pf13874491140411"/>
+  <links id="pf13934414722602" target="pf13934414722616" source="pf13874491140411"/>
+  <links id="pf13934414722603" target="pf13934414722617" source="pf13874491140411"/>
+  <links id="pf13953048872610" target="pf13953048872626" source="pf13874491140411"/>
+  <links id="pf13953048872611" target="pf13953048872627" source="pf13874491140411"/>
+  <links id="pf13953048872612" target="pf13953048872628" source="pf13874491140411"/>
+  <links id="pf13953048872613" target="pf13953048872629" source="pf13874491140411"/>
+  <links id="pf13953048872614" target="pf139530488726210" source="pf13874491140411"/>
+  <links id="pf13953048872615" target="pf139530488726211" source="pf13874491140411"/>
+  <links id="pf13986932179370" target="pf13986932179381" source="pf13874491140411"/>
+  <links id="pf14040341870343" target="pf14040341870364" source="pf13874491140411"/>
+  <links id="pf14044849684660" target="pf14044849684671" source="pf13874491140411"/>
+</pageflow:Pageflow>

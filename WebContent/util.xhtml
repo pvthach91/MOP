@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" lang="en">
+<body>
+<script src="/js/utils/byte2hex.js" type="text/javascript"></script>
+<script src="/js/lzma/lzma.js" type="text/javascript"></script>
+<script type="text/javascript">
+var mwInterval = null;
+var mbInterval = null;
+
+function betRecordOpt(wid) {
+	layer.open({
+	    type: 2,
+	    title: '最近投注记录',
+	    shadeClose: true,
+	    closeBtn: 1,
+	    shade: 0.1,
+	    area: ['600px', '410px'],
+	    content: "/page/BetSubRecord.shtml?id="+wid //iframe的url
+	}); 
+}
+
+mbInterval = window.setInterval("loadbalance();",15*1000);
+
+function loadbalance(){
+	$.ajax({
+		type : "POST",
+		url : "/LotteryService.aspx",
+		data : "flag=balance",
+		success : function(data) {
+			try { 
+				data = $.trim(data);
+				if(data.indexOf('-')>0){
+					var arr = new Array();
+					arr = data.split('-');
+					if(arr.length==1){
+						$('#ebalance').html(arr[0]+'');
+					}else if(arr.length>1){
+						$('#ebalance').html(arr[0]+'');
+//						$('#ebalance').html(10+'');
+						if(arr[1]!=''){
+							layer.open({
+							    type: 1,
+							    skin: 'layui-layer-rim', //加上边框
+							    area: ['420px', '240px'], //宽高
+							    offset: 'rb',
+							    time: 5000, //2秒后自动关闭
+//							    shadeClose: true, //开启遮罩关闭
+							    shade: 0.0,
+							    content: '<div style="padding:20px;color:gray;">'+arr[1]+'</div>' 
+							});
+						}
+						if (arr[2]!=0) {
+							layer.open({
+								type: 1,
+								skin: 'layui-layer-rim', //加上边框
+// 								area: ['420px', '240px'], //宽高
+								area: ['350px', '200px'], //宽高
+								offset: 'rb',
+								time: 500000, //2秒后自动关闭
+								shadeClose: true, //开启遮罩关闭
+								shade: 0.0,
+								content: '<div style="padding:20px;color:gray;">'+arr[2]+'</div>' 
+							});
+						}
+				}else{
+					console.log('查询余额失败，后台报错了');
+//					alert(data);
+				}
+				}
+			} catch (e) {
+				console.log(e)
+				alert('查询失败，请重试.');
+			}
+		}
+	});
+}
+
+</script>
+</body>
+</html>

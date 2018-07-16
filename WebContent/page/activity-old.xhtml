@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/activity.css" />
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function showMsg(){
+		parent.NewWin("/images/setting.png","","/page/IndexMsgSub.shtml",700,500);
+		/**
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 700;
+		diag.Height = 500;
+		diag.Title = "";
+		diag.URL = "/page/IndexMsgSub.shtml";
+		diag.show();
+		*/
+	}
+	function reloads(){
+		window.location.reload();
+	}
+	function advCheck(){
+		var s = document.getElementById("IndexForm:userstatus").value;
+		if(s!=""){
+			TopImageSign = '/images/setting.png';
+			var diag = new Dialog();
+			diag.Width = 700;
+			diag.Height = 500;
+			diag.Title = "";
+			diag.URL = "/page/IndexMsgDefSub.shtml";
+			diag.show();
+		}
+	}
+</script>
+<title>系统公告</title>
+</head>
+<body>
+	<f:view>
+		<h:form id="IndexForm">
+			<div class="banner"></div>
+			<div class="content layout">
+				<div class="nav-bg">
+					<div class="line"></div>
+					<ul class="activity-nav">
+						<li>
+							<a href="javascript:void(0);"  class="data-url" data-url="/page/activity.shtml">进行的活动</a>
+						</li><li class="current">
+							<a href="javascript:void(0);">过期活动</a>
+						</li>
+					</ul>
+				</div>
+				<ul class="activity-list">
+					<!-- <li class="mt30">
+						<div class="title">
+							<span class="inline time text-center">
+								2015-01-19
+							</span>
+							<span class="inline pl20">								首存送30%，最高200元，5倍流水
+							</span>
+						</div>
+						<div class="info mt5">
+							<div class="thumb inline">
+								<img src="/images/activity/ac-bg.jpg" />
+							</div>
+							<div class="desc fs-12 inline pl10 color-888">
+								<p>1. 活动日期为：2014年11月8日—12月31日；→点此进入抢券页面</p>
+									<p>
+		2. 每天晚上21点选择“U惠券”导航，进入体育优惠券页面即可开抢，只要您同时满足以下三个条件就可参加抢券活动：①北京时间昨日12:00 至今日 11:59间 有效体育流水≥3888、②已绑定手机、邮箱、③至少在UEDbet提过一次款；
+		</p>
+		<p>
+		3. 如需查看流水是否满足活动要求，请在登陆后点击导航处的投注记录查询，假如今天为9月4号（北京时间），请选择9月3号即可确定您的体育流水是否满足活动要求；
+		</p>
+		<p>
+		4. 抢到优惠券后，您需在转账中心至少转        .........</p>
+							</div>
+						</div>
+					</li> -->
+				</ul>
+				<!-- <div class="page mt20 clearfix">
+					<ul class="page-count f-right">
+						<li class="current">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+					</ul>
+				</div> -->
+			</div> 
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+<script type="text/javascript">
+	var jQuery = window.parent.jQuery;
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		height = 0;	
+    	var ifrm = jQuery("#mainiframe")[0].contentWindow.document; 
+    	setInterval(function(){
+    		height=jQuery(ifrm).find('body').outerHeight();
+    		if(height != heightHistory){
+    			if(!parentWindow.autoHeight){
+    				return;
+    			}
+    			parentWindow.autoHeight(height);		
+    		}
+    		heightHistory = height;
+    	},1000);
+    	jQuery(ifrm).find('.data-url').click(function(){
+    		jQuery("#mainiframe").attr('src', jQuery(this).attr('data-url'));
+    	});
+    });
+</script>
+</html>

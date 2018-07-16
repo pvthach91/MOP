@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<title>== 存款成功 ==</title>
+<link href="/uc_sys/css/useradmin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function closewin(){
+	window.opener=null;
+	window.close();
+}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="IpsBackForm">
+			<div class="contentbox">
+				<div class="thirdmenu ">
+					<ul>
+						<li class="on">在线充值完成</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+
+				<div class="content ">
+					<table width="700" border="0" align="center" cellpadding="0"
+						cellspacing="0">
+						<tr>
+							<td align="center" bgcolor="#FFFFFF" style="font-size:14px">
+									<b>
+									恭喜您充值成功，您的交易编号为：
+									<font color="red">
+										<h:outputText value="#{IpsSuccessBean.refcode}"/>
+									</font>
+									</b>
+							</td>
+						</tr>
+						<tr>
+							<td  align="center" bgcolor="#FFFFFF">
+								请点击【主账户余额】旁边的刷新按钮，查看充值是否到账。
+							</td>
+						</tr>
+						<tr>
+							<td  align="center" bgcolor="#FFFFFF">
+								<div class="yellow">
+									如果发现您的充值没有到帐，请与客服联系。
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td  align="center" bgcolor="#FFFFFF">
+								
+								<input class="submit_button" style="width:70px;height:26px;" type="button" value="关 闭" onclick="closewin();return false;" />
+								
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

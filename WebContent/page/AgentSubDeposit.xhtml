@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>充值转账</title>
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("操作成功!");
+			window.top.loadbalance();
+			parent.reloads();
+		}
+	}
+	
+	function closewin() {
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="GameRecordForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<table style="height: 125px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td>
+					
+					<table style="padding-left:15px;width:100%;line-height:35px;">
+						<tr>
+							<td width="120px" align="right">会员登录名：</td>
+							<td>
+								<font color="blue"><b>#{AgentUserSearchBean.optuser.loginname}</b></font>
+								
+								【昵称：#{AgentUserSearchBean.optuser.nickname}】
+								
+							</td>
+						</tr>
+						<tr>
+							<td align="right">当前可用金额：</td>
+							<td>
+								<font color="#8e2020"><b>#{LoginBean.user.balance} RMB</b></font>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">充值类型：</td>
+							<td>
+								<h:selectOneRadio style="color:blue;font-weight:bolder;cursor:pointer;" value="#{AgentUserSearchBean.dptype}"> 
+									<f:selectItem itemValue="dp" itemLabel="充值"/> 
+									<f:selectItem itemValue="ac" itemLabel="活动"/> 
+									<f:selectItem itemValue="fh" itemLabel="分红"/> 
+								</h:selectOneRadio> 
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right">充值金额：</td>
+							<td>
+								<h:inputText value="#{AgentUserSearchBean.tamount}" maxlength="10" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" style="font-size:16px;color:blue;height:22px;border:1px solid #cccccc;padding-left:5px;background:#fdfdfd;width:100px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right" >资金密码：</td>
+							<td >
+								<h:inputSecret maxlength="30" value="#{AgentUserSearchBean.checkpwd}" style="font-size:14px;height:22px;border:1px solid #cccccc;padding-left:5px;background:#fdfdfd;width:100px;"/>
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right" style="BORDER-BOTTOM: 1px dashed #666666;">备注：</td>
+							<td style="BORDER-BOTTOM: 1px dashed #666666;">
+								<h:inputTextarea  value="#{AgentUserSearchBean.remark}"  style="font-size:14px;height:22px;border:1px solid #cccccc;padding-left:5px;background:#fdfdfd;width:80%;height:50px;" /><br/>
+								<font color="red">(最大20个字符)；</font>
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" height="45px" align="center">
+								<a4j:commandButton value="充 值" status="normalStatus"
+										styleClass="submitBtn" action="#{AgentUserSearchBean.deposit}" data="#{AgentUserSearchBean.msg}"
+										oncomplete="savefinish(data)" />
+								<rich:spacer width="10"/>
+								<a4j:commandButton value="关 闭" onclick="closewin();return false;" styleClass="submitBtn"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								注意：最小充值金额：<font color="#8e2020"><b>10</b></font> RMB / 最大充值金额：<font color="#8e2020"><b>50000</b></font> RMB
+							</td>
+						</tr>
+					</table>
+					
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--------------------注册页面开始------------------*/
+#register{background:url(../images/register/bg01.jpg) no-repeat center top; height:760px;}
+.register_logo{ margin-top:58px;}
+.register_con{ background:url(../images/register/register_bg.png) no-repeat  center 16px; width:436px; height:400px; padding-top:15px;    background-position-x: 2px;}
+.register_con span{ width:120px;}
+.register_btn .btn{ margin-left:118px; margin-top:20px; background:url(../images/register/btn_bg.png) no-repeat left top;}
+.register_btn .btn:hover{ background-image:url(../images/register/btn_hover.png);}
+
+
+
+
+
+/*--------------------注册页面结束-----------------*/
+

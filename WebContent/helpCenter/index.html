@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>==帮助中心==</title>
+	<link href="./css/Tuobet.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		var urls = window.location.href;
+		if(urls.indexOf('id=')!=-1){
+			var arr = urls.split("id=");
+			document.getElementById("mainiframe").src=arr[1];
+		}else{
+			document.getElementById("mainiframe").src="./page/ssc.htm";
+		}
+		
+		
+		function showPage(surl){
+			document.getElementById("mainiframe").src=surl;
+		}
+	</script>
+</head>
+<body>
+	<div class="Tuobet_Help_class Tuobet_Help_table_Location">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="Tuobet_Help_table_td">
+					<div class="Tuobet_Help_table_td_Content">
+						<div class="Tuobet_Help_table_td_Game_Location"><a href="javascript:void(0);" class="Tuobet_Help_Menue1"><div class="Tuobet_Help_table_td_Game"></div><b>游戏记录</b></a></div>
+						<div class="Tuobet_Help_table_td_Play_Location"><a href="javascript:void(0);" class="Tuobet_Help_Menue1"><div class="Tuobet_Help_table_td_Play"></div><b>玩法说明</b></a></div>
+						<div class="Tuobet_Help_ul_li_Location"><a href="javascript:showPage('./page/ssc.htm');"  class="Tuobet_Help_Menue2"><div class="Tuobet_Help_youxi"></div>时时彩</a></div>
+						<div class="Tuobet_Help_ul_li_Location_2"><a href="javascript:showPage('./page/115.htm');" class="Tuobet_Help_Menue2"><div class="Tuobet_Help_youxi_1"></div>十一选五</a></div>
+						<div class="Tuobet_Help_ul_li_Location_3"><a href="javascript:showPage('./page/ssl.htm');" class="Tuobet_Help_Menue2"><div class="Tuobet_Help_youxi_2"></div>时时乐</a></div>
+						<div class="Tuobet_Help_ul_li_Location_4"><a href="javascript:showPage('./page/fc3D.htm');" class="Tuobet_Help_Menue2"><div class="Tuobet_Help_youxi_3"></div>福彩3D</a></div>
+						<div class="Tuobet_Help_ul_li_Location_5"><a href="javascript:showPage('./page/pl35.htm');" class="Tuobet_Help_Menue2"><div class="Tuobet_Help_youxi_4"></div>排列三五</a></div>
+						<div class="Tuobet_Help_table_td_Inquiry_Location"><a href="javascript:void(0);" class="Tuobet_Help_Menue1"><div class="Tuobet_Help_table_td_Inquiry"></div><b>帐变查询</b></a></div>
+						<div class="Tuobet_Help_table_td_Finance_Location"><a href="javascript:void(0);" class="Tuobet_Help_Menue1"><div class="Tuobet_Help_table_td_Finance"></div><b>用户协议</b></a></div>
+					</div>
+				</td>
+				<td class="Tuobet_Help_table_td_2">
+					<iframe id="mainiframe" src="" frameborder="0" height="700px" scrolling="auto" style="width:696px;"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

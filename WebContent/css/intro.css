@@ -1,0 +1,128 @@
+
+.banner{
+	position: relative;
+	width: 100%;
+	height: 235px;
+	overflow: hidden;
+	background: transparent url(../images/intro-bg.jpg) no-repeat center 0;
+}
+
+
+.content{
+	padding-top: 20px;
+}
+
+	.content .nav-bg{
+		position: relative;
+		width: 100%;
+		height: 40px;
+	}
+
+		.content .activity-nav{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 480px;
+			height: 38px;
+			margin: 0 0 0 -240px;
+			line-height: 38px;
+			border: 1px solid #a0bd00;
+			border-radius: 30px;
+			z-index: 1;
+			background: #fff;
+			overflow: hidden;
+		}
+
+			.content .activity-nav li{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				width: 33.3%;
+				text-align: center;
+			}
+
+			.content .nav-chlid li a,
+			.content .activity-nav li a{
+				color: #a0bd00;
+			}
+
+			.content .nav-chlid li.current,
+			.content .activity-nav li.current{
+				background: #a0bd00;
+			}
+
+			.content .nav-chlid li.current a,
+			.content .activity-nav li.current a{
+				color: #fff;
+			}
+
+		.content .nav-bg .line{
+			position: absolute;
+			top: 20px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background: #c7c7c7;
+		}
+
+	.content .nav-chlid{
+		width: 695px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		border: 1px solid #a0bd00;
+		margin: -1px auto 0 auto;
+	}
+
+		.content .nav-chlid li{
+			display: inline-block;
+			*zoom: 1;
+			*display: inline;
+			width: 110px;
+			height: 28px;
+			font-size: 14px;
+			text-align: center;
+			color: #a0bd00;
+		}
+
+	.lottery-introduce{
+		position: relative;
+		width: 1200px;
+		height: 570px;
+		background: url(../images/introduce/lottery-intor-bg.jpg) no-repeat center center;
+	}
+
+		.lottery-introduce .logo,
+		.lottery-introduce .lottery-name,
+		.lottery-introduce .lottery-desc{
+			position: absolute;
+			color: #4a4a48;
+		}
+
+
+		.lottery-introduce .logo{
+			position: absolute;
+			top: 50px;
+			right: 135px;
+			width: 300px;
+			height: 160px;
+		}
+
+		.lottery-introduce .lottery-name{
+			top: 280px;
+			right: 80px;
+			width: 405px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			font-size: 18px;
+		}
+
+		.lottery-introduce .lottery-desc{
+			top: 350px;
+			right: 35px;
+			width: 488px;
+			height: 160px;
+			text-align: center;
+			font-size: 14px;
+		}

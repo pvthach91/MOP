@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/intro.css" />
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function showMsg(){
+		parent.NewWin("/images/setting.png","","/page/IndexMsgSub.shtml",700,500);
+		/**
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 700;
+		diag.Height = 500;
+		diag.Title = "";
+		diag.URL = "/page/IndexMsgSub.shtml";
+		diag.show();
+		*/
+	}
+	function reloads(){
+		window.location.reload();
+	}
+</script>
+<title>系统公告</title>
+</head>
+<body style="width: 100%; padding: 75px 0 0 0; margin: 0px;">
+	<f:view>
+		<h:form id="IndexForm">
+		<div class="content layout">
+			<div class="nav-bg">
+				<div class="line"></div>
+				<ul class="activity-nav clearfix">
+					<li class="current" data-group="ssc">
+						<a href="#">时时彩</a>
+					</li><li data-group="n115">
+						<a href="#" data-group="n115">11选5</a>
+					</li><li data-group="low">
+						<a href="#" data-group="low">低频彩</a>
+					</li>
+				</ul>
+			</div>
+			<ul class="nav-chlid group-ssc clearfix">
+				<li class="current" data-lottery="bnmmc">
+					<a href="#">新生秒秒彩</a>
+				</li>
+				<li data-lottery="bnffc">
+					<a href="#">新生分分彩</a>
+				</li>
+				<li data-lottery="bnlfc">
+					<a href="#">新生两分彩</a>
+				</li>
+				<li data-lottery="cqssc">
+					<a href="#">重庆时时彩</a>
+				</li>
+				<li data-lottery="xjssc">
+					<a href="#">新疆时时彩</a>
+				</li>
+				<li data-lottery="tjssc">
+					<a href="#">天津时时彩</a>
+				</li>
+			</ul>
+			<ul class="nav-chlid group-n115 clearfix" style="display:none">
+				<li class="current" data-lottery="bn115">
+					<a href="#">新生11选5</a>
+				</li>
+				<li data-lottery="sd115">
+					<a href="#">山东11选5</a>
+				</li>
+				<li data-lottery="jx115">
+					<a href="#">江西11选5</a>
+				</li>
+				<li data-lottery="gd115">
+					<a href="#">广东11选5</a>
+				</li>
+			</ul>
+			<ul class="nav-chlid group-low clearfix" style="display:none">
+				<li class="current" data-lottery="bn3D">
+					<a href="#">新生3D</a>
+				</li>
+				<li data-lottery="fc3D">
+					<a href="#">福彩3D</a>
+				</li>
+				<li data-lottery="pl35">
+					<a href="#">排列三五</a>
+				</li>
+			</ul>
+			<!---->
+			<div class="mt30 lottery-introduce">
+				<div class="logo">
+					<img src="/images/logo/desc/lottery-logo_08.png" alt="时时彩" />
+				</div>
+				<div class="lottery-name">新生时时彩</div>
+				<div class="lottery-desc">
+					<p>开奖时间：24小时全天</p>
+					<p>频率：即时开、1分钟/期、2分钟/期</p>
+					<p>彩种介绍：为平台自有彩种，玩法与官方时时彩相同，随机开奖，相对官方彩种开奖频率更高更刺激与娱乐性，回报率也更高。</p>
+				</div>
+			</div>
+		</div> 
+		</h:form>
+	</f:view>
+</body>
+<script type="text/javascript">
+	jQuery = window.parent.jQuery;
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		height = 0;	
+    	var ifrm = jQuery("#mainiframe")[0].contentWindow.document; 
+    	setInterval(function(){
+    		height=jQuery(ifrm).find('body').outerHeight();
+    		if(height != heightHistory){
+    			if(!parentWindow.autoHeight){
+    				return;
+    			}
+    			parentWindow.autoHeight(height);		
+    		}
+    		heightHistory = height;
+    	},1000);
+    	jQuery(ifrm).find('.data-url').click(function(){
+    		jQuery("#mainiframe").attr('src', jQuery(this).attr('data-url'));
+    	});
+    });
+</script>
+<script type="text/javascript" src="/js/introduce.js"></script>
+</html>

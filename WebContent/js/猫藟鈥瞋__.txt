@@ -1,0 +1,2 @@
+fastData  		ajax提交完成后刷新用户余额。
+updatehistory		ajax提交完成后刷新用户投注记录。（取消投注记录的显示）

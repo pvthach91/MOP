@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>分分快三</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="layer/skin/layer.css">
+<link type="text/css" rel="stylesheet" href="/css/jquery.jscrollpane.css">
+<link type="text/css" rel="stylesheet" href="/css/mdice.css">
+</head>
+<body>
+	<div class="game_head">
+		<div class="mdice_history">
+			<div class="history_head"></div>
+			<div class="mdice_history_body">
+				<div class="game_record_container">
+					<table class="game_record_table">
+					</table>
+				</div>
+				<div class="moreRecord">
+					<a href="/page/BetRecord.shtml" target="_blank">查看更多投注记录</a>
+				</div>
+				<div class="closeBtn"></div>
+				<div class="close_span"></div>
+			</div>
+		</div>
+		<div class="game_record_time">
+			<div class="record_date">0000</div>
+			<div class="record_time">00 : 00 : 00</div>
+			<div class="drawLet">
+				<div class="issueno">0000</div>
+				<div class="qi_word"></div>
+				<div class="drawCode">
+					<i class="mdice mdice-6"></i> <i class="mdice mdice-6"></i> <i
+						class="mdice mdice-6"></i>
+				</div>
+				<div class="mdice_animate" style="display: none">
+					<i class="mdice_move"></i> <i class="mdice_move"></i> <i
+						class="mdice_move"></i>
+				</div>
+			</div>
+		</div>
+		<div class="draw_lottery">
+			<div class="draw_lottery_head"></div>
+			<div class="draw_lottery_body">
+				<table class="dl_list">
+				</table>
+				<div class="closeBtn"></div>
+				<div class="close_span"></div>
+				<a class="viewAllDraws">查看完整走势</a>
+			</div>
+		</div>
+	</div>
+	<div class="game-table">
+		<div class="game-table-bg">
+			<div class="maxReward">200,000.00</div>
+			<div class="desktop" id="J-table-desktop">
+				<div class="item-info-tip item-info-tip-0">
+					<div class="text">
+						<font color="#e0ea74">【大】：</font>开奖号码三个号和值为11-17即中奖。<br> <font
+							color="#e0ea74">【实例】：</font>投注「大」，开奖结果为256，和值即为13（大），即为中奖（不包含豹子号）
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-1">
+					<div class="text">
+						<font color="#e0ea74">【单】：</font>开奖号码三个号和值为奇数即中奖。<br> <font
+							color="#e0ea74">【实例】：</font>投注「单」，开奖结果为335，和值即为11（奇数），即为中奖（不包含豹子号）
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-2">
+					<div class="text">
+						<font color="#e0ea74">【对子】：</font>从11～66中至少选择一对号码，开奖号码出现所选号码即中奖，顺序不限。<br>
+						<font color="#e0ea74">【实例】：</font>投注11，开奖号码为112、121、211(顺序不限)，即为中奖（包含豹子号）
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-5">
+					<div class="text">
+						<font color="#e0ea74">【豹子】：</font>对相同的三个号码111、222、333、444、555、666中的任意一个进行投注，所选号码开出即中奖。<br>
+						<font color="#e0ea74">【实例】：</font>：投注111，开奖号码为111，即为中奖。
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-11">
+					<div class="text">
+						<font color="#e0ea74">【豹子号通选】：</font>对所有相同的三个号码（111、222、333、444、555、666）进行投注，任意号码开出即中奖。<br>
+						<font color="#e0ea74">【实例】：</font>投注111，开奖号码为111，即为中奖
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-17">
+					<div class="text">
+						<font color="#e0ea74">【和值】：</font>至少选择1个和值（3个号码之和）进行投注，所选和值与开奖的3个号码的和值相同即中奖。<br>
+						<font color="#e0ea74">【实例】：</font>投注5，开奖号码为是113，和值为5，即为中奖（包含豹子号）
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-31">
+					<div class="text">
+						<font color="#e0ea74">【二不同号】：</font>从15种组合中至少选择一组号码，开奖号码内包含任意一组即中奖。<br>
+						<font color="#e0ea74">【实例】：</font>选择12，开奖号码为124(顺序不限)，即为中奖
+					</div>
+				</div>
+				<div class="item-info-tip item-info-tip-46">
+					<div class="text">
+						<font color="#e0ea74">【猜一个号】：</font>从1-6中至少选择1个号码，所选号码在开奖号码中出现1次，即中赔率为单骰的奖金；所选号码在开奖号码中出现2次，即中赔率为双骰的奖金；所选号码在开奖号码中出现3次，即中赔率为全骰的奖金。
+						<br> <font color="#e0ea74">【实例】：</font>选择投注号码1，开奖号码123即中单骰奖金，开奖号码112即中双骰奖金，开奖号码111即中全骰奖金
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="J-panel-game-side" class="game-side">
+		<div class="inner">
+			<div class="chips-cont clearfix">
+				<div class="btnWrap">
+					<div id="cancelBtn" class="btn-disabled"></div>
+					<div id="clearBtn" class="btn-disabled"></div>
+				</div>
+				<div id="J-chipgroup-cont">
+					<i data-money="1.00" class="chip chip-1_00 chip-selected"></i><i
+						data-money="2.00" class="chip chip-2_00"></i><i data-money="5.00"
+						class="chip chip-5_00"></i><i data-money="10.00"
+						class="chip chip-10_00"></i><i data-money="20.00"
+						class="chip chip-20_00"></i>
+				</div>
+				<div id="chipgroup_others">
+					<i data-money="2000" class="chip chip-2000_00"></i><i
+						data-money="5000" class="chip chip-5000_00"></i><i
+						data-money="10000" class="chip chip-10000_00"></i><i
+						data-money="20000" class="chip chip-20000_00"></i><i
+						data-money="50000" class="chip chip-50000_00"></i><i
+						data-money="50" class="chip chip-50_00"></i><i data-money="100"
+						class="chip chip-100_00"></i><i data-money="200"
+						class="chip chip-200_00"></i><i data-money="500"
+						class="chip chip-500_00"></i><i data-money="1000"
+						class="chip chip-1000_00"></i><i data-money="1"
+						class="chip chip-1_00 chip-selected"></i><i data-money="2"
+						class="chip chip-2_00"></i><i data-money="5"
+						class="chip chip-5_00"></i><i data-money="10"
+						class="chip chip-10_00"></i><i data-money="20"
+						class="chip chip-20_00"></i>
+					<div id="chipgroup_closeBtn"></div>
+				</div>
+				<div class="changeChips"></div>
+				<div class="confirmBetBtn btn-disabled" id="J-button-submit"></div>
+				<div id="J-button-bet-many" class="btn-disabled"></div>
+				<div class="money">
+					<div class="moneyWrap">
+						<span>￥</span><span id="J-num-money" class="num">0.00</span>
+					</div>
+					<div class="balanceWrap">
+						<span>￥</span><span id="J-user-balance" class="num">0.00</span>
+					</div>
+					<span id="J-money-tip" class="money-tip">+ 120.00</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="J-tpl-modal-bet-many" style="display:none">
+			<div class="isStopGO">
+				<input type="checkbox" checked="checked"><span class="isStopText">中奖后停止追号</span>
+			</div>
+			<div class="title">追号设置</div>
+			<table class="content">
+				<tbody>
+					<tr>
+						<td class="id th">序号</td>
+						<td class="select th">选择</td>
+						<td class="num th">追号期次</td>
+						<td class="trace_money th">金额</td>
+						<td class="date_th th">开奖时间</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="horizontal-only" id="go_info_panel">
+				<table class="content table-content">
+				</table>
+			</div>
+		<div class="go_content">
+			共追号<span class="qi">0</span>期，总投注金额<span>￥</span><span
+				class="totalMoney">0</span><span>.00</span>元
+		</div>
+		<div class="option">
+			<a href="#" id="J-button-comfirm-bet-many" class="btn-disabled"></a>
+			<a href="#" class="cancel_btn" rel="modal_close"></a>
+		</div>
+	</div>
+
+	<div class="viewAllCode_modal" style="display:none">
+			<div class="title">开奖历史</div>
+			<table class="content">
+				<tbody>
+					<tr>
+						<td class="issueno th">期号</td>
+						<td class="opencode th">开奖号码</td>
+						<td class="opentime th">开奖时间</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="codesList">
+				<table class="content table-content">
+				</table>
+			</div>
+		<div class="option">
+			<a href="#" class="close_btn" rel="modal_close"></a>
+		</div>
+	</div>
+
+	<div class="game_record_messageBox" style="display:none">
+			<div class="game_record_messageBox_body">
+				<div class="title">查看投注记录</div>
+				<table>
+					<tbody>
+						<tr>
+							<td class="label">会员名</td>
+							<td></td>
+							<td class="label">状态</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="label">注单编号</td>
+							<td></td>
+							<td class="label">投注时间</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="label">游戏名称</td>
+							<td></td>
+							<td class="label">期号</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="label label_large">选号明细</td>
+							<td colspan="3">
+								<div id="game_record_info">
+									<div></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">下注金额</td>
+							<td></td>
+							<td class="label">开奖号码</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="label">中奖注数</td>
+							<td>注</td>
+							<td class="label">奖金</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="label">是否追号</td>
+							<td></td>
+							<td class="label">追号编号</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="option">
+					<a class="cancelBetBtn" rel="modal_close" href="#"></a> <a
+						class="close_btn" rel="modal_close" href="#"></a>
+				</div>
+			</div>
+	</div>
+	<div id="J-tpl-modal-first-tip" style="display:none">
+		<div class="text">
+			<p class="row">
+				1. 点击鼠标 <span class="hl">【左键】</span> 进行筹码下注
+			</p>
+			<p class="row">
+				2. 点击鼠标 <span class="hl">【右键】</span> 进行筹码删除
+			</p>
+			<p class="row">3. 出现豹子号，【大小单双】均不中奖</p>
+			<p class="row">4. 连投模式中，不能取消正在摇骰的局</p>
+			<p class="row">
+				5. 投注限额规则，请查看 <a target="_blank" class="link"
+					href="/new_help/new_help_kstb.html">骰宝游戏说明 &gt;&gt;</a>
+			</p>
+			<a class="gotitBtn" rel="modal_close" href="#"></a>
+		</div>
+	</div>
+	<div id="J-tpl-modal-tip" style="display:none">
+		<div class="text">
+			<p class="row">
+				<span class="msgTitle"></span> <span id="J-tip-text-max-money-tip"
+					class="hl">0.00</span>
+			</p>
+			<a class="gotitBtn" rel="modal_close" href="#"></a>
+		</div>
+	</div>
+	<div id="messageBox" style="display:none">
+		<p></p>
+	</div>
+
+	<div id="betInfoBox" style="display:none">
+		<div>
+			<div class="title"></div>
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					<td class="label ">选号明细</td>
+					<td class="content">
+						<div id="betInfoList">
+							<div></div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="go_content">
+			<div class="traceInfo">
+				共追号<span class="qi"></span>期，
+			</div>
+			总投注金额<span>￥</span><span class="totalMoney">2</span><span>.00</span>元
+		</div>
+		<div class="option">
+			<a class="confirm_btn" rel="modal_close" href="#"></a> <a
+				class="cancel_btn" rel="modal_close_self" href="#"></a>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+	<script type="text/javascript" src="buildjs/sortable.js"></script>
+	<script type="text/javascript" src="buildjs/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="buildjs/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="js/mdice.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+	<title>游戏记录</title>
+	<link type="text/css" rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" type="text/css" href="../css/game.css"/>
+	<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="/js/layer/layer.js"></script>
+	<script type="text/javascript" src="/js/zDrag.js"></script>
+	<script type="text/javascript" src="/js/zDialog.js"></script>
+	<script language="javascript" src="/js/SearchPage.js"></script>
+	<script language="javascript">
+		function pageKeyDown(num){
+			if(num.length>0){
+				if(event.keyCode==13) {
+					pageKeyDownOPT(num);
+				}
+			}
+		}
+		
+		function betRecordOpt(sid){
+			layer.open({
+			    type: 2,
+			    title: '查看投注记录',
+			    shadeClose: true,
+			    closeBtn: 1,
+			    shade: 0.1,
+			    area: ['600px', '500px'],
+			    content: "/page/BetSubRecord.shtml?id="+sid //iframe的url
+			}); 
+		}
+	</script>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+			<!--content-->
+			<div id="content">
+				<div class="content">
+					<h2>游戏记录</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li class="on">
+								<a href="/page/BetRecord.shtml" style="font-size:14px;">投注记录</a>
+							</li>
+							<li>
+								<a href="/page/TraceRecord.shtml" style="font-size:14px;">追号记录</a>
+							</li>
+						</ul>
+					<div class="tab_in">
+						<div class="game_top">
+							<a4j:region>
+								<div class="game_top_in">
+									<label>时间范围:</label>
+									<h:inputText size="22" 
+											value="#{GameRecordBean.starttime}"
+											id="startTime" styleClass="time" style="padding-left:4px;"
+											onmouseover="this.style.cursor='pointer';"
+											onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){$dp.$('GameRecordForm:endTime').focus();}})" />
+									<span class="w30 ui-title">至</span>
+									<h:inputText size="22" value="#{GameRecordBean.endtime}"
+											style="padding-left:4px;" id="endTime" styleClass="time"
+											onmouseover="this.style.cursor='pointer';"
+											onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'GameRecordForm:startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+									<label>状态</label>
+									<h:selectOneMenu styleClass="kind" value="#{GameRecordBean.status}">
+										<f:selectItems value="#{GameRecordBean.statuslist}"></f:selectItems>
+									</h:selectOneMenu>
+									<label for="GameRecordForm:ezh">包含追号</label>
+									<h:selectBooleanCheckbox styleClass="v-am" value="#{GameRecordBean.tracecheck}"
+									id="ezh">
+								</h:selectBooleanCheckbox>
+								</div>	
+								<div class="game_top_in">
+									<label>游戏种类:</label>
+									<h:selectOneMenu styleClass="kind" value="#{GameRecordBean.lotteryid}">
+										<f:selectItems value="#{GameRecordBean.lotterylist}"></f:selectItems>
+									</h:selectOneMenu>
+									<label>注单编号：</label>
+									<h:inputText value="#{GameRecordBean.betid}" styleClass="num"></h:inputText>
+									<input type="button" value="查询" onclick="searchOpt();" class="submitBtn"/>
+									<a4j:jsFunction name="searchOpt" action="#{GameRecordBean.btnSearch}" data="#{GameRecordBean.msg}" oncomplete="searchfinish(data)">
+									</a4j:jsFunction>
+								</div>
+							</a4j:region>
+							</div>
+							<!---->
+							
+							<h:panelGroup id="pgData">
+							<div class="game_mod">
+								<table class="tabbox" border="0" cellspacing="1" width="1024" cellpadding="0" bgcolor="#e9d0cf">
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											<th>会员</th>
+											<th>游戏名</th>
+											<th>游戏玩法</th>
+											<th>投注时间</th>
+											<th>游戏期号</th>
+											<th>追号</th>
+											<th>投注额</th>
+											<th>奖金</th>
+											<th>状态</th>
+											<th>查看</th>
+										</tr>
+									</thead>
+									<tbody>
+										<a4j:repeat value="#{GameRecordBean.reslist}" var="list"
+											id="dblist" rowKeyVar="keys">
+											<tr class="odd"  bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+												<td>#{list.loginname}</td>
+												<td style="height: 34px;">#{list.lotteryname}</td>
+												<td>#{list.methodname}</td>
+												<td>#{list.inserttime.substring(5,16)}</td>
+												<td>#{list.issue}</td>
+												<td>
+													<h:outputText value="否" rendered="#{list.source==1?'false':'true'}"/>
+													<a4j:commandButton onclick="traceRecordOpt('#{list.traceid}');return false;" styleClass="but_Game_Operating" rendered="#{list.source==1?'true':'false'}"></a4j:commandButton>
+												</td>
+												<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{list.amount}" converter="DoubleConverter"/>
+												</td>
+												<td align="right" style="padding-right:5px;">
+													<h:outputText value="#{list.bonus}" converter="DoubleConverter"/>
+												</td>
+												<td>
+													<h:outputText value="#{list.statusname}" style="color:#2c8118" rendered="#{list.status==0?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#302ab0" rendered="#{list.status==1?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#302ab0" rendered="#{list.status==2?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#ae7237" rendered="#{list.status==3?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#dc1515" rendered="#{list.status==4?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==5?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==6?'true':'false'}"/>
+													<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==7?'true':'false'}"/>
+												</td>
+												<td>
+													<a href="javascript:void(0);" onclick="betRecordOpt('#{list.id}');return false;">查看</a>
+												</td>
+											</tr>
+										</a4j:repeat>
+									</tbody>
+								</table>
+								
+								<div class="game_bt">
+									<div class="game_bt_l">
+										投注：<span class="color-red"><h:outputText value="#{GameRecordBean.tamount}" converter="DoubleConverter"/></span> RMB     <span class="ml20">中奖：</span><span class="color-red"><h:outputText value="#{GameRecordBean.twin}" converter="DoubleConverter"/></span> RMB
+									</div>
+									<a4j:region>
+										<ul class="page-list f-right mr10 mt10">
+											<li>
+												<a4j:commandLink  action="#{GameRecordBean.firstPage}" data="#{GameRecordBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+											</li>
+											<li>
+												<a4j:commandLink action="#{GameRecordBean.proPage}" data="#{GameRecordBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+											</li>
+											<li>
+												<input value="#{GameRecordBean.curpage}" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+												<h:outputText value="  / #{GameRecordBean.totalpage}"/>
+											</li>
+											<li>
+												<a4j:commandLink data="#{GameRecordBean.msg}" oncomplete="searchfinish(data);"
+												title="下一页" value="下一页" action="#{GameRecordBean.nextPage}" />
+											</li>
+											<li>
+												<a4j:commandLink  data="#{GameRecordBean.msg}" oncomplete="searchfinish(data);"
+												title="尾页" value="尾页" action="#{GameRecordBean.lastPage}" />
+											</li>
+											<li>
+												总记录数：#{GameRecordBean.totalrecord}条
+											</li>
+										</ul>
+									</a4j:region>
+								</div>
+							</div>
+							</h:panelGroup>
+							<!---->
+					</div>
+				</div>
+			</div>
+	</div>
+			<!--page-desc-->
+			<a4j:region>
+				<a4j:jsFunction name="pageKeyDownOPT" action="#{GameRecordBean.inputPage}" data="#{GameRecordBean.msg}" oncomplete="searchfinish(data)">
+					<f:param name="num"/>
+				</a4j:jsFunction>
+			</a4j:region>
+		</h:form>
+	</f:view>
+	
+<div id="footer">
+    <div class="footer">
+         <div class="footer_l">
+            <h3>银行支持 <span>About us</span></h3>
+             <a href="#"><img src="../images/public/pic_foot01_r2_c2.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r5_c6.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r3_c12.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r1_c20.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r16_c1.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r17_c5.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r15_c14.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r14_c19.png" alt=""/></a>
+         </div>
+        <div class="footer_l footer_r">
+            <h3>银行支持 <span>About us</span></h3>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c27.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c29.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r6_c38.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c26.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r13_c32.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r16_c39.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c41.png" alt=""/></a>
+        </div>
+        <div class="clear"></div>
+        <p class="accredit">我们是由菲律宾政府 NORTH CAGAYAN 和 CEZA 所授权 并拥有合法博彩牌照，并接受其机构监管，严格按照上述机构颁发的规则进行运营。</p>
+        <p>Copyright © 2015 DaTanglottery, Inc. All Rights Reserved.</p>
+    </div>
+</div>
+	
+</body>
+
+</html>

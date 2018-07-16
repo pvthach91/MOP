@@ -1,0 +1,1673 @@
+body{
+	padding-top: 75px;
+	background: transparent url(../images/body-bg.jpg) no-repeat fixed;
+}
+
+.content{
+	padding-top: 25px;
+	padding-bottom: 130px;
+	background: url(../images/content-bottom.png) no-repeat center bottom;
+}
+
+	.top-panel .logo{
+		float: left;
+		width: 340px;
+		height: 139px;
+		background: transparent url(../images/game/ssc/ssc-logo.png) no-repeat;
+	}
+
+		.top-panel .mmc-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_08.png) 0 -20px no-repeat;
+		}
+
+		.top-panel .ffc-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_24.png) 0 -20px no-repeat;
+		}
+
+		.top-panel .bnlfc-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_30.png) 0 -17px no-repeat;
+		}
+
+		.top-panel .xjssc-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_32.png) -9px -10px no-repeat;
+		}
+
+		.top-panel .tjssc-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_33.png) -9px -14px no-repeat;
+		}
+
+		.top-panel .bn115-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_03.png) 0px -8px no-repeat;
+		}
+
+		.top-panel .sd115-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_14.png) 0px -15px no-repeat;
+		}
+
+		.top-panel .jx115-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_22.png) 0px -15px no-repeat;
+		}
+
+		.top-panel .gd115-logo{
+			height: 140px;
+			background: transparent url(../images/logo/lottery-logo_29.png) 0px -20px no-repeat;
+		}
+
+		.top-panel .bn3d-logo{
+			height: 149px;
+  			background: transparent url(../images/logo/lottery-logo_20.png) 0px -12px no-repeat;
+		}
+
+		.top-panel .fc3d-logo{
+			height: 149px;
+  			background: transparent url(../images/logo/lottery-logo_13.png) 0px -18px no-repeat;
+		}
+
+		.top-panel .pl35-logo{
+			height: 149px;
+  			background: transparent url(../images/logo/lottery-logo_06.png) -13px -12px no-repeat;
+		}
+
+	.top-panel .time-area{
+		float: left;
+		width: 321px;
+		height: 141px;
+		text-align: center;
+		background-color: #788384;
+		background-color: rgba(102,102,102,0.6);
+		box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+
+	}
+
+		.top-panel .time-area p{
+			font-size: 14px;
+			line-height: 20px;
+			color: #fff;
+		}
+
+		.top-panel .period{
+			margin-top: 5px;
+		}
+
+		.top-panel .time-area em{
+			color: #fff100;
+		}
+
+		.count-down{
+			margin-top: 10px;
+		}
+
+			.count-down li{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				width: 80px;
+				height: 60px;
+				background: #303535;
+				border-radius: 5px;
+				border: 1px solid #222;
+				text-align: center;
+				box-shadow:inset 0 2px 0px rgba(0,0,0,0.3);
+			}
+
+			.count-down li span{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				width: 31px;
+				height: 48px;
+				margin: 5px 0 0 0;
+				border-radius: 3px;
+				border: 1px solid #222;
+				background: #2a2a2a;
+				font: normal 11px "Helvetica Neue", Helvetica, sans-serif;
+				font-size: 36px;
+				font-weight: bold;
+				line-height: 52px;
+				color: #f2f2f2;
+				text-shadow: 0 3px 0px rgba(0,0,0,1);
+				box-shadow: inset 0 2px 0px rgba(255,255,255,0.3), 0 2px 0px rgba(0,0,0,0.3);
+			}
+
+			.count-down li.symbol{
+				width: 15px;
+				border: none;
+				font: normal 50px "Helvetica Neue", Helvetica, sans-serif;
+				font-weight: bold;
+				color: #fff;
+				background: transparent;
+				box-shadow: none;
+			}
+
+	/*mmc视频展示*/
+	.display-video{
+		width: 100%;
+		overflow: hidden;
+	}
+
+		.display-video object,
+		.display-video embed{
+			width: 100%;
+			margin: 30px 0 0 0;
+			overflow: hidden;
+		}	
+
+	/*开奖号码*/
+	.top-panel .lottery-info{
+		float: left;
+		width: 510px;
+		height: 140px;
+		margin: 0 0 0 25px;
+		text-align: center;
+		background-color: #788384;
+		background-color: rgba(102,102,102,0.6);
+		box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+	}
+
+		.lottery-info .information{
+			float: left;
+			width: 305px;
+		}
+
+			.lottery-info .information p{
+				color: #fcfcfc;
+				margin: 10px 0 0 0;
+			}
+
+			.lottery-info .information em{
+				color: #fff100;
+			}
+
+			.lottery-info .last-ball{
+				margin-top: 10px;
+			}
+
+			.lottery-info .last-ball div{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				width: 50px;
+				height: 50px;
+				font-size: 33px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 50px;
+				color: #666;
+				border-radius: 50px;
+				background: #fcfcfc; 
+				text-shadow: 2px 0 5px rgba(0,0,0,0.5);
+				vertical-align: middle;
+			}
+
+			.lottery-info .last-ball div img{
+				margin: 0;
+				padding: 0;
+				width: 50px;
+				height: 50px;
+				vertical-align: middle;
+			}
+
+		.btn-control a{
+			display: inline-block;
+			*zoom: 1;
+			*display: inline;
+			width: 85px;
+			height: 25px;
+			font-size: 12px;
+			margin-top: 10px;
+			background: #fbfbfb;
+			line-height: 25px;
+			border: 1px solid #555;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.2)
+		}
+
+	.c_top_righban{
+		margin-left: -23px;
+	}
+
+	.bet-history{
+		float: right;
+		width: 200px;
+		height: 132px;
+		margin: 5px 5px 0 0;
+		border-radius: 3px;
+		font-size: 12px;
+		color: #666;
+		overflow: auto;
+		text-align: center;
+		box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+		background: #fff;
+	}
+
+		.bet-history p{
+			height: 2px;
+			overflow: hidden;
+		}
+
+		.bet-history table{
+			width: 97%;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.bet-history table td,
+		.bet-history table th{
+			text-align: center;
+		}
+
+		.bet-history table th{
+			height: 25px;
+			line-height: 25px;
+			color: #fff;
+			background: #7a8484;
+		}
+
+		.bet-history table tr{
+			width: 95%;
+		}
+
+			.bet-history table th.fisrt{
+				border-right: 1px solid #fff;
+			}
+
+			.bet-history table td.fisrt{
+				padding-right: 1px;
+			}
+
+			.bet-history table td{
+				border-bottom: 1px dashed #333;
+			}
+
+			.bet-history .list{
+				width: 86%;
+			}
+
+/**/
+.ball-change-panel{
+	margin: 30px 0 0 0;
+	overflow: hidden;
+}	
+	.main-panel{
+		margin-bottom: -2000px;
+  		padding-bottom: 2000px;
+		background: url(../images/panel-bg.jpg) repeat;
+	}
+	
+	.ball-change-panel .main-panel{
+		float: left;
+		width: 873px;
+	}
+
+	.ball-change-panel .ball-information{
+		float: right;
+		width: 327px;
+	}
+
+		.method-panel{
+			height: 25px;
+			line-height: 25px;	
+			background: #666;
+		}
+
+			.method-panel .tab-back,
+			.method-panel .tab-front{
+				float: left;
+				height: 25px;
+				padding: 0 20px;
+				line-height: 25px;
+				cursor: pointer;
+			}
+
+				.method-panel .tab-back img{
+					display: none;
+				}
+
+				.method-panel .tab-back font{
+					color: #fff100!important;
+				}
+
+				.method-panel .content{
+					background: none;
+				}
+
+				.method-panel{
+					font-size: 14px;
+					color: #fff;
+				}
+
+				.method-panel .tab-front{
+					color: #666;
+					background: url(../images/panel-bg.jpg) repeat;
+				}
+
+	.select-ball-panel{
+		background: transparent;
+	}
+
+		.method-group li{
+			float: left;
+			display: block;
+			min-height: 25px;
+			margin: 10px 0 0 25px;
+			padding: 10px 10px 5px 5px;
+			line-height: 25px;
+			background: #d8d8d7;
+			border-radius: 5px;
+			font-size: 12px;
+			clear: both;
+			box-shadow: inset 0 0px 2px rgba(0,0,0,0.5), 0 1px 1px #fff;
+		}	
+
+			.method-group span{
+				padding: 0 5px;
+				color: #555;
+			}
+
+				.method-group span:before{
+
+				}
+
+			.method-group .back,
+			.method-group .act{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				height: 23px;
+				margin: 0 0 5px 5px;
+				line-height: 23px;
+				padding: 0 15px;
+				border: 1px solid #c1c1c1\9;
+				border-radius: 5px;
+				background: #c3c3c3;
+				box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+				-moz-transition: background 0.3s ease;
+				-webkit-transition: background 0.3s ease;
+				-o-transition: background 0.3s ease;
+				transition: background 0.3s ease;
+				cursor: pointer;
+				color: #666;
+			}
+
+			.method-group .act,
+			.main-ball-panel .nbts div.on,
+			.main-ball-panel .nb div.on,
+			.main-ball-panel .to li.on,
+			.main-ball-panel .bl div.on{
+				color: #333;
+				text-shadow: none;
+				background: #ffffff; /* Old browsers */
+				background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #ededed 51%, #f6f6f6 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f1f1f1), color-stop(51%,#ededed), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#ededed 51%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#ededed 51%,#f6f6f6 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#ededed 51%,#f6f6f6 100%); /* IE10+ */
+				background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#ededed 51%,#f6f6f6 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+			}
+
+			.main-ball-panel .nbts div.on,
+			.main-ball-panel .nb div.on,
+			.main-ball-panel .to li.on,
+			.main-ball-panel .bl div.on{
+				color: #fff;
+				text-shadow: none;
+				border: 1px solid #2c75a5;
+				box-shadow: 0 3px 0px rgba(36,119,185,0.8);
+				background: #ffffff; /* Old browsers */
+				background: #4096ee;
+				background: -moz-linear-gradient(top,  #4096ee 0%, #3b8cdd 64%, #4096ee 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(64%,#3b8cdd), color-stop(100%,#4096ee));
+				background: -webkit-linear-gradient(top,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				background: -o-linear-gradient(top,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				background: -ms-linear-gradient(top,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				background: linear-gradient(to bottom,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#4096ee',GradientType=0 );
+
+			}
+
+	.ui-bg-use{
+		margin-top: 10px;
+		padding: 0 0 30px 0;
+		background: url(../images/panel-bg-b.jpg) repeat;
+	}
+
+		.function-button a{
+			width: 65px;
+			height: 35px;
+			margin: 10px 0 0 10px;
+			padding-left: 50px;
+			color: #5d4f3d;
+			line-height: 35px;
+			background: url(../images/icon.png) -43px -88px no-repeat;
+		}
+
+		.function-button .rules{
+			margin: 10px 0 0 25px;
+			background: url(../images/icon.png) -82px -128px no-repeat;
+		}
+
+		.main-ball-panel{
+			margin-top: 5px;
+		}
+
+		.main-ball-panel .nbs{
+			width: 820px;
+			min-height: 42px;
+			margin: 10px 0 0 25px;
+			border-radius: 5px;
+			background: #d8d8d7;
+			box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 1px #fff;
+		}
+
+		.main-ball-panel .single{
+			height: auto;
+			box-shadow: none;
+			border: none;
+			background: transparent;
+		}
+
+			.single span{
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+				margin: 15px 0 0 30px;
+			}
+
+			.main-ball-panel .nbts .ti,
+			.main-ball-panel .nbs .ti{
+				float: left;
+				padding: 0 10px;
+				margin: 0 0 0 10px;
+				color: #999;
+				line-height: 42px;
+			}
+
+			.main-ball-panel .nb,
+			.main-ball-panel .nbts,
+			.main-ball-panel .to,
+			.main-ball-panel .nbts div,
+			.main-ball-panel .nb div,
+			.main-ball-panel .to li,
+			.main-ball-panel .bl div{
+				float: left;
+				margin: 0;
+				color: #666;
+				box-shadow: none;
+			}
+
+			.main-ball-panel .to li.l,
+			.main-ball-panel .to li.r{
+				display: none;
+			}
+
+			.main-ball-panel .nb{
+				padding-right: 20px;
+				background: url(../images/icon.png) 295px -168px no-repeat;
+			}
+
+			.main-ball-panel .nbts div,
+			.main-ball-panel .nb div,
+			.main-ball-panel .to li,
+			.main-ball-panel .bl div{
+				width: 28px;
+				height: 28px;
+				margin: 5px 0 0 13px;
+				border: 1px solid #888;
+				border: 1px solid #888\9;
+				border-radius: 5px;
+				background: #d5d5d5;
+				text-align: center;
+				line-height: 30px;
+				font-size: 16px;
+				font-weight: bold;
+				color: #666;
+				box-shadow:0 3px 0px rgba(177,177,177,0.8), inset 0 2px 0 rgba(255,255,255,0.9);
+				cursor: pointer;
+				-moz-transition: background 0.3s ease;
+				-webkit-transition: background 0.3s ease;
+				-o-transition: background 0.3s ease;
+				transition: background 0.3s ease;
+			}
+
+			.main-ball-panel .nbts div:hover,
+			.main-ball-panel .nb div:hover,
+			.main-ball-panel .to li:hover,
+			.main-ball-panel .bl div:hover{
+				color: #333;
+				background: #fff;
+				cursor: pointer;
+				-moz-transition: background 0.3s ease;
+				-webkit-transition: background 0.3s ease;
+				-o-transition: background 0.3s ease;
+				transition: background 0.3s ease;
+			}
+
+			.main-ball-panel .nbts .on:hover,
+			.main-ball-panel .nb .on:hover,
+			.main-ball-panel .to .on:hover,
+			.main-ball-panel .bl .on:hover{
+				color: #fff;
+				background: -moz-linear-gradient(top,  #4096ee 0%, #3b8cdd 64%, #4096ee 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(64%,#3b8cdd), color-stop(100%,#4096ee));
+				background: -webkit-linear-gradient(top,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				background: -o-linear-gradient(top,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				background: -ms-linear-gradient(top,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				background: linear-gradient(to bottom,  #4096ee 0%,#3b8cdd 64%,#4096ee 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#4096ee',GradientType=0 );
+			}
+
+			.main-ball-panel .bl div,
+			.main-ball-panel .nbts div{
+				width: auto;
+  				padding: 0 5px;
+			}
+	.game-statics{
+		margin: 10px 0 0 25px;
+		padding: 0 0 10px 0;
+		color: #999;
+		font-size: 12px;
+	}
+
+		.game-statics .plus,
+		.game-statics .reduce{
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			background: #fff;
+			border: 1px solid #666;
+			vertical-align: middle;
+			font-weight: bold;
+		}
+
+		.game-statics .multiple{
+			width: 60px;
+			vertical-align: middle;
+		}
+			.score-unit,
+			.multiple-setting,
+			.reback-pointer,
+			.add-order{
+				margin: 0;
+				padding: 5px;
+				background: #d1d1d1;
+				border-radius: 5px;
+				text-shadow: 0 2px 0px rgba(255,255,255,1);
+				box-shadow: inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 1px #fff;
+				vertical-align: middle;
+			}
+
+				.multiple-setting input,
+				.score-unit select,
+				.reback-pointer select,
+				.add-order input{
+					width: auto;
+					height: 28px;
+					min-width: 50px;
+					margin: 0;
+					padding: 0;
+					text-indent: 0;
+					border: none;
+					line-height: 28px;
+					text-align: center;
+					border-radius: 5px;
+					background: #d7d7d7;
+					box-shadow:  0 1px 2px rgba(0,0,0,0.3),inset 0 1px 1px #fff;
+				}
+
+			.bet-num{
+				margin: 0px 15px 0 15px;
+				vertical-align: middle;
+				line-height: 15px;
+			}
+
+				.bet-num em,
+				.bet-num i{
+					font-style: normal;
+				}
+
+				.bet-num i{	
+					color: #fd0303;
+				}
+
+			.add-order{
+				width: 175px;
+			}
+
+			.add-order input{
+				width: 165px;
+				height: 41px;
+				padding: 0 50px 0 20px;
+				text-align: center;
+				color: #fea73c;
+				font-size: 16px;
+				cursor: pointer;
+				background: url(../images/buy-car.jpg) #fff right 0 no-repeat;
+			}
+
+			.add-order input:hover{
+				color: #333;	
+				background-color: #c3c3c3;
+			}
+
+			.score-unit select{
+				width: 80px;
+			}
+
+	.ball-information .bet-history-title{
+		height: 25px;
+		padding-left: 10px;
+		line-height: 25px;
+		color: #fff;
+		font-size: 14px;
+		background: #5c5c5c;
+		margin-bottom: -2000px;
+  		padding-bottom: 2000px;
+	}
+
+	.bet-history-list{
+		height: 170px;
+		color: #fff;
+		background: #343434;
+		overflow: hidden;
+	}	
+		.bet-history-list .table{
+			border-bottom: 1px solid #666;
+		}
+
+		.bet-history-list th{
+			color: #fff;
+			border-color: #000;
+			background: #5c5c5c;
+		}
+
+		.bet-history-list td{
+			color: #fff;
+		}
+
+	.lottery-order span{
+		float: left;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		color: #fff;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+		.lottery-order td{
+			padding: 0;
+		}
+
+		.lottery-order .lottery-name,
+		.lottery-order .lottery-name span{
+			width: 134px;
+		}
+
+		.lottery-order .lottery-num,
+		.lottery-order .lottery-num span{
+			width: 48px;
+		}
+
+		.lottery-order .lottery-multi,
+		.lottery-order .lottery-multi span{
+			width: 49px;
+		}
+		
+		.lottery-order .lottery-money,
+		.lottery-order .lottery-money span{
+			width: 66px;
+		}
+
+		.lottery-close,
+		.lottery-close span{
+			width: 30px;
+			font-size: 18px;
+		}
+
+	.bet-list{
+		font-size: 22px;
+		line-height: 20px;
+	}	
+
+		.bet-list td{
+			line-height: 20px;
+			vertical-align: middle;
+		}
+
+		.bet-list .close{
+			color: #fff;
+			font-size: 22px;
+		}
+
+	.order-info{
+		padding-bottom: 21px;
+		color: #fff;
+		text-align: center;
+		background: #343434;
+	}
+
+		.trace-about{
+			height: 35px;
+			padding: 5px 0 0 0;
+			font-size: 12px;
+		}
+
+			.settint-trace{
+				width: 78px;
+				height: 26px;
+				margin: 0 0 0 5px;
+				background: #f3f3f3;
+				border-radius: 5px;
+				border: 2px solid #ccc;
+				text-align: center;
+				line-height: 25px;
+				color: #333;
+				cursor: pointer;
+			}
+
+			.total-trace{
+				width: 170px;
+				text-align: center;
+			}
+
+			a.cancel-trace{
+				color: #cc6a28;
+				text-decoration: underline;
+			}
+
+		.data-area{
+			line-height: 40px;
+			text-align: center;
+			border-top: 1px solid #666;
+		}
+
+			.data-area span{
+				color: #fd0303;
+			}
+
+			.order-info .submit-order{
+				display: block;
+				width: 219px;
+				height: 63px;
+				margin: 0 auto;
+				text-indent: -9999em;
+				background: url(../images/submit-button.png) no-repeat;
+				color: #fff;
+				font-size: 12px;
+				overflow: hidden;
+				line-height: 33px;
+			}
+
+		.lt_example,
+		.lt-desc{
+			position: absolute;
+			top: 40px;
+			left: 10px;
+			padding: 5px;
+			font-size: 12px;
+			display: none;
+			background: #e1e1e1;
+			background: rgba(0,0,0,0.5);
+			color: #fff;
+			border-radius: 5px;
+			line-height: 20px;
+		}
+
+			a.explain,
+			a.rules{
+				position: relative;
+			}
+
+			a.rules:hover .lt-desc{
+				display: block;
+			}
+
+		.more{
+			padding: 5px;
+			color: #fff;
+			font-size: 12px;
+			border-radius: 5px;
+			background: #e1e1e1;
+			background: rgba(0,0,0,0.5);
+		}
+
+		.lt_example{
+			display: block;
+			top: 0;
+			left: 0;
+			text-indent: -9999em;
+			width: 100%;
+			height: 100%;
+			background: none;
+		}
+
+
+		.danshi-box{
+			width: 550px;
+			height: 172px;
+			padding: 10px;
+			color: #666;
+			font-size: 14px;
+			line-height: 25px;
+			text-align: left;
+			background: #fff;
+			border: 2px solid #757575;
+		}
+
+		.trace-panel{
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			width: 840px;
+			height: 500px;
+			margin: -250px 0 0 -420px;
+			border-radius: 5px;
+			background: #fbfbfb;
+			z-index: 2001;
+			overflow: hidden;
+		}
+
+			.trace-panel h4{
+				height: 35px;
+				line-height: 35px;
+				padding-left: 40px;
+				background: url(../images/icon.png) -215px -89px no-repeat #91c2d1;
+			}
+
+			.trace-panel .close{
+				margin-top: -8px;
+				font-size: 28px;
+			}
+
+			.trace-panel .method-select{
+				background: #d5d6d6;
+			}
+
+			.trace-panel .method-select li{
+				float: left;
+				width: 100px;
+				height: 25px;
+				line-height: 25px;
+				font-size: 14px;
+				color: #333;
+				text-align: center;
+				background: #979797;
+			}
+
+			.trace-panel .method-select li a{
+				color: #333;
+			}
+
+			.trace-panel .method-select li.current{
+				background: #fff;
+			}
+
+
+
+
+
+
+/*追号*/
+.trace-container{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 780px;
+	height: 530px;
+	margin:-260px  0 0 -390px;
+	z-index: 2001;
+	font-size: 12px;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0 0 150px rgba(0,0,0,0.8);
+}
+	.close-trace{
+		position: absolute;
+		display: block;
+		top: 15px;
+		right: 15px;
+		width: 20px;
+		height: 20px;
+		font-size: 30px;
+		line-height: 20px;
+		overflow: hidden;
+	}
+
+.trace-make-button{
+	display: block;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #555;
+	text-align: center;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 14px;
+}
+
+.bet-statistics .trace{
+	position: absolute;
+	top: -30px;
+	color: #ffdd81;
+	left: 10px;
+}
+
+	.bet-statistics .label{
+		margin-left:10px;
+		font-size:14px;
+		font-weight:700;
+		color:#ffdd81;
+	}
+
+	.bet-statistics .price{}
+	.bet-statistics .bet-tips{display:inline-block;padding:0 4px;margin-left:10px;background-color:#D95625;border-radius:2px;color:#FFF;vertical-align:middle;}
+	.bet-statistics .bet-tips i{position:absolute;width:0;height:0;margin-left:-9px;margin-top:5px;border-width:5px;overflow:hidden;border-color:transparent #D95625 transparent transparent;border-style:dotted solid dotted none;border-style:solid solid solid none\0;}
+
+	}
+
+.multiple-limit{margin-right:60px;}
+
+	#J-trace-panel .choose-multiple,
+	#J-trace-panel .choose-model{
+		position:relative;
+		display:inline-block;
+		*display:inline;
+		*zoom:1;
+	}
+
+	#J-trace-panel .choose-multiple .input{position:relative;width:46px;padding:3px;font-weight:700;text-align:center;color:#097969;}
+	#J-trace-panel .choose-model .info{
+		display:inline-block;
+		width: 79px;
+		height: 19px;
+		line-height:18px;
+		padding:3px;
+		color: #ffdd81;
+		font-weight:700;
+		text-align:center;
+		vertical-align:middle;
+		font-size:12px;
+	}
+
+	#J-trace-panel .choose-model .choose-input {
+		width: 100%;
+		border: 0;
+		text-align: center;
+		background: none;
+		color: #ca0014;
+	}
+
+	#J-trace-panel .choose-multiple i,
+	#J-trace-panel .choose-model i{
+		display:inline-block;
+		width:25px;
+		height:24px;
+		margin-left:-1px;
+		vertical-align:middle;
+		background: url("select-down.png") 8px 10px no-repeat;
+		cursor:pointer;
+	}
+
+		#J-trace-panel .choose-multiple .text,
+		#J-trace-panel .choose-model .text{display:inline-block;padding-left:6px;vertical-align:middle;}
+
+		#J-trace-panel .chase-trace-startNumber-select .choose-list {height:260px;overflow-y:auto;}
+
+		#J-trace-panel .bet-statistics .total-money,
+		#J-trace-panel .bet-statistics .choose-bet{
+			text-align: left;
+		}
+
+		#J-trace-panel .bet-statistics .choose-bet{
+			margin-top: 15px;
+		}
+
+	#J-trace-panel .choose-model .slide-checkbox{
+		position: relative;
+		display: inline-block;
+		*zoom: 1;
+		*display: inline;
+		top: 0;
+		left: 0;
+		width: 53px;
+		height: 28px;
+		background: none repeat scroll 0 0 #79A5B7;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+		border-radius: 3px;
+		vertical-align: middle;
+	}
+
+		#J-trace-panel .choose-model .slide-checkbox .checklist{
+			position: absolute;
+			left:2px;
+			top:2px;
+			margin: 0;
+			padding: 0;
+			height: 24px;
+			z-index: 2;
+		}
+
+		#J-trace-panel .choose-model .slide-checkbox .checklist a{
+			display: inline-block;
+			height: 24px;
+			width: 24px;
+			color: #FFF;
+			text-decoration: none;
+			vertical-align: middle;
+			-moz-transition: color 0s ease 0.2s;
+			-webkit-transition: color 0s ease 0.2s;
+			-o-transition: color 0s ease 0.2s;
+			transition: color 0s ease 0.2s;
+		}
+
+		#J-trace-panel .choose-model .slide-checkbox .checklist a.current{
+			color: #666;
+			font-weight: 700;
+		}
+
+		#J-trace-panel .choose-model .slide-checkbox .current-check-background{
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 24px;
+			height: 22px;
+			border-bottom:2px solid #DEDEDE;
+			background-color:#FFF;
+			border-radius: 2px;
+			-moz-transition: left 0.2s ease;
+			-webkit-transition: left 0.2s ease;
+			-o-transition: left 0.2s ease;
+			transition: left 0.2s ease;
+		}
+
+		#J-trace-panel .choose-list{
+			position:absolute;
+			top: 30px;
+			left:0;
+			padding:5px 0;
+			font-size: 12px;
+			border:1px solid #c34f31;
+			background: url(side-bg.jpg) repeat;
+			z-index:1;
+		}
+
+			#J-trace-panel .choose-list a{
+				display:block;
+				margin:3px 0;
+				padding:0 14px;
+				height:20px;
+				line-height:20px;
+				text-align:left;
+				color: #ffdd81;
+			}
+
+			#J-trace-panel .choose-list a:hover{background-color:#fb8900;color:#FFF;text-decoration:none;}
+			#J-trace-panel .choose-multiple .choose-list{width:78px;}
+			#J-trace-panel .choose-model .choose-list{
+				width: 122px;
+			}
+			#J-trace-panel .choose-bet em{padding:0 6px;}
+			#J-trace-panel .total-money{}
+
+		/*== E bet-statistics */
+		#J-balls-statistics-panel{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+			height: 0;
+		}
+
+		.mode-group-rewards{
+			width: 180px;
+			height: 30px;
+			margin: 10px 0 0 0;
+			line-height: 30px;
+			border: 1px solid #c34f31;
+		}
+
+		.mode-group-rewards .choose-model .choose-input{
+			color: #ffdd81;
+		}
+
+		.mode-group-rewards select{
+			color: #ffdd81;
+			background: none;
+			border: none;
+		}
+
+		.choose-btn,.bet-btn{
+			position: relative;
+			padding: 0px;
+		}
+		.chase-btn{padding:10px;border-bottom:1px solid #E5E5E5;}
+		.choose-btn input,
+		.bet-btn input,
+		.chase-btn input,
+		.balls-import-input{
+			display:block;
+			margin:0 auto;
+			border:0 none;
+			background-color: #fff;
+			background-image:url("un-btn-a.png");
+			background-repeat:no-repeat;
+			cursor:pointer;
+		}
+
+		.bet-btn input{
+			position: absolute;
+			width: 180px;
+			height: 54px;
+			background-position: 8px -232px;
+			top: -65px;
+			right: 12px;
+			background: url("bet-sub.jpg") no-repeat;
+			outline: none;
+		}
+		.bet-btn input:hover{}
+		.bet-btn input.disable{background-position:-380px 0;cursor:default;}
+		.choose-btn input{
+			position: absolute;
+			bottom: -268px;
+			left: 23px;
+			width: 172px;
+			height: 47px;
+			outline: none;
+			background: url("add-bg.jpg") no-repeat;
+		}
+		.choose-btn input:hover{
+		}
+		.choose-btn input.disable{
+			background-position:-340px -60px;
+			cursor:default;
+		}
+		.choose-btn input.important{
+			background-position:0px -116px;
+		}
+		.chase-btn input{
+			width:110px;
+			height:40px;
+			background-position:-13px -15px;
+		}
+		.chase-btn input:hover{
+			background-position:-13px -66px;
+		}
+
+		.number-section .desc{
+			position: absolute;
+			top: 270px;
+			left: 23px;
+			color: #ffdd81;
+		}
+
+		.trace-button{
+			margin-top: -8px;
+		}
+
+		.balls-import-input{
+			display:inline-block;
+			width:107px;
+			height:31px;
+			margin:0;
+			margin-right:20px;
+			background: url(un-btn.png) no-repeat;
+			background-position:0 -160px;
+		}
+		/*= E number-select-content */
+		/* E number-section */
+		/* S panel-section */
+		.selected{
+			position: absolute;
+			width: 535px;
+			height: 250px;
+			top: 20px;
+			right: 20px;
+			padding: 10px 0;
+			border-radius: 5px;
+			box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+			background: url(menu-bg.png) repeat;
+		}
+		.selected .take-five,
+		.selected .take-one{
+			/*display: none;*/
+		}
+		.panel-section{
+			position: relative;
+			height: 347px;
+			padding:26px 38px 0;
+			background: url(side-bg.jpg) repeat;
+			z-index: 0;
+		}
+
+		.bet-statistics{
+			left: 225px;
+			text-align: left;
+		}
+
+		.bet-statistics{
+			top: 46px;
+			right: 0;
+			height: 40px;
+			left: inherit;
+			font-size: 14px;
+			color: #294c8a;
+			text-align: center;
+			line-height: 40px;
+			background: #fff;
+		}
+
+		.bet-statistics li{
+			display: inline-block;
+			*zoom: 1;
+			*display: inline;
+		}
+
+			.trace-container  .button-control{
+				height: 40px;
+				padding-bottom: 15px;
+				line-height: 40px;
+				background: #fff;
+			}
+
+			.trace-container .save-program,
+			.trace-container .cancle-program{
+				display: inline-block;
+				*zoom: 1;
+				*display: inline;
+				width: 150px;
+				height: 35px;
+				border-radius: 3px;
+				line-height: 35px;
+				text-align: center;
+			}
+
+				.trace-container .save-program{
+					color: #333;
+					background-color: #91c2d1;
+				}
+
+				.trace-container .cancle-program{
+					color: #555;
+					background-color: #f4f4f4;
+				}
+
+		.panel-select{
+		}
+		.panel-select ul{
+			width: 535px;
+			height: 200px;
+			margin: 25px 0 0 0;
+			overflow: auto;
+		}
+		.panel-select li{
+			position:relative;
+			height: 50px;
+			padding: 15px 0 0 0;
+			color: #ffdd81;
+			border-bottom:1px solid #9a142e;
+			_zoom:1;
+		}
+		.panel-select li:hover{}
+		.panel-select li.game-order-current {background-color:#FFFFE1;color: #666;border-bottom-color:#CCC;}
+		.panel-select .result{
+			line-height: 25px;
+		}
+		.panel-select .bet{display:inline-block;width:70px;text-align:center;}
+		.panel-select .multiple{display:inline-block;text-align:center;}
+		.panel-select .lottery-details{cursor: pointer;}
+		.panel-select .lottery-details:hover{color:#009B7D;}
+		.panel-select .lottery-details-area{display: none; position: absolute; width: 150px; top: 5px; left: 160px; overflow: hidden; border: 1px solid #bc0517; z-index: 100; zoom: 1;}
+		.panel-select .lottery-details-area .num{height: 25px; line-height: 23px; background: #bc0517; color: #fff; padding-left: 10px; overflow: hidden;}
+		.panel-select .lottery-details-area .num .multiple{float: left;width:auto;}
+		.panel-select .lottery-details-area .num .close{float: right; margin-right: 5px; cursor: pointer;font-size:18px;}
+		.panel-select .lottery-details-area .list{margin: 0px; padding: 10px; height: auto;border: none; zoom:1; word-wrap: break-word; overflow: auto; background: #fff;color:#333;}
+		.panel-select .result .price{display: inline-block;*zoom: 1;*display: inline;width: 80px;padding-left: 15px}
+		.panel-select .close{
+			position: absolute;
+			right: 0;
+			top: 25px;
+			display:inline-block;
+			*zoom: 1;
+			*display: inline;
+			width:35px;
+			text-align:center;
+		}
+		.panel-select .result .moneyUnitText{padding: 0}
+		.panel-select .close a{
+			display:inline-block; 
+			*zoom:1; 
+			*display:inline;
+			width:12px;
+			height:0;
+			padding-top:12px;
+			background: url("close-btn-a.png") 0 0 no-repeat;
+			vertical-align: middle;
+			overflow:hidden;
+		}
+		.panel-btn{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 37px;
+			background: url(menu-bg.png) repeat; 
+			color: #ffdd81;
+		}
+
+		.panel-btn span{
+			float: left;
+			margin: 10px 0 0 15px;
+		}
+
+		.panel-btn a{
+			float: right;
+			margin: 10px 15px 0 0;
+			color: #ffdd81;
+		}
+		.panel-btn a:hover,
+		.panel-btn .take-one-current,
+		.panel-btn .take-five-current,
+		.panel-btn .empty-number-current{
+		color:#666;text-decoration:none;
+		}
+		.panel-btn i{float:left;width:30px;height:13px;margin-left:-25px;margin-top:9px;}
+		.panel-btn .take-one i{background-position:0 0;}
+		.panel-btn .take-one:hover i,.panel-btn .take-one-current i{background-position:-20px 0;}
+		.panel-btn .take-five i{background-position:0 -20px;}
+		.panel-btn .take-five:hover i,.panel-btn .take-five-current i{background-position:-20px -20px;}
+		.panel-btn .empty-number i{width:30px;height:15px;margin-left:-23px;margin-top:8px;background-position:0 -40px;}
+		.panel-btn .empty-number:hover i,.panel-btn .empty-number-current i{background-position:-20px -40px;}
+
+		.type-text{
+			float: left;
+			display: block;
+			margin: 10px 18px 0 12px
+		}
+		/* E panel-section */
+		/* S chase-tab */
+		.chase-tab{background-color:#FFF;}
+		.chase-tab-title{
+			height:90px;
+			line-height:36px;
+			color:#959595;
+			background-color: #91c2d1;
+		}
+		.chase-tab-title h3{
+			height: 53px;
+			line-height: 53px;
+			padding-left: 30px;
+			font-size:14px;
+			font-weight:700;
+			color:#fff;
+		}
+		.chase-tab-title .trace-select-area{
+			width: 100%;
+			height: 37px;
+			line-height: 37px;
+			background-color: #d5d6d6;
+		}
+		.chase-tab-title .tab-front,
+		.chase-tab-title .tab-back{
+			float: left;
+			height: 37px;
+			padding: 0 50px;
+			font-size: 14px;
+			line-height: 36px;
+			cursor: pointer;
+			color: #fff;
+			background-color: #979797;
+		}
+		.chase-tab-title .content{
+			background: none;
+		}
+		.chase-tab-title .tab-front{
+			padding: 0 50px;
+			border-left: 1px solid #E5E5E5;
+			border-right: 1px solid #E5E5E5;
+			background-color: #FFF;
+			font-weight: 700;
+			color: #333;
+			cursor: default;
+		}
+
+		.trace-container .chase-stop{
+			position: absolute;
+			top: 65px;
+			right: 10px;
+			color: #333;
+		}
+			.trace-container .chase-stop input{
+				vertical-align: middle;
+			}
+		.chase-tab-title .icon-question {position:relative;overflow:visible;}
+		.chase-tab-title .chase-stop .chase-stop-tip {display:none;position:absolute;background:#FFFFE1;font-style:normal;top:-86px;left:-260px;width:240px;padding:10px;line-height:180%;color:#666;
+			border: 1px solid #CCC;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			border-radius:5px;
+		}
+		.chase-tab-title .chase-stop .chase-stop-tip-current {display:block;}
+		.chase-tab-title .input{
+			height: 20px;
+			padding: 3px;
+			margin: 0 6px;
+			font-weight: 700;
+			color: #fb8900;
+			text-align: center;
+			line-height: 20px;
+			width: 70px;
+		}
+		.chase-tab-content{color:#888;display:none;}
+		.chase-tab-content-current {display:block;}
+		.chase-table .r2{
+			width: 46px;
+			height: 20px;
+			margin: 0 10px 0 0;
+			padding: 3px;
+			line-height: 20px;
+			color: #294c8a;
+			font-weight: 700;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.chase-select-normal{
+			display: block;
+			width: 100%;
+			padding: 10px;
+			line-height: 40px;
+			background: #fff;
+			border-bottom:1px solid #E5E5E5;
+		}
+
+			.chase-select-normal table{
+				width: 100%;
+				background: #fff;
+			}
+
+			.chase-select-normal input{
+				width: 46px;
+				height: 20px;
+				line-height: 20px;
+				padding: 3px;
+				color: #294c8a;
+				font-weight: 700;
+				text-align: center;
+				vertical-align: middle;
+				border: 1px solid #ccc;
+				border-radius: 2px;
+				outline: none;
+				background: #fff;
+				box-shadow: inset 0 3px 3px rgba(0,0,0,0.1);
+			}
+
+		.chase-select-normal li{
+			float:left;
+			margin-right:15px;
+		}
+
+
+		.chase-select-normal .function-select-title{
+			float:none;
+			display:inline-block;
+			*display:inline;
+			*zoom:1;
+			color: #999;
+			vertical-align:middle;
+			background-color:#fff;
+		}
+		.chase-select-normal .function-select-title li{
+			display:inline-block;
+			*display:inline;
+			*zoom:1;
+			margin: 0 15px 0 0;
+			padding: 3px 5px;
+			height: 20px;
+			line-height: 20px;
+			border: 1px solid #ccc;
+			color: #999;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+		.chase-select-normal .function-select-title li.current{
+			color: #fb8900;
+			border-color:#D7D7D7;
+		}
+		.chase-select-high{height:118px;border-bottom:1px solid #E5E5E5;}
+		.chase-select-high .title{float:left;width:12px;height:72px;padding:23px 10px;border-right:1px solid #E5E5E5;}
+		.base-parameter{
+			float:left;
+			height:108px;
+			width: 183px;
+			padding:5px 20px;
+			border-right:1px solid #E5E5E5;
+		}
+
+		.base-parameter li{padding:5px 0;*margin-bottom:-2px;}
+		.base-parameter .info{width:100px;}
+		.high-parameter{
+			float: left;
+			width: 490px;
+			overflow: hidden;
+		}
+		.high-parameter .tab-title{height:29px;margin-left:-1px;background-color:#F9F9F9;border-bottom:1px solid #E5E5E5;*overflow:hidden;}
+		.high-parameter .tab-title li{float:left;height:29px;line-height:28px;padding:0 16px;cursor:pointer;}
+		.high-parameter .tab-title li.current{*position:relative;height:30px;padding:0 15px;background-color:#FFF;border-left:1px solid #E5E5E5;border-right:1px solid #E5E5E5;cursor:default;}
+		.high-parameter .tab-content{padding:10px 10px 0}
+		.high-parameter .tab-content li {display:none;}
+		.high-parameter .tab-content .panel-current {display:block;}
+		.high-parameter .tab-content p{padding:5px 0;}
+		.chase-table-container {
+			height: 250px;
+			overflow-y:auto;
+			background: #f1f1f1;
+		}
+
+		.chase-tab-content .chase-btn{
+			position: relative;
+			height: 0;
+			padding: 0;
+			border: none;
+		}
+
+		.high-submit-button,
+		.normal-submit-button{
+			position: absolute;
+			width: 75px;
+			height: 30px;
+			padding: 0 5px;
+			line-height: 30px;
+			background: #ca0014;
+			border: none;
+			color: #ffdd81;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+
+		.normal-submit-button{
+			top: 100px;
+			right: 10px;	
+		}
+
+		.high-submit-button{
+			top: 132px;
+			right: 95px;
+		}
+
+		.checkbox{
+			vertical-align: middle;
+		}
+
+		#J-trace-builddetail{
+			position: absolute;
+			top: -76px;
+			right: 170px;
+			background: #4e7ac7;
+			border-radius: 5px;
+			height: 30px;
+			line-height: 30px;
+			color: #fff;
+			width: 90px;
+		}
+
+		.chase-table{width:100%;}
+		.chase-table th{padding:8px 12px;background-color:#FDFDFD;border-bottom:1px solid #E5E5E5;}
+		.chase-table td{padding:8px 12px;border-bottom:1px dashed #E5E5E5;}
+		.chase-table .input{color:#888;width:46px;padding:3px;color:#097969;font-weight:700;text-align:center;}
+
+		.chase-trace-startNumber-select {}
+		.chase-trace-startNumber-select .info {width: 85px;}
+		.chase-trace-startNumber-select .choose-list {width:182px;}
+
+		.icon-chase-mark{display:inline-block;width:110px;height:19px;padding-left:14px;margin-left:-15px;background:url("icon-chase-mark.png") 0 0 no-repeat;color:#FFF;}
+		.icon-period-current{display:inline-block;width:63px;height:20px;margin-left:5px;background:url("ico-period-current.png") 0 0 no-repeat;color:#FFF;vertical-align:middle;}
+
+
+		.bet-common-loading {position:absolute;left:0;top:0;background:#FFF url(ico-loading.gif) no-repeat center center;width:100px;height:40px;border:5px solid #666;z-index:650;display:none;
+			opacity:0.6;
+			filter:alpha(opacity=60);
+			zoom: 1;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius:5px;
+		}
+
+	.select3 .select{
+		height: 31px;
+		line-height: 31px;
+	}
+
+	.loading-container{
+		padding: 50px 0;
+	}
+
+	.jspPane{
+		width: 100%!important;
+	}
+
+	.jspVerticalBar,
+	.jspTrack{
+		background: transparent!important;
+	}
+
+	.jspDrag{
+		border-radius: 30px;
+		background: rgba(255, 255, 255, 0.56)!important;
+	}
+
+	.jspVerticalBar{
+		width: 5px!important;
+		right: 2px!important;
+	}
+

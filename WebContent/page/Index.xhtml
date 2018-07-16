@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>系统公告</title>
+
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/AgentReg.css" />
+<link type="text/css" rel="stylesheet" href="../css/notice.css" />
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	_SCROLLINGJXF = "auto";
+	function showMsg() {
+		layer.open({
+		    type: 2,
+		    title: '系统公告',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['800px', '550px'],
+		    content: '/page/IndexMsgSub.shtml' //iframe的url
+		}); 
+	}
+	
+	function reloads() {
+		window.location.reload();
+	}
+	
+</script>
+</head>
+
+<!--头部-->
+<ui:include src="/bar.xhtml" />
+
+<body style="width: 100%; padding: 0px; margin: 0px;">
+	<f:view>
+		<h:form id="IndexForm">
+			<!--content-->
+			<div id="content">
+				<div class="content">
+						<h2>平台公告</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li  class="on">
+								<a href="/page/Index.shtml" style="font-size:14px;">平台公告</a>
+							</li>
+							
+						</ul>
+					</div>
+						<div class="tab_in">
+							<h:inputHidden value="#{SysMsgBean.showitem.title}"
+								id="userstatus" />
+							<ul class="notice_ul01">
+								<a4j:repeat value="#{SysMsgBean.msglist}" var="list"
+									id="testList" rowKeyVar="keys">
+									<li class="clearfix">
+										<h4 class="span_r">#{list.savetime.substring(0,10)}</h4>
+										<div>
+											<!-- <img src="#{list.param2}" class="f-left" /> -->
+											<div class="f-right desc">
+												<a4j:commandLink title="点击查看" action="#{SysMsgBean.showmsg}"
+													oncomplete="showMsg();" status="normalStatus"
+													value="#{keys+1}. [#{list.savetime.substring(0,10)}] #{list.title}">
+													<f:param name="id" value="#{list.id}"></f:param>
+												</a4j:commandLink>
+												<!-- <h4>喜迎元旦，巅峰让利！元旦三天盈利加送10%</h4>
+											<p> 活动内容：
+		   2015年1月1日 00:00起，在玩家时代（PTBET）所有游戏中凡是盈利就加送10%，1倍流水提款。 </p> -->
+											</div>
+										</div>
+									</li>
+								</a4j:repeat>
+							</ul>
+						</div>
+						<!-- -->
+					</div>
+				</div>
+
+		</h:form>
+	</f:view>
+
+	<!-- 底部 -->
+	<ui:include src="/foot.xhtml" />
+
+</body>
+</html>

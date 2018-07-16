@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>下级配额查看</title>
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/css/ucenter.css" />
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功:操作完成!");
+			parent.reloads();
+		}
+	}
+	function closewin(){
+		ownerDialog.close();
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="GameRecordForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<table width="100%">
+							<tr>
+										<td style="width:49%">
+											<table class="hovertable" style="width:100%;font-size:13px;">
+												<tr><td colspan="4" style="font-size:14px;text-align:center;"><b>【<font color="#7f0707">#{AgentPESubBean.loginname}</font>】团队配额分配情况</b></td></tr>
+												<tr><th>级别</th><th>总配额数</th><th>已经使用</th><th>未使用</th></tr>
+												<a4j:repeat value="#{AgentPESubBean.vteamlist}" var="list" rowKeyVar="keys">
+												<tr>
+													<td>#{list.levels}</td>
+													<td>#{list.num+list.num2}</td>
+													<td>#{list.num}</td>
+													<td>#{list.num2}</td>
+												</tr>
+												</a4j:repeat>
+											</table>
+										</td>
+										<td style="width:2%"></td>
+										<td style="width:49%">
+											<table class="hovertable" style="width:100%;font-size:13px;">
+												<tr><td colspan="3" style="font-size:14px;text-align:center;"><b>【<font color="#7f0707">#{AgentPESubBean.loginname}</font>】个人配额分配情况</b></td></tr>
+												<tr><th>级别</th><th>已经使用</th><th>未使用</th></tr>
+												<a4j:repeat value="#{AgentPESubBean.vpersonlist}" var="list" rowKeyVar="keys">
+												<tr>
+													<td>#{list.levels}</td>
+													<td>#{list.num}</td>
+													<td>#{list.num2}</td>
+												</tr>
+												</a4j:repeat>
+											</table>
+										</td>
+									</tr>
+							</table>
+				</h:panelGroup>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

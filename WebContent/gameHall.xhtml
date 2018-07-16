@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>合一彩票官方网站</title>
+		
+		
+		<script type="text/javascript">
+		
+		function  removeItem(obj,lotteryid,flag){
+			$.ajax({
+				url:'/LotteryService.aspx?flag=UDellFavorite',
+				dataType:'json',
+				type:'POST',
+				data:{flag:'UDellFavorite',lotteryid : lotteryid},
+				success:function(data){
+		    		var stats = data[0].code;
+		    		if(stats == 'success'){
+		    			if(flag == 0 ){
+		    				/* alert("该游戏已取消收藏."); */
+		    				$("#starSrc" + lotteryid).attr("src","/images/index/star.png");
+		    				$("#favoriteFlag" + lotteryid ).val("0");
+			    			$(obj).parent().remove();
+		    			}else{
+		    				$("#" + lotteryid).parent().remove();
+		    			}
+		   			}else{
+		        		var ms = data[1].ms;
+		        		alert(ms);
+		   			}
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					   alert('数据提交失败，请刷新页面重试');
+				}
+			}); 
+		}
+
+		</script>
+	</head>
+
+	<body>
+		<dl class="dlClass">
+            <dt>游戏收藏:</dt>
+            <a4j:repeat value="#{LoginBean.sonList}" var="list" id="sonList" rowKeyVar="keys">
+               	<dd class="ddClass">
+					<a href="#{list.url}">#{list.lotteryname}</a>
+					<a href="javascript:void(0);" onclick="removeItem(this,#{list.lotteryid},0);">
+					<img src="/images/public/pci_bar_gameico02_r2_c3.png" alt=""/>
+					</a>
+					<input type="hidden" name="#{list.lotteryid}" id="#{list.lotteryid}" value="#{list.lotteryid}" />
+				</dd>
+			</a4j:repeat>
+        </dl>
+	</body>
+
+</html>

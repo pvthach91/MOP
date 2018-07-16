@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>追号记录</title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/game.css"/>
+<script src="../js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script language="javascript" src="/js/SearchPage.js"></script>
+<script type="text/javascript">
+	function viewOpt(wid){
+		_SCROLLINGJXF = "yes";
+		var diag = new Dialog();
+		diag.Width = 700;
+		diag.Height = 400;
+		diag.Title = "查看追号记录";
+		diag.URL = "/page/TraceSubRecord.shtml?id="+wid;
+		diag.show();
+	}
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+</script>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+			
+			<div id="content">
+				<div class="content">
+					<h2>游戏记录</h2>
+					<div class="tab_box">
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/BetRecord.shtml" style="font-size:14px;">投注记录</a>
+							</li>
+							<li class="on">
+								<a href="/page/TraceRecord.shtml" style="font-size:14px;">追号记录</a>
+							</li>
+						</ul>
+					<div class="tab_in">
+						<div class="game_top">
+							<a4j:region>
+							<div class="game_top_in">
+								<label>追号时间:</label>
+								<h:inputText size="22" value="#{TraceSearchBean.starttime}"
+									id="startTime" styleClass="time"
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd HH:mm:ss',onpicked:function(){$dp.$('GameRecordForm:endTime').focus();}})" />
+								<span class="w30 ui-title">至</span>
+								<h:inputText size="22" value="#{TraceSearchBean.endtime}"
+									style="padding-left:4px;" id="endTime" styleClass="time"
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'GameRecordForm:startTime\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" />
+							</div>
+							<div class="game_top_in">
+								<label>追号单:</label>
+								<h:inputText value="#{TraceSearchBean.traceid}" styleClass="num"/>
+								<a4j:commandButton value="查询" status="normalStatus"
+									styleClass="submitBtn" action="#{TraceSearchBean.btnSearch}"
+									data="#{TraceSearchBean.msg}"
+									oncomplete="searchfinish(data)" />
+								
+							</div>
+							</a4j:region>
+						</div>
+							<!---->
+							<h:panelGroup id="pgData">
+							<div class="game_mod">
+								<table class="tabbox" border="0" cellspacing="1" width="1024" cellpadding="0" bgcolor="#e9d0cf">
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											<th>追号单号</th>
+											<th>时间</th>
+											<th>游戏名</th>
+											<th>游戏玩法</th>
+											<th>追号期号</th>
+											<th>投注额</th>
+											<th>状态</th>
+											<th>查看</th>
+										</tr>
+									</thead>
+									<tbody>
+										<a4j:repeat value="#{TraceSearchBean.reslist}" var="list"
+											id="dblist" rowKeyVar="keys">
+											<tr bgcolor="#FFFFFF" style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+												<td style="height: 30px;" align="center">#{list.id}</td>
+												<td align="center">#{list.inserttime}</td>
+												<td align="center">#{list.lotteryname}</td>
+												<td align="center">#{list.methodname}</td>
+												<td align="center">#{list.tracenumber}期</td>
+												<td align="right" style="padding-right:5px;"><h:outputText value="#{list.amount}" converter="DoubleConverter"/></td>
+												<td align="center">
+													<h:outputText value="【元】" rendered="#{list.betmodle==1?'true':'false'}"/>
+													<h:outputText value="【角】" rendered="#{list.betmodle==2?'true':'false'}"/>
+													<h:outputText value="【分】" rendered="#{list.betmodle==3?'true':'false'}"/>
+												</td>
+												<td align="center">
+													<a href="#" onclick="viewOpt('#{list.id}');">查看</a>
+												</td>
+											</tr>
+										</a4j:repeat>
+									</tbody>
+								</table>
+								<br />
+								<div>
+									<a4j:region>
+										<ul class="page-list f-right mr10 mt10">
+											<li>
+												<a4j:commandLink  action="#{TraceSearchBean.firstPage}" data="#{TraceSearchBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+											</li>
+											<li>
+												<a4j:commandLink status="normalStatus" action="#{TraceSearchBean.proPage}" data="#{TraceSearchBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+											</li>
+											<li>
+												<input value="#{TraceSearchBean.curpage}" onkeydown="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+												<h:outputText value="  / #{TraceSearchBean.totalpage}"/>
+											</li>
+											<li>
+												<a4j:commandLink status="normalStatus" data="#{TraceSearchBean.msg}" oncomplete="searchfinish(data);"
+												title="下一页" value="下一页" action="#{TraceSearchBean.nextPage}" />
+											</li>
+											<li>
+												<a4j:commandLink  data="#{TraceSearchBean.msg}" oncomplete="searchfinish(data);"
+												title="尾页" value="尾页" action="#{TraceSearchBean.lastPage}" />
+											</li>
+											<li>
+												总记录数：#{TraceSearchBean.totalrecord}条
+											</li>
+										</ul>
+									</a4j:region>
+								</div>
+							</div>
+							</h:panelGroup>
+							<!---->
+						
+					</div>
+				</div>
+			</div> 
+		</div>
+			<!--page-desc-->
+		</h:form>
+	</f:view>
+	
+
+<ui:include src="/foot.xhtml" />
+</body>
+</html>

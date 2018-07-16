@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>密码修改</title>
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/ucenter.css" />
+<script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：修改完成，请牢记您的新密码。");
+			closewin();
+			return;
+		}
+	}
+	function closewin() {
+		ownerDialog.close();
+	}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="WLReportForm">
+		
+			<div class="content-panel">
+					<div class="tent-layout-info" style="width:600px;height:300px">
+						<div class="layour-area" style="width:600px;">
+							<div style="width:600px;align:center;font-family:'微软雅黑';">
+								<center>
+								<font color="blue">友情提示：</font>为了您的资金安全，请<font color="blue">定期</font>修改您的资金密码</center>
+							</div>
+							<div class="line"></div>
+							<div class="ui-table-area mt10" style="width:100%;">
+								<a4j:region>
+									<h:panelGroup id="pgData">
+									<table class="table ui-table">
+										<tbody>
+											<tr>
+												<td width="40%" class="text-right">-- 旧资金密码 --</td>
+												<td>
+													<h:inputSecret value="#{LoginBean.oldcheckpwd}" size="20" maxlength="20" styleClass="ui-input" style="font-size:16px"></h:inputSecret>
+												</td>
+											</tr>
+											<tr>
+												<td width="40%" class="text-right">-- 新资金密码 --</td>
+												<td>
+													<h:inputSecret value="#{LoginBean.newcheckpwd}" size="20" maxlength="20" styleClass="ui-input" style="font-size:16px"></h:inputSecret>
+													<span class="ml10">（不能和旧资金密码一样）</span>
+												</td>
+											</tr>
+											<tr>
+												<td width="40%" class="text-right">-- 确认新资金密码 --</td>
+												<td>
+													<h:inputSecret value="#{LoginBean.newcheckpwd2}" size="20" maxlength="20" styleClass="ui-input" style="font-size:16px"></h:inputSecret>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" class="text-center">
+													<a4j:commandButton value="修 改" status="normalStatus"
+											styleClass="ui-button w100" action="#{LoginBean.checkPWD01}"
+											reRender="pgData" data="#{LoginBean.msg}"
+											oncomplete="savefinish(data)" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</h:panelGroup>
+								</a4j:region>
+							</div>
+						</div>
+					</div>
+				</div>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+<script type="text/javascript">
+	var jQuery = window.parent.jQuery;
+	var ifrm = jQuery("#mainiframe")[0].contentWindow.document; 
+  	
+  	jQuery(function(){
+    	var heightHistory = 0;
+    		parentWindow = window.parent,
+    		$body = jQuery(ifrm).find('body'),
+    		height = 0;	
+    	
+    	setInterval(function(){
+    		height=jQuery(ifrm).find('body').outerHeight();
+    		if(height != heightHistory){
+    			if(!parentWindow.autoHeight){
+    				return;
+    			}
+    			parentWindow.autoHeight(height);		
+    		}
+    		heightHistory = height;
+    	},1000);
+    	
+    	jQuery(ifrm).find('.data-url').click(function(){
+    		jQuery("#mainiframe").attr('src', jQuery(this).attr('data-url'));
+    	});
+    });
+
+
+</script>
+</html>

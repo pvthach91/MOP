@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>合一彩票官方网站</title>
+<link rel="stylesheet" type="text/css" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css" />
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	
+	function saveFinish(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：发送消息完成。");
+		}
+	}
+	function viewOpt(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+// 			TopImageSign = '/images/setting.png';
+// 			var diag = new Dialog();
+// 			diag.Width = 500;
+// 			diag.Height = 300;
+// 			diag.Title = "查看信息";
+// 			diag.URL = "/page/PersonMsgSub.shtml";
+// 			diag.show();
+// 			parent.LoadMsg();
+// 			return;
+			layer.open({
+			    type: 2,
+			    title: '查看信息',
+			    shadeClose: true,
+			    closeBtn: 1,
+			    shade: 0.1,
+			    area: ['500px', '360px'],
+			    content: '/page/PersonMsgSub.shtml' //iframe的url
+			    
+			}); 
+		}
+	}
+	function viewOpt2(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+// 			TopImageSign = '/images/setting.png';
+// 			var diag = new Dialog();
+// 			diag.Width = 500;
+// 			diag.Height = 300;
+// 			diag.Title = "查看信息";
+// 			diag.URL = "/page/PersonMsgSub2.shtml";
+// 			diag.show();
+// 			return;
+				
+			layer.open({
+			    type: 2,
+			    title: '查看信息',
+			    shadeClose: true,
+			    closeBtn: 1,
+			    shade: 0.1,
+			    area: ['500px', '300px'],
+			    content: '/page/PersonMsgSub2.shtml' //iframe的url
+			}); 
+		}
+	}
+	function userSel(){
+// 		TopImageSign = '/images/setting.png';
+// 		var diag = new Dialog();
+// 		diag.Width = 450;
+// 		diag.Height = 450;
+// 		diag.Title = "选择信息接收人";
+// 		diag.URL = "/page/PersonMsgUserSel.shtml";
+// 		diag.show();
+		
+		layer.open({
+		    type: 2,
+		    title: '选择信息接收人',
+		    shadeClose: true,
+		    closeBtn: 1,
+		    shade: 0.1,
+		    area: ['450px', '450px'],
+		    content: '/page/PersonMsgUserSel.shtml' //iframe的url
+		}); 
+	}
+	function userInput(ln){
+		document.getElementById("msgForm:recname").value=ln;
+	}
+	function delOpt(data){
+		if(data){
+			alert(data);
+		}else{
+			alert("成功：删除消息完成");
+		}
+	}
+</script>
+<style>
+	.ui-table-area .tab-content{
+		display: none;
+	}
+	.ui-table-area .current{
+		display: block;
+	}
+	.ui-table-area thead{
+		border-bottom: 1px solid #f1f1f1;
+	}
+</style>
+</head>
+<body>
+
+<!--头部-->
+<ui:include src="/bar.xhtml"/>
+	<f:view>
+		<h:form id="msgForm">
+			<div id="content">
+				<div class="content">
+						<h2>我的账户</h2>
+					<div class="tab_box">
+							<ul class="tab_nav">
+								<li class="on">
+									<a href="/page/PersonMsg.shtml"  style="font-size:14px;">站内信</a>
+								</li>
+								<li>
+									<a href="/page/PersonBank1.shtml" style="font-size:14px;">我的银行卡</a>
+								</li>
+								<li>
+									<a href="/page/PersonPwd.shtml" style="font-size:14px;">资料修改</a>
+								</li>
+								<li>
+									<a href="/page/PriceList.shtml" style="font-size:14px;">奖金详情</a>
+								</li>
+							</ul>
+
+					</div>
+					    <div id="info1" class="recharge_div02 message_div02">
+    	<p class="p01">
+        	<a class="cur" href="#">收件箱</a>
+            <a href="javascript:change(1,2);" style="color:#dd2f2d;">已发送</a>
+            <a href="javascript:change(1,3);" style="color:#dd2f2d;">写信</a>
+        </p>
+        <h:panelGroup id="recPage">
+	        <table class="tabbox" border="0" cellspacing="1" cellpadding="0" width="100%" bgcolor="#e9d0cf">
+	          <tr bgcolor="#ffe7e5">
+	            <th>序号</th>
+	            <th>发件人</th>
+	            <th>标题</th>
+	            <th>发送时间</th>
+	            <th>查看次数</th>
+	            <th><a href="#" style="color:#dd2f2d;">查看</a> | <a href="#" style="color:#dd2f2d;">删除</a></th>
+	          </tr>
+				<a4j:repeat value="#{PersonMessageBean.reslist}" var="list"
+					 rowKeyVar="keys">
+					<tr style="background:#{keys%2==1?'#EEEEDD':'#f4f4f4'}">
+						<td align="center">#{keys+1}</td>
+						<td align="center">
+							#{list.sender}
+						</td>
+						<td style="padding-left:5px;">#{list.title}</td>
+						<td align="center">#{list.sendtime}</td>
+						<td align="center">
+							<h:outputText value="新信息" style="color:red" rendered="#{list.viewtimes==0?'true':'false'}"/>
+							<h:outputText value="#{list.viewtimes}" rendered="#{list.viewtimes==0?'false':'true'}"/>
+						</td>
+						<td align="center">
+							<a4j:region>
+							<a4j:commandButton title="查看" value="查看" style="font-size:14px;font-family:微软雅黑;cursor:pointer;background:#{keys%2==1?'#EEEEDD':'#f4f4f4'}"
+							action="#{PersonMessageBean.view}" data="#{PersonMessageBean.msg}" oncomplete="viewOpt(data)" reRender="recPage">
+								<f:param value="#{list.id}" name="id"/>
+							</a4j:commandButton>
+							<rich:spacer width="12px"/>
+							<a4j:commandButton title="删除" value="删除" style="font-size:14px;font-family:微软雅黑;cursor:pointer;background:#{keys%2==1?'#EEEEDD':'#f4f4f4'}" onclick="if(!confirm('确认：是否删除该消息？'))return false;"
+							action="#{PersonMessageBean.del}" data="#{PersonMessageBean.msg}" oncomplete="delOpt(data)" reRender="recPage">
+								<f:param value="#{list.id}" name="id"/>
+							</a4j:commandButton>
+							</a4j:region>
+						</td>
+					</tr>
+				</a4j:repeat>
+	        </table>
+			<br />
+	       	<div class="page">
+	       		<a4j:region>
+		        	<ul class="page-list">
+<!-- 		            	<li><a href="#">首页</a></li> -->
+<!-- 		            	<li><a href="#">上一页</a></li> -->
+<!-- 		            	<li><a href="#">下一页</a></li> -->
+<!-- 		            	<li><a href="#">末页</a></li> -->
+<!-- 		            	<li><input type="text" placeholder="1"/></li> -->
+<!-- 		                <li>/<a href="#">19</a></li> -->
+<!-- 		                <li>总记录数： 140条 </li> -->
+							<li>
+								<a4j:commandLink action="#{DepositSearchBean.proPage}" data="#{DepositSearchBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+							</li>
+							<li>
+								<input value="#{DepositSearchBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+								<h:outputText value=" / #{DepositSearchBean.totalpage}"/>
+							</li>
+							<li>
+								<a4j:commandLink data="#{DepositSearchBean.msg}" oncomplete="searchfinish(data);"
+								title="下一页" value="下一页" action="#{DepositSearchBean.nextPage}" />
+							</li>
+		            </ul>
+	            </a4j:region>
+	        </div>
+        </h:panelGroup>
+    </div>
+    
+    <div id="info2" class="recharge_div02 message_div02" style="display:none;">
+    	<p class="p01">
+        	<a href="javascript:change(2,1);" style="color:#dd2f2d;">收件箱</a>
+            <a class="cur" href="#">已发送</a>
+            <a href="javascript:change(2,3);" style="color:#dd2f2d;">写信</a>
+        </p>
+        <h:panelGroup id="pgData">
+	        <table class="tabbox" border="0" cellspacing="1" cellpadding="0" width="100%" bgcolor="#e9d0cf">
+	          <tr bgcolor="#ffe7e5">
+	            <th>序号</th>
+	            <th>发件人</th>
+	            <th>标题</th>
+	            <th>发送时间</th>
+	            <th>对方查看次数</th>
+	            <th><a href="#" style="color:#dd2f2d;">查看</a></th>
+	          </tr>
+   				<a4j:repeat value="#{PersonMsgSendBean.reslist}" var="list"
+					 rowKeyVar="keys">
+					<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+						<td align="center">#{keys+1}</td>
+						<td align="center">
+							#{list.recipient}
+						</td>
+						<td style="padding-left:5px;">#{list.title}</td>
+						<td align="center">#{list.sendtime}</td>
+						<td align="center">#{list.viewtimes}</td>
+						<td align="center">
+							<a4j:commandLink title="查看" styleClass="but_Game_Operating" action="#{PersonMsgSendBean.view}" data="#{PersonMsgSendBean.msg}" value="查看" oncomplete="viewOpt2(data)">
+								<f:param value="#{list.id}" name="id"/>
+							</a4j:commandLink>
+						</td>
+					</tr>
+				</a4j:repeat>
+	        </table>
+	
+			<br />
+	       	<div class="page">
+	       		<a4j:region>
+		        	<ul class="page-list">
+<!-- 		            	<li><a href="#">首页</a></li> -->
+<!-- 		            	<li><a href="#">上一页</a></li> -->
+<!-- 		            	<li><a href="#">下一页</a></li> -->
+<!-- 		            	<li><a href="#">末页</a></li> -->
+<!-- 		            	<li><input type="text" placeholder="1"/></li> -->
+<!-- 		                <li>/<a href="#">19</a></li> -->
+<!-- 		                <li>总记录数： 140条 </li> -->
+							<li>
+								<a4j:commandLink  action="#{DepositSearchBean.firstPage}" data="#{DepositSearchBean.msg}" oncomplete="searchfinish(data);" title="首页" value="首页" />
+							</li>
+							<li>
+								<a4j:commandLink action="#{DepositSearchBean.proPage}" data="#{DepositSearchBean.msg}" oncomplete="searchfinish(data);" title="上一页" value="上一页" />
+							</li>
+							<li>
+								<input value="#{DepositSearchBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+								<h:outputText value="/ #{DepositSearchBean.totalpage}"/>
+							</li>
+							<li>
+								<a4j:commandLink data="#{DepositSearchBean.msg}" oncomplete="searchfinish(data);"
+								title="下一页" value="下一页" action="#{DepositSearchBean.nextPage}" />
+							</li>
+							<li>
+								<a4j:commandLink  data="#{DepositSearchBean.msg}" oncomplete="searchfinish(data);"
+								title="尾页" value="尾页" action="#{DepositSearchBean.lastPage}" />
+							</li>
+		            </ul>
+	            </a4j:region>
+	        </div>
+        </h:panelGroup>
+    </div>
+    
+    
+    
+    
+    <div id="info3" class="recharge_div02 message_div02" style="display:none;">
+    	<p class="p01">
+        	<a href="javascript:change(3,1);" style="color:#dd2f2d;">收件箱</a>
+            <a href="javascript:change(3,2);" style="color:#dd2f2d;">已发送</a>
+            <a class="cur" href="#">写信</a>
+        </p>
+        <a4j:region>
+			<table class="table ui-table xiexin">
+				<tr>
+					<td class="tdrightbg">
+						<div>
+							<span>接受人:</span>
+							<h:inputText id="recname" value="#{PersonMsgSendBean.newmsg.recipient}"/>
+							<label for="eCheckbox">上级代理<input id="eCheckbox" type="checkbox"  onclick="userInput('上级代理')"/></label>
+						</div>
+						<br/>
+						<div>
+							<span>主题:</span>
+							<h:inputText id="etitle"  value="#{PersonMsgSendBean.newmsg.title}"/>
+						</div>
+						<br/>
+						<div>
+							<span>内容:</span>
+							<h:inputTextarea id="econtent" value="#{PersonMsgSendBean.newmsg.content}"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-center">
+						<br/>
+						<a4j:commandButton value="提 交" styleClass="submitBtn subok" reRender="pgData,econtent,etitle,recname" action="#{PersonMsgSendBean.save}" oncomplete="saveFinish(data)" data="#{PersonMsgSendBean.msg}"/>
+						<br/>
+					</td>
+				</tr>
+			</table>
+		</a4j:region>
+    </div>
+    
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+	<ui:include src="/foot.xhtml" />
+</body>
+<script type="text/javascript">
+
+	function change(from,to){
+		$("#info"+from).css('display','none');
+		$("#info"+to).css('display','block');
+	}
+
+</script>
+</html>

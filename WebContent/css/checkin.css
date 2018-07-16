@@ -1,0 +1,52 @@
+body{
+	font-family: Î¢ÈíÑÅºÚ, ËÎÌå;
+    font-size: 14px;
+    text-indent: 28px;
+    background-image: url("/images/loginbg/backgroud.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-weight: bold;
+}
+b{
+	color: black;
+}
+p{
+	    color: rgb(51, 153, 102);
+	        display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+        line-height: 30px;
+        font-size: 13.5pt;
+}
+p#small{
+	font-size: 14px;
+}
+span{
+	    color: rgb(255, 0, 0);
+}
+span #blue{
+	    color: rgb(0, 0, 255);
+}
+span #black{
+	color: black;
+}
+table, th, td {
+    border: 1px solid black;
+    padding: 0.75pt;
+    margin-left: 28px;
+    line-height: 50px;
+    width: 660px;
+    text-align: center;
+    font-size: 24pt;
+}
+th{
+	color: blue;
+    height: 80px;
+    
+}
+
+td {
+	
+}

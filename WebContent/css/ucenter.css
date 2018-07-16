@@ -1,0 +1,509 @@
+body{
+}
+
+.line{
+	width: 100%;
+	height: 10px;
+	margin: 0 0 10px 0;
+	border-bottom: 1px dotted #999;
+}
+
+.ui-input{
+	height: 20px;
+	padding: 5px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #333;
+	border-radius: 3px;
+	border: 1px solid #d4d4d4;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.9), inset 0 1px 5px rgba(0,0,0, 0.1);
+	vertical-align: middle;
+}
+
+.ui-table-area thead{
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.ui-text{
+	padding: 5px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #333;
+	border-radius: 3px;
+	vertical-align: bottom;
+	border: 1px solid #d4d4d4;
+	resize: none;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.9), inset 0 1px 5px rgba(0,0,0, 0.1);
+	vertical-align: middle;
+}
+
+.ui-select{
+	margin: 0;
+	padding: 0;
+	height: 32px;
+	padding: 5px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #333;
+	border-radius: 3px;
+	border: 1px solid #d4d4d4;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.9);
+	vertical-align: middle;
+}
+
+.time-select{
+	background-image: url(/images/ucenter/icon.png);
+	background-position: right 8px;
+	background-repeat: no-repeat;
+}
+
+.ui-title{
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+	color: #999;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.pay-for-charge{
+	width: 210px;
+	display: block;
+	margin: 0 auto;
+	height: 45px;
+	line-height: 45px;
+	background-color: #c40000;
+	border: 1px solid #c40000;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+	.pay-for-charge:hover{
+		background-color: #871313;
+		-moz-transition: background 0.2s ease-in;
+		-webkit-transition: background 0.2s ease-in;
+		-o-transition: background 0.2s ease-in;
+		transition: background 0.2s ease-in;
+	}
+
+.ui-desc{
+	line-height: 25px;
+	font-size: 14px;
+	color: #333;
+}
+
+.ui-button{
+	margin:20px 230px;
+	height: 31px;
+	padding: 0 20px;
+	line-height: 30px;
+	overflow: hidden;
+	font-size: 12px;
+	color: #666;
+	border-radius: 3px;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	font-size: 16px;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.3), inset 0 2px 0px rgba(255,255,255, 0.8);
+	background: rgb(247,247,247); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlMWUxZTEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(247,247,247,1) 0%, rgba(225,225,225,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(247,247,247,1)), color-stop(100%,rgba(225,225,225,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(247,247,247,1) 0%,rgba(225,225,225,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(247,247,247,1) 0%,rgba(225,225,225,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(247,247,247,1) 0%,rgba(225,225,225,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(247,247,247,1) 0%,rgba(225,225,225,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e1e1e1',GradientType=0 ); /* IE6-8 */
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.ui-button:hover{
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
+	-moz-transition: background 0.5s ease-in;
+	-webkit-transition: background 0.5s ease-in;
+	-o-transition: background 0.5s ease-in;
+	transition: background 0.5s ease-in;
+}
+
+.ui-button-selected{
+	height: 32px;
+	background: #dedede;
+	border: none;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.3), inset 0 2px 3px rgba(0 ,0 ,0 , 0.4);
+}
+
+.ui-table-area{
+	width: 100%;
+	border: 1px solid #e8e8e8;
+	border-width:  1px 0 1px 0; 
+}
+
+.ui-menu-list{
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	background-color: #e8e8e8;
+}
+
+	.ui-menu-list li{
+		float: left;
+		width: 110px;
+		color: #999;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.ui-menu-list li.current{
+		color: #333;
+		background: #fff; 
+	}
+
+	.ui-menu-list li.current a{
+		color: #333;
+	}
+
+	.ui-menu-list li a{
+		color: #888;
+	}
+
+	.ui-table-area th{
+		font-size: 14px;
+		border: 1px solid #f1f1f1;
+		border-width: 0 1px 0 1px; 
+	}
+
+	.ui-table-area tr:hover,
+	.ui-table-area th:hover,
+	.ui-table-area td:hover{
+		background: none;
+	}
+
+	.ui-table td{
+		border: 1px solid #e9e8e8;
+	}
+
+	/* .ui-table td:hover{
+		background: #eee0c2;
+	} */
+
+	.ui-page{
+		height: 55px;
+		border: 1px solid #f1f1f1;
+		border-width: 0 1px 0 1px; 
+	}
+
+	.page-list li:hover{
+		background: #fff;
+	}
+
+.content{
+	width: 1125px;
+	padding-top: 140px;
+}
+
+
+	.content .side-bar{
+		float: left;
+		width: 300px;
+		background: url(../images/ucenter/side-bar-bg.png) repeat;
+	}
+
+	.menu-nav li{
+		display: block;
+		width: 250px;
+		height: 50px;
+		line-height: 50px;
+	}
+
+	 	.menu-nav li a{
+	 		display: block;
+	 		width: 100%;
+	 		height: 100%;
+			padding-left: 130px;
+	 		font-size: 18px;
+	 		color: #939292;
+	 		background: url(../images/ucenter/recharge-icon.png) 68px -329px no-repeat;
+	 	}
+
+	 	.menu-nav li a:hover{
+	 		color: #fff;
+	 	}
+
+	 	.menu-nav li a.my-acc{
+	 		background-position:  68px -329px;
+	 	}
+
+	 	.menu-nav li a.my-acc:hover,
+	 	.menu-nav li.current a.my-acc{
+	 		background-position: 69px -7px;
+	 	}
+	 	/**/
+	 	.menu-nav li a.game-history{
+	 		background-position:  68px -382px;
+	 	}
+
+	 	.menu-nav li a.game-history:hover,
+	 	.menu-nav li.current a.game-history{
+	 		background-position: 69px -60px;
+	 	}
+	 	/**/
+	 	.menu-nav li a.report-amount{
+	 		background-position:  68px -430px;
+	 	}
+
+	 	.menu-nav li a.report-amount:hover,
+	 	.menu-nav li.current a.report-amount{
+	 		background-position: 69px -108px;
+	 	}
+	 	/**/
+	 	.menu-nav li a.proxy-admin{
+	 		background-position:  68px -483px;
+	 	}
+
+	 	.menu-nav li a.proxy-admin:hover,
+	 	.menu-nav li.current a.proxy-admin{
+	 		background-position: 69px -161px;
+	 	}
+	 	/**/
+	 	.menu-nav li a.system-notice{
+	 		background-position:  68px -539px;
+	 	}
+
+	 	.menu-nav li a.system-notice:hover,
+	 	.menu-nav li.current a.system-notice{
+	 		background-position: 69px -217px;
+	 	}
+	 	/**/
+	 	.menu-nav li a.reply-info{
+	 		background-position:  68px -590px;
+	 	}
+
+	 	.menu-nav li a.reply-info:hover,
+	 	.menu-nav li.current a.reply-info{
+	 		background-position: 69px -269px;
+	 	}
+
+	.menu-nav .nav-button{
+
+	}
+
+	.side-bar .nav-button .recharge,
+	.side-bar .nav-button .withdrawals{
+		width: 150px;
+		height: 120px;
+		font-size: 24px;
+		text-align: center;
+		line-height: 180px;
+	}
+
+	.side-bar .nav-button .recharge{
+		background-color: #e3e3e3;
+		background-image: url(../images/ucenter/recharge-icon.png);
+		background-repeat: no-repeat;
+		background-position: 43px -640px;
+	}
+
+	.side-bar .nav-button .withdrawals{
+		color: #fff;
+		background-color: #9e9d9d;
+		background-color: rgba(158, 157, 157, 0.8);
+		background-image: url(../images/ucenter/recharge-icon.png);
+		background-repeat: no-repeat;
+		background-position: 43px -752px;
+	}
+
+/*content-panel*/
+.content .content-panel{
+	float: right;
+	width: 800px;
+	background: transparent;
+}
+
+	.content-panel .title-head{
+		height: 80px;
+		padding: 10px;
+		background: url(../images/download-bg.png) repeat;
+	}
+
+		.content-panel .title-head h4{
+			padding-left: 60px;
+			font-size: 26px;
+			color: #fff;
+			background: url(../images/ucenter/recharge-icon.png) 0 -888px no-repeat;
+		}
+
+		.title-head .crumbs-nav{
+			height: 50px;
+			line-height: 50px;
+		}
+
+		.title-head .crumbs-nav li{
+			display: inline-block;
+			*zoom: 1;
+			*display: inline;
+			height: 40px;
+			line-height: 40px;
+			padding-left: 35px;
+			color: #fff;
+			background: url(../images/icon.png) -225px -384px no-repeat;
+		}
+
+		.title-head .crumbs-nav li.current{
+			background-position: -225px -416px;
+		}
+
+		.title-head .crumbs-nav li a{
+			color: #f1f1f1;
+		}
+
+		.title-head .crumbs-nav li.current a{
+			color: #ffff00;
+		}
+
+	.tent-layout-info{
+		width: 800px;
+		height: auto;
+		margin: 0 auto;
+		padding: 20px 0;
+		background: #fff;
+	}
+
+		.layour-area{
+			width: 760px;
+			margin: 0 auto;
+		}
+
+			.layour-area .bank-info{
+				border-radius: 5px;
+				background: #e9e8e8;
+			}
+
+				.bank-info .select-bank{
+					float: left;
+					width: 320px;
+					height: 100px;
+					text-align: center;
+					border-right: 2px dotted #d8d8d8;
+				}
+
+				.bank-info .bank-details{
+					float: right;
+					width: 435px;
+					font-size: 14px;
+					line-height: 20px;
+					color: #6c6c6c;
+				}
+
+
+.content-panel .proxy-admin-bg h4{
+	background: url(../images/ucenter/recharge-icon.png) 0 -493px no-repeat;
+}
+
+.content-panel .notice-bg h4{
+	background: url(../images/ucenter/recharge-icon.png) 0 -545px no-repeat;
+}
+
+.content-panel .game-history-bg h4{
+	background: url(../images/ucenter/recharge-icon.png) 0 -64px no-repeat;
+}
+
+.content-panel .report-change-bg h4{
+	background: url(../images/ucenter/recharge-icon.png) 0 -114px no-repeat;
+}
+
+
+	.notice-list{
+		
+	}
+
+		.notice-list li{
+			margin-top: 3px;
+			padding: 0 20px 20px 20px;
+			background-color: #e9e8e8;
+		}
+
+		.notice-list .titles{
+			height: 40px;
+			line-height: 40px;
+		}
+
+		.notice-list img{
+			width: 350px;
+			height: 100px;
+		}
+
+		.notice-list .desc{
+			width: 360px;
+			line-height: 22px;
+		}
+
+		.notice-list .desc h4{
+			font-size: 14px;
+		}
+
+		.notice-list .desc p{
+			color: #717070;
+			font-size: 12px;
+		}
+
+	.select-bank{
+		width: 300px;
+		height: 60px;
+		margin: 0 auto;
+		line-height: 60px;
+		border: 5px solid #ccc;
+	}
+
+	.bank-list-area{
+
+	}
+
+		.bank-list-area li{
+			float: left;
+			width: 225px;
+			height: 71px;
+			margin: 5px 0 0 10px;
+			border: 3px solid #fff;
+		}
+
+		.bank-list-area li.current,
+		.bank-list-area li:hover{
+			border: 3px solid #ccc;
+		}
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}

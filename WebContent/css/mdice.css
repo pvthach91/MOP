@@ -1,0 +1,1736 @@
+.mdice, i.chip {
+	display: inline-block
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big,
+	blockquote, body, canvas, caption, center, cite, code, dd, del, details,
+	dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form,
+	h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label,
+	legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s,
+	samp, section, small, span, strike, strong, sub, summary, sup, table,
+	tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+	-webkit-user-select: none
+}
+
+body {
+	font-family: 'Microsoft YaHei', Arial, 黑体, 宋体, sans-serif;
+	font-size: 14px;
+	background-color:#671B16;
+}
+
+.item-info-tip .text {
+	position: absolute;
+	background: rgba(0, 0, 0, .6);
+	padding: 10px;
+	left: -10000px;
+	top: 100%;
+	width: 220px;
+	text-align: left;
+	border-radius: 5px;
+	font-size: 12px;
+	color: #79ff92;
+	opacity: 0;
+	transition: opacity .5s
+}
+
+.mdice {
+	background: url(../images/mdice/dice.png) no-repeat;
+	width: 23px;
+	height: 23px
+}
+
+.mdice-1 {
+	background-position: 0 0
+}
+
+.mdice-2 {
+	background-position: 0px -23px;
+}
+
+.mdice-3 {
+	background-position: 0px -46px;
+}
+
+.mdice-4 {
+	background-position: 0px -69px;
+}
+
+.mdice-5 {
+	background-position: 0px -92px;
+}
+
+.mdice-6 {
+	background-position: 0px -115px;
+}
+
+.game-table .desktop .item-da:hover {
+	background-position: 0 0
+}
+
+.game-table .desktop .item-xiao:hover {
+	background-position: -756px 0
+}
+
+.game-table .desktop .item-dan:hover {
+	background-position: 0 -130px
+}
+
+.game-table .desktop .item-shuang:hover {
+	background-position: -756px -130px
+}
+
+.game-table .desktop .item-duizi_66:hover {
+	background-position: -158px -24px
+}
+
+.game-table .desktop .item-duizi_55:hover {
+	background-position: -158px -82px
+}
+
+.game-table .desktop .item-duizi_44:hover {
+	background-position: -158px -141px
+}
+
+.game-table .desktop .item-duizi_33:hover {
+	background-position: -645px -24px
+}
+
+.game-table .desktop .item-duizi_22:hover {
+	background-position: -645px -82px
+}
+
+.game-table .desktop .item-duizi_11:hover {
+	background-position: -645px -141px
+}
+
+.game-table .desktop .item-baozi_666:hover {
+	background-position: -275px -34px
+}
+
+.game-table .desktop .item-baozi_555:hover {
+	background-position: -335px -34px
+}
+
+.game-table .desktop .item-baozi_444:hover {
+	background-position: -395px -34px
+}
+
+.game-table .desktop .item-baozi_333:hover {
+	background-position: -454px -34px
+}
+
+.game-table .desktop .item-baozi_222:hover {
+	background-position: -515px -34px
+}
+
+.game-table .desktop .item-baozi_111:hover {
+	background-position: -575px -34px
+}
+
+.game-table .desktop .item-baozi_nnn:hover {
+	background-position: -275px -100px
+}
+
+.game-table .desktop .item-hezhi_17:hover {
+	background-position: -4px -208px
+}
+
+.game-table .desktop .item-hezhi_16:hover {
+	background-position: -67px -208px
+}
+
+.game-table .desktop .item-hezhi_15:hover {
+	background-position: -130px -208px
+}
+
+.game-table .desktop .item-hezhi_14:hover {
+	background-position: -193px -208px
+}
+
+.game-table .desktop .item-hezhi_13:hover {
+	background-position: -261px -208px
+}
+
+.game-table .desktop .item-hezhi_12:hover {
+	background-position: -327px -208px
+}
+
+.game-table .desktop .item-hezhi_11:hover {
+	background-position: -393px -208px
+}
+
+.game-table .desktop .item-hezhi_10:hover {
+	background-position: -458px -208px
+}
+
+.game-table .desktop .item-hezhi_9:hover {
+	background-position: -523px -208px
+}
+
+.game-table .desktop .item-hezhi_8:hover {
+	background-position: -588px -208px
+}
+
+.game-table .desktop .item-hezhi_7:hover {
+	background-position: -653px -208px
+}
+
+.game-table .desktop .item-hezhi_6:hover {
+	background-position: -718px -208px
+}
+
+.game-table .desktop .item-hezhi_5:hover {
+	background-position: -783px -208px
+}
+
+.game-table .desktop .item-hezhi_4:hover {
+	background-position: -848px -208px
+}
+
+.game-table .desktop .item-erma_56:hover {
+	background-position: -6px -309px
+}
+
+.game-table .desktop .item-erma_46:hover {
+	background-position: -66px -309px
+}
+
+.game-table .desktop .item-erma_45:hover {
+	background-position: -126px -309px
+}
+
+.game-table .desktop .item-erma_36:hover {
+	background-position: -186px -309px
+}
+
+.game-table .desktop .item-erma_35:hover {
+	background-position: -246px -309px
+}
+
+.game-table .desktop .item-erma_34:hover {
+	background-position: -306px -309px
+}
+
+.game-table .desktop .item-erma_26:hover {
+	background-position: -366px -309px
+}
+
+.game-table .desktop .item-erma_25:hover {
+	background-position: -426px -309px
+}
+
+.game-table .desktop .item-erma_24:hover {
+	background-position: -486px -309px
+}
+
+.game-table .desktop .item-erma_23:hover {
+	background-position: -546px -309px
+}
+
+.game-table .desktop .item-erma_16:hover {
+	background-position: -606px -309px
+}
+
+.game-table .desktop .item-erma_15:hover {
+	background-position: -666px -309px
+}
+
+.game-table .desktop .item-erma_14:hover {
+	background-position: -726px -309px
+}
+
+.game-table .desktop .item-erma_13:hover {
+	background-position: -786px -309px
+}
+
+.game-table .desktop .item-erma_12:hover {
+	background-position: -846px -309px
+}
+
+.game-table .desktop .item-yima_6:hover {
+	background-position: -129px -431px
+}
+
+.game-table .desktop .item-yima_5:hover {
+	background-position: -241px -431px
+}
+
+.game-table .desktop .item-yima_4:hover {
+	background-position: -357px -431px
+}
+
+.game-table .desktop .item-yima_3:hover {
+	background-position: -469px -431px
+}
+
+.game-table .desktop .item-yima_2:hover {
+	background-position: -585px -431px
+}
+
+.game-table .desktop .item-yima_1:hover {
+	background-position: -699px -431px
+}
+
+div.game-table {
+	background: url(../images/mdice/mdice_table_bg.jpg) center 0 no-repeat;
+	margin-top: 0;
+}
+
+div.game-table .desktop {
+	background: url(../images/mdice/mdice_desktop.png) no-repeat;
+	left: 35px;
+	top: 160px;
+	height: 525px;
+	width: 964px;
+	position: absolute
+}
+
+.game-table .desktop .item {
+	position: absolute;
+	background: url(../images/mdice/mdice_shadow.png?v=4234234) 10000px
+		10000px no-repeat
+}
+
+.game-table .desktop .item-info-tip {
+	background-image: url(../images/mdice/mdice_tip.png);
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	z-index: 3;
+	cursor: pointer;
+}
+
+.game-table .desktop .item-info-tip-0 {
+	left: 52px;
+	top: 17px
+}
+
+.game-table .desktop .item-info-tip-2 {
+	left: 235px;
+	top: 6px
+}
+
+.game-table .desktop .item-info-tip-5 {
+	left: 408px;
+	top: 13px
+}
+
+.game-table .desktop .item-info-tip-1 {
+	left: 19px;
+	top: 139px
+}
+
+.game-table .desktop .item-info-tip-17 {
+	left: 3px;
+	top: 208px
+}
+
+.game-table .desktop .item-info-tip-31 {
+	left: 4px;
+	top: 287px
+}
+
+.game-table .desktop .item-info-tip-46 {
+	left: 39px;
+	top: 462px
+}
+
+.game-table .desktop .item-info-tip-11 {
+	left: 412px;
+	top: 115px
+}
+
+.game_head .game_record_time {
+	width: 370px;
+	height: 100px;
+	margin: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: #fef9d9;
+	z-index: 8
+}
+
+.game_head .game_record_time .record_date {
+	background: url(../images/mdice/recordDate.png) no-repeat;
+	padding-left: 30px;
+	margin-top: 20px;
+	line-height: 28px;
+	font-size: 22px
+}
+
+.game_head .game_record_time .record_time {
+	font-size: 30px;
+	font-weight: 700;
+	margin: 5px auto 0 95px;
+	text-align: center;
+	width: 168px
+}
+
+.game_head .game_record_time .drawLet {
+	margin: 8px 0 0 93px
+}
+
+.game_head .game_record_time .drawLet div {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.game_head .game_record_time .drawLet .issueno {
+	font-size: 20px;
+	line-height: 26px;
+	height:26px;
+}
+
+.game_head .game_record_time .drawLet .mdice {
+	margin: 0 4px
+}
+
+.game_head .game_record_time .drawLet .qi_word {
+	background: url(../images/mdice/qi.png) no-repeat;
+	width: 21px;
+	height: 23px;
+	margin: 0 5px 0 -5px;
+	vertical-align: bottom
+}
+
+#cancelBtn, #clearBtn {
+	width: 71px;
+	height: 27px;
+	border: 0;
+	cursor: pointer;
+}
+
+caption, i.chip, td, th {
+	vertical-align: middle
+}
+
+#clearBtn,#clearBtn.btn-disabled:hover {
+	background: url(../images/mdice/clearBtn.png) no-repeat
+}
+
+#cancelBtn,#cancelBtn.btn-disabled:hover {
+	background: url(../images/mdice/cancelBtn.png) no-repeat
+}
+
+.btnWrap {
+	float: left;
+	margin-top: 10px;
+	margin-left: 40px
+}
+
+.game-side .chips-cont {
+	background: url(../images/mdice/sideBg.png) no-repeat;
+	width: 1122px;
+	height: 84px;
+	margin: 0 auto;
+	text-align: center
+}
+
+.game-side #J-chipgroup-cont {
+	float: left;
+	margin-top: 6px;
+	width: 285px
+}
+
+i.chip {
+	background-image: url(../images/mdice/chips.png);
+	width: 57px !important;
+	height: 55px !important;
+	opacity: 1
+}
+
+i.chip-2_00 {
+	background-position: 0 -385px, 0 0
+}
+
+i.chip-5_00 {
+	background-position: 0 -440px, 0 0
+}
+
+i.chip-10_00 {
+	background-position: 0 -495px, 0 0
+}
+
+i.chip-20_00 {
+	background-position: 0 -550px, 0 0
+}
+
+i.chip-50_00 {
+	background-position: 0 -605px, 0 0
+}
+
+i.chip-100_00 {
+	background-position: 0 -660px, 0 0
+}
+
+i.chip-200_00 {
+	background-position: 0 -715px, 0 0
+}
+
+i.chip-500_00 {
+	background-position: 0 -770px, 0 0
+}
+
+i.chip-1000_00 {
+	background-position: 0 -55px, 0 0
+}
+
+i.chip-2000_00 {
+	background-position: 0 -110px, 0 0
+}
+
+i.chip-5000_00 {
+	background-position: 0 -165px, 0 0
+}
+
+i.chip-10000_00 {
+	background-position: 0 -220px, 0 0
+}
+
+i.chip-20000_00 {
+	background-position: 0 -275px, 0 0
+}
+
+i.chip-50000_00 {
+	background-position: 0 -330px, 0 0
+}
+
+.game-side .changeChips {
+	background: url(../images/mdice/changeChip.png) no-repeat;
+	width: 126px;
+	height: 42px;
+	float: left;
+	margin-top: 12px;
+	margin-left: 4px;
+	cursor: pointer;
+}
+
+.game-side .confirmBetBtn,.game-side .confirmBetBtn.btn-disabled:hover {
+	background: url(../images/mdice/confirmBet.png) no-repeat;
+	width: 210px;
+	height: 84px;
+	float: left;
+	margin: -8px 4px 0 -4px;
+	cursor: pointer;
+}
+
+.game-side #J-button-bet-many,.game-side #J-button-bet-many.btn-disabled:hover {
+	background: url(../images/mdice/traceBet.png) no-repeat;
+	width: 126px;
+	height: 42px;
+	float: left;
+	margin-top: 12px;
+	cursor: pointer;
+}
+
+.game-side .money {
+	background: url(../images/mdice/moneyBg.png) no-repeat;
+	width: 210px;
+	height: 64px;
+	float: left;
+	margin: 8px 0 0 8px;
+	padding: 0
+}
+
+.game-side .money .moneyWrap {
+	color: RGB(246, 208, 120);
+	font-weight: 500;
+	margin-top: 3px;
+	margin-left: 70px
+}
+
+.game-side .money .balanceWrap {
+	color: RGB(199, 45, 28);
+	font-weight: 500;
+	margin-top: 3px;
+	margin-left: 70px
+}
+
+.game-side .money .balanceWrap #J-user-balance {
+	color: RGB(199, 45, 28)
+}
+
+.game-side .money .balanceWrap span, .game-side .money .moneyWrap span {
+	margin-right: 2px
+}
+
+.game-side .money .balanceWrap, .game-side .money .moneyWrap {
+	text-align: left
+}
+
+#J-panel-game-side {
+	position: fixed;
+	width: 100%;
+	bottom: 0
+}
+
+div.game-table .game-table-bg {
+	background: 0 0;
+	height: 1004px;
+	width: 1000px;
+	margin: 0 auto;
+	position: relative
+}
+
+#J-panel-game-side .inner {
+	width: 100%;
+	padding: 0
+}
+
+#J-tpl-modal-first-tip {
+	background: url(../images/mdice/modal_bg.png) no-repeat;
+	width: 366px;
+	height: 286px;
+	padding: 0;
+	color: #fff;
+}
+
+#J-button-comfirm-bet-many, .cancel_btn, .gotitBtn {
+	width: 102px;
+	height: 36px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+#J-tpl-modal-first-tip div:first-child {
+	padding: 25px 0 0 50px
+}
+
+.gotitBtn {
+	background: url(../images/mdice/gotit_btn.png) no-repeat
+}
+
+#J-tpl-modal-first-tip .gotitBtn {
+	margin: 7px 0 0 77px
+}
+
+.confirmBetBtn:hover {
+	background: url(../images/mdice/confirmBet_active.png) no-repeat
+}
+
+.cancel_btn:hover {
+	background: url(../images/mdice/cancelBtn_active.png) no-repeat
+}
+
+.clearBtn:hover {
+	background: url(../images/mdice/clearBtn_active.png) no-repeat
+}
+
+.changeChips:hover {
+	background: url(../images/mdice/changeChip_active.png) no-repeat
+}
+
+#J-button-bet-many:hover {
+	background: url(../images/mdice/traceBet_active.png) no-repeat
+}
+
+.gotitBtn:hover {
+	background: url(../images/mdice/gotit_btn_active.png) no-repeat
+}
+
+#J-tpl-modal-tip .gotitBtn {
+	margin-top: 20px
+}
+
+#chipgroup_others {
+	width: 285px;
+	position: absolute;
+	display: none;
+	background: url(../images/mdice/chipgroup_others_bg.png) no-repeat;
+	height: 165px;
+	top: -104px;
+	font-size: 0
+}
+
+#J-tpl-modal-bet-many {
+	border: none;
+	background: url(../images/mdice/modal_message.png) no-repeat;
+	width: 606px;
+	height: 506px;
+	padding: 0;
+}
+
+#J-button-comfirm-bet-many,#J-button-comfirm-bet-many.btn-disabled:hover {
+	background: url(../images/mdice/confirmTraceBtn.png) no-repeat
+}
+
+.cancel_btn {
+	background: url(../images/mdice/cancel_btn.png) no-repeat
+}
+
+.cancel_btn:hover {
+	background: url(../images/mdice/cancel_btn_active.png) no-repeat
+}
+
+#J-button-comfirm-bet-many:hover {
+	background: url(../images/mdice/confirmTraceBtn_active.png) no-repeat
+}
+
+#J-num-bet-many-num {
+	background-color: RGB(251, 236, 168);
+	color: #000;
+	width: 120px;
+	margin-top: 60px
+}
+
+#J-bet-many-iswinstop-cont {
+	padding: 20px 0 8px
+}
+
+.mdice_history .history_head {
+	position: absolute;
+	background: url(../images/mdice/l_history.png) no-repeat;
+	width: 350px;
+	height: 92px;
+	z-index: 8
+}
+
+.mdice_history .history_head:hover {
+	background: url(../images/mdice/l_history_active.png) no-repeat
+}
+
+.game_head .mdice_history_body {
+	background: url(../images/mdice/history_table.png) no-repeat;
+	width: 358px;
+	height: 297px;
+	display: none;
+	position: absolute;
+	z-index: 8;
+	top: -1px;
+}
+
+.game_head .mdice_history_body .closeBtn {
+	width: 38px;
+	height: 37px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.game_head .mdice_history_body .closeBtn:hover {
+	background: url(../images/mdice/lotteryHistory_closeBtn.png) no-repeat
+}
+
+.draw_lottery .draw_lottery_head {
+	background: url(../images/mdice/draw_lottery.png) no-repeat;
+	width: 418px;
+	height: 78px;
+	position: absolute;
+	z-index: 8;
+	right: 0
+}
+
+.draw_lottery .draw_lottery_head:hover {
+	background: url(../images/mdice/draw_lottery_active.png) no-repeat
+}
+
+.draw_lottery .draw_lottery_body {
+	background: url(../images/mdice/draw_lottery_body.png) no-repeat;
+	width: 418px;
+	height: 530px;
+	display: none;
+	position: absolute;
+	z-index: 8;
+	right: 0
+}
+
+.draw_lottery .draw_lottery_body .closeBtn {
+	width: 39px;
+	height: 26px;
+	right: 1px;
+	bottom: 46px;
+	position: absolute;
+	z-index: 9;
+	cursor: pointer;
+}
+
+.draw_lottery .draw_lottery_body .closeBtn:hover {
+	background: url(../images/mdice/drawlist_closeBtn_active.png) no-repeat
+}
+
+.draw_lottery .draw_lottery_body .viewAllDraws {
+	width: 100px;
+	height: 25px;
+	right: 130px;
+	bottom: 42px;
+	position: absolute;
+	color: red;
+	z-index: 9;
+	cursor: pointer;
+}
+
+.draw_lottery .draw_lottery_body .viewAllDraws:hover {
+	color: #178929
+}
+
+table.dl_list {
+	width: 350px;
+	margin-top: 112px;
+	margin-left: 28px
+}
+
+table.dl_list tr td {
+	height: 34px;
+	text-align: center;
+	line-height: 10px
+}
+
+table.dl_list tr td.dl_issue {
+	width: 125px;
+	color: #000;
+	font-size: 15px
+}
+
+table.dl_list tr td.dl_number i {
+	margin: 0 5px
+}
+
+.sign {
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	font-style: normal;
+	text-align: center;
+	line-height: 23px;
+	overflow: hidden;
+	color: #FFF;
+	font-size: 15px;
+	margin-top: 2px;
+	border-radius: 3px;
+	cursor: default
+}
+
+.sign-even, .sign-small {
+	background: RGB(0, 200, 0)
+}
+
+.sign-big, .sign-odd {
+	background: red
+}
+
+.sign-baozi {
+	background: RGB(51, 51, 51)
+}
+
+#J-lottery-stage {
+	z-index: 7
+}
+
+#J-tpl-modal-tip, #messageBox {
+	background: url(../images/mdice/over_money.png) no-repeat;
+	width: 366px;
+	height: 156px;
+	border: none;
+	padding: 0;
+	text-align: center;
+	color: #fff
+}
+
+#J-tpl-modal-tip .text {
+	padding-top: 30px
+}
+
+#messageBox p {
+	font-size: 20px;
+	padding-top: 60px
+}
+
+#J-tpl-modal-tip a.btn {
+	background: url(../images/mdice/gotit_btn.png) no-repeat;
+	width: 102px;
+	height: 36px;
+	border: none;
+	margin-top: 10px
+}
+
+.mdice_history_body .game_record_table {
+	font-size: 14px;
+	width: 340px;
+	color: #a7886b;
+	height: auto
+}
+
+.mdice_history_body .game_record_table .date {
+	width: 66px;
+	padding-right: 6px
+}
+
+.game_record_panel .game_record_table th, .mdice_history_body .game_record_table td
+	{
+	text-align: center;
+	height: 31px;
+	vertical-align: middle;
+	line-height: 31px;
+	border-bottom: 1px solid #d7c8b1
+}
+
+.mdice_history_body .game_record_table .state.state_0 {
+	color: #a4786d
+}
+
+.mdice_history_body .game_record_table .state {
+	width: 70px
+}
+
+.mdice_history_body .game_record_table .betMoney {
+	width: 74px
+}
+
+.mdice_history_body .game_record_table .getMoney {
+	width: 94px
+}
+
+.mdice_history_body .game_record_table .see {
+	width: 18px;
+	height: 20px;
+	margin-left: 6px;
+	background: url(../images/mdice/check_bet.png) no-repeat;
+	cursor: pointer;
+}
+
+.mdice_history_body .game_record_table .see:hover {
+	background-image: url(../images/mdice/check_bet_active.png)
+}
+
+.mdice_history_body .game_record_container {
+	margin: 89px 0 0;
+	width: 350px;
+	height: 160px;
+	overflow: auto
+}
+
+caption, td, th {
+	text-align: left;
+	font-weight: 400
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+#J-tpl-modal-bet-many .isStopGO {
+	padding:15px 0;
+	position: absolute;
+	right: 30px;
+	cursor: default
+}
+
+#J-tpl-modal-bet-many .title, .viewAllCode_modal .title {
+	padding: 15px 0;
+	width: 100%;
+	text-align: center
+}
+
+#J-tpl-modal-bet-many table .id {
+	width: 43px;
+	max-width: 43px
+}
+
+#J-tpl-modal-bet-many table .th {
+	color: #b3b898
+}
+
+#J-tpl-modal-bet-many table td {
+	height: 38px;
+	text-align: center;
+	border: 1px solid #b6aa9a
+}
+
+#J-tpl-modal-bet-many table .select {
+	width: 54px;
+	max-width: 54px
+}
+
+#J-tpl-modal-bet-many table .num {
+	width: 148px;
+	max-width: 148px
+}
+
+#J-tpl-modal-bet-many table .trace_money {
+	width: 193px
+}
+
+#J-tpl-modal-bet-many table .date_th {
+	width: 157px
+}
+
+#J-tpl-modal-bet-many #go_info_panel {
+	background: #4d4a43;
+	height: 332px;
+	margin: 0 3px;
+	overflow: auto;
+	width: 600px
+}
+
+#J-tpl-modal-bet-many .horizontal-only {
+	max-height: 332px
+}
+
+#J-tpl-modal-bet-many .table-content {
+	width: 100%;
+	margin-left: 0;
+	background: #4d4a43
+}
+
+#J-tpl-modal-bet-many table, .viewAllCode_modal table {
+	margin-left: 3px;
+	border-collapse: collapse;
+	background: RGB(106, 68, 55)
+}
+
+#J-tpl-modal-bet-many table .trace_money .add_btn {
+	background: url(../images/mdice/plus.png) no-repeat;
+	margin: 0 15px;
+	width: 14px;
+	float: left;
+	height: 14px;
+	cursor: pointer;
+}
+
+#J-tpl-modal-bet-many table .trace_money .add_btn:hover {
+	background-image: url(../images/mdice/plus_active.png)
+}
+
+#J-tpl-modal-bet-many table .trace_money .minus_btn {
+	background: url(../images/mdice/minus.png) no-repeat;
+	margin: 0 15px;
+	width: 14px;
+	float: right;
+	height: 14px;
+	cursor: pointer;
+}
+
+#J-tpl-modal-bet-many table .trace_money .minus_btn:hover {
+	background-image: url(../images/mdice/minus_active.png)
+}
+
+#J-tpl-modal-bet-many .go_content {
+	margin: 10px auto;
+	font-size: 16px;
+	text-align: center
+}
+
+#J-tpl-modal-bet-many .go_content span {
+	color: #f35b56;
+	padding: 0 2px
+}
+
+#J-tpl-modal-bet-many .option {
+	text-align: center;
+	font-size: 0
+}
+
+.mdice_history_body .game_record_container .jspVerticalBar {
+	border-radius: 10px;
+	width: 6px;
+	background: #c39e95
+}
+
+.mdice_history_body .game_record_container .jspTrack {
+	border-radius: 10px;
+	background: #c39e95
+}
+
+.mdice_history_body .game_record_container .jspDrag {
+	background: #78201c;
+	border-radius: 6px
+}
+
+.scroll-pane {
+	height: 100px
+}
+
+.isStopGO input {
+	margin-bottom: 6px
+}
+
+.game_record_messageBox, .viewAllCode_modal {
+	width: 606px;
+	height: 506px;
+	background: url(../images/mdice/modal_message.png) no-repeat;
+	background-color: transparent !important;
+	color: #fff;
+	border: none;
+	padding: 0;
+}
+
+.game_record_messageBox .title {
+	padding: 16px 0 25px;
+	width: 100%;
+	text-align: center;
+}
+
+.game_record_messageBox table {
+	margin-left: 3px;
+	background: #4d4a43;
+	border-collapse: collapse
+}
+
+.game_record_messageBox .label {
+	width: 80px;
+	max-width: 98px;
+	padding-right: 20px;
+	padding-left: 0;
+	background: RGB(86, 52, 41);
+	height: 38px;
+	text-align: right
+}
+
+.game_record_messageBox table td {
+	border: 1px solid #b0b094;
+	width: 186px;
+	padding-left: 12px
+}
+
+.game_record_messageBox table .state_0 {
+	color: #a4786d
+}
+
+.game_record_messageBox .label_large {
+	height: 128px;
+	overflow: auto
+}
+
+#game_record_info {
+	height: 128px;
+	width: 484px;
+	overflow: auto;
+}
+
+.game_record_messageBox .option .close_btn,.viewAllCode_modal .option .close_btn
+	{
+	display: inline-block;
+	background: url(../images/mdice/closeBtn.png) no-repeat;
+	width: 102px;
+	height: 36px;
+	cursor: pointer;
+}
+
+.game_record_messageBox .option .close_btn:hover,
+	.viewAllCode_modal .option .close_btn:hover {
+	background: url(../images/mdice/closeBtn_active.png) no-repeat
+}
+
+.cancelBetBtn {
+	display: inline-block;
+	background: url(../images/mdice/cancelBet.png) no-repeat;
+	width: 102px;
+	height: 36px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+
+.cancelBetBtn:hover {
+	background: url(../images/mdice/cancelBet_active.png) no-repeat
+}
+.confirm_btn {
+	display: inline-block;
+	background: url(../images/mdice/confirmBtn.png) no-repeat;
+	width: 102px;
+	height: 36px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+
+.confirm_btn:hover {
+	background: url(../images/mdice/confirmBtn_active.png) no-repeat
+}
+
+.game_record_messageBox .option {
+	height: 38px;
+	margin-top: 25px;
+	text-align: center
+}
+
+.game-side .btn-disabled:hover {
+	border: none
+}
+
+#go_info_panel .jspTrack, #go_info_panel .jspVerticalBar,
+	#game_record_info .jspTrack, #game_record_info .jspVerticalBar,
+	#codesList .jspTrack, #codesList .jspVerticalBar,
+	#betInfoList .jspTrack, #betInfoList .jspVerticalBar
+	 {
+	border-radius: 10px;
+	background: #7C7A60
+}
+
+#go_info_panel .jspVerticalBar, #game_record_info .jspVerticalBar,
+	#codesList .jspVerticalBar,#betInfoList .jspVerticalBar {
+	width: 6px
+}
+
+#go_info_panel .jspVerticalBar .jspDrag, 
+#game_record_info .jspVerticalBar .jspDrag,
+	#codesList .jspVerticalBar .jspDrag,
+	#betInfoList .jspVerticalBar .jspDrag
+	 {
+	background: #ddd59c;
+	border-radius: 6px
+}
+
+body #J-tpl-modal-first-tip .row {
+	padding: 10px 0
+}
+
+body #J-tpl-modal-first-tip .row .hl {
+	color: #F8FF00
+}
+
+body #J-tpl-modal-first-tip .row a.link {
+	color: #F8FF00;
+	text-decoration: underline
+}
+
+a:link, a:visited {
+	outline: 0
+}
+
+.chips-cont .chip {
+	cursor: pointer
+}
+
+#J-chipgroup-cont .chip-selected {
+	margin-top: -35px;
+	opacity: 1;
+	transition: margin-top .2s
+}
+
+.desktop .item .tip {
+	position: absolute;
+	top: -35px;
+	width: 90px;
+	margin-left: -45px;
+	background: rgba(0, 0, 0, .5);
+	padding: 5px 0;
+	color: #F9FF00;
+	text-align: center;
+	border-radius: 5px;
+	z-index: 50;
+	opacity: 0;
+	left: -10000px;
+	transition: opacity .5s
+}
+
+.desktop .item .tip .arrow {
+	position: absolute;
+	content: '';
+	border: 5px solid rgba(0, 0, 0, .5);
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	bottom: -10px;
+	margin-left: -5px;
+	left: 50%
+}
+
+.desktop .item-da:hover {
+	background-position: -13px -16px
+}
+
+.desktop .item-xiao:hover {
+	background-position: -831px -5px
+}
+
+.desktop .item-dan:hover {
+	background-position: -7px -116px
+}
+
+.desktop .item-shuang:hover {
+	background-position: -841px -105px
+}
+
+.desktop .item-duizi_66:hover {
+	background-position: -221px -21px
+}
+
+.desktop .item-duizi_55:hover {
+	background-position: -218px -60px
+}
+
+.desktop .item-duizi_44:hover {
+	background-position: -215px -101px
+}
+
+.desktop .item-duizi_33:hover {
+	background-position: -724px -16px
+}
+
+.desktop .item-duizi_22:hover {
+	background-position: -725px -55px
+}
+
+.desktop .item-duizi_11:hover {
+	background-position: -728px -96px
+}
+
+.desktop .item-baozi_666:hover {
+	background-position: -321px -31px
+}
+
+.desktop .item-baozi_555:hover {
+	background-position: -388px -31px
+}
+
+.desktop .item-baozi_444:hover {
+	background-position: -457px -31px
+}
+
+.desktop .item-baozi_333:hover {
+	background-position: -522px -31px
+}
+
+.desktop .item-baozi_222:hover {
+	background-position: -592px -31px
+}
+
+.desktop .item-baozi_111:hover {
+	background-position: -660px -31px
+}
+
+.desktop .item-baozi_nnn:hover {
+	background-position: -340px -97px
+}
+
+.desktop .item-hezhi_17:hover {
+	background-position: -22px -235px
+}
+
+.desktop .item-hezhi_16:hover {
+	background-position: -109px -235px
+}
+
+.desktop .item-hezhi_15:hover {
+	background-position: -193px -235px
+}
+
+.desktop .item-hezhi_14:hover {
+	background-position: -281px -235px
+}
+
+.desktop .item-hezhi_13:hover {
+	background-position: -372px -235px
+}
+
+.desktop .item-hezhi_12:hover {
+	background-position: -465px -235px
+}
+
+.desktop .item-hezhi_11:hover {
+	background-position: -557px -235px
+}
+
+.desktop .item-hezhi_10:hover {
+	background-position: -352px -325px
+}
+
+.desktop .item-hezhi_9:hover {
+	background-position: -459px -325px
+}
+
+.desktop .item-hezhi_8:hover {
+	background-position: -557px -325px
+}
+
+.desktop .item-hezhi_7:hover {
+	background-position: -655px -325px
+}
+
+.desktop .item-hezhi_6:hover {
+	background-position: -748px -325px
+}
+
+.desktop .item-hezhi_5:hover {
+	background-position: -849px -325px
+}
+
+.desktop .item-hezhi_4:hover {
+	background-position: -945px -325px
+}
+
+.desktop .item-erma_56:hover {
+	background-position: -22px -440px
+}
+
+.desktop .item-erma_46:hover {
+	background-position: -109px -440px
+}
+
+.desktop .item-erma_45:hover {
+	background-position: -199px -440px
+}
+
+.desktop .item-erma_36:hover {
+	background-position: -285px -440px
+}
+
+.desktop .item-erma_35:hover {
+	background-position: -369px -440px
+}
+
+.desktop .item-erma_34:hover {
+	background-position: -457px -440px
+}
+
+.desktop .item-erma_26:hover {
+	background-position: -541px -440px
+}
+
+.desktop .item-erma_25:hover {
+	background-position: -634px -440px
+}
+
+.desktop .item-erma_24:hover {
+	background-position: -428px -548px
+}
+
+.desktop .item-erma_23:hover {
+	background-position: -515px -548px
+}
+
+.desktop .item-erma_16:hover {
+	background-position: -603px -548px
+}
+
+.desktop .item-erma_15:hover {
+	background-position: -693px -548px
+}
+
+.desktop .item-erma_14:hover {
+	background-position: -779px -548px
+}
+
+.desktop .item-erma_13:hover {
+	background-position: -862px -548px
+}
+
+.desktop .item-erma_12:hover {
+	background-position: -945px -548px
+}
+
+.desktop .item-yima_6:hover {
+	background-position: -158px -675px
+}
+
+.desktop .item-yima_5:hover {
+	background-position: -296px -675px
+}
+
+.desktop .item-yima_4:hover {
+	background-position: -437px -675px
+}
+
+.desktop .item-yima_3:hover {
+	background-position: -576px -675px
+}
+
+.desktop .item-yima_2:hover {
+	background-position: -714px -675px
+}
+
+.desktop .item-yima_1:hover {
+	background-position: -852px -675px
+}
+
+.chips-cont .chip:hover {
+	opacity: 1
+}
+
+.item-info-tip:hover .text {
+	left: 100%;
+	opacity: 1;
+	transition: opacity .5s
+}
+
+.desktop .item-hover .tip {
+	left: 50%;
+	opacity: 1;
+	transition: opacity .5s
+}
+
+#J-tip-text-max-money-tip {
+	font-size: 20px
+}
+
+.global-chip, .move-chip {
+	position: absolute;
+	opacity: 1
+}
+
+.money .money-tip {
+	position: absolute;
+	right: -100px;
+	top: 0;
+	font-size: 22px;
+	font-weight: 700;
+	color: #FFFC00;
+	opacity: 0;
+	filter: alpha(opacity = 0)
+}
+
+.money .money-tip-down {
+	color: #05FF00
+}
+
+.chips-cont .link {
+	font-size: 12px;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px #1C1C1C;
+	border: 1px solid #7D7D7D
+}
+
+.money {
+	display: inline-block;
+	position: relative;
+	padding: 5px 10px;
+	background-color: rgba(0, 0, 0, .19);
+	font-size: 20px
+}
+
+.chips-cont .link {
+	display: inline-block;
+	padding: 2px 5px;
+	background-color: rgba(205, 205, 205, .24);
+	color: #FFF
+}
+
+.selected_chip {
+	background: url(../images/mdice/chip_selected.png) no-repeat;
+	width: 57px;
+	height: 59px
+}
+
+#J-tpl-modal-bet-many table .selected {
+	background: #86826f
+}
+
+#chipgroup_closeBtn {
+	background: url(../images/mdice/chipgroup_closeBtn.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: -20px;
+	top: 0;
+	cursor: pointer;
+}
+
+#chipgroup_others i.chip.chip-selected {
+	background-image: url(../images/mdice/chips.png),
+		url(../images/mdice/chip_selected.png)
+}
+
+.game_record_messageBox_body .status_0, .game_record_table tr .state.status_0
+	{
+	color: #3f97ff
+}
+
+.game_record_messageBox_body .status_2, .game_record_table tr .state.status_2
+	{
+	color: #04ae00
+}
+
+.game_record_messageBox_body .status_3, .game_record_table tr .state.status_3
+	{
+	color: #939393
+}
+
+.game_record_messageBox_body .status_4, .game_record_table tr .state.status_4
+	{
+	color: #ff4747
+}
+
+.game_record_messageBox_body .status_5, .game_record_table tr .state.status_5
+	{
+	color: #af5800
+}
+
+.mdice_history_body .close_span {
+	width: 100%;
+	position: absolute;
+	height: 49px;
+	top: 0;
+	cursor: pointer;
+}
+
+.draw_lottery_body .close_span {
+	width: 100%;
+	position: absolute;
+	height: 48px;
+	top: 0;
+	cursor: pointer;
+}
+
+.viewAllCode_modal .content {
+	background-color: RGB(106, 68, 55);
+	color: #b3b898;
+}
+
+.viewAllCode_modal td {
+	height: 38px;
+	text-align: center;
+	border: 1px solid #b6aa9a;
+}
+
+.viewAllCode_modal .issueno {
+	width: 150px;
+}
+
+.viewAllCode_modal .issueno.th {
+	width: 148px;
+}
+
+.viewAllCode_modal .opencode {
+	width: 270px;
+}
+
+.viewAllCode_modal .opencode.th {
+	width: 267px;
+}
+
+.viewAllCode_modal .opentime {
+	width: 176px;
+}
+
+.viewAllCode_modal .opentime.th {
+	width: 181px;
+}
+
+.viewAllCode_modal .option {
+	height: 38px;
+	margin-top: 15px;
+	text-align: center;
+}
+
+#codesList {
+	background: #4d4a43;
+	height: 352px;
+	margin: 0 3px;
+	overflow: auto;
+}
+
+#codesList table {
+	margin-left: 0;
+}
+
+#codesList td {
+	background: #4d4a43;
+	color: #fff;
+}
+
+#codesList .opencode i {
+	margin: 0 10px;
+}
+.btn-disabled{
+	opacity: 0.4;
+}
+.game_head .game_record_time .drawLet .mdice_animate{
+	position:absolute;
+	top:93px;
+	display:block;
+	left:165px;
+}
+.mdice_move{
+	background:url('../images/mdice/mdice.gif') center no-repeat;
+	width:22px;
+	height:24px;
+	display:inline-block;
+	border:1px solid white;
+	border-radius:5px;
+	margin:4px 4px;
+}
+.maxReward{
+	position:absolute;
+	right:90px;
+	top:134px;
+	color: #f1d184;
+	font-size:21px;
+}
+#betInfoBox{
+	width: 606px;
+    height: 263px;
+    background: url(../images/mdice/bet_info_bg.png) no-repeat;
+}
+#betInfoBox.modal{
+	padding:0;
+}
+#betInfoBox .title {
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    line-height: 14px;
+}
+#betInfoBox table {
+    margin-left: 3px;
+    background: #4d4a43;
+    border-collapse: collapse;
+}
+#betInfoBox table .label {
+    width: 96px;
+    text-align: center;
+}
+#betInfoBox table td {
+    border: 1px solid #b0b094;
+}
+#betInfoBox table .content {
+    width: 501px;
+}
+#betInfoBox #betInfoList {
+    height: 128px;
+    margin: 0 3px;
+    overflow:auto;
+    width:495px;
+}
+#betInfoBox table p {
+	height:24px;
+    line-height: 24px;
+}
+#betInfoBox .go_content {
+    margin: 10px auto;
+    font-size: 16px;
+    text-align: center;
+}
+#betInfoBox .go_content span {
+    color: #f35b56;
+    padding: 0 2px;
+}
+#betInfoBox .option{
+	text-align: center;
+}
+#betInfoBox .traceInfo{
+	display:inline-block;
+}
+body .layui-layer-page .layui-layer-content{
+	overflow:inherit;
+}
+body .layui-layer{
+	color:white;
+}
+.moreRecord{
+	font-size: 15px;
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 15px;
+}
+
+.moreRecord a {
+    color: #5c0202;
+    text-decoration: none;
+}
+.moreRecord a:hover {
+    color:green;
+}
+.game_record_messageBox td i{
+	margin:0 5px;
+}

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>编辑客户</title>
+<link href="/css/BrianCss.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功,保存完成!");
+			//closewin();
+			//ownerDialog.test();
+			parent.reloads();
+		}
+	}
+	
+	function closewin() {
+		var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="AgentForm">
+		<rich:tabPanel switchType="client" style="width:100%;">
+			<rich:tab>
+			<f:facet name="label">
+				<span style="font-size:13px;"><b>返点信息</b></span>
+			</f:facet>
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<table style="height: 125px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td>
+					<h:panelGroup rendered="#{AgentUserSearchBean.optuser.fatherid==AgentUserSearchBean.selfid?'true':'false'}">
+					<table style="padding-left:15px;width:100%;line-height:35px;">
+						<tr>
+							<td width="120px" align="right">会员登录名：</td>
+							<td>
+								<font color="blue"><b>#{AgentUserSearchBean.optuser.loginname}</b></font>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">昵称：</td>
+							<td>
+								#{AgentUserSearchBean.optuser.nickname}
+							</td>
+						</tr>
+						<tr>
+							<td align="right">时时彩返点：</td>
+							<td>
+								<h:selectOneMenu value="#{AgentUserSearchBean.optuser.pointssc}" styleClass="select_Game" style="width:120px">
+									<f:selectItems value="#{AgentUserSearchBean.selssc}"></f:selectItems>
+								</h:selectOneMenu>
+								(只能<font color="blue">升点</font>不能<font color="red">降点</font>)
+							</td>
+						</tr>
+						<tr>
+							<td align="right">十一选五返点：</td>
+							<td>
+								<h:selectOneMenu value="#{AgentUserSearchBean.optuser.point115}" styleClass="select_Game" style="width:120px">
+									<f:selectItems value="#{AgentUserSearchBean.sel115}"></f:selectItems>
+								</h:selectOneMenu>
+								(只能<font color="blue">升点</font>不能<font color="red">降点</font>)
+							</td>
+						</tr>
+						<tr>
+							<td align="right">低频返点：</td>
+							<td>
+								<h:selectOneMenu value="#{AgentUserSearchBean.optuser.pointdp}" styleClass="select_Game" style="width:120px">
+									<f:selectItems value="#{AgentUserSearchBean.seldp}"></f:selectItems>
+								</h:selectOneMenu>
+								(只能<font color="blue">升点</font>不能<font color="red">降点</font>)
+							</td>
+						</tr>
+						<h:panelGroup rendered="#{LoginBean.user.param8==0?'false':'true'}">
+						<tr>
+							<td align="right">自动分红：</td>
+							<td>
+								<h:selectOneMenu value="#{AgentUserSearchBean.optuser.param8}" styleClass="select_Game" style="width:120px">
+									<f:selectItems value="#{AgentUserSearchBean.fhsel}"></f:selectItems>
+								</h:selectOneMenu>
+								(只能<font color="blue">升点</font>不能<font color="red">降点</font>)
+							</td>
+						</tr>
+						</h:panelGroup>
+						<tr>
+							<td colspan="2" height="50px" align="center">
+								<a4j:commandButton value="保 存" status="normalStatus"
+										styleClass="submitBtn" action="#{AgentUserSearchBean.update}" data="#{AgentUserSearchBean.msg}"
+										oncomplete="savefinish(data)" />
+								<rich:spacer width="10"/>
+								<a4j:commandButton value="关 闭" onclick="closewin();return false;" styleClass="submitBtn"/>
+							</td>
+						</tr>
+					</table>
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{AgentUserSearchBean.optuser.fatherid==AgentUserSearchBean.selfid?'false':'true'}">
+						<center>
+						<font style="color:blue">只能编辑直属下级的返点。</font>
+						<br/><br/><br/>
+						<a4j:commandButton value="关 闭" onclick="closewin();return false;" styleClass="submitBtn"/>
+						</center>
+					</h:panelGroup>
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+			</rich:tab>
+			<rich:tab>
+			<f:facet name="label">
+				<span style="font-size:13px;"><b>分配配额</b></span>
+			</f:facet>
+				<h:panelGroup>
+					<a4j:region>
+					<table class="tableclass" style="width:100%;" cellpadding="0" cellspacing="0">
+						<a4j:repeat value="#{AgentUserSearchBean.subpelist}" var="list">
+							<tr>
+								<td class="tdrightbg" width="120px">
+								返点： <h:outputText value="#{list.levels}" style="color:#8e2020;" converter="PercentConverter"/>%</td>
+								<td class="tdleftbg">#{list.num}个</td>
+								
+								<td class="tdleftbg">
+									<h:inputText value="#{list.num2}" size="4"/>
+								</td>
+							</tr>
+						</a4j:repeat>
+						<tr>
+							<td colspan="3" height="45px" align="center" style="background:#EEEEEE;">
+								<a4j:commandButton value="保 存" status="normalStatus"
+									styleClass="submitBtn" action="#{AgentUserSearchBean.savePe}" 
+									data="#{AgentUserSearchBean.msg}" oncomplete="savefinish(data)" />
+								<rich:spacer width="10"/>
+								<a4j:commandButton value="关 闭" onclick="closewin();return false;" styleClass="submitBtn"/>
+							</td>
+						</tr>
+					</table>
+					</a4j:region>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab>
+				<f:facet name="label">
+					<span style="font-size:13px;"><b>下级已有配额</b></span>
+				</f:facet>
+				<a4j:region>
+					<table class="tableclass" style="width:100%;" cellpadding="0" cellspacing="0">
+						<a4j:repeat value="#{AgentUserSearchBean.xjpelist}" var="list">
+							<tr>
+								<td class="tdrightbg" width="120px">
+								返点： <h:outputText value="#{list.levels}" style="color:#8e2020;" converter="PercentConverter"/>%</td>
+								<td class="tdleftbg">#{list.num}个</td>
+							</tr>
+						</a4j:repeat>
+					</table>
+				</a4j:region>
+			</rich:tab>
+			</rich:tabPanel>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

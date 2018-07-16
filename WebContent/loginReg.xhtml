@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>完善用户资料</title>
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/base.css" rel="stylesheet" type="text/css" />
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			if(data=="-1"){
+				alert("您已经修改过用户资料，请勿重复提交！\r\n或者您已经登录了另外一个账号，请先退出另外那个账号!");
+				window.top.location.href="/login.shtml";
+				return;
+			}else{
+				alert(data);
+				return;
+			}
+		}else{
+			//alert("成功,保存完成!");
+			//parent.reloads();
+			//closewin();
+			window.top.location.href="/main.shtml";
+		}
+	}
+	function closewin(){
+		ownerDialog.close();
+	}
+	function showAccept(){
+		layer.open({
+		    type: 2,
+		    title: '新增会员注册推广网址',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['600px', '75%'],
+		    content: '/page/useraccept.html' //iframe的url
+		}); 
+	}
+	function checkSubmit(){
+		var p = document.getElementById("eAccept").checked;
+		if(!p){
+			alert("请同意并遵守用户协议后再进行操作。");
+			return false;
+		}
+		return true;
+	}
+	</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="AgentForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<div style="background:#EEEEEE;height:65px;font-size:14px;font-family:'微软雅黑';line-height:27px;padding-left:20px;">
+					<b>尊贵的客户：<font color="#8e2020">#{LoginBean.user.nickname}</font> </b>, 您好:
+					<br/><rich:spacer width="29px"/>感谢您加入合一彩票，为了更好的给您提供服务，请完善您的基本信息并修改密码。
+				</div>
+					
+				<table style="height: 125px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td>
+					<a4j:region>
+					<table style="padding-left:15px;width:100%;line-height:40px;">
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 昵称：
+							</td>
+							<td>
+								<h:inputText value="#{LoginBean.updateuser.nickname}" maxlength="30" styleClass="input_Game" style="font-size:16px;width:190px;"/>
+								<span style="font-size:12px;color:#666666">(官方防伪认证)</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 邮箱：
+							</td>
+							<td>
+								<h:inputText value="#{LoginBean.updateuser.email}" maxlength="30" styleClass="input_Game" style="font-size:16px;width:190px;"/>
+								<span style="font-size:12px;color:#666666">(方便找回您的密码)</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 新登录密码：</td>
+							<td>
+								<h:inputSecret value="#{LoginBean.updateuser.pwd}" styleClass="input_Game" maxlength="30" style="font-size:16px;width:190px;"/>
+								<span style="font-size:12px;color:#666666">(不可与资金密码相同)</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 资金密码：</td>
+							<td>
+								<h:inputSecret value="#{LoginBean.updateuser.checkpwd}" styleClass="input_Game" maxlength="30" style="font-size:16px;width:190px;"/>
+								<span style="font-size:12px;color:#666666">(不可与登录密码相同)</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="2">
+								<input type="checkbox" id="eAccept"/>
+								<label for="eAccept" style="cursor:pointer;color:#8e2020">
+									请详细阅读【
+									<a href="javascript:showAccept();">用户协议</a>
+									】，同意并遵守本规章。
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" height="45px" align="center">
+								<a4j:commandButton value="保 存" status="normalStatus" onclick="if(!checkSubmit())return false;"
+										styleClass="bntclass" action="#{LoginBean.updateUserInfo}" data="#{LoginBean.msg}"
+										oncomplete="savefinish(data)" />
+							</td>
+						</tr>
+					</table>
+					</a4j:region>
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

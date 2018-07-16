@@ -1,0 +1,148 @@
+body {
+	font-family:'Î¢ÈíÑÅºÚ',tahoma;
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+	boder:none;
+}
+a:visited {
+ color: #0238b3;
+}
+a:hover {
+ color: #9a6634;
+}
+a:active { 
+ color: #efffee;
+}
+a{TEXT-DECORATION:none}
+.tableclass{width:100%;color:#363636;font-size:12px;BORDER-COLLAPSE: collapse;border-right:1px solid #a7a7a7;border-bottom:1px solid #a7a7a7;}
+.tableclass td{border-left:1px solid #a7a7a7;border-top:1px solid #a7a7a7}
+#End{width:100%;height:603px; }
+.RoundedCorner{background: #ffffff} 
+b.rtop, b.rbottom{display:block;background: #959595} 
+b.rtop b, b.rbottom b{display:block;height: 1px;overflow: hidden; background: #ffffff} 
+b.r1{margin: 0 5px} 
+b.r2{margin: 0 3px} 
+b.r3{margin: 0 2px} 
+.j{width:100%;}
+b.rtop b.r4, b.rbottom b.r4{margin: 0 1px;height: 2px}
+.fillet{padding:5px 20px 2px 10px;}
+.fillet1{padding:5px 0px 0px 19px;}
+.but_Home{background: url(/images/John/button.png); height: 14px; width: 10Px; background-position: -193px -83px;border:0px;cursor:pointer;}
+.but_Previous{background: url(/images/John/button.png); height: 12px; width: 6Px; background-position: -197px -84px;border:0px;cursor:pointer;}
+.but_Next{background: url(/images/John/button.png); height: 12px; width: 6Px; background-position: -222px -85px;border:0px;cursor:pointer;}
+.but_End{background: url(/images/John/button.png); height: 14px; width: 10Px; background-position: -248px -83px;border:0px;cursor:pointer;}
+.but_Red{font-size:13px;color:#890e0e;background: url(/images/John/button.png); height: 31px; width: 88Px; background-position: -1px -111px;border:0px;cursor:pointer;font-weight:bolder;}
+.but_Gray{color:#5c5c5c;font-size:13px;background: url(/images/John/button.png); height: 31px; width: 88Px; background-position: -202px -111px;border:0px;cursor:pointer;font-weight:bolder;}
+.but_Gray:hover{background: url(/images/John/button.png); height: 31px; width: 88Px; background-position: -97px -111px;border:0px;cursor:pointer;font-weight:bolder;}
+.but_Red_Administrator{background: url(/images/John/button.png); height: 15px; width: 20Px; background-position: -483px -1px;border:0px;cursor:pointer;font-weight:bolder;}
+.but_Gray_Administrator{background: url(/images/John/button.png); height: 20px; width: 20Px; background-position: -461px -1px;border:0px;cursor:pointer;font-weight:bolder;}
+.but_Garbage{background: url(/images/John/button.png); height: 20px; width: 20Px; background-position: -505px -1px;border:0px;cursor:pointer;font-weight:bolder;}
+.but_Star_Signs{background: url(/images/John/button.png); height: 30px; width: 40Px; background-position: -265px -72px;border:0px;font-weight:bolder;float:left;}
+.select1{height:30px;width:109px;border:1px solid #c6dade;color:#545454;font-size:12px;background:#ffffff;}
+.select_Game{height:25px;width:111px;border:1px solid #cccccc;color:#545454;font-size:12px;background:#ffffff;padding-left:5px;}
+.select_Account{height:24px;width:110px;border:1px solid #cccccc;color:#545454;font-size:12px;background:#ffffff;padding-left:10px;}
+.input_Account{height:22px;width:110px;border:1px solid #cccccc;color:#545454;font-size:12px;background:#ffffff;padding-left:10px;}
+.input_Account_da{height:27px;width:160px;border:1px solid #afb0b1;color:#545454;font-size:12px;background:#f0f6fe;padding-left:10px;}
+.fillet_input{height:27px;width:124px;border:1px solid #afb0b1;padding-left:14px;color:#292e34;font-size:12px;background:#f0f6fe;}
+.input_Game{height:22px;border:1px solid #cccccc;padding-left:5px;color:#292e34;font-size:12px;background:#fdfdfd;}
+.Game_input{height:27px;width:170px;border:1px solid #afb0b1;padding-left:14px;color:#292e34;font-size:12px;background:#f0f6fe;}
+#fillet_Time{height:60px;width:100%;border:1px solid #b9cae1;color:#4e4c4c;font-size:12px;background:#f0f6fe;}
+.fillet_Time{padding:15px 0px 0px 15px ;}
+.fillet_table_tr{ height:40px;background:#e9ebec;color:#666666;font-weight:bolder;}
+.fillet_table_td_Outbox{height:38px;width:136px;}
+.Outbox{padding:10px 0px 0px 42px}
+.fillet_table_td_Theme{height:38px;width:468px;}
+.Theme{padding:10px 0px 0px 199px;}
+.fillet_table_td_Time{height:38px;width:105px;}
+.Time{padding:10px 0px 0px 36px;}
+.fillet_table_td_Operating{height:38px;width:50px;}
+.Operating{padding:10px 0px 0px 10px;}
+.fillet_table_td_Administrator{height:34px;width:136px;}
+.fillet_table_td_Administrator1{height:35px;width:136px;}
+.fillet_table_td_Administrator2{height:38px;width:136px;}
+.Administrator{padding:5px 0px 0px 15px;}
+.Administrator_Theme{padding:5px 0px 0px 15px;}
+.Administrator_Time{padding:5px 0px 0px 21px;}
+.Administrator_Operating{padding:5px 0px 0px 13px;}
+.fillet_Jump{color:#4e4c4c;}
+#Game_Time{height:97px;width:100%;border:1px solid #b9cae1;color:#4e4c4c;font-size:12px;background:#f0f6fe;}
+#Account_Details{height:110px;width:100%;border:1px solid #b9cae1;color:#4e4c4c;font-size:12px;background:#f0f6fe;}
+.Game_Digital{padding:0px 0px 0px 4px;}
+.Game_CQ{padding:0px 0px 0px 9px;}
+.but_Game_Operating{background: url(/images/John/button.png); height: 20px; width: 18px; background-position: -509px -30px;border:0px;cursor:pointer;}
+#Message_Center{height:396px;width:100%;border:1px solid #b9cae1;color:#585858;font-size:12px;background:#f0f6fe;}
+#Message_Center_input{cursor:pointer;}
+.Message_Center_input_text{height:30px;width:375px;border:1px solid #b9cae1;color:#585858;font-size:12px;background:#ffffff;}
+.Message_Center_input_textarea{height:207px;width:373px;border:1px solid #b9cae1;color:#585858;font-size:12px;background:#ffffff;}
+.Message_Center_table{height:300px;width:250px;border:1px solid #b9cae1;color:#585858;font-size:12px;background:#ffffff;float:left;}
+
+#mmssage{float:left;padding:29px 0px 0px 32px;}
+#mmssage_1{float:left;padding:20px 0px 0px 25px;}
+.Message_Theme{padding:17px 0px 0px 12px;}
+.Message_Content{padding:40px 0px 0px 12px;float:left;}
+.Message_Content1{padding:10px 0px 0px 5px;float:left;}
+.Message_button{padding:330px 0px 0px 380px;}
+#Personal{height:340px;width:100%;border:1px solid #b9cae1;color:#313131;font-size:12px;background:#f0f6fe;}
+#Personal1{height:284px;width:100%;padding:10px 0px 0px 0px;}
+#Personal1 input{height:26px;width:190px;border:1px solid #cacaca;color:#313131;font-size:12px;background:#ffffff;padding-left:14px;}
+#Personal_table{height:270px;width:620px;border:0px solid #b9cae1;color:#313131;font-size:12px;background:#f0f6fe;}
+#Personal_Password{height:340px;width:100%;}
+#Personal_Password table{height:340px;width:100%;border:1px solid #b9cae1;color:#2d2d2d;font-size:12px;BORDER-COLLAPSE: collapse;}
+#Personal_Password_tr{height:100px;width:100%;background:#dce2ea;}
+.Personal_Password_tr_Location{padding:3px 0px 5px 21px;}
+#Personal_Password_tr1{height:180px;width:100%;background:#f0f6fe;}
+.Personal_Password_tr1_Location{padding:20px 0px 10px 242px;}
+.Personal_Password_tr1_Location3{padding:20px 0px 10px 230px;}
+#Personal_Password_tr1 input{height:24px;width:180px;background:#ffffff;border:1px solid #cacaca;padding-left:14px;}
+#Personal_Password_tr2{height:50px;width:100%;background:#dce2ea;}
+.Personal_Password_tr2_Location{padding:0px 0px 0px 316px;}
+.Home{padding:20px 0px 20px 25px;}
+.Prompt{background: url(/images/John/button.png); height: 24px; width: 20Px; background-position: -507px -76px;border:0px;float:left;}
+.System{background: url(/images/John/button.png); height: 24px; width: 20Px; background-position: -507px -51px;border:0px;float:left;}
+.Latest{background: url(/images/John/button.png); height: 22px; width: 20Px; background-position: -486px -74px;border:0px;float:left;}
+.but_Blue_Color{background: url(/images/John/Funds.png); height: 38px; width: 118Px; background-position: -1px -1px;border:0px;float:left;color:#303030;font-weight:bolder;font-size:14px; }
+.but_Blue_Color:hover{background: url(/images/John/Funds.png); height: 38px; width: 118Px; background-position: -239px -1px;border:0px;float:left;color:#303030;font-weight:bolder;font-size:14px; }
+.but_Red_Color{background: url(/images/John/Funds.png); height: 38px; width: 118Px; background-position: -120px -1px;border:0px;float:left;color:#403019;font-weight:bolder;}
+
+#Home_First{}
+#Home_First table{height:141px;width:721px;border:1px solid #aaaaaa;color:#363636;font-size:12px;BORDER-COLLAPSE: collapse;}
+#Home_First td{padding:0px 0px 0px 40px;}
+.Home_First{padding:0px 0px 13px 0px;}
+.Home_b{padding:5px 0px 0px 0px;}
+#Home_second{}
+#Home_second_table{height:295px;width:721px;border:0px solid #b9cae1;color:#363636;font-size:12px;background:#ffffff;BORDER-COLLAPSE: collapse;}
+#Home_Third_table{height:295px;width:375px;border:1px solid #aaaaaa;color:#363636;font-size:12px;BORDER-COLLAPSE: collapse;}
+.Home_Third_table_tr{height:40px;background:#eeeded;}
+#Home_Third_table td{padding:0px 0px 0px 10px;}
+#Home_Fourth_table{height:295px;width:341px;border:1px solid #aaaaaa;color:#363636;font-size:12px;BORDER-COLLAPSE: collapse;}
+#Home_Fourth_table td{padding:0px 0px 0px 20px;}
+#Funds_funds{height:34px;width:100%;border-bottom:#ff9f08 solid 10px;color:#363636;font-size:12px;}
+#Funds_funds_Bonus{height:105px;width:760px;border:1px solid #bdcde3;font-size:12px;}
+#Funds_funds_Bonus table{height:105px;width:760px;border:0px solid #bdcde3;background:#dce2ea;color:#5c5c5c;}
+#Funds_funds_table table{height:390px;width:100%;border:1px solid #cacaca;color:#2b2b2b;font-size:12px;background:#ffffff;BORDER-COLLAPSE: collapse;}
+#Funds_funds_table td{border:1px solid #cacaca;}
+.Funds_funds_table_tr{height:36px;color:#5c5c5c;font-size:13px;background:#f1f1f1;font-weight:bolder;}
+.Funds_rebate_play{padding:0px 0px 0px 33px;}
+.Funds_rebate_rebate{padding:0px 0px 0px 20px;}
+.Funds_rebate_Status{padding:0px 0px 0px 26px;}
+.Funds_rebate_Award{padding:0px 0px 0px 140px;}
+.Funds_rebate_Star{padding:3px 0px 1px 140px;}
+.Funds_rebate_Star1{padding:3px 28px 1px 0px;}
+
+#Member_Inquiry{height:93px;width:100%;border:0px solid #bdcde3;color:#363636;font-size:12px;}
+#Member_Inquiry table{height:93px;width:100%;border:1px solid #bdcde3;color:#363636;font-size:12px;background:#f0f6fe;BORDER-COLLAPSE: collapse;}
+.Member_Inquiry_input{height:22px;width:69px;border:1px solid #cccccc;color:#363636;font-size:12px;background:#ffffff;padding-left:5px;}
+.Member_Inquiry_select{height:25px;width:100px;border:1px solid #cccccc;color:#363636;font-size:12px;background:#ffffff;padding-left:5px;}
+.Member_Inquiry_select1{height:25px;width:72px;border:1px solid #cccccc;color:#363636;font-size:12px;background:#ffffff;padding-left:5px;}
+#Member_Inquiry_table{height:148px;width:100%;border:1px solid #e0e0e0;color:#17181c;font-size:12px;background:#ffffff;BORDER-COLLAPSE: collapse;align:center;}
+#Member_Inquiry_table tr td {border:1px solid #e0e0e0;}
+#Member_Jump{padding:15px 0px 10px 555px;color:#4e4c4c;}
+#Member_Jump_q{height:35px;width:100%;background:#d9d9d9;}
+#Summary{padding:10px 0px 20px 0px;}
+.Add_table_1{height:215px;width:100%;border:1px solid #d6d6d6;color:#585858;font-size:12px;BORDER-COLLAPSE: collapse; background:#fafafa;}
+.Add_table_2{height:145px;width:100%;border:1px solid #bababa;color:#272727;font-size:12px;BORDER-COLLAPSE: collapse; background:#ffffff;}
+.Add_input{height:25px;width:190px;border:1px solid #cacaca;color:#363636;font-size:12px;background:#ffffff;padding-left:5px;}
+.Add_tr{padding:0px 15px 0px 0px;}
+.Add_tr_td{padding:0px 0px 0px 35px;}
+li {list-style: none; margin: 0px; padding: 0px; font-weight: normal;}

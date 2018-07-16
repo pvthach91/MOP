@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>我的银行卡</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：添加银行卡完成");
+			parent.reloads();
+		}
+	}
+	function closewin(){
+		ownerDialog.close();
+	}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="AgentForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<div style="background:#EEEEEE;height:55px;font-size:14px;font-family:'微软雅黑';line-height:30px;padding-left:20px;">
+					<rich:spacer width="15px" height="30px;"/>请再次核实您的银行卡信息，无误后点击【保存】按钮。
+				</div>
+					
+				<table style="height: 374px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td valign="top">
+					
+					<table style="padding-left:15px;width:100%;line-height:40px;">
+						<tr>
+							<td align="right">
+								开户银行：
+							</td>
+							<td style="color:blue">
+								#{PersonBankCardBean.newbankcard.bankname}
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								开户银行省份：
+							</td>
+							<td style="color:blue">
+								#{PersonBankCardBean.newbankcard.province}
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								开户银行城市：</td>
+							<td style="color:blue">
+								#{PersonBankCardBean.newbankcard.city}
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								开户人姓名：</td>
+							<td style="color:blue">
+								#{PersonBankCardBean.newbankcard.name}
+							</td>
+						</tr>
+						<tr>
+							<td align="right" width="180px">
+								银行卡号码：</td>
+							<td>
+								<div style="font-size:22px;color:#98ff6f;background:#000000;width:270px;padding-left:10px;">
+									<b>#{PersonBankCardBean.newbankcard.bankcard}</b>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td height="20px"></td>
+						</tr>
+						<tr>
+							<td colspan="2" height="60px" align="center">
+								<a4j:region>
+									<a4j:commandButton value="保 存" status="normalStatus"
+										styleClass="bntclass" action="#{PersonBankCardBean.addBankcard}" data="#{PersonBankCardBean.msg}"
+										oncomplete="savefinish(data)" />
+								</a4j:region>
+							</td>
+						</tr>
+					</table>
+					
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

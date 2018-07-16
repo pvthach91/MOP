@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>我的银行卡</title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../css/PersonBank.css"/>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/layer/layer.js"></script>
+<script type="text/javascript">
+	_SCROLLINGJXF = "no";
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}
+	}
+	
+	function banding() {
+		layer.open({
+		    type: 2,
+		    title: '绑定提款银行卡',
+		    shadeClose: true,
+		    shade: 0.1,
+		    area: ['800px', '500px'],
+		    content: '/page/PersonBankBanding.shtml' //iframe的url
+		}); 
+	}
+	
+	
+	
+	function reloads(){
+		window.location.reload();
+	}
+	function lockfinish(data){
+		
+		layer.confirm('确认：是否【锁定银行卡】，锁定之后将不能再添加提款银行卡?', {
+		    btn: ['确认','取消']
+		}, function(){
+		    layer.msg(data, {icon: 1});
+		}, function(){
+		    layer.msg('成功：您成功锁定了银行卡。', {
+		        time: 20000, //20s后自动关闭
+		    });
+		    reloads();
+		});
+		
+// 		if(data){
+// 			alert(data);
+// 			return;
+// 		}else{
+// 			alert("成功：您成功锁定了银行卡。");
+// 			reloads();
+// 		}
+	}
+</script>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="WLReportForm">
+			<div id="content">
+		
+				<div class="content">
+					<div class="tab_box">
+						<h2>我的账户</h2>
+						<ul class="tab_nav">
+							<li>
+								<a href="/page/PersonMsg.shtml"  style="font-size:14px;">站内信</a>
+							</li>
+							<li class="on">
+								<a href="/page/PersonBank1.shtml" style="font-size:14px;">我的银行卡</a>
+							</li>
+							<li>
+								<a href="/page/PersonPwd.shtml" style="font-size:14px;">资料修改</a>
+							</li>
+							<li>
+								<a href="/page/PriceList.shtml" style="font-size:14px;">奖金详情</a>
+							</li>
+						</ul>
+					<div class="tab_in">
+						<div class="">
+							<div class="info">
+								<p class="fl wt76"><b>使用提示：</b></p>	 
+								<div class="infoIn">
+									<p>1、每个游戏帐户最多绑定 <strong>5</strong> 张银行卡 ， 您已经成功绑定 <strong>#{PersonBankCardBean.banknumber}</strong> 张。</p>
+									<p>2、银行卡锁定以后，不能增加新的银行卡绑定，同时也不能解绑已绑定的银行卡。</p>
+									<p>3、新绑定的提款银行卡需要绑定时间超过  <strong>6</strong>  个小时才能正常取款。</p>
+									<p>4、一个账户只能绑定同一个开户人姓名的银行卡。</p>
+								</div>
+							</div>
+							<div class="line mb35">
+							</div>
+							
+							<div class="tabbox">
+								<h:panelGroup id="pgData">
+								<table border="0" cellspacing="1" cellpadding="0" width="100%" bgcolor="#e9d0cf">
+									<thead>
+										<tr bgcolor="#ffe7e5">
+											<th>序号</th>
+											<th>银行名称</th>
+											<th>卡号</th>
+											<th>绑定时间</th>
+<!-- 											<th>操作</th> -->
+										</tr>
+									</thead>
+									<tbody>
+										<a4j:repeat value="#{PersonBankCardBean.bankcardlist}" var="list"
+											id="dblist" rowKeyVar="keys">
+											<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+												<td>#{keys+1}</td>
+												<td>#{list.bankname}</td>
+												<td>
+													****#{list.bankcard.substring(list.bankcard.length()-4)}
+												</td>
+												<td>#{list.savetime}</td>
+<!-- 												<td> -->
+<!-- 													<a4j:commandLink value="解绑" onclick="alert('该功能已经被停用。您不能解绑您的银行卡。 ');return false;"/> -->
+<!-- 												</td> -->
+											</tr>
+										</a4j:repeat>
+									</tbody>
+								</table>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{LoginBean.user.bankcheck&lt;2 and PersonBankCardBean.banknumber&lt;5?'true':'false'}">
+								<table class="table text-center ui-table">
+									<tbody>
+										<tr>
+											<td colspan="5">
+												<input type="button" class="submitBtn ml370 mt30" onclick="banding();" value="绑定银行卡" id="but"/>
+												<a4j:commandButton onclick="if(!confirm('确认：是否【锁定银行卡】，锁定之后将不能再添加提款银行卡?'))return false;" 
+												action="#{PersonBankCardBean.lockBankcard}" oncomplete="lockfinish(data)" 
+												data="#{PersonBankCardBean.msg}" value="锁定银行卡" 
+												title="为了您的资金安全，平台建议您锁定您的银行卡。如需解锁，请联系在线客服。" 
+												styleClass="submitBtn mt30"/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</h:panelGroup>
+							</div>
+						</div>
+					</div>
+						</div>
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+	<ui:include src="/foot.xhtml" />
+</body>
+</html>

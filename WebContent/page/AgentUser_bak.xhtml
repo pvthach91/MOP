@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>用户列表</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}
+	}
+	function edit(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 500;
+		diag.Height = 300;
+		diag.Title = "编辑会员信息";
+		diag.URL = "/page/AgentSubUpdate.shtml";
+		diag.show();
+	}
+	function deposit(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 500;
+		diag.Height = 300;
+		diag.Title = "给直属下级充值";
+		diag.URL = "/page/AgentSubDeposit.shtml";
+		diag.show();
+	}
+	function tbalance(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		TopImageSign = '/images/setting.png';
+		var diag = new Dialog();
+		diag.Width = 500;
+		diag.Height = 300;
+		diag.Title = "团队余额";
+		diag.URL = "/page/AgentSubTBalance.shtml";
+		diag.show();
+	}
+	function reloads(){
+		window.location.reload();
+	}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="GameRecordForm">
+			<div class="fillet">
+				<div class="RoundedCorner j">
+					<b class="rtop">
+						<b class="r1"></b><b class="r2"></b>
+						<b class="r3"></b><b class="r4"></b>
+					</b>
+					<div class="fillet">
+						<div id="Funds_funds">
+							<div class="but_Star_Signs"></div>
+							<span style="font-size:13px;"><b>功能导航：</b></span>
+							<a4j:commandButton value="用户注册" action="AGENTREG" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="用户查询" onclick="return false;" styleClass="but_Red"/><rich:spacer width="5"/>
+							<a4j:commandButton value="注册推广" action="AGENTAUTOREG" styleClass="but_Gray"/><rich:spacer width="5"/>
+							<a4j:commandButton value="团队余额" action="AGENTBALANCE" styleClass="but_Gray"/><rich:spacer width="5"/>
+						</div>
+						<div class="air"></div>
+						<div id="Game_Time">
+							<div class="fillet_Time">
+							用户名：<h:inputText value="#{AgentUserSearchBean.loginname}" styleClass="input_Game" size="10"/>
+							<rich:spacer width="15"></rich:spacer>
+							账户余额：<h:inputText value="#{AgentUserSearchBean.samount}" styleClass="input_Game" size="6"/>
+							至 <h:inputText value="#{AgentUserSearchBean.eamount}" styleClass="input_Game" size="6"/>
+							<rich:spacer width="15"></rich:spacer>
+							时时彩返点：<h:inputText value="#{AgentUserSearchBean.fspoint}" styleClass="input_Game" size="5"/>%
+							至
+							<h:inputText value="#{AgentUserSearchBean.fepoint}" styleClass="input_Game" size="5"/>%
+							 
+							<br/><br/>
+							会员范围：
+							<h:selectOneMenu styleClass="select_Game" value="#{AgentUserSearchBean.userarea}">
+								<f:selectItem itemValue="0" itemLabel="直属会员"></f:selectItem>
+								<f:selectItem itemValue="1" itemLabel="全部会员"></f:selectItem>
+							</h:selectOneMenu>
+							<rich:spacer width="15"></rich:spacer>
+							排序：
+							<h:selectOneMenu styleClass="select_Game" value="#{AgentUserSearchBean.order}" style="width:150px">
+								<f:selectItem itemValue="0" itemLabel="注册时间顺序"></f:selectItem>
+								<f:selectItem itemValue="1" itemLabel="注册时间逆序"></f:selectItem>
+								<f:selectItem itemValue="2" itemLabel="余额从大到小"></f:selectItem>
+								<f:selectItem itemValue="3" itemLabel="余额从小到大"></f:selectItem>
+								<f:selectItem itemValue="4" itemLabel="登录次数从大到小"></f:selectItem>
+								<f:selectItem itemValue="5" itemLabel="返点从大到小"></f:selectItem>
+							</h:selectOneMenu>
+							<rich:spacer width="15"></rich:spacer>
+							<a4j:commandButton value="查询" status="normalStatus" styleClass="bntclass" action="#{AgentUserSearchBean.btnSearch}"
+								reRender="pgData" data="#{AgentUserSearchBean.msg}" oncomplete="searchfinish(data)" />
+							</div>
+						</div>
+						<div class="air"></div>
+						<h:panelGroup id="pgData">
+							<table cellpadding="0" cellspacing="0" border="0" class="tableclass" style="margin-top:3px;">
+								<tr class="fillet_table_tr">
+									<td style="height: 37px;" align="center"><b>用户名</b></td>
+									<td align="center"><b>余额</b></td>
+									<td align="center"><b>返点</b></td>
+									<td align="center"><b>注册时间</b></td>
+									<td align="center"><b>最近登录时间</b></td>
+									<td align="center"><b>登录次数</b></td>
+									<td align="center"><b>代理</b></td>
+									<td align="center"><b>状态</b></td>
+									<td align="center"><b>操作</b></td>
+								</tr>
+								<a4j:repeat value="#{AgentUserSearchBean.reslist}" var="list"
+									id="dblist" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#EEEEDD':'#FFFFFF'}">
+										<td style="height: 34px;" align="center">#{list.loginname}</td>
+										<td align="right" style="padding-right:5px">
+											<h:outputText value="#{list.balance}" converter="DoubleConverter"/>
+										</td>
+										<td align="center">
+											<h:outputText value="#{list.pointssc}" converter="PercentConverter"/>
+										</td>
+										<td align="center">#{list.addtime.substring(5,16)}</td>
+										<td align="center">#{list.lastlogintime.substring(5,16)}</td>
+										<td align="center">#{list.logintimes}</td>
+										<td align="center">#{list.param2}</td>
+										<td align="center">
+											<h:outputText value="正常" rendered="#{list.status==1?'true':'false'}"/>
+											<h:outputText value="被锁" rendered="#{list.status==2?'true':'false'}"/>
+											<h:outputText value="待删除" rendered="#{list.status==3?'true':'false'}"/>
+										</td>
+										<td align="right" style="padding-right:10px">
+											<font color="#1c2ca0">
+											
+												<h:panelGroup rendered="#{list.fatherid==AgentUserSearchBean.selfid?'true':'false'}">
+													<a4j:commandLink value="编辑" status="normalStatus" action="#{AgentUserSearchBean.pointEdit}" data="#{AgentUserSearchBean.msg}" oncomplete="edit(data)">
+														<f:param name="id" value="#{list.id}"/>
+													</a4j:commandLink>
+													<rich:spacer width="5"></rich:spacer>
+													<a4j:commandLink value="充值" status="normalStatus" action="#{AgentUserSearchBean.edit}" data="#{AgentUserSearchBean.msg}" oncomplete="deposit(data)">
+														<f:param name="id" value="#{list.id}"/>
+													</a4j:commandLink>
+													<rich:spacer width="5"></rich:spacer>
+												</h:panelGroup>
+												
+												<a4j:commandLink value="帐变" status="normalStatus" action="#{AgentUserSearchBean.changebalance}">
+													<f:param name="id" value="#{list.loginname}"/>
+												</a4j:commandLink>
+												<rich:spacer width="5"></rich:spacer>
+												<a4j:commandLink value="团队" status="normalStatus" action="#{AgentUserSearchBean.tbalance}" data="#{AgentUserSearchBean.msg}" oncomplete="tbalance(data)">
+													<f:param name="id" value="#{list.id}"/>
+												</a4j:commandLink>
+											</font>
+										</td>
+									</tr>
+								</a4j:repeat>
+							</table>
+						<div style="background:#DDDDDD;height:35px;line-height:30px;width:100%;">
+							<span style="padding-left:20px;">
+								<font color="red">注意：</font>只能<font color="#734e16"> 编辑</font> 或者 <font color="#734e16"> 充值</font>您的直属会员
+							</span>
+							<a4j:region>
+								
+									<table width="340px" border="0" align="right">
+										<tr>
+											<td>
+												<h:graphicImage url="/images/page/page-first-disabled.gif" rendered="#{AgentUserSearchBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" action="#{AgentUserSearchBean.firstPage}" data="#{AgentUserSearchBean.msg}" reRender="pgData" oncomplete="pagingFinish(data);"
+												image="/images/page/page-first.gif" style="border:0" title="第一页" rendered="#{AgentUserSearchBean.curpage=='1'?'false':'true'}"/>
+											</td>
+											<td>
+												<h:graphicImage url="/images/page/page-prev-disabled.gif" rendered="#{AgentUserSearchBean.curpage=='1'?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" action="#{AgentUserSearchBean.proPage}" data="#{AgentUserSearchBean.msg}" reRender="pgData"
+												image="/images/page/page-prev.gif" rendered="#{AgentUserSearchBean.curpage=='1'?'false':'true'}" oncomplete="pagingFinish(data);" style="border:0" title="上一页" />
+											</td>
+											<td align="center">
+												<h:outputText value="Page"/>
+												<input value="#{AgentUserSearchBean.curpage}" onkeypress="if(pageKeyDown(this.value))return false;" size="4" style="text-align:center;font-size:12px;border:1px solid #cccccc;"/>
+												<h:outputText value="of #{AgentUserSearchBean.totalpage}"/>
+											</td> 
+											<td>
+												<h:graphicImage url="/images/page/page-next-disabled.gif" rendered="#{AgentUserSearchBean.curpage&gt;=AgentUserSearchBean.totalpage?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" image="/images/page/page-next.gif" data="#{AgentUserSearchBean.msg}" reRender="pgData" oncomplete="pagingFinish(data);" 
+												style="border:0" title="下一页" action="#{AgentUserSearchBean.nextPage}" rendered="#{AgentUserSearchBean.curpage&gt;=AgentUserSearchBean.totalpage?'false':'true'}"/>
+											</td>
+											<td>
+												<h:graphicImage url="/images/page/page-last-disabled.gif" rendered="#{AgentUserSearchBean.curpage==AgentUserSearchBean.totalpage?'true':'false'}"></h:graphicImage>
+												<a4j:commandButton status="normalStatus" image="/images/page/page-last.gif" data="#{AgentUserSearchBean.msg}" reRender="pgData" oncomplete="pagingFinish(data);" 
+												style="border:0" title="最后一页" action="#{AgentUserSearchBean.lastPage}" rendered="#{AgentUserSearchBean.curpage==AgentUserSearchBean.totalpage?'false':'true'}"/>
+											</td>
+											<td>
+												总记录数：#{AgentUserSearchBean.totalrecord}条
+											</td>
+										</tr>
+									</table>
+							</a4j:region>
+						</div>
+						</h:panelGroup>
+					</div>
+					<b class="rbottom">
+						<b class="r4"></b><b class="r3"></b>
+						<b class="r2"></b><b class="r1"></b>
+					</b>
+				</div>
+			</div>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j" lang="en">
+<head>
+	<style>
+		body{
+			margin: 0;
+			font-size: 12px;
+			font-family: "微软雅黑";
+			background: transparent;
+		}
+		th,td{
+			height: 22px;
+			text-align: center;
+		}
+		td{
+			background-color: #ece8e6;
+		}
+		.color01 {
+		  color: #A90303 !important;
+		}
+	</style>
+</head>
+<body>
+	<table border="0" cellspacing="1" cellpadding="0" width="240px">
+		<thead>
+			<tr bgcolor="#ece8e6" class="color01"><th width="97">开奖期数</th><th width="142">开奖号码</th></tr>
+		</thead>
+		<tbody id="ewinnumber">
+		    <a4j:repeat value="#{UIWinOpenNumberBean.reslist}" var="list" rowKeyVar="keys">
+		    	<tr bgcolor="#ece8e6"><td>#{list.issue}</td><td class="color01">#{list.winnumber}</td></tr>
+			</a4j:repeat>
+		</tbody>
+	</table>
+    <script>
+    	function getQueryString(name) {
+		    var reg = new RegExp("(^|&amp;)" + name + "=([^&amp;]*)(&amp;|$)", "i");
+		    var r = window.location.search.substr(1).match(reg);
+		    if (r != null) return unescape(r[2]); return null;
+		}
+    	/**
+    	 * 不足 num 行，补全 num 行数据显示
+    	 */
+    	window.onload = function(){
+    		var main = document.getElementById('ewinnumber'),
+	    		length = main.children.length,
+	    		num = parseInt(getQueryString('num')||'0',10),
+	    		last = num - length,
+	    		list = [];
+	    	if(last){
+	    		list.push(main.innerHTML);
+	    		while (last){
+	    			list.push('<tr><td>--</td><td>--</td></tr>');
+	    			last -= 1;
+	    		}
+	    		main.innerHTML = list.join('');
+	    	}
+    	}
+    </script>
+</body>
+</html>

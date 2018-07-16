@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<title>查看追号记录</title>
+<link href="/css/BrianCss.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function saveFinish(data){
+		if(data=='success'){
+			alert("成功：撤单完成！");
+			ownerDialog.close();
+		}else{
+			alert("失败："+data);
+		}
+	}
+	function closewin(){
+		ownerDialog.close();
+	}
+	function confirmOpt(sid){
+		if(confirm('请确认：是否确定进行撤单?')){
+			cancelOpt(sid);
+		}
+	}
+</script>
+</head>
+<body class="main_bg">
+	<f:view>
+		<h:form id="traceRecordForm">
+			<table style="font-size:13px;width:100%;" class="tableclass">
+				<tr>
+					<td class="tdrightbg">追单号：</td>
+					<td class="tdleftbg">#{TraceRecordBean.trace.id}</td>
+					<td class="tdrightbg">投注时间：</td>
+					<td class="tdleftbg">#{TraceRecordBean.trace.bettime}</td>
+				</tr>
+				<tr>
+					<td class="tdrightbg">游戏名称：</td>
+					<td class="tdleftbg">#{TraceRecordBean.trace.lotteryname}</td>
+					<td class="tdrightbg">玩法：</td>
+					<td class="tdleftbg">#{TraceRecordBean.trace.methodname}</td>
+				</tr>
+				<tr>
+					<td class="tdrightbg">追号期数：</td>
+					<td class="tdleftbg">#{TraceRecordBean.trace.tracenumber}</td>
+					<td class="tdrightbg">内容：</td>
+					<td class="tdleftbg">#{TraceRecordBean.trace.tracecontent}</td>
+				</tr>
+				<tr>
+					<td class="tdrightbg">模式：</td>
+					<td class="tdleftbg">
+						<h:outputText value="【元】模式" rendered="#{TraceRecordBean.trace.betmodle==1?'true':'false'}"/>
+						<h:outputText value="【角】模式" rendered="#{TraceRecordBean.trace.betmodle==2?'true':'false'}"/>
+						<h:outputText value="【分】模式" rendered="#{TraceRecordBean.trace.betmodle==3?'true':'false'}"/>
+					</td>
+					<td class="tdrightbg">总金额：</td>
+					<td class="tdleftbg">￥ <h:outputText value="#{TraceRecordBean.trace.amount}" converter="DoubleConverter"/></td>
+				</tr>
+				<tr>
+					<td class="tdrightbg">中奖后是否停止：</td>
+					<td class="tdleftbg">
+						<h:outputText value="#{TraceRecordBean.trace.winstop=='yes'?'是':'否'}"/>
+					</td>
+					<td class="tdrightbg"></td>
+					<td class="tdleftbg"></td>
+				</tr>
+			</table>
+			<div style="height:8px;">
+			</div>
+			
+			<table class="tableclass" style="font-size:13px;width:100%;">
+				<tr style="background:#b9d3d6;font-weight:bold;">
+					<td align="center">单号</td>
+					<td align="center">追号内容</td>
+					<td align="center">倍数</td>
+					<td align="center">期号</td>
+					<td align="center">状态</td>
+					<td align="center">操作</td>
+				</tr>
+				<a4j:repeat value="#{TraceRecordBean.betlist}" var="list" id="dblist" rowKeyVar="keys">
+					<tr style="background:#{keys%2==1?'#e6f5f7':'#FFFFFF'}">
+						<td align="center">#{list.id}</td>
+						<td align="center">#{list.betcontent}</td>
+						<td align="center">#{list.multiple}</td>
+						<td align="center">#{list.issue}</td>
+						<td align="center">
+							
+							<h:outputText value="#{list.statusname}" style="color:#2c8118" rendered="#{list.status==0?'true':'false'}"/>
+							<h:outputText value="#{list.statusname}" style="color:#302ab0" rendered="#{list.status==1?'true':'false'}"/>
+							<h:outputText value="#{list.statusname}" style="color:#302ab0" rendered="#{list.status==2?'true':'false'}"/>
+							<h:outputText value="#{list.statusname}" style="color:#ae7237" rendered="#{list.status==3?'true':'false'}"/>
+							<h:outputText value="#{list.statusname}" style="color:#dc1515" rendered="#{list.status==4?'true':'false'}"/>
+							<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==5?'true':'false'}"/>
+							<h:outputText value="#{list.statusname}" style="color:#ba789d" rendered="#{list.status==6?'true':'false'}"/>
+						</td>
+						<td align="center">
+							<h:panelGroup rendered="#{list.loginname==TraceRecordBean.curloginname?'true':'false'}">
+								<h:panelGroup rendered="#{list.status==0?'true':'false'}">
+									<input type="image" src="/images/delete.png" title="撤单" onclick="confirmOpt('#{list.id}');return false;"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</td>
+					</tr>
+				</a4j:repeat>
+				<tr style="background:#EEEEEE;height:40px;">
+					<td colspan="6" align="center">
+						<h:panelGroup rendered="#{list.status==0?'true':'false'}">
+							<input type="button" value="全部撤单" onclick="closewin();" class="bntclass"/>
+						</h:panelGroup>
+						<input type="button" value="关闭" onclick="closewin();" class="bntclass"/>
+					</td>
+				</tr>
+			</table>
+			<a4j:region>
+				<a4j:jsFunction name="cancelOpt" status="normalStatus" data="#{GameRecordBean.msg}" oncomplete="saveFinish(data);"
+										action="#{GameRecordBean.cancelBet}">
+					<f:param name="id"></f:param>
+				</a4j:jsFunction>
+			</a4j:region>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

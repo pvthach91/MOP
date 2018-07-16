@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>盈亏报表SUB</title>
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function showReport(data){
+	if(data){
+		alert(data);
+		return;
+	}else{
+		window.location.reload();
+	}
+}
+</script>
+</head>
+<body>
+	<f:view>
+		<h:form id="WL2ReportForm">
+					<div class="fillet">
+						<h:panelGroup id="pgData">
+							<table cellpadding="0" cellspacing="0" border="0" class="tableclass" style="margin-top:3px;">
+								<tr class="fillet_table_tr">
+									<td align="center"><b>会员</b></td>
+									<td align="center"><b>充值</b></td>
+									<td align="center"><b>提现</b></td>
+									<td align="center"><b>投注</b></td>
+									<td align="center"><b>返点</b></td>
+									<td align="center"><b>中奖</b></td>
+									<td align="center"><b>活动</b></td>
+									<td align="center"><b>盈利</b></td>
+								</tr>
+								<tr style="background:#d4d4b9;font-weight:bold;color:#105a06">
+										<td style="height: 32px;" align="center">
+											<b>
+												#{ReportWinLossBean.firstlist.loginname}
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.deposit}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.withdrawl}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.bet}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.bonus}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.win}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.active}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.firstlist.total}" converter="DoubleConverter"/>
+											</b>
+										</td>
+								</tr>
+								<a4j:repeat value="#{ReportWinLossBean.reslist}" var="list" rowKeyVar="keys">
+									<tr style="background:#{keys%2==1?'#f0f4f2':'#FFFFFF'}">
+										<td style="height: 32px;" align="center">
+											<a4j:commandLink status="normalStatus" ajaxSingle="true" value="#{list.loginname}" action="#{ReportWinLossBean.subSearch}" data="#{ReportWinLossBean.msg}" oncomplete="showReport(data)">
+												<f:param name="ln" value="#{list.loginname}"/>
+											</a4j:commandLink>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.deposit}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.withdrawl}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.bet}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.bonus}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.win}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.active}" converter="DoubleConverter"/>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<h:outputText value="#{list.total}" style="color:#{list.total>=0?'#444444':'red'}" converter="DoubleConverter"/>
+										</td>
+									</tr>
+								</a4j:repeat>
+								<tr style="background:#d4d4b9">
+										<td style="height: 32px;" align="center">
+											<b>
+												#{ReportWinLossBean.totallist.loginname}
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.deposit}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.withdrawl}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.bet}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.bonus}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.win}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.active}" converter="DoubleConverter"/>
+											</b>
+										</td>
+										<td align="right" style="padding-right:5px;">
+											<b>
+												<h:outputText value="#{ReportWinLossBean.totallist.total}" converter="DoubleConverter"/>
+											</b>
+										</td>
+									</tr>
+							</table>
+						</h:panelGroup>
+					</div>
+			<ui:include src="/submitStatus.xhtml" />
+		</h:form>
+	</f:view>
+</body>
+</html>

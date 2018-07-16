@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+#notice_con{ background:url(../images/notice/bg.jpg) no-repeat center top; height:1080px; padding-top:40px; }
+.notice_div01{ width:1060px; margin:0 auto; height:83px; background:rgba(22,22,56,0.4); border-top-left-radius:3px; border-top-right-radius:3px; padding-left:40px; padding-top:10px;}
+.notice_div01 p{ width:138px; height:40px; border-top-left-radius:3px; border-top-right-radius:3px; background:#fff; margin-top:7px;}
+
+.notice_div01 p a{ display:block; width:138px; text-align:center; line-height:40px; color:#E95532; font-size:14px;}
+.notice_div02{ width:1100px; background:#fff; margin:0 auto; overflow:hidden;}
+.notice_ul01{ width:750px; margin:0 auto; padding-top:35px; overflow:hidden;}
+.notice_ul01 li{ height:30px; line-height:30px; border-bottom:1px dashed #CCC39D;}
+.notice_ul01 li a:link,.notice_ul01 li a:visited{ color:#292929;}
+.notice_ul01 li a:hover{ text-decoration:underline;}
+.notice_ul01 li .span_r{ float:right;font-weight:500;}
+.page_in{ overflow:hidden; float:right; padding:50px ; margin-right:120px; }    
+.page_in li{ float:left; height:20px; line-height:20px; margin-left:17px;}
+.page_in li input{ width:24px; height:20px; padding:0 5px; border:1px solid #211f20; text-align:center;} 
+.page_in li a:link,.page_in li a:visited{ color:#211f20;}
+
+.tab_in .notice_ul01{ font-size: 14px; color: #292929; }
+.tab_in .notice_ul01 a:link,.tab_in .notice_ul01 a:visited{ color: #292929;}
+.tab_in .notice_ul01 a:hover{ color: #EB431F;}

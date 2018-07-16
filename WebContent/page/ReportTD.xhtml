@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>团队总览</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/game.css"/>
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/js/zDrag.js"></script>
+<script type="text/javascript" src="/js/zDialog.js"></script>
+<script type="text/javascript">
+	function searchfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.reload();
+		}
+	}
+	function showReport(data){
+		if(data){
+			alert(data);
+			return;
+		}
+		window.location.reload();
+	}
+</script>
+<style>
+	.tbstd{text-align:center;background:#ffe7e5;font-size:14px;color:#dd2f2d; valign:middle;}
+	.tdleftbg{padding-left:8px;background:#f4f4f4;font-weight:normal;font-size:12px;color:#000000;text-align:center;}
+	.tbstd{background:#ffe7e5;text-align:center;color:#dd2f2d;}
+/* 	.mes_table tr{border: 0px solid #ffffff;border-width:0px 1px 1px 0px;} */
+/* 	.message_table td{border: 0px solid #ffffff;} */
+	.text-center{background:#f4f4f4;text-align:center;}
+	
+	.mes_table{border:solid #e9d0cf; border-width:1px 0px 0px 1px;}
+	tr{border:solid #e9d0cf; border-width:0px 1px 1px 0px; padding-left:10px;}
+	td{border:solid #e9d0cf; border-width:0px 1px 1px 0px; padding-left:10px;}
+</style>
+</head>
+<body>
+	<!--头部-->
+	<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="WLReportForm">
+			<!--content-->
+			<div id="content">
+				
+				<div class="content">
+						<h2>统计报表</h2>
+						<div class="tab_box">
+							<ul class="tab_nav">
+								<li>
+									<a href="/page/ReportZb.shtml" style="font-size:14px;">账变记录</a>
+								</li>
+								<li>
+									<a href="/page/BonusReport.shtml" style="font-size:14px;">赠送红利</a>
+								</li>
+								<li>
+									<a href="/page/ReportWL.shtml" style="font-size:14px;">统计报表</a>
+								</li>
+								<li class="on">
+									<a href="/page/ReportTD.shtml"  style="font-size:14px;">团队总览</a>
+								</li>
+								<li>
+									<a href="/page/ReportDay.shtml"  style="font-size:14px;">每日下级报表</a>
+								</li>
+							</ul>
+						</div>
+					<div class="tab_in">
+						<div class="game_top">
+							<div class="game_top_in">
+								<label>时间范围</label>
+								<h:inputText size="15" value="#{ReportTDBean.stime2}"
+									id="startTime5" styleClass="time" 
+									onmouseover="this.style.cursor='pointer';"
+									onfocus="WdatePicker({isShowClear:false,readOnly:false,dateFmt:'yyyy-MM-dd',onpicked:function(){$dp.$('ReportTDForm:endTime5').focus();}})" />
+								<span>00:00:00</span>
+								<span>至</span>
+								<h:inputText size="15" value="#{ReportTDBean.etime2}" style="padding-left:4px;" id="endTime5" styleClass="time" onmouseover="this.style.cursor='pointer';" onfocus="WdatePicker({isShowClear:false,readOnly:false,minDate:'#F{$dp.$D(\'ReportTDForm:startTime5\')}',dateFmt:'yyyy-MM-dd'})" />
+								<span>23:59:59</span>
+								<a4j:commandButton value="查询" status="normalStatus" styleClass="submitBtn" action="#{ReportTDBean.mainSearch}" reRender="pgDataTD" data="#{ReportTDBean.msg}" oncomplete="searchfinish(data)">
+								</a4j:commandButton>
+							</div>
+						</div>
+						
+			<h:panelGroup id="pgDataTD">
+		    <div id="info1" class="recharge_div02 message_div02">
+		    	<p class="p01">
+		        	<a class="cur" href="#">总览</a>
+		            <a href="javascript:change(1,2);" style="color:#dd2f2d;">彩票类</a>
+		            <a href="javascript:change(1,3);" style="color:#dd2f2d;">游戏类</a>
+		        </p>
+		        
+		        <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center" class="mes_table">
+		          <tr>
+						<td class="tbstd"  height="40px;">总团团队人数 :</td>
+						<td class="tdleftbg">#{ReportTDBean.member}</td>
+						<td class="tbstd">时间范围内注册人数 :</td>
+						<td class="text-center">#{ReportTDBean.newreg}</td>
+		          </tr>
+				  <tr>
+						<td class="tbstd"  height="40px;">充值 :</td>
+						<td class="tdleftbg">￥ <h:outputText value="#{ReportTDBean.res2list.dp}" converter="DoubleConverter"/></td>
+						<td class="tbstd">提现 :</td>
+						<td class="text-center">￥ <h:outputText value="#{ReportTDBean.res2list.wd}" converter="DoubleConverter"/></td>
+		          </tr>	          
+				  <tr>
+						<td class="tbstd"  height="40px;">投注 :</td>
+						<td class="tdleftbg">￥ <h:outputText value="#{ReportTDBean.res2list.tz}" converter="DoubleConverter"/></td>
+						<td class="tbstd">中奖 :</td>
+						<td class="text-center">￥ <h:outputText value="#{ReportTDBean.res2list.win}" converter="DoubleConverter"/></td>
+		          </tr>	          
+				  <tr>
+						<td class="tbstd"  height="40px;">返点 :</td>
+						<td class="tdleftbg">￥
+							<h:outputText value="#{ReportTDBean.res2list.fd}" converter="DoubleConverter"/></td>
+						<td class="tbstd"  height="40px;">活动 :</td>
+						<td class="tdleftbg">￥
+							<h:outputText value="#{ReportTDBean.res2list.bonus}" converter="DoubleConverter"/></td>
+		          </tr>	          
+				  <tr bgcolor="#f4f1e5">
+						<td class="tbstd"  height="40px;">幸运奖 :</td>
+						<td class="tdleftbg">￥
+							<h:outputText value="#{ReportTDBean.res2list.luck}" converter="DoubleConverter"/></td>
+						<td class="tbstd">其他 :</td>
+						<td class="tdleftbg">￥
+							<h:outputText value="#{ReportTDBean.res2list.others}" converter="DoubleConverter"/></td>
+		          </tr>
+				  <tr>
+						<td class="tbstd"  height="40px;">净盈利 :</td>
+						<td colspan="2" style="background:#f4f4f4;text-align:center;"><h:outputText value="#{ReportTDBean.res2list.saletz}" converter="DoubleConverter" style="color:#{ReportTDBean.res2list.saletz>=0?'blue':'red'};"></h:outputText></td>
+						<td class="tdleftbg" style="text-align:center;">
+							<b>净盈利=中奖+返点+活动-投注</b>
+						</td>
+					</tr>
+		        </table>
+		    </div>
+		    <div id="info2" class="recharge_div02 message_div02" style="display:none;">
+		    	<p class="p01">
+		        	<a href="javascript:change(2,1);" style="color:#dd2f2d;">总览</a>
+		            <a class="cur" href="#">彩票类</a>
+		            <a href="javascript:change(2,3);" style="color:#dd2f2d;">游戏类</a>
+		        </p>
+		        <br />
+				<table width="1000" border="1" cellspacing="0" cellpadding="0" align="center" >
+					<tr>
+						<td class="tbstd">
+							
+						</td>
+						<td class="tdleftbg" width="25%" align="center"  height="40px;">
+							<p style="font-size:16px;">销售/中奖</p>
+						</td>
+						<td class="tbstd">
+						
+						</td>
+						<td class="tdleftbg" width="25%" align="center">
+							<p style="font-size:16px;">销售/中奖</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%">
+							秒秒彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.mmc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.mmcwin}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+								分分彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.ffc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.ffcwin}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%">
+								两分彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.lfc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.lfcin}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+								重庆时时彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.cqssc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.cqsscwin}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%">
+								新疆时时彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.xjssc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.xjsscwin}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+								天津时时彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.tjssc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.tjsscwin}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%">
+								分分十一选五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.d115}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.d115win}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+								山东十一选五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.sd115}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.sd115win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%">
+								江西十一选五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.jx115}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.jx115win}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+								广东十一选五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.gd115}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.gd115win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%">
+								分分3D：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.s3d}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.s3dwin}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+								福彩3D：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.g3d}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.g3dwin}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								排列三五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.p35}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.p35win}"/>
+						</td>
+						<td class="tbstd" width="25%">
+											北京快乐8：
+						</td>
+						<td class="tdleftbg" width="25%">
+								￥
+								<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.kl8}"/>
+								/
+								￥
+								<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.kl8win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								六合彩（官方）：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.lhc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.lhcwin}"/>
+						</td>
+						<td class="tbstd" width="25%">
+								六合彩（分分）：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.sclhc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.sclhcwin}"/>
+						</td>
+					</tr>
+					
+					
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								分分pk10：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.pk10}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.pk10win}"/>
+						</td>
+						<td class="tbstd" width="25%">
+								北京pk10：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.gcpk10}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.gcpk10win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								菲律宾1.5分彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.hgyfb}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.hgyfbwin}"/>
+						</td>
+						<td class="tbstd" width="25%">
+							新加坡45秒
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.jzkc}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.jzkcwin}"/>
+						</td>
+
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+							腾讯分分彩：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.param4}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.param5}"/>
+						</td>
+						<td class="tbstd" width="25%" height="40px;">
+							江苏十一选五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.js11x5}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.js11x5win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+							彩票类总返点：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.param1}"/>
+						</td>
+						<td class="tbstd" width="25%">
+						</td>
+						<td class="tdleftbg" width="25%">
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								彩票类净盈利：
+						</td>
+						<td class="tdleftbg" width="25%" colspan="3">
+						￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.gcpk10win+ReportTDBean.res2list.pk10win+ReportTDBean.res2list.hgyfbwin+ReportTDBean.res2list.lhcwin+ReportTDBean.res2list.sclhcwin+ReportTDBean.res2list.kl8win+ReportTDBean.res2list.mmcwin+ReportTDBean.res2list.ffcwin+ReportTDBean.res2list.lfcin+ReportTDBean.res2list.cqsscwin + ReportTDBean.res2list.xjsscwin + ReportTDBean.res2list.tjsscwin+
+												ReportTDBean.res2list.d115win+ReportTDBean.res2list.sd115win+ReportTDBean.res2list.jx115win + ReportTDBean.res2list.gd115win+ ReportTDBean.res2list.s3dwin+ReportTDBean.res2list.g3dwin+ReportTDBean.res2list.jzkcwin+ReportTDBean.res2list.js11x5win+ReportTDBean.res2list.param5+ReportTDBean.res2list.p35win+ReportTDBean.res2list.param1-
+												(ReportTDBean.res2list.mmc+ReportTDBean.res2list.ffc+ReportTDBean.res2list.lfc+ReportTDBean.res2list.cqssc + ReportTDBean.res2list.xjssc+
+												ReportTDBean.res2list.tjssc+ReportTDBean.res2list.d115+ReportTDBean.res2list.sd115+ReportTDBean.res2list.jx115+ReportTDBean.res2list.gd115+ReportTDBean.res2list.s3d+ReportTDBean.res2list.g3d+
+												ReportTDBean.res2list.p35+ReportTDBean.res2list.pk10+ReportTDBean.res2list.gcpk10+ReportTDBean.res2list.hgyfb+ReportTDBean.res2list.kl8+ReportTDBean.res2list.lhc+ReportTDBean.res2list.param4+ReportTDBean.res2list.js11x5+ReportTDBean.res2list.sclhc+ReportTDBean.res2list.jzkc)}" style="color:#{ReportTDBean.res2list.gcpk10win+ReportTDBean.res2list.pk10win+ReportTDBean.res2list.hgyfbwin+ReportTDBean.res2list.lhcwin+ReportTDBean.res2list.sclhcwin+ReportTDBean.res2list.kl8win+ReportTDBean.res2list.mmcwin+ReportTDBean.res2list.ffcwin+ReportTDBean.res2list.lfcin+ReportTDBean.res2list.cqsscwin + ReportTDBean.res2list.xjsscwin + ReportTDBean.res2list.tjsscwin+
+												ReportTDBean.res2list.d115win+ReportTDBean.res2list.sd115win+ReportTDBean.res2list.jx115win + ReportTDBean.res2list.gd115win+ ReportTDBean.res2list.s3dwin+ReportTDBean.res2list.g3dwin+ReportTDBean.res2list.jzkcwin+ReportTDBean.res2list.param5+ReportTDBean.res2list.js11x5win+ReportTDBean.res2list.p35win+ReportTDBean.res2list.param1-
+												(ReportTDBean.res2list.mmc+ReportTDBean.res2list.ffc+ReportTDBean.res2list.lfc+ReportTDBean.res2list.cqssc + ReportTDBean.res2list.xjssc+
+												ReportTDBean.res2list.tjssc+ReportTDBean.res2list.d115+ReportTDBean.res2list.sd115+ReportTDBean.res2list.jx115+ReportTDBean.res2list.gd115+ReportTDBean.res2list.s3d+ReportTDBean.res2list.g3d+
+												ReportTDBean.res2list.p35+ReportTDBean.res2list.pk10+ReportTDBean.res2list.gcpk10+ReportTDBean.res2list.hgyfb+ReportTDBean.res2list.kl8+ReportTDBean.res2list.lhc+ReportTDBean.res2list.param4+ReportTDBean.res2list.js11x5+ReportTDBean.res2list.sclhc+ReportTDBean.res2list.jzkc)>=0?'blue':'red'}"/>
+										（净盈利=中奖+返点-投注）注意：活动未参与计算
+						</td>
+					</tr>
+					
+				</table>
+		    </div>
+		    <div id="info3" class="recharge_div02 message_div02" style="display:none;">
+		    	<p class="p01">
+		        	<a href="javascript:change(3,1);" style="color:#dd2f2d;">总览</a>
+		            <a href="javascript:change(3,2);" style="color:#dd2f2d;">彩票类</a>
+		            <a class="cur" href="#">游戏类</a>
+		        </p>
+		        <br />
+				<table width="1000" border="1" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+						<td class="tbstd">
+							
+						</td>
+						<td class="tdleftbg" width="25%" align="center"  height="40px;">
+							<p style="font-size:16px;">销售/中奖</p>
+						</td>
+						<td class="tbstd">
+						
+						</td>
+						<td class="tdleftbg" width="25%" align="center">
+							<p style="font-size:16px;">销售/中奖</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								快三骰宝：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.k3}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.k3win}"/>
+						</td>
+						<td class="tbstd" width="25%">
+								港五：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.g5}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.g5win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								炸金花：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.zjh}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.zjhwin}"/>
+						</td>
+						<td class="tbstd" width="25%">
+								分分快三：
+						</td>
+						<td class="tdleftbg" width="25%">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.ffk3}"/>
+							/
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.ffk3win}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								游戏类总返点：
+						</td>
+						<td class="tdleftbg" colspan="3">
+							￥
+							<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.param2}"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tbstd" width="25%" height="40px;">
+								游戏类净盈利：
+						</td>
+						<td class="tdleftbg" colspan="3">
+						￥
+										<h:outputText converter="DoubleConverter" value="#{ReportTDBean.res2list.k3win+ReportTDBean.res2list.g5win+ReportTDBean.res2list.zjhwin+ReportTDBean.res2list.ffk3win+ReportTDBean.res2list.param2
+										-(ReportTDBean.res2list.k3+ReportTDBean.res2list.g5+ReportTDBean.res2list.zjh+ReportTDBean.res2list.ffk3)}" style="color:#{ReportTDBean.res2list.k3win+ReportTDBean.res2list.g5win+ReportTDBean.res2list.zjhwin+ReportTDBean.res2list.ffk3win+ReportTDBean.res2list.param2
+										-(ReportTDBean.res2list.k3+ReportTDBean.res2list.g5+ReportTDBean.res2list.zjh+ReportTDBean.res2list.ffk3)>=0?'blue':'red'}"/>
+										（净盈利=中奖+返点-投注）注意：活动未参与计算
+									</td>
+					</tr>
+				</table>
+		
+		    </div>
+    		</h:panelGroup>
+							
+						
+					</div>
+				</div>
+			</div> 
+		</h:form>
+	</f:view>
+	<ui:include src="/foot.xhtml" />
+
+	
+</body>
+
+<script type="text/javascript">
+	function change(from,to){
+		$("#info"+from).css('display','none');
+		$("#info"+to).css('display','block');
+	}
+</script>
+
+</html>

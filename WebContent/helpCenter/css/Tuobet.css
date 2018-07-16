@@ -1,0 +1,41 @@
+body{
+	font-family:"宋体",tahoma;
+	margin:0px;
+	padding:0px;
+	background:#CCCCCC;
+	font-size:12px;
+	boder:none;
+}
+ul{list-style:none;}
+a{TEXT-DECORATION:none;}
+a:visited {color: #e0e1e1;}
+a:hover {color: #e57400;}
+a:active { color: #fff000;}
+
+/*帮助中心*/
+.Tuobet_Help_class{ width:980px; height:700px; font-size:14px;border:0px;color:#585858;margin:auto; background:#585858;}
+.Tuobet_Help_table_Location{padding:12px 0px 0px 0px;}
+.Tuobet_Help_class table{width:960px; height:700px;border:0px solid #ffff00;font-size:12px;color:#e0e1e1;}
+.Tuobet_Help_table_td{ width:262px; height:700px; background:#585858;border:0px solid #ffff00;font-size:13px;}
+.Tuobet_Help_table_td_2{ width:698px; height:700px;background:#FFFFFF;border:0px solid #ffff00;font-size:12px;}
+.Tuobet_Help_table_td_Content{background: url(../images/Tuobet_Help.png); height: 700px; width: 261px; background-position: -0px -0px;}
+.Tuobet_Help_table_td_Game{background: url(../images/Tuobet_Help_Icon.png); height: 20px; width: 30px; background-position: -0px -0px;border:0px;float:left;}
+.Tuobet_Help_table_td_Game_Location{!important;padding:74px 0px 0px 47px}
+.Tuobet_Help_table_td_Play{background: url(../images/Tuobet_Help_Icon.png); height: 20px; width: 30px; background-position: -57px -1px;border:0px;float:left;}
+.Tuobet_Help_table_td_Play_Location{!important;padding:23px 0px 0px 47px}
+.Tuobet_Help_Menue1{color:#c9d1e3;}
+.Tuobet_Help_Menue2{color:#798ea1;}
+.Tuobet_Help_youxi{background: url(../images/Tuobet_Help_Icon.png); height: 10px; width: 25px; background-position: -105px -1px;border:0px;float:left;}
+.Tuobet_Help_youxi_1{background: url(../images/Tuobet_Help_Icon.png); height: 10px; width: 25px; background-position: -105px -1px;border:0px;float:left;}
+.Tuobet_Help_youxi_2{background: url(../images/Tuobet_Help_Icon.png); height: 10px; width: 25px; background-position: -105px -1px;border:0px;float:left;}
+.Tuobet_Help_youxi_3{background: url(../images/Tuobet_Help_Icon.png); height: 10px; width: 25px; background-position: -105px -1px;border:0px;float:left;}
+.Tuobet_Help_youxi_4{background: url(../images/Tuobet_Help_Icon.png); height: 10px; width: 25px; background-position: -105px -1px;border:0px;float:left;}
+.Tuobet_Help_ul_li_Location{height:15px;!important;padding:30px 0px 0px 64px;}
+.Tuobet_Help_ul_li_Location_2{height:15px;!important;padding:20px 0px 0px 64px;}
+.Tuobet_Help_ul_li_Location_3{height:15px;!important;padding:20px 0px 0px 64px;}
+.Tuobet_Help_ul_li_Location_4{height:15px;!important;padding:20px 0px 0px 64px;}
+.Tuobet_Help_ul_li_Location_5{height:16px;padding:20px 0px 0px 64px;!important;}
+.Tuobet_Help_table_td_Inquiry{background: url(../images/Tuobet_Help_Icon.png); height: 20px; width: 30px; background-position: -168px -1px;border:0px;float:left;}
+.Tuobet_Help_table_td_Inquiry_Location{height:14px;!important;padding:30px 0px 0px 47px; } 
+.Tuobet_Help_table_td_Finance{background: url(../images/Tuobet_Help_Icon.png); height: 20px; width: 30px; background-position: -224px -1px;border:0px;float:left;}
+.Tuobet_Help_table_td_Finance_Location{height:15px;!important;padding:24px 0px 0px 47px;}

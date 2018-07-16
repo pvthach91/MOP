@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>代理管理--用户注册</title>
+<link type="text/css" rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/css/AgentReg.css"/>
+<script src="/js/lib/jquery1.42.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function savefinish(data){
+		if(data){
+			alert(data);
+			return;
+		}else{
+			alert("成功：添加会员完成.");
+			//window.location.reload();
+			return;
+		}
+	}
+</script>
+
+
+</head>
+
+<body>
+<ui:include src="/bar.xhtml" />
+	<f:view>
+		<h:form id="GameRecordForm">
+		<div id="content">
+			<div class="content">
+				<h2>代理管理</h2>
+				<div class="tab_box">
+					<ul class="tab_nav">
+						<li class="on">
+							<a href="/page/AgentReg.shtml" style="font-size:14px;" color="red">会员注册</a>
+						</li>
+						<li>
+							<a href="/page/AgentUser.shtml" style="font-size:14px;">下级会员</a>
+						</li>
+						<li>
+							<a href="/page/AgentAutoReg.shtml" style="font-size:14px;">注册推广</a>
+						</li>
+						<li>
+							<a href="/page/AgentPE.shtml" style="font-size:14px;">配额管理</a>
+						</li>
+						<li>
+							<a href="/page/AgentBalance.shtml" style="font-size:14px;">团队余额</a>
+						</li>		
+					</ul>
+				<div class="tab_in">
+					<div class="one">
+					<h4><span>填写基本信息</span></h4>
+					
+						<div class="from_group mt20">
+							<label>登录帐号：</label> <h:inputText value="#{AgentRegBean.loginname}"/> <span class="msg">(不少于5个字符)</span>
+						</div>
+						<div class="from_group ">
+							<label>登录密码：</label> <h:inputSecret value="#{AgentRegBean.pwd}" /> <span class="msg"></span>
+						</div>
+						<div class="from_group ">
+							<label>确认登录密码：</label> <h:inputSecret value="#{AgentRegBean.pwdre}" /> <span class="msg"></span>
+						</div>
+						<div class="from_group ">
+							<label>昵称：</label> <h:inputText value="#{AgentRegBean.nickname}" /> <span class="msg">(官方防伪认证)</span>
+						</div>
+					<h4 class="mt30"><span>彩种返点设置</span></h4>
+					
+						<ul class="Game_Time">
+							<li>
+								<span class="inline w200  text-right">时时彩</span>
+								<span class="ml30">1800模式</span>
+								<span class="ml30">返点：</span>
+								<h:selectOneMenu value="#{AgentRegBean.pointssc}" styleClass="ui-select w80 ml30">
+									<f:selectItems value="#{AgentRegBean.selssc}"></f:selectItems>
+								</h:selectOneMenu>
+							</li>
+							<li>
+								<span class="inline w200  text-right">11选5</span>
+								<span class="ml30">1782模式</span>
+								<span class="ml30">返点：</span>
+								<h:selectOneMenu value="#{AgentRegBean.point115}" styleClass="ui-select w80 ml30">
+									<f:selectItems value="#{AgentRegBean.sel115}"></f:selectItems>
+								</h:selectOneMenu>
+							</li>
+							<li>
+							<span class="inline w200  text-right">低频彩</span>
+								<span class="ml30">1800模式</span>
+								<span class="ml30">返点：</span>
+								<h:selectOneMenu value="#{AgentRegBean.pointdp}" styleClass="ui-select w80 ml30">
+									<f:selectItems value="#{AgentRegBean.seldp}"></f:selectItems>
+								</h:selectOneMenu>
+							</li>
+						</ul>						
+						<div style=" overflow: hidden;  margin-top: 27px;">
+								<a4j:commandButton styleClass="submitBtn ml300" reRender="pgData" value="保存" action="#{AgentRegBean.save}" data="#{AgentRegBean.msg}" oncomplete="savefinish(data)">
+								</a4j:commandButton>
+						</div>
+						<div class="from_foot">
+							<p class="left">配额：</p><p class="fl"> 1、开通返点级别为<strong>【6.5】以下</strong>	的会员,没有配额限制。<br />
+          2、会员添加后，可以再次编辑提升返点，但不能编辑降低返点。</p>
+						</div>   
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+		</h:form>
+	</f:view>
+
+<!--footer start-->
+<div id="footer">
+    <div class="footer">
+         <div class="footer_l">
+            <h3>银行支持 <span>About us</span></h3>
+             <a href="#"><img src="../images/public/pic_foot01_r2_c2.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r5_c6.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r3_c12.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r1_c20.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r16_c1.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r17_c5.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r15_c14.png" alt=""/></a>
+             <a href="#"><img src="../images/public/pic_foot01_r14_c19.png" alt=""/></a>
+         </div>
+        <div class="footer_l footer_r">
+            <h3>银行支持 <span>About us</span></h3>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c27.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r4_c29.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r6_c38.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c26.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r13_c32.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r16_c39.png" alt=""/></a>
+            <a href="#"><img src="../images/public/pic_foot01_r14_c41.png" alt=""/></a>
+        </div>
+        <div class="clear"></div>
+        <p class="accredit">我们是由菲律宾政府 NORTH CAGAYAN 和 CEZA 所授权 并拥有合法博彩牌照，并接受其机构监管，严格按照上述机构颁发的规则进行运营。</p>
+        <p>Copyright © 2015 DaTanglottery, Inc. All Rights Reserved.</p>
+    </div>
+</div>
+<!--footer end-->
+</body>
+<script src="../js/AgentReg.js" type="text/javascript" charset="utf-8"></script>
+</html>

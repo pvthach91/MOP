@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"></meta>
+<title>我的银行卡</title>
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link href="/css/news.css" rel="stylesheet" type="text/css" />
+<link href="/css/current.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/PCity.js"></script>
+<script type="text/javascript">
+	function nextfinish(data){
+		if(data){
+			alert(data);
+		}else{
+			window.location.href="/page/PersonBankBanding2.shtml";
+		}
+	}
+	function bsel(obj){
+		if(obj=="农业银行"){
+			document.getElementById("khcity").style.display="";
+		}else{
+			document.getElementById("khcity").style.display="none";
+		}
+	}
+	function changeCity(){
+        var ProvinceId = document.getElementById("province").value;
+        obj = $("#city")[0];
+        $("#city").empty();
+        if( cityarr[ProvinceId] != undefined ){
+            $.each(cityarr[ProvinceId],function(i,n){
+                addItem(obj,n,i);
+            });
+        }else{
+            addItem(obj,'请选择 ...','');
+        }
+    }
+	function nextopt(){
+		var s = $("#province").find("option:selected").text();
+		var k = $("#city").find("option:selected").text();
+
+		document.getElementById("bankBindingForm:province").value=s;
+		document.getElementById("bankBindingForm:city").value=k;
+	}
+</script>
+<style>
+.submitBtn {
+    display: inline-block;
+    border: none;
+    width: 127px;
+    height: 38px;
+    line-height: 13px;
+    background: url(../images/public/btn_bg.png) no-repeat left 2px;
+    margin-left:20px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-right: 380px;
+    cursor:pointer;
+    font-family:"微软雅黑";
+}
+submitBtn:hover {
+    background-image: url(../images/public/btn_bgx.png);
+    color: #F2E3AF;
+    cursor:pointer;
+    font-family:"微软雅黑";
+}
+</style>
+</head>
+<body>
+	<f:view>
+		<h:form id="bankBindingForm">
+			<a4j:region>
+				<h:panelGroup id="inputMain">
+				<div style="background:#EEEEEE;height:55px;font-size:14px;font-family:'微软雅黑';line-height:30px;padding-left:20px;">
+					<rich:spacer width="15px" height="30px;"/>银行卡绑定成功后，平台任何区域都不会出现您的完整银行帐号、开户姓名等开户信息。
+				</div>
+
+				<table style="height: 374px; width: 100%;font-size:14px;font-family:'微软雅黑';background:#f0f6fe;border:1px solid #bdcde3;color:#444444;">
+				<tr>
+				<td valign="top">
+					<a4j:region>
+					<table style="padding-left:15px;width:100%;line-height:35px;">
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 开户银行：
+							</td>
+							<td>
+								<h:selectOneMenu onchange="bsel(this.value);" styleClass="select_Game" value="#{PersonBankCardBean.newbankcard.bankname}" style="font-size:13px;width:150px">
+									<f:selectItem itemValue="工商银行" itemLabel="中国工商银行"></f:selectItem>
+									<f:selectItem itemValue="农业银行" itemLabel="中国农业银行"></f:selectItem>
+									<f:selectItem itemValue="建设银行" itemLabel="中国建设银行"></f:selectItem>
+									<f:selectItem itemValue="招商银行" itemLabel="中国招商银行"></f:selectItem>
+									<f:selectItem itemValue="民生银行" itemLabel="中国民生银行"></f:selectItem>
+									<f:selectItem itemValue="中国银行" itemLabel="中国银行"></f:selectItem>
+									<f:selectItem itemValue="交通银行" itemLabel="交通银行"></f:selectItem>
+									<f:selectItem itemValue="邮政储蓄银行" itemLabel="邮政储蓄银行"></f:selectItem>
+									<f:selectItem itemValue="光大银行" itemLabel="光大银行"></f:selectItem>
+									<f:selectItem itemValue="兴业银行" itemLabel="兴业银行"></f:selectItem>
+									<f:selectItem itemValue="浦发银行" itemLabel="浦发银行"></f:selectItem>
+									<f:selectItem itemValue="广发银行" itemLabel="广发银行"></f:selectItem>
+									<f:selectItem itemValue="中信银行" itemLabel="中信银行"></f:selectItem>
+									<f:selectItem itemValue="华夏银行" itemLabel="华夏银行"></f:selectItem>
+								</h:selectOneMenu>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 开户银行省份：
+							</td>
+							<td>
+								<select name="province" id="province" onchange="changeCity();" class="input_Game" style="font-size:13px;width:150px">
+                                    <option value="">请选择 ...</option>
+                                    <option value="1">北京市</option>
+                                    <option value="2">上海市</option>
+                                    <option value="3">天津市</option>
+                                    <option value="4">重庆市</option>
+                                    <option value="5">内蒙古自治区</option>
+                                    <option value="6">山西省</option>
+                                    <option value="7">河北省</option>
+                                    <option value="8">辽宁省</option>
+                                    <option value="9">吉林省</option>
+                                    <option value="10">黑龙江省</option>
+                                    <option value="11">江苏省</option>
+                                    <option value="12">安徽省</option>
+                                    <option value="13">山东省</option>
+                                    <option value="14">浙江省</option>
+                                    <option value="15">江西省</option>
+                                    <option value="16">福建省</option>
+                                    <option value="17">湖南省</option>
+                                   	<option value="18">湖北省</option>
+                                    <option value="19">河南省</option>
+                                   	<option value="20">广东省</option>
+                                    <option value="21">海南省</option>
+                                    <option value="22">广西壮族自治区</option>
+                                    <option value="23">贵州省</option>
+                                    <option value="24">四川省</option>
+                                    <option value="25">云南省</option>
+                                    <option value="26">陕西省</option>
+                                    <option value="27">甘肃省</option>
+                                    <option value="28">宁夏回族自治区</option>
+                                    <option value="29">青海省</option>
+                                    <option value="30">新疆维吾尔自治区</option>
+                                    <option value="31">西藏自治区</option>
+                                </select>
+
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 开户银行城市：</td>
+							<td>
+								<select name="city" id="city" class="input_Game" style="font-size:13px;width:150px">
+                                    <option value="">请选择 ...</option>
+                                </select>
+							</td>
+						</tr>
+						<tr id="khcity" style="display:none">
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 开户支行名称：</td>
+							<td>
+								<h:inputText maxlength="30" value="#{PersonBankCardBean.newbankcard.branchname}" styleClass="input_Game" style="font-size:14px;width:170px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 开户人姓名：</td>
+							<td>
+								<h:inputText maxlength="20" value="#{PersonBankCardBean.newbankcard.name}" styleClass="input_Game" style="font-size:14px;"/>
+<!-- 								<span style="font-size:12px;color:#666666">(只允许中文)</span> -->
+								<span style="font-size:12px;color:#666666">(提款卡绑定的姓名)</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 银行卡号码：</td>
+							<td>
+								<h:inputText onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" maxlength="19" value="#{PersonBankCardBean.newbankcard.bankcard}" styleClass="input_Game" style="font-size:14px;width:170px"/>
+								<span style="font-size:12px;color:#666666">(长度在16位至19位之间)</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 确认银行卡号码：</td>
+							<td>
+								<h:inputText onpaste="return false;" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" maxlength="19" value="#{PersonBankCardBean.bankcard2}" styleClass="input_Game" style="font-size:14px;width:170px"/>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span style="font-size:16px;color:#8e2020;"><b>*</b></span> 资金密码：</td>
+							<td>
+								<h:inputSecret maxlength="30" value="#{PersonBankCardBean.checkpwd}" styleClass="input_Game" style="font-size:14px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" height="45px" align="right">
+								<h:inputHidden value="#{PersonBankCardBean.newbankcard.province}" id="province"></h:inputHidden>
+								<h:inputHidden value="#{PersonBankCardBean.newbankcard.city}" id="city"></h:inputHidden>
+								<a4j:commandButton value="下一步" onclick="nextopt();"
+										styleClass="submitBtn" action="#{PersonBankCardBean.addBankcardCheck}" data="#{PersonBankCardBean.msg}"
+										oncomplete="nextfinish(data)" />
+								<rich:spacer width="20"/>
+							</td>
+						</tr>
+					</table>
+					</a4j:region>
+				</td>
+				</tr>
+				</table>
+				</h:panelGroup>
+			</a4j:region>
+		</h:form>
+	</f:view>
+</body>
+</html>
