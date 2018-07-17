@@ -131,12 +131,6 @@
 		<managed-bean-class>com.brian.uipage.AgentUserSearchBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	 </managed-bean>
-	 <!-- 自动注册 -->
-	 <managed-bean>
-	 	<managed-bean-name>AgentAutoRegBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.AgentAutoRegBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	 </managed-bean>
 	 <!-- 团队余额 -->
 	 <managed-bean>
 	 	<managed-bean-name>AgentBalanceBean</managed-bean-name>
@@ -216,18 +210,6 @@
 	 <managed-bean>
 	 	<managed-bean-name>K33Bean</managed-bean-name>
 		<managed-bean-class>com.brian.game.K33Bean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	 </managed-bean>
-	 <!-- 配额管理 -->
-	 <managed-bean>
-	 	<managed-bean-name>AgentPEBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.AgentPEBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	 </managed-bean>
-	 <!-- 配额下级子表 -->
-	 <managed-bean>
-	 	<managed-bean-name>AgentPESubBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.AgentPESubBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	 </managed-bean>
 	 <!-- 下级15天报表 -->

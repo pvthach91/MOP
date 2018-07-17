@@ -88,12 +88,6 @@
 			<to-view-id>/page/AgentUser.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
-		<!-- 自动注册 -->
-		<navigation-case>
-			<from-outcome>AGENTAUTOREG</from-outcome>
-			<to-view-id>/page/AgentAutoReg.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
 		<!-- 团队余额 -->
 		<navigation-case>
 			<from-outcome>AGENTBALANCE</from-outcome>
