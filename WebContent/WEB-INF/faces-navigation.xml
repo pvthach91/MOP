@@ -37,13 +37,7 @@
 		</navigation-case>
 		<!-- ==================================个人=============================-->
 		<!-- ==================================个人=============================-->
-		<!-- 奖金详情 -->
-		<navigation-case>
-			<from-outcome>PRICELIST</from-outcome>
-			<to-view-id>/page/PriceList.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-		
+
 		<!-- 绑定银行 -->
 		<navigation-case>
 			<from-outcome>BINDINGBANK</from-outcome>

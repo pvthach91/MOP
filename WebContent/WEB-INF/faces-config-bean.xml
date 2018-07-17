@@ -51,12 +51,6 @@
 		<managed-bean-class>com.brian.uipage.TransferBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	 </managed-bean>
-	 <!-- 奖金详情 -->
-	 <managed-bean>
-	 	<managed-bean-name>PriceBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.PriceBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	 </managed-bean>
 	 <!-- 系统公告 -->
 	 <managed-bean>
 	 	<managed-bean-name>SysMsgBean</managed-bean-name>
