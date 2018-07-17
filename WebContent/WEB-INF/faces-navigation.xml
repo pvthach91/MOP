@@ -50,12 +50,6 @@
 			<to-view-id>/page/PersonBank1.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
-		<!-- 我的消息 -->
-		<navigation-case>
-			<from-outcome>MYMSG</from-outcome>
-			<to-view-id>/page/PersonMsg.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
 		<!-- 密码修改 -->
 		<navigation-case>
 			<from-outcome>PWDCHANGE</from-outcome>

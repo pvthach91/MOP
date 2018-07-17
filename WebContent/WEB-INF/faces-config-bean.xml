@@ -175,25 +175,7 @@
 		<managed-bean-class>com.brian.uipage.PersonBankCardBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	 </managed-bean>
-	 <!-- 消息查询 -->
-	 <managed-bean>
-	 	<managed-bean-name>PersonMessageBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.PersonMessageBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	 </managed-bean>
-	 <!-- 已发送的消息 -->
-	 <managed-bean>
-	 	<managed-bean-name>PersonMsgSendBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.PersonMsgSendBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	 </managed-bean>
-	 <!-- 发送消息时用户的选择 -->
-	 <managed-bean>
-	 	<managed-bean-name>PersonMsgUserBean</managed-bean-name>
-		<managed-bean-class>com.brian.uipage.PersonMsgUserBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	 </managed-bean>
-	 
+
 	 <!-- IP过滤 -->
 	 <managed-bean>
 	 	<managed-bean-name>IPForBid</managed-bean-name>
